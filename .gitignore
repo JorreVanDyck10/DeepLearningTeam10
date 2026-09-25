@@ -1,0 +1,22 @@
+# Downloaded and prepared data stay local.
+**/data/raw/*
+!**/data/raw/.gitkeep
+**/data/processed/*
+!**/data/processed/.gitkeep
+
+# Generated model artifacts stay local.
+**/models/*
+!**/models/.gitkeep
+*.pkl
+*.pickle
+*.joblib
+
+# Local Python/Jupyter files and secrets.
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
