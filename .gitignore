@@ -11,6 +11,9 @@
 *.pickle
 *.joblib
 
+# Small baseline included for the first reproducible API deployment (about 12 KB).
+!secondary_mushroom/models/baseline_decision_tree.joblib
+
 # Local Python/Jupyter files and secrets.
 .ipynb_checkpoints/
 __pycache__/

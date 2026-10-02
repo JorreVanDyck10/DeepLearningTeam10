@@ -1,0 +1,16 @@
+# First API deployment. Automated retraining/model promotion is a later step.
+services:
+  - type: web
+    name: deeplearningteam10-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.13.7"
+      - key: MUSHROOM_MODEL_PATH
+        value: secondary_mushroom/models/baseline_decision_tree.joblib
+      - key: CORS_ORIGINS
+        value: http://localhost:5173,http://127.0.0.1:5173

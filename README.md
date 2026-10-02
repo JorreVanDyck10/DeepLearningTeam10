@@ -26,13 +26,13 @@ Open notebooks with a Python 3 Jupyter kernel and run them in numeric order with
 | `09_compare_models.ipynb` | Model comparison, error analysis, and selection |
 | `10_deploy.ipynb` | API, frontend, hosting, and automated model updates |
 
-These are starter templates, not implemented pipelines. The AWS requirement applies to at least one model across the project; document when that notebook does not apply to a dataset. Deployment can start with the baseline and later use the selected model.
+The download notebooks and the Mushroom baseline (04) are implemented; the remaining notebooks are starter templates. The AWS requirement applies to at least one model across the project; document when that notebook does not apply to a dataset. Deployment can start with the baseline and later use the selected model.
 
 Within each dataset folder:
 
 - `data/raw/`: original downloaded data (ignored by Git).
 - `data/processed/`: prepared data (ignored by Git).
-- `models/`: saved models and preprocessing (ignored by Git).
+- `models/`: saved models and preprocessing (ignored by Git except the small Mushroom baseline used for the first API deployment).
 - `metrics/`: small evaluation results to commit for comparison.
 
 Run notebooks with the dataset folder as the working directory so relative paths such as `data/raw/` resolve consistently. Add package dependencies as implementation choices are made.
@@ -45,4 +45,63 @@ Citi Bike downloads, extraction, and assembly must be performed with code. Estab
 
 ## GenAI disclosure
 
-Codex generated the initial folder structure, notebook templates, and structure documentation. The course GenAI policy was not provided with the assignment text; review it and complete any required disclosure as the project develops.
+Codex generated the initial folder structure, notebook templates, structure documentation, and dataset download code. The course GenAI policy was not provided with the assignment text; review it and complete any required disclosure as the project develops.
+
+## Download the datasets
+
+Run `01_scrape.ipynb` in each dataset folder, or run the following from the repository root with Python 3.11 or later (no extra packages needed for the script):
+
+```sh
+python download_data.py
+```
+
+This downloads the complete UCI Secondary Mushroom dataset and all NYC Citi Bike CSV parts for January 2025, extracts the archives, and assembles each dataset locally. Citi Bike's initial archive is approximately 414 MB; allow several GB of free disk space for archives, extracted files, and the assembled CSV. One winter month is an initial scope, not a representative full year.
+
+To select additional months:
+
+```sh
+python download_data.py --dataset nyc_citi_bike --months 202501 202502 202503
+```
+
+Outputs:
+
+- `secondary_mushroom/data/raw/secondary_mushroom.csv` (semicolon delimiter).
+- `nyc_citi_bike/data/raw/citibike_trips.csv` (comma delimiter).
+- A `.manifest.json` alongside each CSV records sources, archive hashes, columns, and row counts.
+
+Existing archives are reused. Combined CSVs are rebuilt from the selected sources, so reruns do not append duplicate rows. No cleaning or deduplication occurs at this stage. Sources: [UCI](https://archive.ics.uci.edu/dataset/848/secondary+mushroom+dataset) and [Citi Bike](https://citibikenyc.com/system-data). Data and manifests stay local and are ignored by Git.
+
+Verified default downloads: Mushroom has 61,069 rows (21 columns); Citi Bike has 2,124,475 rows (13 columns). The January archive includes 207 trips starting in December 2024; these original records are retained for a documented date-filtering decision during cleaning. Both download notebooks were executed successfully, including cached reruns.
+
+
+## First Mushroom prediction model
+
+`secondary_mushroom/04_predict_baseline.ipynb` trains a small decision tree (maximum depth 5) with missing-value handling and one-hot encoding in a single pipeline. It reads the original download directly for this initial baseline; the full EDA and preparation notebooks remain to be developed. Exact duplicate rows are removed before a reproducible stratified 80/20 split.
+
+Install the verified dependencies in your selected environment:
+
+```sh
+python -m pip install -r requirements-baseline.txt
+```
+
+Run the baseline notebook to save the model, metrics, and sample input. Then predict from the repository root:
+
+```sh
+python secondary_mushroom/predict.py --input secondary_mushroom/example_mushroom.json
+```
+
+The JSON contains all 20 original feature names and dataset codes; `null` represents missing values. The model pipeline is stored locally at `secondary_mushroom/models/baseline_decision_tree.joblib`. Metrics are in `secondary_mushroom/metrics/baseline_metrics.json`.
+
+Initial test results: **73.36% accuracy** versus **55.39%** for the majority-class reference. Poisonous recall is only **58.82%**: 2,779 poisonous examples are misclassified as edible. This is an educational baseline on simulated data, unsuitable for deciding whether real mushrooms are safe to eat. No hyperparameter tuning was performed on the test set.
+
+Codex implemented and executed this baseline and checked saved-model inference against notebook predictions.
+
+## Backend starter
+
+The FastAPI backend in `backend/main.py` exposes the existing Mushroom baseline through
+`POST /predict/mushroom`, with request validation, startup model loading, readiness and CORS.
+See [backend/README.md](backend/README.md) for local startup, a PowerShell prediction example
+and Render configuration. `render.yaml` configures the first free Render deployment using
+the small baseline artifact included in Git. Citi Bike inference, external artifact delivery
+and automated model updates remain to be implemented. Codex generated this backend starter
+and initial deployment configuration.

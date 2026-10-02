@@ -1,0 +1,6 @@
+# Inference dependencies match the saved baseline environment.
+fastapi==0.115.12
+uvicorn==0.20.0
+pandas==3.0.2
+scikit-learn==1.8.0
+joblib==1.5.3
