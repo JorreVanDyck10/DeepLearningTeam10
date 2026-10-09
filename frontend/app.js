@@ -21,7 +21,7 @@ window.addEventListener("hashchange", route);
 route();
 
 async function api(path, options = {}) {
-  const response = await fetch(`${apiUrl}${path}`, { ...options, signal: AbortSignal.timeout(120000) });
+  const response = await fetch(`${apiUrl}${path}`, { cache: "no-store", ...options, signal: AbortSignal.timeout(120000) });
   const data = await response.json();
   if (!response.ok) {
     if (response.status === 404) throw new Error("Deze voorspelroute is nog niet beschikbaar op de backend.");

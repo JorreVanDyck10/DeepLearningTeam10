@@ -7,7 +7,8 @@ Citi Bike voorspelt een gekozen uur en toont daarnaast 24 uurvoorspellingen als 
 Alle websitebestanden staan in deze map: `index.html`, `styles.css`, `app.js`,
 `config.js`, `metadata.json` en `citibike_metrics.json`. `export_metadata.py`
 is een hulpscript om de paddenstoelenmetadata opnieuw te exporteren.
-De standaard backend-URL is `https://deeplearningteam10-api.onrender.com`.
+De standaard backend-URL is automatisch hetzelfde domein als de website.
+Website en API worden samen gehost op `https://deeplearningteam10-api.onrender.com/`.
 De Citi Bike-pagina vereist dat ook `/predict/citibike` op die backend beschikbaar is.
 
 ## Lokaal
@@ -21,10 +22,22 @@ python -m http.server 5173 --bind 127.0.0.1 --directory frontend
 
 Open http://127.0.0.1:5173, klik **Voorbeeld invullen** en **Voorspellen**.
 Open de pagina via HTTP, niet door dubbelklikken op index.html.
-Vul voor de lokale backend `http://127.0.0.1:8000` in bij
-**Verbindingsinstellingen**; standaard gebruikt de site de publieke Render-API.
+Op deze lokale ontwikkelserver kiest de website automatisch de API op poort 8000.
+Je kunt ook alleen de backend starten en http://127.0.0.1:8000/ openen:
+die serveert nu zowel de website als de API.
 
-## Render Static Site
+## Automatisch publiceren op Render
+
+Push de website- en backendwijzigingen naar `main`. De bestaande Render Web Service
+publiceert beide samen. `config.js` gebruikt automatisch het domein waarop de site
+draait. Voor deze opstelling is geen afzonderlijke Static Site of CORS-origin nodig.
+Websitebestanden worden bij het opnieuw openen/vernieuwen van de pagina opnieuw
+gevalideerd; voorspellingen worden rechtstreeks bij de actuele API opgevraagd.
+
+Zie [de deployment-instructies](../docs/deployment.md) voor de eenmalige
+Render-instellingen, GitHub-controles en de lokale testopdracht.
+
+## Optioneel: een afzonderlijke Render Static Site
 
 1. Stel `window.GREENLAB_API_URL` in `frontend/config.js` in op de echte HTTPS-URL van de backend.
 2. Commit en push de frontendmap naar jullie GitHub-repository.
@@ -36,7 +49,8 @@ Vul voor de lokale backend `http://127.0.0.1:8000` in bij
 6. Test de publieke site, ook na minstens 15 minuten zonder API-verkeer.
 
 De Verbindingsinstellingen op de website kunnen de URL voor de huidige browser overschrijven.
-Dit is handig voor ontwikkelen; `config.js` moet voor bezoekers al de juiste URL bevatten.
+Dit is handig voor ontwikkelen. Bij een afzonderlijke Static Site moet je `config.js`
+aanpassen naar de publieke API-URL; de standaard gebruikt hetzelfde domein als de site.
 De frontend wacht maximaal twee minuten op de API en toont uitleg over de koude start.
 
 ## Modelmetadata bijwerken

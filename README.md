@@ -105,3 +105,14 @@ and Render configuration. `render.yaml` configures the first free Render deploym
 the small baseline artifact included in Git. Citi Bike inference, external artifact delivery
 and automated model updates remain to be implemented. Codex generated this backend starter
 and initial deployment configuration.
+
+## Website and automatic deployment
+
+The existing Render service now hosts both `frontend/` and the API at
+https://deeplearningteam10-api.onrender.com/. Pushes to the linked `main` branch
+trigger a new deployment. The website automatically calls the API on its own
+domain; no separate static site is required. GitHub Actions checks the website,
+API routes and committed model inference on pushes and pull requests.
+
+See [docs/deployment.md](docs/deployment.md) for Render settings, local startup,
+checks and the distinction between deploying code and retraining models.

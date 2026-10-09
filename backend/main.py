@@ -9,6 +9,7 @@ import joblib
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
 from secondary_mushroom.predict import DEFAULT_MODEL, predict_records
@@ -119,3 +120,17 @@ def predict_mushroom(payload: MushroomInput, request: Request):
     except ValueError as error:
         raise HTTPException(status_code=422, detail=str(error)) from error
     return {**prediction, "disclaimer": DISCLAIMER}
+
+
+class FrontendFiles(StaticFiles):
+    """Revalidate website files so a new deployment reaches returning visitors."""
+
+    async def get_response(self, path, scope):
+        response = await super().get_response(path, scope)
+        response.headers["Cache-Control"] = "no-cache"
+        return response
+
+
+# Register this last: /docs, /health and prediction routes take precedence.
+FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend"
+app.mount("/", FrontendFiles(directory=FRONTEND_DIR, html=True), name="frontend")

@@ -1,8 +1,10 @@
-# First API deployment. Automated retraining/model promotion is a later step.
+# One service serves both frontend/ and the API and redeploys on pushes to main.
 services:
   - type: web
     name: deeplearningteam10-api
     runtime: python
+    branch: main
+    autoDeployTrigger: commit
     plan: free
     buildCommand: pip install -r backend/requirements.txt
     startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT

@@ -88,5 +88,10 @@ minuut duren. Voeg later de echte frontend-URL toe aan `CORS_ORIGINS` in `render
 
 ## Bijdrage en controle
 
+De backend serveert ook `frontend/` op `/`. Website en API worden samen bijgewerkt
+bij een push naar de gekoppelde `main`-branch. De frontend gebruikt automatisch
+hetzelfde domein als de API, zodat deze opstelling geen extra CORS-origin nodig heeft.
+Zie [docs/deployment.md](../docs/deployment.md) voor automatische deployment en tests.
+
 Codex maakte deze backendstarter en koppelde hem aan de bestaande baseline.
 Controleer de code en vul de vereiste GenAI-disclosure aan volgens het opleidingsbeleid.
