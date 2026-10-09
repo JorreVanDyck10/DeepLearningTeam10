@@ -37,9 +37,11 @@ class DeploymentTests(unittest.TestCase):
         health = self.client.get("/health")
         self.assertEqual(health.status_code, 200)
         self.assertTrue(health.json()["mushroom_model_loaded"])
+        self.assertTrue(health.json()["citibike_model_loaded"])
         self.assertEqual(health.json()["mushroom_model_id"], MODEL_ID)
         schema = self.client.get("/openapi.json").json()
         self.assertIn("/predict/mushroom", schema["paths"])
+        self.assertIn("/predict/citibike", schema["paths"])
 
     def test_website_example_produces_a_prediction(self):
         metadata = json.loads((ROOT / "frontend/metadata.json").read_text(encoding="utf-8"))
@@ -77,9 +79,52 @@ class DeploymentTests(unittest.TestCase):
         response = self.client.post("/predict/mushroom", json=example)
         self.assertEqual(response.status_code, 200, response.text)
 
+    def test_city_prediction_matches_the_frontend_chart_contract(self):
+        response = self.client.post("/predict/citibike", json={"date": "2025-01-25", "hour": 8})
+        self.assertEqual(response.status_code, 200, response.text)
+        result = response.json()
+        self.assertEqual(result["date"], "2025-01-25")
+        self.assertEqual(result["hour"], 8)
+        self.assertEqual(result["timezone"], "America/New_York")
+        rows = result["daily_predictions"]
+        self.assertEqual([row["hour"] for row in rows], list(range(24)))
+        self.assertTrue(all(row["predicted_ride_starts"] >= 0 for row in rows))
+        self.assertEqual(result["predicted_ride_starts"], rows[8]["predicted_ride_starts"])
+        metrics = self.client.get("/citibike_metrics.json").json()
+        self.assertEqual(result["test_mae"], metrics["results"]["decision_tree"]["mae"])
+
+    def test_city_prediction_warns_outside_the_training_month(self):
+        response = self.client.post("/predict/citibike", json={"date": "2026-10-09", "hour": 23})
+        self.assertEqual(response.status_code, 200, response.text)
+        self.assertIn("buiten de beschikbare dataperiode", response.json()["warning"])
+
+    def test_invalid_city_date_hour_and_extra_fields_are_rejected(self):
+        valid = {"date": "2025-01-25", "hour": 8}
+        invalid = [{}, {**valid, "date": "not-a-date"}, {**valid, "hour": -1},
+                   {**valid, "hour": 24}, {**valid, "hour": "8"}, {**valid, "extra": True}]
+        for payload in invalid:
+            with self.subTest(payload=payload):
+                self.assertEqual(self.client.post("/predict/citibike", json=payload).status_code, 422)
+
+    def test_missing_city_model_returns_json_and_keeps_mushroom_inference(self):
+        artifact = app.state.city_model
+        try:
+            app.state.city_model = None
+            health = self.client.get("/health")
+            self.assertEqual(health.status_code, 503)
+            self.assertFalse(health.json()["citibike_model_loaded"])
+            response = self.client.post("/predict/citibike", json={"date": "2025-01-25", "hour": 8})
+            self.assertEqual(response.status_code, 503)
+            self.assertIn("niet beschikbaar", response.json()["detail"])
+            example = self.client.get("/metadata.json").json()["example"]
+            self.assertEqual(self.client.post("/predict/mushroom", json=example).status_code, 200)
+        finally:
+            app.state.city_model = artifact
+
     def test_backend_and_model_files_are_not_served(self):
         for path in ("/backend/main.py", "/render.yaml",
                      "/secondary_mushroom/models/baseline_decision_tree.joblib",
+                     "/nyc_citi_bike/models/baseline_hourly_tree.joblib",
                      "/SolutionAndrew/MushroomDataset/models/random_forest.joblib"):
             with self.subTest(path=path):
                 self.assertEqual(self.client.get(path).status_code, 404)

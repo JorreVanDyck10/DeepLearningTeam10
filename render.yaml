@@ -14,5 +14,7 @@ services:
         value: "3.13.7"
       - key: ANDREW_MUSHROOM_MODEL_PATH
         value: SolutionAndrew/MushroomDataset/models/random_forest.joblib
+      - key: CITIBIKE_MODEL_PATH
+        value: nyc_citi_bike/models/baseline_hourly_tree.joblib
       - key: CORS_ORIGINS
         value: http://localhost:5173,http://127.0.0.1:5173

@@ -127,3 +127,11 @@ and example are stored alongside that notebook. The API and website use its
 78.2%; these figures describe Andrew's 5,000-record dataset and should not be
 compared directly with scores from the full Secondary Mushroom dataset.
 See [the export/deployment instructions](SolutionAndrew/MushroomDataset/DEPLOYMENT.md).
+
+## Citi Bike API
+
+The published backend now also provides `POST /predict/citibike`, using the saved
+January 2025 hourly decision-tree baseline. The website sends date and hour and
+shows a prediction plus the 24-hour chart. The model uses only hour and weekday;
+predictions outside January 2025 include a warning. See
+[nyc_citi_bike/README.md](nyc_citi_bike/README.md) for evaluation and training.

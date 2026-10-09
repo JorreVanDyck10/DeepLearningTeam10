@@ -5,11 +5,11 @@ Geen Node-installatie of buildtool nodig. De paddenstoelenpagina gebruikt echte 
 Citi Bike voorspelt een gekozen uur en toont daarnaast 24 uurvoorspellingen als grafiek en tabel. De projectpagina toont gemeten baseline-metrics voor beide datasets.
 
 Alle websitebestanden staan in deze map: `index.html`, `styles.css`, `app.js`,
-`config.js`, `metadata.json` en `citibike_metrics.json`. `export_metadata.py`
+`config.js`, `api.js`, `metadata.json` en `citibike_metrics.json`. `export_metadata.py`
 is een hulpscript om de paddenstoelenmetadata opnieuw te exporteren.
 De standaard backend-URL is automatisch hetzelfde domein als de website.
 Website en API worden samen gehost op `https://deeplearningteam10-api.onrender.com/`.
-De Citi Bike-pagina vereist dat ook `/predict/citibike` op die backend beschikbaar is.
+Beide voorspelroutes zijn beschikbaar op dezelfde backend.
 
 Het voorlopige paddenstoelenmodel is Andrew's Random Forest uit
 `SolutionAndrew/MushroomDataset/`. Het formulier toont de twaalf bijbehorende

@@ -3,6 +3,8 @@
 FastAPI gebruikt voorlopig Andrew's Random Forest met 200 bomen en twaalf invoervelden.
 Bij het starten laadt de API de volledige pipeline, inclusief preprocessing.
 De backend serveert ook de website op hetzelfde domein.
+Het bestaande Citi Bike-model wordt ook geladen. `/health` is gereed wanneer
+beide modellen beschikbaar zijn.
 
 ## Lokaal starten op Windows
 
@@ -21,6 +23,7 @@ Open http://127.0.0.1:8000/ voor de website of `/docs` voor de interactieve API.
 | `GET /` | Website met het Mushroom-formulier |
 | `GET /health` | Modelstatus en model-ID; 503 als laden mislukt |
 | `POST /predict/mushroom` | Een Mushroom-record classificeren |
+| `POST /predict/citibike` | Ritstarts per uur en 24 uurvoorspellingen |
 | `GET /docs` | Interactieve API-documentatie |
 
 ## Eerste voorspelling
@@ -72,7 +75,23 @@ Deployment traint het model niet opnieuw.
 - Root Directory: leeg, zodat de hele repository beschikbaar blijft.
 
 Zie [deploymentdocumentatie](../docs/deployment.md) voor GitHub-controles en
-Render-instellingen. Citi Bike is nog niet aangesloten in deze gepubliceerde versie.
+Render-instellingen.
+
+## Citi Bike gebruiken
+
+```powershell
+Invoke-RestMethod -Uri http://127.0.0.1:8000/predict/citibike -Method Post -ContentType 'application/json' -Body '{"date":"2025-01-25","hour":8}'
+```
+
+De datum is lokale tijd in New York. Het uur is een geheel getal van 0 tot 23.
+De respons bevat de gekozen voorspelling en 24 voorspellingen voor de daggrafiek.
+De kleine beslisboom gebruikt alleen uur en weekdag. Hij is getraind op januari
+2025; andere maanden krijgen een waarschuwing in de respons.
+
+Het modelpad kan via `CITIBIKE_MODEL_PATH` worden overschreven. Standaard gebruikt
+de API `nyc_citi_bike/models/baseline_hourly_tree.joblib`. Het artifact bevat ook
+de metadata; de API laadt geen ritgegevens. Zie
+[nyc_citi_bike/README.md](../nyc_citi_bike/README.md) voor training en evaluatie.
 
 ## Bijdrage
 

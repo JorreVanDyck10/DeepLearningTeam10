@@ -60,16 +60,20 @@ alleen een optionele override voor deze browser.
 ## Controleren
 
 - `/`: website
-- `/health`: gereedheid van het paddenstoelenmodel
+- `/health`: gereedheid van het paddenstoelenmodel en Citi Bike-model
 - `/docs`: API-documentatie
 - `POST /predict/mushroom`: paddenstoelenvoorspelling
+- `POST /predict/citibike`: ritstarts per uur en 24 uurvoorspellingen
 
-De gepubliceerde backend ondersteunt momenteel alleen paddenstoelen. De Citi Bike-
-interface staat klaar, maar vereist nog publicatie van de bijbehorende API-route.
+De gepubliceerde backend ondersteunt beide formulieren. Het opgeslagen Citi Bike-
+model staat in `nyc_citi_bike/models/baseline_hourly_tree.joblib`; het gebruikt
+uur en weekdag en is getraind op januari 2025. Zie de
+[Citi Bike-documentatie](../nyc_citi_bike/README.md) voor de dataperiode en metrics.
 
 Lokale controle:
 
 ```powershell
 python -m pip install -r backend/requirements-dev.txt
 python -m unittest discover -s tests -v
+node --test tests/test_api_client.cjs
 ```

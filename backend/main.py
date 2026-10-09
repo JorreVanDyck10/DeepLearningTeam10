@@ -1,6 +1,7 @@
 """Start from the repository root: python -m uvicorn backend.main:app --reload."""
 
 from contextlib import asynccontextmanager
+from datetime import date
 import logging
 import os
 from pathlib import Path
@@ -14,6 +15,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from secondary_mushroom.predict import predict_records
 from backend.mushroom_model import DEFAULT_MODEL, MODEL_ID
+from nyc_citi_bike.predict import DEFAULT_MODEL as CITY_MODEL, predict_day
 
 logger = logging.getLogger(__name__)
 DISCLAIMER = "Educatieve voorspelling op hypothetische data; niet gebruiken om echte paddenstoelen te eten."
@@ -45,6 +47,12 @@ class MushroomPrediction(BaseModel):
     disclaimer: str
 
 
+class CityInput(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    date: date
+    hour: int = Field(ge=0, le=23, strict=True)
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Only load model artifacts produced by our own training pipeline.
@@ -61,14 +69,23 @@ async def lifespan(app: FastAPI):
     except Exception:
         # Keep docs available even if the artifact is absent; readiness returns 503.
         logger.exception("Mushroom model could not be loaded from %s", model_path)
+    app.state.city_model = None
+    try:
+        artifact = joblib.load(Path(os.getenv("CITIBIKE_MODEL_PATH", str(CITY_MODEL))))
+        if list(artifact["model"].feature_names_in_) != ["hour", "weekday"]:
+            raise ValueError("Citi Bike model does not match the API features.")
+        app.state.city_model = artifact
+    except Exception:
+        logger.exception("Citi Bike model could not be loaded")
     yield
     app.state.mushroom_model = None
+    app.state.city_model = None
 
 
 app = FastAPI(
     title="DeepLearningTeam10 API",
-    description="Voorspellingen met Andrew's Random Forest. Citi Bike volgt later.",
-    version="0.2.0",
+    description="Voorspellingen met Andrew's Random Forest en de Citi Bike-baseline.",
+    version="0.3.0",
     lifespan=lifespan,
 )
 
@@ -85,10 +102,13 @@ app.add_middleware(
 @app.get("/health")
 def health(request: Request):
     """Readiness: only report success if the model is available."""
-    ready = request.app.state.mushroom_model is not None
+    mushroom_ready = request.app.state.mushroom_model is not None
+    city_ready = request.app.state.city_model is not None
+    ready = mushroom_ready and city_ready
     return JSONResponse(
         status_code=200 if ready else 503,
-        content={"status": "ok" if ready else "not_ready", "mushroom_model_loaded": ready,
+        content={"status": "ok" if ready else "not_ready",
+                 "mushroom_model_loaded": mushroom_ready, "citibike_model_loaded": city_ready,
                  "mushroom_model_id": MODEL_ID},
     )
 
@@ -115,6 +135,14 @@ def predict_mushroom(payload: MushroomInput, request: Request):
     except ValueError as error:
         raise HTTPException(status_code=422, detail=str(error)) from error
     return {**prediction, "disclaimer": DISCLAIMER}
+
+
+@app.post("/predict/citibike")
+def predict_citibike(payload: CityInput, request: Request):
+    artifact = request.app.state.city_model
+    if artifact is None:
+        raise HTTPException(status_code=503, detail="Citi Bike-model niet beschikbaar.")
+    return predict_day(artifact, payload.date, payload.hour)
 
 
 class FrontendFiles(StaticFiles):
