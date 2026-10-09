@@ -26,7 +26,7 @@ Open notebooks with a Python 3 Jupyter kernel and run them in numeric order with
 | `09_compare_models.ipynb` | Model comparison, error analysis, and selection |
 | `10_deploy.ipynb` | API, frontend, hosting, and automated model updates |
 
-The download notebooks and the Mushroom baseline (04) are implemented; the remaining notebooks are starter templates. The AWS requirement applies to at least one model across the project; document when that notebook does not apply to a dataset. Deployment can start with the baseline and later use the selected model.
+The download notebooks, the Mushroom baseline (04), and Andrew's Mushroom comparison (09) are implemented; several other numbered notebooks remain starter templates. Individual solutions and AWS exports also live in contributor folders. The AWS requirement applies to at least one model across the project; document when that notebook does not apply to a dataset. Deployment can start with the baseline and later use the selected model.
 
 Within each dataset folder:
 
@@ -120,13 +120,28 @@ checks and the distinction between deploying code and retraining models.
 
 ## Provisional Mushroom model: Andrew
 
-The live website and API currently use the 200-tree Random Forest from
-`SolutionAndrew/MushroomDataset/mushroom.ipynb`. Its exported pipeline, metrics
-and example are stored alongside that notebook. The API and website use its
+The live website and API currently use Andrew's previously exported 200-tree Random Forest
+in `SolutionAndrew/MushroomDataset/models/random_forest.joblib`. Its metrics
+and example are stored alongside that artifact. Andrew's latest notebook now defines
+other models, including a 500-tree Random Forest. The API and website use the old export's
 12 features, including the optional noise fields. Reproduced test accuracy is
 78.2%; these figures describe Andrew's 5,000-record dataset and should not be
 compared directly with scores from the full Secondary Mushroom dataset.
 See [the export/deployment instructions](SolutionAndrew/MushroomDataset/DEPLOYMENT.md).
+
+## Andrew's Mushroom model comparison
+
+The [Dutch comparison report](secondary_mushroom/09_andrew_vergelijkingsrapport.md)
+and [executed comparison notebook](secondary_mushroom/09_compare_models.ipynb)
+reproduce Andrew's four current notebook models and audit his two saved pipelines.
+The saved Logistic Regression has a different configuration and is evaluated separately.
+All candidates use the same 4,100 training records, five validation folds and 900 test records.
+
+RF500 is the provisional choice on validation F1 for the poisonous class. Its test accuracy
+is 81.00%, versus 80.89% for Gradient Boosting; both miss 114 of 341 poisonous records.
+These results describe Andrew's 5,000-row, 12-feature version and do not establish the final
+winner against full-UCI/AWS models. The comparison does not replace the deployed RF200.
+See the report for error analysis, limitations and reproduction in a separate environment.
 
 ## Citi Bike API
 
