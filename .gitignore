@@ -13,6 +13,7 @@
 
 # Small baseline included for the first reproducible API deployment (about 12 KB).
 !secondary_mushroom/models/baseline_decision_tree.joblib
+!SolutionAndrew/MushroomDataset/models/random_forest.joblib
 
 # Local Python/Jupyter files and secrets.
 .ipynb_checkpoints/

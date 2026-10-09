@@ -11,6 +11,11 @@ De standaard backend-URL is automatisch hetzelfde domein als de website.
 Website en API worden samen gehost op `https://deeplearningteam10-api.onrender.com/`.
 De Citi Bike-pagina vereist dat ook `/predict/citibike` op die backend beschikbaar is.
 
+Het voorlopige paddenstoelenmodel is Andrew's Random Forest uit
+`SolutionAndrew/MushroomDataset/`. Het formulier toont de twaalf bijbehorende
+velden en de testresultaten van deze specifieke dataset/modelversie.
+De twee ruisvelden zijn optionele extra datasetkenmerken.
+
 ## Lokaal
 
 Laat de backend draaien op poort 8000. Open een tweede PowerShell-venster:
@@ -59,7 +64,7 @@ De frontend wacht maximaal twee minuten op de API en toont uitleg over de koude 
 .\.venv\Scripts\python.exe frontend/export_metadata.py
 ```
 
-Dit leest alleen de vertrouwde lokale baseline en exporteert de categorieÃ«n, het voorbeeld
+Dit leest alleen de vertrouwde pipeline van Andrew en exporteert de categorieÃ«n, het voorbeeld
 en de metrics naar `metadata.json`. Controleer vertalingen bij model/schemawijzigingen.
 Categoriebetekenissen en meeteenheden komen uit de [UCI-metadata](https://archive.ics.uci.edu/dataset/848/secondary+mushroom+dataset).
 De UI toont alleen categorieÃ«n die de opgeslagen encoder kent. Onbekende waarden worden als null verstuurd.

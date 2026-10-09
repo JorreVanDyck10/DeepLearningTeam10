@@ -19,6 +19,11 @@ Een geopende pagina wordt niet vanzelf herladen. Vernieuw die na een deployment.
 De API laadt het meegeleverde model opnieuw bij de start van de nieuwe deployment.
 Automatische hertraining op nieuwe data is een afzonderlijke ML-pipeline.
 
+Het voorlopige paddenstoelenmodel is Andrew's Random Forest. Het artifact en de
+resultaten staan onder `SolutionAndrew/MushroomDataset/`. Zie
+[de modelinstructies](../SolutionAndrew/MushroomDataset/DEPLOYMENT.md) voor export
+en het samen bijwerken van model, metrics en websitevelden.
+
 ## Eenmalige Render-instellingen
 
 De bestaande service moet met jullie GitHub-account gekoppeld zijn aan:

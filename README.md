@@ -116,3 +116,14 @@ API routes and committed model inference on pushes and pull requests.
 
 See [docs/deployment.md](docs/deployment.md) for Render settings, local startup,
 checks and the distinction between deploying code and retraining models.
+
+
+## Provisional Mushroom model: Andrew
+
+The live website and API currently use the 200-tree Random Forest from
+`SolutionAndrew/MushroomDataset/mushroom.ipynb`. Its exported pipeline, metrics
+and example are stored alongside that notebook. The API and website use its
+12 features, including the optional noise fields. Reproduced test accuracy is
+78.2%; these figures describe Andrew's 5,000-record dataset and should not be
+compared directly with scores from the full Secondary Mushroom dataset.
+See [the export/deployment instructions](SolutionAndrew/MushroomDataset/DEPLOYMENT.md).

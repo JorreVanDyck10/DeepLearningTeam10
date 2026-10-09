@@ -5,6 +5,7 @@ import unittest
 
 from fastapi.testclient import TestClient
 from backend.main import app
+from backend.mushroom_model import MODEL_ID, FEATURES
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -36,6 +37,7 @@ class DeploymentTests(unittest.TestCase):
         health = self.client.get("/health")
         self.assertEqual(health.status_code, 200)
         self.assertTrue(health.json()["mushroom_model_loaded"])
+        self.assertEqual(health.json()["mushroom_model_id"], MODEL_ID)
         schema = self.client.get("/openapi.json").json()
         self.assertIn("/predict/mushroom", schema["paths"])
 
@@ -52,9 +54,33 @@ class DeploymentTests(unittest.TestCase):
         response = self.client.post("/predict/mushroom", json={})
         self.assertEqual(response.status_code, 422)
 
+    def test_frontend_fields_match_andrews_model(self):
+        metadata = self.client.get("/metadata.json").json()
+        self.assertEqual(metadata["model_id"], MODEL_ID)
+        self.assertEqual({field["name"] for field in metadata["fields"]}, set(FEATURES))
+        self.assertEqual(set(metadata["example"]), set(FEATURES))
+        self.assertEqual(app.state.mushroom_model.named_steps["classifier"].n_estimators, 200)
+
+    def test_zero_measurements_match_unknown_values(self):
+        example = self.client.get("/metadata.json").json()["example"]
+        zeros = {**example, "stem-height": 0, "stem-width": 0}
+        unknown = {**example, "stem-height": None, "stem-width": None}
+        zero_result = self.client.post("/predict/mushroom", json=zeros)
+        unknown_result = self.client.post("/predict/mushroom", json=unknown)
+        self.assertEqual(zero_result.status_code, 200, zero_result.text)
+        self.assertEqual(zero_result.json(), unknown_result.json())
+
+    def test_optional_noise_fields_can_be_omitted(self):
+        example = self.client.get("/metadata.json").json()["example"]
+        example.pop("jumbled_noise_0")
+        example.pop("jumbled_noise_1")
+        response = self.client.post("/predict/mushroom", json=example)
+        self.assertEqual(response.status_code, 200, response.text)
+
     def test_backend_and_model_files_are_not_served(self):
         for path in ("/backend/main.py", "/render.yaml",
-                     "/secondary_mushroom/models/baseline_decision_tree.joblib"):
+                     "/secondary_mushroom/models/baseline_decision_tree.joblib",
+                     "/SolutionAndrew/MushroomDataset/models/random_forest.joblib"):
             with self.subTest(path=path):
                 self.assertEqual(self.client.get(path).status_code, 404)
 

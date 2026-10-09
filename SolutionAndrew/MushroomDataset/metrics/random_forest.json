@@ -1,0 +1,52 @@
+{
+  "model_id": "andrew_random_forest_200",
+  "model_name": "Andrew — Random Forest (200 bomen)",
+  "source_notebook": "SolutionAndrew/MushroomDataset/mushroom.ipynb",
+  "dataset": "SolutionAndrew/MushroomDataset/mushroom_project_dataset.csv",
+  "dataset_sha256": "1f215c4cf999b5df6b05caf0cab9fc40e693e9f4d2fa1cb24f5c66b175a72281",
+  "dataset_rows": 5000,
+  "train_rows": 4000,
+  "test_rows": 1000,
+  "features": [
+    "cap-diameter",
+    "stem-height",
+    "stem-width",
+    "spore-print-color",
+    "gill-color",
+    "habitat",
+    "season",
+    "ring-type",
+    "cap-shape",
+    "stem-surface",
+    "jumbled_noise_0",
+    "jumbled_noise_1"
+  ],
+  "parameters": {
+    "n_estimators": 200,
+    "random_state": 42,
+    "class_weight": "balanced"
+  },
+  "test_metrics": {
+    "accuracy": 0.782,
+    "balanced_accuracy": 0.7406770083149572,
+    "precision_poisonous": 0.7970479704797048,
+    "recall_poisonous": 0.5699208443271768,
+    "f1_poisonous": 0.6646153846153846,
+    "roc_auc_poisonous": 0.8369108468339855,
+    "poisonous_predicted_edible": 163,
+    "confusion_matrix_labels": [
+      "e",
+      "p"
+    ],
+    "confusion_matrix": [
+      [
+        566,
+        55
+      ],
+      [
+        163,
+        216
+      ]
+    ]
+  }
+}

@@ -12,7 +12,7 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: "3.13.7"
-      - key: MUSHROOM_MODEL_PATH
-        value: secondary_mushroom/models/baseline_decision_tree.joblib
+      - key: ANDREW_MUSHROOM_MODEL_PATH
+        value: SolutionAndrew/MushroomDataset/models/random_forest.joblib
       - key: CORS_ORIGINS
         value: http://localhost:5173,http://127.0.0.1:5173

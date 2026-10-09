@@ -19,6 +19,7 @@
     <section id="mushroom" class="page">
       <h1>Paddenstoelen voorspellen</h1>
       <p>Vul de kenmerken in of gebruik het voorbeeld.</p>
+      <p class="muted">Voorlopig model: Andrew's Random Forest, getraind op 5.000 records.</p>
       <p class="notice">Schooldemo met hypothetische data. Niet gebruiken om te bepalen of echte paddenstoelen eetbaar zijn.</p>
       <div class="workspace">
         <section class="panel">
@@ -26,7 +27,7 @@
           <p class="muted">Laat onbekende kenmerken leeg.</p>
           <form id="mushroom-form">
             <div id="basic-fields" class="fields"></div>
-            <details class="advanced"><summary>Meer kenmerken</summary><div id="advanced-fields" class="fields"></div></details>
+            <details class="advanced"><summary>Meer kenmerken</summary><p class="muted">De twee extra ruiskenmerken horen bij Andrew's dataset en zijn geen biologische eigenschappen. Laat ze leeg als je ze niet kent.</p><div id="advanced-fields" class="fields"></div></details>
             <div class="form-actions"><button id="predict-button" class="primary" type="submit">Voorspellen</button><button id="reset-button" type="button">Wissen</button></div>
           </form>
         </section>
@@ -62,9 +63,9 @@
       <h1>Project</h1>
       <p>Jorre Van Dyck, Milan Wouters, Raoul Buffels en Andrew Noeyens.</p>
       <h2>Paddenstoelenmodel</h2>
-      <p>De eerste versie gebruikt een beslisboom met een maximale diepte van 5.</p>
+      <p>Voorlopig gebruiken we Andrew's Random Forest met 200 bomen en gebalanceerde klassegewichten. Het model gebruikt 12 invoervelden uit SolutionAndrew/MushroomDataset.</p>
       <div id="metrics" class="metrics"></div>
-      <p class="muted">Resultaten op de testset van de baseline. Het model herkent nog niet alle giftige paddenstoelen correct.</p>
+      <p class="muted">Resultaten op 1.000 testrecords uit Andrew's dataset van 5.000 records; 4.000 records zijn gebruikt voor training. Het model herkent nog niet alle giftige paddenstoelen correct.</p>
       <p>De analyses en modelvergelijkingen staan in de notebooks.</p>
       <h2>Citi Bike-model</h2>
       <p>Beslisboom met uur en weekdag als kenmerken. Getraind op 1–24 januari 2025; getest op 25–31 januari 2025.</p>
