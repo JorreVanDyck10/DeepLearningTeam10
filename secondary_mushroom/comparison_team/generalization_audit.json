@@ -1,0 +1,269 @@
+{
+  "source_commit": "7ca674b",
+  "dataset": {
+    "bytes": 2896328,
+    "sha256": "c0eb333df5747171cfc4356c966434b4e9ba1f099c4a0aa2c27f545853e6d203",
+    "sha256_lf": "a0d68cfc46c6900d67d30a49c6e1c3b8c37042dbd6e62ce38a9cf84a40c022e0"
+  },
+  "group_verification": {
+    "species_count": 173,
+    "raw_rows_per_species": 353,
+    "constant_class_blocks": 173,
+    "primary_class_sequence_matches": true,
+    "categorical_primary_consistency_checks": 2941,
+    "categorical_mismatches": 0,
+    "primary_data": {
+      "bytes": 22015,
+      "sha256": "3b17b673a568cb0c9181f6c8dfcbaf73c5697da32a7a9a73ee635668f0992b6d",
+      "sha256_lf": "69d5824afca20b9b7ed21c286be99ee27081499bddc9b864c2df0b6bda832d1d"
+    },
+    "grouping_rule": "original UCI source row // 353, after verifying all blocks against primary data"
+  },
+  "original_random_split_species_overlap": 173,
+  "target_index_and_species_excluded_from_inputs": true,
+  "encoded_feature_count": 128,
+  "group_protocol": {
+    "folds": 5,
+    "shuffle": true,
+    "random_state": 42,
+    "evaluated_models": [
+      "aws_tuned",
+      "random_forest_500"
+    ],
+    "purpose": "diagnostic new-species generalization; not final model selection"
+  },
+  "fold_membership": [
+    {
+      "fold": 1,
+      "train_rows": 48580,
+      "validation_rows": 12343,
+      "train_species": 138,
+      "validation_species": 35,
+      "overlapping_species": 0
+    },
+    {
+      "fold": 2,
+      "train_rows": 48921,
+      "validation_rows": 12002,
+      "train_species": 139,
+      "validation_species": 34,
+      "overlapping_species": 0
+    },
+    {
+      "fold": 3,
+      "train_rows": 48347,
+      "validation_rows": 12576,
+      "train_species": 137,
+      "validation_species": 36,
+      "overlapping_species": 0
+    },
+    {
+      "fold": 4,
+      "train_rows": 48922,
+      "validation_rows": 12001,
+      "train_species": 139,
+      "validation_species": 34,
+      "overlapping_species": 0
+    },
+    {
+      "fold": 5,
+      "train_rows": 48922,
+      "validation_rows": 12001,
+      "train_species": 139,
+      "validation_species": 34,
+      "overlapping_species": 0
+    }
+  ],
+  "species_held_out_scores": [
+    {
+      "model": "aws_tuned",
+      "accuracy": 0.6283997833330598,
+      "balanced_accuracy": 0.6234438992695152,
+      "precision_poisonous": 0.6629200293470286,
+      "recall_poisonous": 0.6694623910852943,
+      "f1_poisonous": 0.6661751478242919,
+      "roc_auc": 0.6399589852949399,
+      "average_precision": 0.6402634328515451,
+      "tn": 15695,
+      "fp": 11486,
+      "fn": 11153,
+      "tp": 22589,
+      "mean_fold_accuracy": 0.6280728591151197,
+      "std_fold_accuracy": 0.04647511223579347,
+      "mean_fold_f1": 0.6648845204035257
+    },
+    {
+      "model": "random_forest_500",
+      "accuracy": 0.6593076506409731,
+      "balanced_accuracy": 0.656368742403447,
+      "precision_poisonous": 0.695867269984917,
+      "recall_poisonous": 0.6836583486456049,
+      "f1_poisonous": 0.6897087843090355,
+      "roc_auc": 0.6637380888555818,
+      "average_precision": 0.6693239460385332,
+      "tn": 17099,
+      "fp": 10082,
+      "fn": 10674,
+      "tp": 23068,
+      "mean_fold_accuracy": 0.6591156205443284,
+      "std_fold_accuracy": 0.044155851523422655,
+      "mean_fold_f1": 0.6883749016341594
+    }
+  ],
+  "original_row_split_scores": {
+    "aws_tuned": {
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "precision_poisonous": 1.0,
+      "recall_poisonous": 1.0,
+      "f1_poisonous": 1.0,
+      "roc_auc": 1.0,
+      "average_precision": 1.0,
+      "tn": 5436,
+      "fp": 0,
+      "fn": 0,
+      "tp": 6749,
+      "train_accuracy": 1.0,
+      "train_f1_poisonous": 1.0,
+      "fit_seconds": 7.105864099983592,
+      "predict_12185_ms": 163.2019999960903,
+      "serialized_bytes_compress3": 1850882,
+      "accuracy_ci95": "[0.9996848380681895, 1.0]",
+      "recall_ci95": "[0.9994311344573805, 0.9999999999999998]",
+      "cv_f1_mean": 1.0,
+      "cv_f1_std": 0.0,
+      "cv_recall_mean": 1.0,
+      "cv_accuracy_mean": 1.0,
+      "cv_seconds": 13.73526159999892
+    },
+    "random_forest_500": {
+      "accuracy": 0.9998358637669266,
+      "balanced_accuracy": 0.999851829900726,
+      "precision_poisonous": 1.0,
+      "recall_poisonous": 0.999703659801452,
+      "f1_poisonous": 0.9998518079430944,
+      "roc_auc": 0.9999999727428074,
+      "average_precision": 0.9999999780488742,
+      "tn": 5436,
+      "fp": 0,
+      "fn": 2,
+      "tp": 6747,
+      "train_accuracy": 0.9998974106446716,
+      "train_f1_poisonous": 0.9999073748170652,
+      "fit_seconds": 10.126356199994916,
+      "predict_12185_ms": 289.2649999994319,
+      "serialized_bytes_compress3": 9248012,
+      "accuracy_ci95": "[0.9994016822904425, 0.9999549867705847]",
+      "recall_ci95": "[0.9989200621489048, 0.9999187290668355]",
+      "cv_f1_mean": 0.9996664381027496,
+      "cv_f1_std": 0.0002548342646974,
+      "cv_recall_mean": 0.9993701892464396,
+      "cv_accuracy_mean": 0.9996306783208174,
+      "cv_seconds": 22.105574599991087
+    }
+  },
+  "shuffled_label_negative_control": {
+    "seed": 42,
+    "permutation": "all unique target labels before fitting",
+    "train_rows": 48738,
+    "test_rows": 12185,
+    "metrics": {
+      "accuracy": 0.5248256052523594,
+      "balanced_accuracy": 0.49822828644150235,
+      "precision_poisonous": 0.5525420006588339,
+      "recall_poisonous": 0.7458129539054394,
+      "f1_poisonous": 0.6347924813927085,
+      "roc_auc": 0.49638132115220135,
+      "average_precision": 0.5468849893306984,
+      "tn": 1363,
+      "fp": 4075,
+      "fn": 1715,
+      "tp": 5032
+    }
+  },
+  "warnings": {
+    "aws_tuned": {},
+    "random_forest_500": {},
+    "shuffled_label_control": {}
+  },
+  "ranking_status": "No overall best model established for unseen species; other candidates not group-evaluated",
+  "sources": [
+    "https://www.nature.com/articles/s41598-021-87602-3",
+    "https://archive.ics.uci.edu/dataset/848/secondary+mushroom+dataset",
+    "https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-iterators-for-grouped-data"
+  ],
+  "environment": {
+    "python": "3.13.7",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "sklearn": "1.9.1",
+    "numpy": "2.5.3",
+    "pandas": "3.0.2",
+    "joblib": "1.6.0"
+  },
+  "feature_columns": [
+    "cap-diameter",
+    "cap-shape",
+    "cap-surface",
+    "cap-color",
+    "does-bruise-or-bleed",
+    "gill-attachment",
+    "gill-spacing",
+    "gill-color",
+    "stem-height",
+    "stem-width",
+    "stem-root",
+    "stem-surface",
+    "stem-color",
+    "veil-type",
+    "veil-color",
+    "has-ring",
+    "ring-type",
+    "spore-print-color",
+    "habitat",
+    "season"
+  ],
+  "classifier_parameters": {
+    "aws_tuned": {
+      "bootstrap": true,
+      "ccp_alpha": 0.0,
+      "class_weight": null,
+      "criterion": "gini",
+      "max_depth": 24,
+      "max_features": "sqrt",
+      "max_leaf_nodes": null,
+      "max_samples": null,
+      "min_impurity_decrease": 0.0,
+      "min_samples_leaf": 2,
+      "min_samples_split": 2,
+      "min_weight_fraction_leaf": 0.0,
+      "monotonic_cst": null,
+      "n_estimators": 100,
+      "n_jobs": 2,
+      "oob_score": false,
+      "random_state": 42,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "random_forest_500": {
+      "bootstrap": true,
+      "ccp_alpha": 0.0,
+      "class_weight": "balanced",
+      "criterion": "gini",
+      "max_depth": 20,
+      "max_features": "sqrt",
+      "max_leaf_nodes": null,
+      "max_samples": null,
+      "min_impurity_decrease": 0.0,
+      "min_samples_leaf": 1,
+      "min_samples_split": 3,
+      "min_weight_fraction_leaf": 0.0,
+      "monotonic_cst": null,
+      "n_estimators": 500,
+      "n_jobs": -1,
+      "oob_score": false,
+      "random_state": 42,
+      "verbose": 0,
+      "warm_start": false
+    }
+  }
+}

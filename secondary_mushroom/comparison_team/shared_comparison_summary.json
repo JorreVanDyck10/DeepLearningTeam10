@@ -591,5 +591,6 @@
       "only_other_correct": 0,
       "mcnemar_exact_p": 0.0
     }
-  ]
+  ],
+  "selection_scope": "Original random row split within shared simulated species; not validation on unseen species"
 }

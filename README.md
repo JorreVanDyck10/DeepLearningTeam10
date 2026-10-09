@@ -150,14 +150,19 @@ configurations on the same full UCI data. All configurations use the same 48,738
 records, three validation folds and 12,185 test records with 20 original features.
 Andrew's saved Logistic Regression has different settings and is evaluated separately.
 
-The AWS100 configurations tie at CV F1=1.0 and make no test errors; the already available,
-regularized AWS100 is the provisional preference. Andrew RF500 and Gradient Boosting each
+The AWS100 configurations tie at CV F1=1.0 and make no test errors on the random row split;
+the preference for regularized AWS100 applies only within that protocol. Andrew RF500 and Gradient Boosting each
 miss two poisonous records on this common test set (99.9836% accuracy). These are new local
 fits with an adapted input schema, not scores reassigned to Andrew's original 12-feature models.
 The [historical Andrew-only report](secondary_mushroom/09_andrew_vergelijkingsrapport.md)
 and [its executed notebook](secondary_mushroom/09_compare_andrew_models.ipynb) preserve
 the original 5,000-row comparison. The common test set was previously viewed in the AWS
 notebook, so the report documents the limits of the provisional conclusion.
+All 173 simulated species occur in both random train and test. An additional diagnostic
+refits two fixed configurations with five species-disjoint folds: AWS100 reaches 62.84%
+accuracy and Andrew RF500 65.93%. There is no overall winner established for unseen species;
+the other candidates still need evaluation under that protocol. The report and notebook
+include verified group membership, out-of-fold predictions and a shuffled-label control.
 This comparison does not replace the deployed RF200. See the report for inference audit,
 error analysis, environment requirements and the steps needed before deploying AWS100.
 

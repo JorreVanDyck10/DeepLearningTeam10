@@ -215,6 +215,7 @@ def run():
         'scope': 'New local fits on full deduplicated UCI data; adapted Andrew input schema (20 original features)',
         'selection_rule': 'Mean training-CV F1 p; mean recall tie-break; exact ties prioritize existing regularized AWS RF100; test excluded',
         'selected_model': selected, 'exact_cv_ties': tied, 'selection_is_provisional': True,
+        'selection_scope': 'Original random row split within shared simulated species; not validation on unseen species',
         'split': {'test_size': .2, 'random_state': 42, 'stratified': True, 'cv_folds': 3},
         'dataset': {'raw_rows': len(raw), 'unique_rows': len(data), 'removed_duplicates': len(raw) - len(data),
             'features': X.columns.tolist(), 'train_rows': len(train), 'test_rows': len(test),

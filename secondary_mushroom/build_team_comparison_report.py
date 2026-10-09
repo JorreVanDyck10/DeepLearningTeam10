@@ -16,6 +16,13 @@ FOLDER = ROOT / 'secondary_mushroom'
 
 
 def report_text(summary, audit, metrics, errors):
+    generalization = json.loads((OUT / 'generalization_audit.json').read_text(encoding='utf-8'))
+    grouped_scores = {row['model']: row for row in generalization['species_held_out_scores']}
+    control_scores = generalization['shuffled_label_negative_control']['metrics']
+    species_table = markdown_table(['Configuratie', 'Random test accuracy', 'Soorten apart: accuracy', 'Recall p', 'F1 p', 'FN'],
+        [[NAMES[row['model']], f"{metrics.loc[row['model'], 'accuracy']*100:.4f}%",
+          f"{row['accuracy']*100:.2f}%", f"{row['recall_poisonous']*100:.2f}%",
+          f"{row['f1_poisonous']:.6f}", row['fn']] for row in generalization['species_held_out_scores']])
     selected = metrics.loc[summary['selected_model']]
     trained = metrics.drop(index='majority')
     ranking = metrics.sort_values(['cv_f1_mean', 'cv_recall_mean'], ascending=False, kind='stable')
@@ -58,7 +65,13 @@ Bronmodeldefinities en exports: commit [`7fc26c2`](https://github.com/JorreVanDy
 
 ## Besluit
 
-**Voorlopige keuze op de gedeelde UCI-data: {NAMES[summary['selected_model']]}.**
+**Geen algemeen beste model vastgesteld.** De eerdere voorkeur voor AWS geldt alleen
+voor een willekeurige rij-split binnen dezelfde gesimuleerde soorten. In een aanvullende
+controle met volledige soorten buiten de training haalt de AWS-configuratie **{grouped_scores['aws_tuned']['accuracy']*100:.2f}%
+accuracy**, tegenover **{grouped_scores['random_forest_500']['accuracy']*100:.2f}%** voor Andrew RF500. De oorspronkelijke 100% bewijst dus
+geen perfecte generalisatie. Zie sectie 6a voor het protocol en de bewaarde voorspellingen.
+
+**Voorlopige voorkeur binnen de oorspronkelijke random split: {NAMES[summary['selected_model']]}.**
 De gemiddelde CV F1 p is **{selected.cv_f1_mean:.6f}**. Op dezelfde 12.185 testrecords
 haalt de nieuwe lokale fit **{selected.accuracy*100:.4f}% accuracy**, met **{int(selected.fn)}
 giftige records als eetbaar** en **{int(selected.fp)} eetbare records als giftig**.
@@ -88,7 +101,7 @@ voor de reproductie van zijn originele notebookoutputs.
 | --- | --- |
 | Oorspronkelijke Andrew-modeldefinities, notebook en opgeslagen pipelines | Andrew Noeyens |
 | Oorspronkelijke AWS-training, tuning en gedownloade exports | Jorre Van Dyck |
-| Controle van het AWS-artifact, gezamenlijke lokale hertraining, vergelijking en rapportage | Codex op verzoek van Jorre |
+| Controle van het AWS-artifact, lokale hertraining, soortgebonden audit, vergelijking en rapportage | Codex op verzoek van Jorre |
 | Review en eigen mondelinge verdediging | Nog door het team uit te voeren |
 
 AI-gebruik is hiermee vermeld. Nieuwe lokale trainingsruns zijn niet uitgevoerd op AWS.
@@ -122,8 +135,9 @@ en geen Andrew-noisevelden. De raw-CSV heeft LF-genormaliseerde SHA-256
 
 Er is **{summary['dataset']['exact_feature_overlap_train_test']} exacte feature-overlap** tussen
 train en test. Deze check sluit afhankelijkheden binnen de simulatie of nabijgelegen
-records niet uit. Er is geen betrouwbare soort-ID voor een soortgebonden eindtest in deze
-vergelijking gebruikt. Een random split meet hier prestaties op deze simulatieverdeling.
+records niet uit. In de oorspronkelijke vergelijking werden geen soortgroepen gebruikt.
+De aanvullende audit reconstrueert en controleert die groepen tegen de primaire UCI-data:
+alle **173 soorten** komen in zowel de random trainingsset als de testset voor.
 
 ## 3. Gecontroleerd opgeslagen AWS-model en tuning
 
@@ -264,6 +278,53 @@ Andrew's oorspronkelijke input had minder kenmerken, twee noisevelden en een and
 klasseverdeling/ontbrekendheid. De nieuwe vergelijking houdt de rijen en bronfeatures gelijk;
 een specifiek effect van datavolume, featurekeuze of noise vraagt afzonderlijke ablation.
 
+## 6a. Waarom 100%? Controle op volledig ongeziene soorten
+
+100% is voor deze dataset niet op zichzelf bewijs van een programmeerfout. De auteurs
+rapporteren voor Random Forest eveneens vijfvoudige CV accuracy en F2 van 1,0. Hun
+gegevens zijn gesimuleerd met 353 voorbeelden per soort.
+[Wagner et al., Scientific Reports](https://www.nature.com/articles/s41598-021-87602-3).
+
+**Verificatie van de groepen.** Het originele archief bevat 173 primaire soorten en
+61.069 secundaire records in 173 opeenvolgende blokken van 353. De audit controleert
+de klassevolgorde en alle 2.941 combinaties van soort en categorisch kenmerk tegen
+de primaire data, zonder afwijkingen. Pas daarna wordt `source_row // 353` als
+groepsnummer gebruikt; de oorspronkelijke bronrij blijft na deduplicatie behouden.
+De groeps-ID, soortnaam, rij-index en doelkolom worden nooit aan het model gevoerd.
+Deze reconstructie is specifiek voor de gecontroleerde UCI-bestandsversie.
+
+**Protocol.** Twee vaste volledige pipelineconfiguraties worden lokaal opnieuw gefit
+met vijfvoudige `StratifiedGroupKFold`, shuffle en seed 42. Alle records van één soort
+zitten in dezelfde validatiefold; elke fold heeft nul soortoverlap met training.
+Imputatie en encoding worden binnen elke trainingsfold gefit. De opgeslagen AWS-pipeline
+zelf is hiervoor niet gebruikt: die heeft al voorbeelden van alle soorten gezien.
+De metrics hieronder worden gepoold over 60.923 voorspellingen buiten de training.
+[scikit-learn: grouped cross-validation](https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-iterators-for-grouped-data).
+
+{species_table}
+
+![Random split tegenover ongeziene soorten](comparison_team/generalization_comparison.png)
+
+De oorspronkelijke random test gebruikt 12.185 records; deze diagnostische groeps-CV
+gebruikt 60.923 records met per fold opnieuw gefitte modellen. Het zijn verschillende
+generalisatievragen en geen gepaarde vergelijking op één testset. Andrew RF500 scoort
+in deze controle hoger dan AWS100, maar de overige kandidaten zijn niet met dit
+groepsprotocol geëvalueerd. Hiermee is geen definitieve teamrangschikking vastgesteld.
+
+**Negatieve controle.** Bij willekeurig geschudde labels haalt dezelfde AWS-configuratie
+{control_scores['balanced_accuracy']*100:.2f}% balanced accuracy en ROC-AUC {control_scores['roc_auc']:.4f} op de oorspronkelijke random test.
+Dat gedrag past bij toeval. Samen met het gecontroleerde featureschema levert dit
+geen aanwijzing voor een rechtstreeks meegevoerde doelkolom; het sluit niet ieder
+mogelijk datalek uit. De duidelijke terugval bij ongeziene soorten laat vooral zien
+dat de random split de prestaties voor nieuwe soorten sterk overschat.
+
+**Conclusie voor modelkeuze.** Voor interpolatie binnen deze 173 gesimuleerde soorten
+blijft de random vergelijking bruikbaar. Voor ongeziene soorten moet het team alle
+kandidaten en tuning met gescheiden soortgroepen vergelijken, en een ongebruikte
+eindtest vastleggen. Deze audit is achteraf toegevoegd nadat de random scores bekend
+waren en vormt geen nieuwe onaangeraakte eindtest. Ook soorten-CV test geen echte
+veldmetingen. De eerdere brede conclusie dat AWS het beste model is, wordt ingetrokken.
+
 ## 7. Training, complexiteit en praktische keuze
 
 {resources}
@@ -279,7 +340,9 @@ Andrew RF/XGBoost `n_jobs=-1`. Dit is geen gecontroleerde vergelijking van algor
 rekenefficiëntie en geen Render-latencybenchmark. Modelgrootte en beschikbaarheid zijn wel
 praktische afwegingen wanneer validatiescores gelijk zijn.
 
-{tie_sentence} De keuze is daarmee praktisch onderbouwd en wordt niet voorgesteld als
+{tie_sentence} Dit geldt uitsluitend binnen de oorspronkelijke random split.
+De aanvullende soortcontrole ondersteunt geen algemene voorkeur voor AWS.
+De keuze binnen de random split wordt niet voorgesteld als
 een statistisch bewezen uniek beste model. Het AWS-notebookmodel is beschikbaar als complete
 pipeline; een gedeelde prestatie zou op zichzelf geen reden zijn om een veel groter model
 naar de backend te verhuizen.
@@ -291,7 +354,8 @@ deploymentpipeline. De gezamenlijke vergelijking vult alleen het modelvergelijki
 Voor de definitieve inlevering zijn onder meer nog nodig:
 
 1. Leg het uiteindelijke probleem en generalisatiedoel vast. Een random split binnen
-   gesimuleerde soorten is geen test op nieuwe soorten of echte paddenstoelen.
+   gesimuleerde soorten is geen test op nieuwe soorten of echte paddenstoelen. Gebruik
+   bij het doel 'nieuwe soorten' het gecontroleerde groepsprotocol voor alle kandidaten.
 2. Voeg ontbrekende AutoML/team-experimenten toe aan hetzelfde datacontract en protocol.
    Behoud tuninglogs; rapporteer ook experimenten zonder verbetering.
 3. Gebruik een eindtest die niet al voor ontwikkeling is bekeken, of motiveer een passend
@@ -318,6 +382,7 @@ py -3.13 -m venv .venv-aws-audit
 py -3.13 -m venv .venv-analysis
 .\.venv-analysis\Scripts\python.exe -m pip install -r secondary_mushroom/comparison-requirements.txt
 .\.venv-analysis\Scripts\python.exe secondary_mushroom/compare_team_models.py
+.\.venv-analysis\Scripts\python.exe secondary_mushroom/audit_species_generalization.py
 .\.venv-analysis\Scripts\python.exe secondary_mushroom/build_team_comparison_report.py --execute
 ```
 
@@ -332,6 +397,13 @@ numerieke uitkomsten veranderen. Bewaar bij nieuwe runs de hashes, parameters en
 | [09_compare_andrew_models.ipynb](09_compare_andrew_models.ipynb) | Historische reproductie van Andrew's eigen 5.000-rijenexperiment |
 | [audit_aws_model.py](audit_aws_model.py) | Controle van het ongewijzigde opgeslagen AWS-model |
 | [compare_team_models.py](compare_team_models.py) | Gezamenlijke lokale training en CV-selectie |
+| [audit_species_generalization.py](audit_species_generalization.py) | Groepsverificatie, vijfvoudige soorten-CV en geschudde-labelcontrole |
+| [generalization_audit.json](comparison_team/generalization_audit.json) | Soortoverlap, groepsprotocol en diagnostische resultaten |
+| [species_lookup.csv](comparison_team/species_lookup.csv) | Gecontroleerde koppeling van groeps-ID naar primaire soort |
+| [species_cv_folds.csv](comparison_team/species_cv_folds.csv) | Alle tien model/fold-evaluaties |
+| [species_model_comparison.csv](comparison_team/species_model_comparison.csv) | Gepoolde metrics bij ongeziene soorten |
+| [species_oof_predictions.csv](comparison_team/species_oof_predictions.csv) | Voorspelling, bronrij, soortgroep en validatiefold van alle unieke records |
+| [shuffled_label_predictions.csv](comparison_team/shuffled_label_predictions.csv) | Individuele voorspellingen van de negatieve controle |
 | [comparison_data.py](comparison_data.py) | Gecodeerde UCI-download, deduplicatie en gedeelde split |
 | [build_team_comparison_report.py](build_team_comparison_report.py) | Rapport en uitgevoerd notebook opbouwen |
 | [aws_artifact_audit.json](comparison_team/aws_artifact_audit.json) | Modelhash, schema, omgeving en opnieuw berekende AWS-scores |
@@ -353,7 +425,8 @@ def notebook_content(report):
 
 **Bijdragen:** Andrew Noeyens maakte de oorspronkelijke lokale modeldefinities en exports;
 Jorre Van Dyck trainde en exporteerde het AWS-model; Codex controleerde het artifact,
-trainde de configuraties lokaal op gedeelde data en maakte deze vergelijking op verzoek van Jorre.
+trainde de configuraties lokaal op gedeelde data, controleerde generalisatie naar ongeziene
+soorten en maakte deze vergelijking op verzoek van Jorre.
 Teamreview en mondelinge verdediging staan nog open. AI-gebruik is expliciet vermeld.
 
 Dit is het hoofdnotebook volgens de opdracht: metrics verzamelen, eerlijk vergelijken,
@@ -394,7 +467,7 @@ predictions = pd.read_csv(OUT / 'shared_test_predictions.csv')
 artifact_predictions = pd.read_csv(OUT / 'aws_artifact_predictions.csv')
 errors = pd.read_csv(OUT / 'shared_error_records.csv')
 display(pd.DataFrame([audit['environment'], summary['environment']], index=['AWS artifact-audit', 'gemeenschappelijke nieuwe fits']))
-print('Voorlopige keuze:', NAMES[summary['selected_model']])''')
+print('Voorlopige voorkeur binnen de random split:', NAMES[summary['selected_model']])''')
     md('## 2. Oorspronkelijke resultaten en data-identiteit\n' + report.split('## 2. Oorspronkelijke resultaten en data-identiteit', 1)[1].split('## 3. Gecontroleerd opgeslagen AWS-model', 1)[0])
     code('''assert len(split) == 60923 and split.unique_row.is_unique and split.source_row.is_unique
 assert (split.split == 'train').sum() == 48738
@@ -453,7 +526,7 @@ display(metrics[['accuracy', 'balanced_accuracy', 'precision_poisonous', 'recall
 display(Image(filename=str(OUT / 'shared_metrics.png')))
 display(Image(filename=str(OUT / 'shared_pr_curves.png')))
 display(pd.Series(summary['aws_local_refit_vs_original_artifact']))''')
-    md('## 6. Foutanalyse en onzekerheid\n' + report.split('## 6. Foutanalyse en onzekerheid', 1)[1].split('## 7. Training, complexiteit en praktische keuze', 1)[0])
+    md('## 6. Foutanalyse en onzekerheid\n' + report.split('## 6. Foutanalyse en onzekerheid', 1)[1].split('## 6a. Waarom 100%?', 1)[0])
     code('''display(Image(filename=str(OUT / 'shared_confusion_matrices.png')))
 display(metrics[['tn', 'fp', 'fn', 'tp']].astype(int))
 for key, row in metrics.iterrows():
@@ -470,6 +543,47 @@ en p=0,5. De verschillen tussen de beste boommodellen zijn hier te klein voor ee
 statistische conclusie. De overige toetsen zijn exploratief en niet gecorrigeerd voor
 meerdere vergelijkingen; ze bepalen de modelkeuze niet.''')
     code("display(pd.DataFrame(summary['pairwise_accuracy_audit']))")
+    md('## 6a. Waarom 100%? Controle op volledig ongeziene soorten\n' + report.split('## 6a. Waarom 100%? Controle op volledig ongeziene soorten', 1)[1].split('## 7. Training, complexiteit en praktische keuze', 1)[0])
+    code('''generalization = json.loads((OUT / 'generalization_audit.json').read_text(encoding='utf-8'))
+oof = pd.read_csv(OUT / 'species_oof_predictions.csv', float_precision='round_trip')
+species_metrics = pd.read_csv(OUT / 'species_model_comparison.csv').set_index('model')
+assert len(oof) == 60923 and oof.unique_row.is_unique
+assert oof.groupby('species_group').validation_fold.nunique().eq(1).all()
+assert oof.species_group.nunique() == 173
+assert set(oof.validation_fold) == {1, 2, 3, 4, 5}
+assert (oof.species_group == oof.source_row // 353).all()
+assert oof[['unique_row', 'source_row']].equals(split[['unique_row', 'source_row']])
+assert generalization['dataset']['sha256_lf'] == summary['dataset']['sha256_lf']
+train_groups = set(oof.loc[split.split == 'train', 'species_group'])
+test_groups = set(oof.loc[split.split == 'test', 'species_group'])
+assert len(train_groups & test_groups) == 173
+for fold in range(1, 6):
+    assert not set(oof.loc[oof.validation_fold == fold, 'species_group']) & set(oof.loc[oof.validation_fold != fold, 'species_group'])
+y_group = (oof.true_class == 'p').astype(int)
+for key, row in species_metrics.iterrows():
+    labels = (oof[key + '_prediction'] == 'p').astype(int)
+    proba = oof[key + '_probability_p']
+    for name, function in functions.items():
+        actual = function(y_group, labels) if name in ['accuracy', 'balanced_accuracy'] else function(y_group, labels, zero_division=0)
+        assert abs(actual - row[name]) < 1e-12
+    assert abs(roc_auc_score(y_group, proba) - row.roc_auc) < 1e-12
+    assert abs(average_precision_score(y_group, proba) - row.average_precision) < 1e-12
+    assert confusion_matrix(y_group, labels, labels=[0, 1]).ravel().tolist() == [int(row[c]) for c in ['tn', 'fp', 'fn', 'tp']]
+control = pd.read_csv(OUT / 'shuffled_label_predictions.csv', float_precision='round_trip')
+import numpy as np
+shuffled_targets = np.random.default_rng(42).permutation(y_group.to_numpy())
+assert set(control.unique_row) == set(split.loc[split.split == 'test', 'unique_row'])
+assert np.array_equal(control.shuffled_target, shuffled_targets[control.unique_row])
+control_metrics = generalization['shuffled_label_negative_control']['metrics']
+for name, function in functions.items():
+    actual = function(control.shuffled_target, control.prediction) if name in ['accuracy', 'balanced_accuracy'] else function(control.shuffled_target, control.prediction, zero_division=0)
+    assert abs(actual - control_metrics[name]) < 1e-12
+assert abs(roc_auc_score(control.shuffled_target, control.probability_p) - control_metrics['roc_auc']) < 1e-12
+display(species_metrics[['accuracy', 'recall_poisonous', 'f1_poisonous', 'fn', 'fp']].round(6))
+display(pd.DataFrame(generalization['fold_membership']))
+display(pd.Series(control_metrics, name='geschudde labels'))
+print('Alle 173 soorten zaten in zowel random train als test; groeps-CV houdt soorten gescheiden.')
+print('Twee vaste configuraties gecontroleerd; geen algemene winnaar geselecteerd.')''')
     md('## 7. Trainingsgedrag, kosten en keuze\n' + report.split('## 7. Training, complexiteit en praktische keuze', 1)[1].split('## 8. Beperkingen en acties voor de eindinlevering', 1)[0])
     code('''practical = metrics.drop(index='majority')[['train_accuracy', 'accuracy', 'train_f1_poisonous', 'f1_poisonous', 'fit_seconds', 'predict_12185_ms']].copy()
 practical['pipeline MiB (compressie 3)'] = metrics.serialized_bytes_compress3 / 2**20
