@@ -14,7 +14,7 @@
   <header><strong>Team 10 · Machine Learning</strong><span id="connection" class="connection">Verbinding controleren…</span></header>
   <nav aria-label="Hoofdnavigatie">
     <a href="#mushroom" class="nav-link active">Paddenstoelen</a>
-    <a href="#citibike" class="nav-link">Citi Bike</a>
+    <a href="#citibike" class="nav-link">City Bike</a>
     <a href="#project" class="nav-link">Project</a>
   </nav>
   <main>
@@ -37,7 +37,7 @@
       </div>
     </section>
     <section id="citibike" class="page" hidden>
-      <h1>Citi Bike voorspellen</h1>
+      <h1>City Bike voorspellen</h1>
       <p>Voorspel het aantal vertrekkende ritten per uur in het NYC-netwerk.</p>
       <p class="notice">Raouls getunede Random Forest voorspelt om 00:00 New York-tijd de hele dag. Voor een eigen voorspelling zijn de 14 volledige voorafgaande dagen met NYC-uurtellingen nodig.</p>
       <div class="workspace">
@@ -76,7 +76,7 @@
       <div id="metrics" class="metrics"></div>
       <p class="muted">Resultaten op 1.000 testrecords uit Andrew's dataset van 5.000 records; 4.000 records zijn gebruikt voor training. Het model herkent nog niet alle giftige paddenstoelen correct.</p>
       <p>De analyses en modelvergelijkingen staan in de notebooks.</p>
-      <h2>Citi Bike-model</h2>
+      <h2>City Bike-model</h2>
       <p>Raouls geselecteerde Random Forest met 320 bomen. Getraind op NYC-uurtellingen tot en met juni 2026; onafhankelijk getest op juli–augustus 2026.</p>
       <div id="city-metrics" class="metrics"></div>
       <p class="muted">RMSE weegt grote fouten zwaarder; MAE is de gemiddelde absolute fout in ritstarts per lokaal uurvak. De eindtest-RMSE is 24,12% lager dan de weekbaseline. Deze prestaties veronderstellen tijdig beschikbare voorafgaande tellingen en garanderen geen gelijke kwaliteit in toekomstige maanden.</p>
