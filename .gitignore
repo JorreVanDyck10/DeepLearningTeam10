@@ -16,6 +16,14 @@
 !nyc_citi_bike/models/baseline_hourly_tree.joblib
 !SolutionAndrew/MushroomDataset/models/random_forest.joblib
 !SolutionJorre/MushroomDataset/mushroom_pipeline.joblib
+!secondary_mushroom/comparison_species/selected_pipeline.joblib
+
+# Per-configuration checkpoints are local; combined scores/predictions are published.
+secondary_mushroom/comparison_species/*_predictions.csv
+!secondary_mushroom/comparison_species/oof_predictions.csv
+secondary_mushroom/comparison_species/*_folds.csv
+!secondary_mushroom/comparison_species/cv_folds.csv
+secondary_mushroom/comparison_species/*_warnings.json
 
 # Local Python/Jupyter files and secrets.
 .ipynb_checkpoints/

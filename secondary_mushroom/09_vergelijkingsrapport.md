@@ -1,404 +1,332 @@
-# Vergelijkingsrapport: Andrew + Jorre/AWS — Mushroom
+# Mushroom — modelvergelijking volgens de opdracht
 
-**DeepLearningTeam10 — 9 oktober 2026.** Uitbreiding van de eerdere Andrew-vergelijking.
-Hoofdnotebook: [09_compare_models.ipynb](09_compare_models.ipynb).
-Bronmodeldefinities en exports: commit [`7fc26c2`](https://github.com/JorreVanDyck10/DeepLearningTeam10/commit/7fc26c2).
+**DeepLearningTeam10 · 9 oktober 2026**
 
-## Besluit
+Bijdragen: Andrew Noeyens maakte de oorspronkelijke lokale configuraties en exports;
+Jorre Van Dyck trainde en tuneerde het AWS-model. Codex voerde op verzoek van Jorre de
+gezamenlijke lokale evaluatie, soortcontrole, foutanalyse en rapportage uit. Het team
+moet de keuzes reviewen en zelf kunnen verdedigen. AI-gebruik is expliciet vermeld.
 
-**Geen algemeen beste model vastgesteld.** De eerdere voorkeur voor AWS geldt alleen
-voor een willekeurige rij-split binnen dezelfde gesimuleerde soorten. In een aanvullende
-controle met volledige soorten buiten de training haalt de AWS-configuratie **62.84%
-accuracy**, tegenover **65.93%** voor Andrew RF500. De oorspronkelijke 100% bewijst dus
-geen perfecte generalisatie. Zie sectie 6a voor het protocol en de bewaarde voorspellingen.
+Dit rapport hoort bij [09_compare_models.ipynb](09_compare_models.ipynb), het ene
+vergelijkingsnotebook voor Mushroom. Het volgt de opdracht: modelmetrics verzamelen,
+grondig vergelijken, fouten onderzoeken en een conclusie trekken. Citi Bike heeft
+een eigen vergelijking; Milan heeft op dit moment geen beschikbaar getraind
+Mushroom-model in deze vergelijking. Zijn voorbereiding wordt niet als modelscore behandeld.
 
-**Voorlopige voorkeur binnen de oorspronkelijke random split: Jorre AWS RF100 (getuned).**
-De gemiddelde CV F1 p is **1.000000**. Op dezelfde 12.185 testrecords
-haalt de nieuwe lokale fit **100.0000% accuracy**, met **0
-giftige records als eetbaar** en **0 eetbare records als giftig**.
-Er zijn exact gelijke beste CV F1- en recall-scores voor: **Jorre AWS RF100 (getuned), Jorre AWS RF100 (baseline)**. De vooraf vastgelegde voorkeur kiest bij zulke gelijke scores het reeds beschikbare, geregulariseerde AWS RF100 als die configuratie ertussen staat.
+## 1. Conclusie en keuze
 
-Het **ongewijzigde opgeslagen AWS-model** is daarnaast apart gecontroleerd in scikit-learn
-1.7.2: de oorspronkelijke 100%-scores en confusion matrix worden gereproduceerd, met
-0 FN en 0 FP. De nieuwe gezamenlijke vergelijking bestaat uit **lokale hertrainingen van
-modelconfiguraties**. Andrew's oorspronkelijke 5.000-rijenmodellen krijgen daarmee geen
-nieuwe scores toegeschreven: hun input is voor dit experiment aangepast naar dezelfde
-twintig oorspronkelijke UCI-features. De historisch gemelde 81% en AWS 100% worden dus
-niet rechtstreeks als gelijke experimenten gerangschikt.
+**Ontwikkelkeuze voor ongeziene gesimuleerde soorten: Andrew RF500.**
+Van de negen getrainde kandidaatconfiguraties heeft dit model de hoogste gemiddelde
+balanced accuracy over vijf identieke soorten-folds: **0.6565**.
+De gepoolde voorspellingen buiten training geven **65.93% accuracy**,
+**68.37% recall p** en **F1 p 0.6897**.
+Er zijn **10,674 FN** en **10,082 FP** op 60.923 unieke records.
 
-De gedeelde testset was eerder in het AWS-notebook bekeken. Deze conclusie is een
-ontwikkelbesluit, geen bewijs van perfecte generalisatie naar nieuwe soorten of echte
-paddenstoelen. De API wordt door dit rapport niet naar een ander model omgeschakeld.
+De eerstvolgende configuratie op het keuzecriterium is Andrew RF200 (API-configuratie) met
+0.6550 gemiddelde balanced accuracy.
+Het verschil bedraagt slechts
+0.148
+procentpunt. RF200 haalt gepoolde accuracy
+66.00% en recall p
+70.26%; Andrew RF500 haalt
+respectievelijk 65.93% en 68.37%.
+De keuze voor Andrew RF500 volgt dus het vastgelegde criterium;
+zij bewijst geen algemene verbetering op ieder belangrijk fouttype.
+Deze volgorde is een beschrijvende CV-uitkomst, geen bewezen statistische superioriteit.
+De scores en rangschikking hebben betrekking op **lokaal opnieuw gefitte configuraties**
+met twintig kenmerken, niet op de oorspronkelijke opgeslagen modellen met een ander schema.
+Er is nog geen onafhankelijke, ongebruikte eindtest. De API wordt door deze vergelijking
+niet automatisch naar een ander model omgeschakeld.
 
-## 1. Opdracht, scope en bijdragen
+## 2. Data, doel en eerlijk validatieprotocol
 
-De opdracht vraagt één vergelijkingsnotebook per dataset met verzamelde modelmetrics,
-grondige vergelijking, foutanalyse en conclusies. Dit hoofdnotebook bevat nu zowel Andrew's
-configuraties als Jorre's AWS-baseline en getunede configuratie, op één dataversie en split.
-De [historische Andrew-deelvergelijking](09_andrew_vergelijkingsrapport.md) blijft beschikbaar
-voor de reproductie van zijn originele notebookoutputs.
+De bron is de [UCI Secondary Mushroom Dataset](https://archive.ics.uci.edu/dataset/848/secondary+mushroom+dataset):
+61.069 gesimuleerde records uit 173 soorten, 353 per soort. Na 146 exacte duplicaten
+blijven **60.923 unieke records** over. De positieve klasse `p` omvat giftig én onbekend
+of niet aanbevolen; `e` is eetbaar. Er zijn drie numerieke en zeventien categorische
+bronfeatures. De doelkolom, soortnaam, bronrij en groeps-ID zijn uitgesloten van invoer.
+Bronhash (LF-normalisatie): `a0d68cfc46c6900d67d30a49c6e1c3b8c37042dbd6e62ce38a9cf84a40c022e0`.
 
-| Onderdeel | Bijdrage |
-| --- | --- |
-| Oorspronkelijke Andrew-modeldefinities, notebook en opgeslagen pipelines | Andrew Noeyens |
-| Oorspronkelijke AWS-training, tuning en gedownloade exports | Jorre Van Dyck |
-| Controle van het AWS-artifact, lokale hertraining, soortgebonden audit, vergelijking en rapportage | Codex op verzoek van Jorre |
-| Review en eigen mondelinge verdediging | Nog door het team uit te voeren |
+De eerdere random 80/20-split bevat alle 173 soorten in zowel train als test. Daarom
+maken we de generalisatievraag expliciet: **kan de configuratie voorspellen voor een
+gesimuleerde soort die helemaal niet in de training zat?** De oorspronkelijke UCI-
+bronvolgorde wordt gecontroleerd tegen 173 primaire soortrecords: constante klasse
+per blok, dezelfde klassevolgorde en 2.941 categorische consistentiechecks zonder afwijking.
+Pas daarna gebruiken we de oorspronkelijke bronrij gedeeld door 353 als soortgroep.
+Dit is een geverifieerde reconstructie voor deze bestandsversie, geen inputfeature.
 
-AI-gebruik is hiermee vermeld. Nieuwe lokale trainingsruns zijn niet uitgevoerd op AWS.
-De oorspronkelijke AWS-export wordt behouden. AutoML, verdere tuning en Citi Bike zijn
-geen nieuwe experimenten in deze uitbreiding; hun ontbrekende bewijs is hiermee niet aangevuld.
+Alle configuraties gebruiken dezelfde vijf `StratifiedGroupKFold`-folds, shuffle en seed
+42. Een soort komt in precies één validatiefold; iedere fold heeft **nul soortoverlap**
+tussen training en validatie. Elke unieke rij krijgt één voorspelling buiten training.
+Imputatie, encoding, scaling en training worden uitsluitend binnen de trainingsfold
+gefit. Er wordt geen nieuwe hyperparametersearch of drempeltuning uitgevoerd.
+[Uitleg van grouped cross-validation](https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-iterators-for-grouped-data).
 
-## 2. Oorspronkelijke resultaten en data-identiteit
+**Selectieregel:** gemiddelde balanced accuracy over de vijf folds; bij een exacte
+gelijke score daarna gemiddelde F1 p, recall p en de vaste configuratievolgorde.
+De regel is vastgelegd voordat de aanvullende configuraties worden geëvalueerd.
+De eerder bekende AWS/RF500-diagnose maakt dit geen volledig vooraf geblindeerd onderzoek.
+Balanced accuracy weegt recall van `e` en `p` gelijk en voorkomt dat alleen de grootste
+klasse voorspellen goed lijkt. F1, precision, recall, FN en FP tonen de afweging afzonderlijk.
+De meerderheidsreferentie is een controle en wordt niet als eindmodel geselecteerd.
 
-| Oorspronkelijk experiment | Data / features | Testset | Gemelde testaccuracy | Status |
-| --- | --- | --- | --- | --- |
-| Andrew RF500 | Eigen CSV: 5.000 rijen, 12 features inclusief twee noise-velden | 900, gestratificeerd 18%, seed 42 | 81,00% | Eerder exact op bronprecisie gereproduceerd |
-| Andrew Gradient Boosting | Dezelfde Andrew-data | Dezelfde 900 | 80,89% | Eerder gereproduceerd en opgeslagen pipeline gecontroleerd |
-| Andrew XGBoost | Dezelfde Andrew-data | Dezelfde 900 | 78,67% | Eerder gereproduceerd met oorspronkelijke `n_jobs=-1` |
-| Andrew Logistic + poly | Dezelfde Andrew-data | Dezelfde 900 | 67,11% | Eerder gereproduceerd |
-| Andrew Logistic v1-config | Andere opgeslagen LR-configuratie, zelfde Andrew-data | Dezelfde 900 in gecontroleerde hertraining | 70,89% | Apart gehouden van notebook-LR |
-| Jorre AWS RF100 getuned | UCI: 60.923 unieke rijen, 20 features | 12.185, gestratificeerd 20%, seed 42 | 100,00% | Opgeslagen model nu opnieuw op deze records gecontroleerd |
+## 3. Kandidaten, motivatie en tuning
 
-De eerdere Andrew RF200 in de API hoort bij een andere 80/20-split met 1.000 testrecords.
-Zijn 78,2% is een historisch deploymentresultaat, geen score voor de nieuwe RF500-configuratie.
+| Configuratie | Waarom vergelijken? | Belangrijkste instellingen |
+| --- | --- | --- |
+| Beslisboom baseline | Eenvoudige eerste voorspellingspipeline; referentie voor extra complexiteit | Depth 5, seed 42 |
+| AWS RF100 baseline | Controle of AWS-tuning iets toevoegt | 100 bomen, geen depth-limiet, leaf 1 |
+| AWS RF100 getuned | Jorre's op SageMaker getrainde en getunede configuratie | 100 bomen, depth 24, leaf 2 |
+| Andrew RF200 API-config | Evalueert de configuratie die nu wordt gehost | 200 bomen, balanced, geen depth-limiet |
+| Andrew RF500 | Meer bomen en begrensde diepte; ensemble van gebootstrapte bomen | 500 bomen, depth 20, split 3, balanced |
+| Gradient Boosting | Bouwt opeenvolgend bomen die eerdere fouten corrigeren | 350 bomen, learning rate 0,08, depth 8 |
+| XGBoost | Alternatieve geregulariseerde boosting met rij- en featuresubsampling | 500 bomen, learning rate 0,05, depth 5, subsample/colsample 0,8 |
+| Logistic + poly | Vergelijkt bomen met een eenvoudige lineaire classifier plus numerieke interacties | Polynomial graad 2 + scaling; C=1, balanced |
+| Logistic v1-config | Het opgeslagen Andrew-LR-model heeft andere preprocessing/instellingen | Missing indicators + scaling; C=1, geen class weights |
+| Meerderheidsreferentie | Laat zien wat zonder bruikbare feature-informatie kan worden bereikt | Meest voorkomende trainingsklasse |
 
-Voor de gezamenlijke vergelijking downloaden we met code het oorspronkelijke
-[UCI-archief](https://archive.ics.uci.edu/dataset/848/secondary+mushroom+dataset).
-Er zijn 61.069 oorspronkelijke rijen en twintig kenmerken. Na het verwijderen van
-146 exacte duplicaten blijven 60.923 rijen over. `p` bevat giftige én niet aanbevolen
-paddenstoelen met onbekende eetbaarheid; de gegevens zijn gesimuleerd vanuit 173 soorten.
+AWS/beslisboom gebruiken numerieke mediaan en categorisch `missing` met one-hot encoding.
+Andrew-configuraties zetten nulmetingen van steelhoogte/breedte op ontbrekend, gebruiken
+mediaan en categorische modus met one-hot encoding; de LR-varianten voegen hun eigen
+transformaties toe. Dit vergelijkt **volledige pipelines**: een verschil kan uit de
+preprocessing én de classifier komen. De nulmetingenregel is voor reproductie behouden;
+een verbetering door deze regel is niet afzonderlijk bewezen.
 
-Alle kandidaten krijgen de **zelfde 48.738 trainingsrecords en 12.185 testrecords**.
-De testset heeft 5.436 `e` en 6.749 `p`. De invoer bevat de twintig bronfeatures, geen doelkolom
-en geen Andrew-noisevelden. De raw-CSV heeft LF-genormaliseerde SHA-256
-`a0d68cfc46c6900d67d30a49c6e1c3b8c37042dbd6e62ce38a9cf84a40c022e0`. De herkomst- en splitbestanden maken de rij-identiteit controleerbaar.
+Voor gelijke invoer worden Andrew's twaalf oorspronkelijke velden uitgebreid naar de
+twintig echte UCI-features. De twee noisevelden worden niet meegenomen of verzonnen.
+De hyperparameters blijven gelijk. De oorspronkelijke 5.000-rijenresultaten worden
+behouden in [de historische vergelijking](09_andrew_vergelijkingsrapport.md).
+De RF200- en beslisboomconfiguraties zijn overgenomen uit de bestaande deployment/
+baseline. Hun opnieuw gefitte groepsscores horen niet bij de reeds opgeslagen artifacts.
 
-Er is **0 exacte feature-overlap** tussen
-train en test. Deze check sluit afhankelijkheden binnen de simulatie of nabijgelegen
-records niet uit. In de oorspronkelijke vergelijking werden geen soortgroepen gebruikt.
-De aanvullende audit reconstrueert en controleert die groepen tegen de primaire UCI-data:
-alle **173 soorten** komen in zowel de random trainingsset als de testset voor.
+Jorre's vier AWS-tuningkandidaten hadden alle random CV F1=1,0: er is daarmee geen
+gemeten tuningwinst onder dat oude protocol. De originele AWS-export, tuninglogs en
+SageMaker-notebook blijven in [SolutionJorre/MushroomDataset](../SolutionJorre/MushroomDataset/).
+Deze nieuwe soortgebonden vergelijking is lokaal uitgevoerd en vervangt die AWS-run niet.
+AutoML en extra systematische tuning zijn afzonderlijke opdrachtvereisten; deze
+vergelijking claimt niet dat een ontbrekend AutoML-experiment hiermee is uitgevoerd.
 
-## 3. Gecontroleerd opgeslagen AWS-model en tuning
+## 4. Resultaten op ongeziene soorten
 
-Het artifact in [SolutionJorre/MushroomDataset](../SolutionJorre/MushroomDataset/) bevat
-preprocessing én een Random Forest: 100 bomen, maximale diepte 24, minimaal twee records
-per leaf, seed 42 en twee threads. Numerieke waarden krijgen de trainingsmediaan;
-categorische ontbrekende waarden worden `missing`, gevolgd door one-hot encoding.
-AWS is hier de trainingsomgeving; het modelalgoritme is scikit-learn Random Forest.
+### Kruisvalidatie voor de keuze
 
-De controle reconstrueert de exacte AWS-split vanaf de brondata. De opgeslagen pipeline
-verwacht twintig features en maakt 128 encoded features; `class` is uitgesloten.
-Er waren geen versie- of inferentiewaarschuwingen. De opnieuw berekende confusion matrix is:
-
-```text
-              voorspeld e    voorspeld p
-werkelijk e          5436              0
-werkelijk p             0           6749
-```
-
-Accuracy, precision p, recall p, F1 p, ROC-AUC en AP zijn opnieuw 1,0. De modelhash is
-`6f2e527adf52ad598b49925690009fa4ee2fc97bda19dfb2d07a802664aa1b53`. Het artifact is niet gewijzigd of opnieuw getraind.
-Een afzonderlijk bewaard trainingsmanifest van de oorspronkelijke AWS-run ontbreekt;
-trainingslidmaatschap van dat artifact is dus niet onafhankelijk bewezen. De gecontroleerde
-nieuwe fit heeft wel een vastgelegd train/test-manifest zonder train-testoverlap.
-
-Het AWS-notebook testte vier RandomizedSearchCV-kandidaten met drie trainingsfolds:
-
-| Bomen | Max depth | Min leaf | CV F1 | SD | Rank |
-| --- | --- | --- | --- | --- | --- |
-| 100 | 24 | 2 | 1.000000 | 0.000000 | 1 |
-| 200 | 24 | 1 | 1.000000 | 0.000000 | 1 |
-| 100 | Geen limiet | 1 | 1.000000 | 0.000000 | 1 |
-| 100 | 24 | 1 | 1.000000 | 0.000000 | 1 |
-
-Alle kandidaten én de AWS-baseline hadden CV F1=1,0. De tuning levert hier dus **geen
-gemeten verbetering**. De bronsearch kiest de eerste kandidaat uit de gedeelde beste
-rank; uit deze tabel volgt niet dat depth 24/leaf 2 uniek optimaal is.
-
-De auditomgeving gebruikt dezelfde scikit-learn 1.7.2 en pandas 2.3.3 als de export.
-Python/NumPy verschillen van de SageMaker-omgeving (hier 3.13.7/2.2.6, oorspronkelijk
-3.10.20/1.26.4); de vastgelegde inferentie-uitkomsten komen overeen. Voor de gezamenlijke
-nieuwe fits gebruiken alle modellen dezelfde scikit-learn 1.9.1-omgeving.
-
-## 4. Eerlijke gezamenlijke vergelijking
-
-De featurekolommen van Andrew's configuraties worden uitgebreid naar de twintig UCI-features;
-de oorspronkelijke noise-kolommen worden niet verzonnen of ingevuld. Zijn hyperparameters
-blijven gelijk. De LR-v1 wordt gekloond zodat opgeslagen aangeleerde toestand verdwijnt,
-met behoud van missing indicators, scaling en classifierinstellingen; de kolomselectie
-wordt aangepast. Het getrainde v1-artifact zelf wordt niet voor deze UCI-scores gebruikt.
-
-| Configuratie | Preprocessing en belangrijkste instellingen |
-| --- | --- |
-| AWS RF100 getuned | Numerieke mediaan; categorisch `missing` + OHE; 100 bomen, depth 24, leaf 2 |
-| AWS RF100 baseline | Dezelfde AWS-preprocessing; 100 bomen, geen depth-limiet, leaf 1 |
-| Andrew RF500 | Nullen in stemmetingen → ontbrekend; numerieke mediaan; categorische modus + OHE; 500 bomen, depth 20, split 3, leaf 1, balanced |
-| Andrew Gradient Boosting | Dezelfde Andrew-preprocessing; 350 bomen, learning rate 0,08, depth 8, split 4, leaf 2 |
-| Andrew XGBoost | Dezelfde Andrew-preprocessing; 500 bomen, learning rate 0,05, depth 5, min child weight 2, subsample/colsample 0,8 |
-| Andrew Logistic + poly | Andrew-schoonmaak; mediaan + numerieke polynomial features graad 2 + scaling; C=1, balanced, max iter 3.000 |
-| Andrew Logistic v1-config | Andrew-schoonmaak; mediaan + missing indicators + scaling; categorische modus + OHE; C=1, geen class weights, max iter 2.000 |
-| Meerderheidsreferentie | Voorspelt steeds de meerderheidsklasse `p` in deze UCI-versie |
-
-We vergelijken **volledige pipelineconfiguraties**, dus verschillen kunnen uit preprocessing
-én classifierinstellingen komen. Dit is geen geïsoleerde causaliteitsproef van één algoritme.
-Andrew's nulmetingen-schoonmaak is overgenomen voor reproductie; haar inhoudelijke noodzaak
-op de volledige UCI-data is hiermee niet bewezen en vraagt nog een afzonderlijke EDA/ablation.
-
-Op de gedeelde trainingsset gebruiken we drie identieke gestratificeerde folds met shuffle
-en seed 42, zoals in de AWS-opzet. Imputatie, encoding, scaling en modeltraining worden
-uitsluitend op de trainingsrecords van elke fold gefit. Er is geen nieuwe hyperparametersearch.
-De selectie gebruikt gemiddelde CV F1 p, daarna CV recall p. Bij exacte gelijke beste scores
-staat de beschikbare, geregulariseerde AWS RF100 vooraf eerst in de voorkeurvolgorde.
-De keuze wordt vastgelegd **vóór** het berekenen van de gemeenschappelijke testmetrics.
-
-F1 balanceert precision en recall; FN en recall p blijven afzonderlijk zichtbaar omdat
-giftig als eetbaar een ander fouttype is dan eetbaar als giftig. F1 is geen veiligheidsnorm.
-De standaard `predict`-drempel rond 0,5 blijft behouden. Er is geen tuning of drempelkeuze
-op test gedaan. Zie het [validatieprotocol](https://scikit-learn.org/stable/modules/cross_validation.html).
-
-## 5. Gezamenlijke resultaten
-
-### Kruisvalidatie: basis voor de modelkeuze
-
-| Configuratie | CV F1 p ± SD | CV recall p | CV accuracy |
+| Configuratie | Gem. balanced accuracy ± SD | Gem. F1 p ± SD | Gem. recall p |
 | --- | --- | --- | --- |
-| Jorre AWS RF100 (getuned) | 1.000000 ± 0.000000 | 1.000000 | 1.000000 |
-| Jorre AWS RF100 (baseline) | 1.000000 ± 0.000000 | 1.000000 | 1.000000 |
-| Andrew Gradient Boosting | 0.999926 ± 0.000032 | 0.999889 | 0.999918 |
-| Andrew RF500 | 0.999666 ± 0.000255 | 0.999370 | 0.999631 |
-| Andrew XGBoost | 0.998424 ± 0.000569 | 0.997740 | 0.998256 |
-| Andrew Logistic + poly | 0.854479 ± 0.003246 | 0.823621 | 0.844639 |
-| Andrew Logistic v1-config | 0.854227 ± 0.002338 | 0.840922 | 0.841048 |
-| Meerderheidsreferentie | 0.712865 ± 0.000029 | 1.000000 | 0.553839 |
+| Andrew RF500 | 0.6565 ± 0.0434 | 0.6884 ± 0.0471 | 0.6838 |
+| Andrew RF200 (API-configuratie) | 0.6550 ± 0.0468 | 0.6950 ± 0.0448 | 0.7027 |
+| Jorre AWS RF100 (baseline) | 0.6328 ± 0.0417 | 0.6657 ± 0.0405 | 0.6584 |
+| Jorre AWS RF100 (getuned) | 0.6234 ± 0.0446 | 0.6649 ± 0.0487 | 0.6695 |
+| Andrew Gradient Boosting | 0.6192 ± 0.0513 | 0.6586 ± 0.0426 | 0.6572 |
+| Andrew Logistic v1-config | 0.6181 ± 0.0750 | 0.6668 ± 0.0536 | 0.6756 |
+| Andrew XGBoost | 0.6165 ± 0.0311 | 0.6580 ± 0.0402 | 0.6637 |
+| Andrew Logistic + poly | 0.5911 ± 0.0643 | 0.6409 ± 0.0465 | 0.6480 |
+| Beslisboom depth 5 (baseline) | 0.5730 ± 0.0382 | 0.5346 ± 0.1188 | 0.4832 |
+| Meerderheidsreferentie | 0.5000 ± 0.0000 | 0.7129 ± 0.0061 | 1.0000 |
 
-SD is de spreiding over drie folds, geen betrouwbaarheidsinterval voor de rangschikking.
-Afgeronde 100%-scores kunnen kleine verschillen verbergen; daarom tonen we zes decimalen
-en ook de absolute foutaantallen. De nieuwe CV-scores horen bij deze volledige UCI-versie,
-niet bij Andrew's eerdere vijf folds op 4.100 records.
+SD beschrijft spreiding tussen vijf folds; het is geen betrouwbaarheidsinterval van
+de rangschikking. Verschillen in samenstelling van de soorten beïnvloeden de uitkomsten.
+De keuze gebruikt het gemiddelde van foldmetrics, niet achteraf de hoogste losse fold.
 
-### Test-audit op dezelfde 12.185 records
+### Gepoolde voorspellingen buiten training
 
-| Configuratie | Accuracy | Precision p | Recall p | F1 p | ROC-AUC | AP | FN | FP |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Jorre AWS RF100 (getuned) | 1.000000 | 1.000000 | 1.000000 | 1.000000 | 1.000000 | 1.000000 | 0 | 0 |
-| Jorre AWS RF100 (baseline) | 1.000000 | 1.000000 | 1.000000 | 1.000000 | 1.000000 | 1.000000 | 0 | 0 |
-| Andrew RF500 | 0.999836 | 1.000000 | 0.999704 | 0.999852 | 1.000000 | 1.000000 | 2 | 0 |
-| Andrew Gradient Boosting | 0.999836 | 1.000000 | 0.999704 | 0.999852 | 1.000000 | 1.000000 | 2 | 0 |
-| Andrew XGBoost | 0.998112 | 0.999258 | 0.997333 | 0.998294 | 0.999958 | 0.999967 | 18 | 5 |
-| Andrew Logistic + poly | 0.848748 | 0.886299 | 0.833901 | 0.859302 | 0.922041 | 0.943266 | 1121 | 722 |
-| Andrew Logistic v1-config | 0.845794 | 0.869163 | 0.849459 | 0.859198 | 0.913594 | 0.936073 | 1016 | 863 |
-| Meerderheidsreferentie | 0.553878 | 0.553878 | 1.000000 | 0.712897 | 0.500000 | 0.553878 | 0 | 5436 |
+| Configuratie | Accuracy | Balanced acc. | Precision p | Recall p | F1 p | ROC-AUC | AP | FN | FP |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Andrew RF500 | 0.6593 | 0.6564 | 0.6959 | 0.6837 | 0.6897 | 0.6637 | 0.6693 | 10674 | 10082 |
+| Andrew RF200 (API-configuratie) | 0.6600 | 0.6549 | 0.6894 | 0.7026 | 0.6960 | 0.6600 | 0.6672 | 10034 | 10679 |
+| Jorre AWS RF100 (baseline) | 0.6353 | 0.6325 | 0.6751 | 0.6584 | 0.6666 | 0.6517 | 0.6486 | 11526 | 10694 |
+| Jorre AWS RF100 (getuned) | 0.6284 | 0.6234 | 0.6629 | 0.6695 | 0.6662 | 0.6400 | 0.6403 | 11153 | 11486 |
+| Andrew Gradient Boosting | 0.6230 | 0.6189 | 0.6606 | 0.6569 | 0.6587 | 0.6262 | 0.6280 | 11576 | 11390 |
+| Andrew Logistic v1-config | 0.6248 | 0.6187 | 0.6568 | 0.6757 | 0.6661 | 0.6343 | 0.6958 | 10941 | 11915 |
+| Andrew XGBoost | 0.6212 | 0.6162 | 0.6564 | 0.6633 | 0.6599 | 0.6398 | 0.6929 | 11360 | 11715 |
+| Andrew Logistic + poly | 0.5970 | 0.5908 | 0.6330 | 0.6481 | 0.6404 | 0.6102 | 0.6296 | 11874 | 12681 |
+| Beslisboom depth 5 (baseline) | 0.5623 | 0.5719 | 0.6387 | 0.4830 | 0.5500 | 0.5694 | 0.5957 | 17446 | 9218 |
+| Meerderheidsreferentie | 0.5538 | 0.5000 | 0.5538 | 1.0000 | 0.7129 | 0.5000 | 0.5538 | 0 | 27181 |
 
-![Gemeenschappelijke metrics](comparison_team/shared_metrics.png)
+De tabel combineert alle 60.923 voorspellingen buiten training. Een gepoolde metric kan
+afwijken van het ongewogen foldgemiddelde doordat foldgroottes en klasseaantallen verschillen.
+ROC-AUC en AP beoordelen ranking van de p-scores; ze bewijzen geen kanskalibratie.
 
-ROC-AUC en average precision beoordelen de rangschikking van p-scores over drempels.
-Ze tonen niet of deze scores gekalibreerde kansen zijn. Er is geen kalibratieonderzoek gedaan.
-De referentie voorspelt altijd `p`: hierdoor kan recall 1,0 zijn terwijl specificity 0 is.
-Een hoge recall of accuracy op zichzelf is dus onvoldoende.
+![Metrics op ongeziene soorten](comparison_species/metrics.png)
 
-![Gemeenschappelijke precision-recall-curves](comparison_team/shared_pr_curves.png)
+De meerderheidsreferentie haalt F1 p **0.7129** en recall p **1.0000**,
+maar balanced accuracy **0.5000**: ze herkent geen eetbare records.
+Daarom beoordelen we een configuratie niet alleen op F1 of recall. De gekozen pipeline
+heeft balanced accuracy 0.6564, specificity
+0.6291 en precision p 0.6959.
 
-De nieuwe AWS-fit en het opgeslagen AWS-artifact verschillen in
-**0 testlabels**.
-Het maximale verschil in p-score is
-**2.220446e-16**.
-Dit controleert consistentie op deze records, niet prestaties op nieuwe data.
+### Waarom de eerdere 100% geen eindconclusie was
 
-## 6. Foutanalyse en onzekerheid
+| Configuratie | Random test accuracy | Soorten-CV accuracy | Soorten-CV F1 p |
+| --- | --- | --- | --- |
+| Jorre AWS RF100 (getuned) | 1.000000 | 0.628400 | 0.666175 |
+| Jorre AWS RF100 (baseline) | 1.000000 | 0.635277 | 0.666627 |
+| Andrew RF500 | 0.999836 | 0.659308 | 0.689709 |
+| Andrew Gradient Boosting | 0.999836 | 0.623032 | 0.658742 |
+| Andrew XGBoost | 0.998112 | 0.621243 | 0.659856 |
+| Andrew Logistic + poly | 0.848748 | 0.596950 | 0.640436 |
+| Andrew Logistic v1-config | 0.845794 | 0.624838 | 0.666131 |
+| Meerderheidsreferentie | 0.553878 | 0.553847 | 0.712872 |
+
+De random tabel gebruikt 12.185 testrecords binnen bekende soorten; groeps-CV gebruikt
+60.923 records van telkens ongeziene soorten met opnieuw gefitte modellen. De opzetten
+meten verschillende doelen en zijn geen gepaarde toets op één testset. Beide worden
+behouden om de verandering in conclusie inzichtelijk te maken.
+De dataset-auteurs rapporteerden eveneens perfecte Random Forest-scores bij hun
+simulatie-evaluatie. [Wagner et al., Scientific Reports](https://www.nature.com/articles/s41598-021-87602-3).
+
+De ongewijzigde AWS-pipeline is afzonderlijk met scikit-learn 1.7.2 gecontroleerd:
+100% op de gereconstrueerde oorspronkelijke testrecords, zonder FN of FP. De audit
+vond geen doelkolom in de features. Met geschudde labels wordt balanced accuracy
+49,82% en ROC-AUC 0,4964. Dit past bij toeval, maar sluit niet ieder mogelijk datalek uit.
+Zie [generalization_audit.json](comparison_team/generalization_audit.json) en
+[aws_artifact_audit.json](comparison_team/aws_artifact_audit.json).
+
+## 5. Foutanalyse en grenzen
+
+FN is `p` voorspeld als `e`; FP is `e` voorspeld als `p`. De aantallen staan afzonderlijk
+omdat accuracy niet vertelt welke fout wordt gemaakt.
 
 | Configuratie | TN e→e | FP e→p | FN p→e | TP p→p |
 | --- | --- | --- | --- | --- |
-| Jorre AWS RF100 (getuned) | 5436 | 0 | 0 | 6749 |
-| Jorre AWS RF100 (baseline) | 5436 | 0 | 0 | 6749 |
-| Andrew RF500 | 5436 | 0 | 2 | 6747 |
-| Andrew Gradient Boosting | 5436 | 0 | 2 | 6747 |
-| Andrew XGBoost | 5431 | 5 | 18 | 6731 |
-| Andrew Logistic + poly | 4714 | 722 | 1121 | 5628 |
-| Andrew Logistic v1-config | 4573 | 863 | 1016 | 5733 |
-| Meerderheidsreferentie | 0 | 5436 | 0 | 6749 |
+| Andrew RF500 | 17099 | 10082 | 10674 | 23068 |
+| Andrew RF200 (API-configuratie) | 16502 | 10679 | 10034 | 23708 |
+| Jorre AWS RF100 (baseline) | 16487 | 10694 | 11526 | 22216 |
+| Jorre AWS RF100 (getuned) | 15695 | 11486 | 11153 | 22589 |
+| Andrew Gradient Boosting | 15791 | 11390 | 11576 | 22166 |
+| Andrew Logistic v1-config | 15266 | 11915 | 10941 | 22801 |
+| Andrew XGBoost | 15466 | 11715 | 11360 | 22382 |
+| Andrew Logistic + poly | 14500 | 12681 | 11874 | 21868 |
+| Beslisboom depth 5 (baseline) | 17963 | 9218 | 17446 | 16296 |
+| Meerderheidsreferentie | 0 | 27181 | 0 | 33742 |
 
-![Gemeenschappelijke confusion matrices](comparison_team/shared_confusion_matrices.png)
+![Confusion matrices op dezelfde soorten-folds](comparison_species/confusion_matrices.png)
 
-De gekozen configuratie maakt 0 testfouten. Het beschrijvende
-Wilson-interval van 95% voor accuracy is **99.9685–100.0000%**;
-voor recall p **99.9431–100.0000%**. Ook nul geobserveerde fouten
-bewijst geen nul foutkans in de populatie. De intervallen veronderstellen onafhankelijke
-records en corrigeren niet voor eerdere experimenten, modelselectie of simulatiestructuur.
+De gekozen configuratie mist 10,674 van 33,742 p-records
+(31.63%), verdeeld over 54 soorten met minstens één FN.
+Hier zijn drie FN-records met de laagste p-score, dus voorbeelden van relatief
+overtuigde verkeerde voorspellingen. De score is een modelschatting, geen bewezen kans.
 
-Voor concrete fouten bekijken we de zwakste getrainde kandidaat op test-F1:
-**Andrew Logistic v1-config**. Dit is een achteraf gekozen foutanalyse, geen selectie- of tuningcriterium.
-Onder de onterecht eetbaar gelabelde giftige records staan de drie laagste p-scores:
-
-| Model | Unieke rij / bronrij (0-based) | Werkelijk → voorspeld | Score p | Ontbrekende features |
+| Bronrij (0-based) | Soortgroep | Werkelijk → voorspeld | Score p | Ontbrekende kenmerken |
 | --- | --- | --- | --- | --- |
-| Andrew Logistic v1-config | 58573 / 58719 | p → e | 0.005188 | 6 |
-| Andrew Logistic v1-config | 58756 / 58902 | p → e | 0.008153 | 6 |
-| Andrew Logistic v1-config | 58488 / 58634 | p → e | 0.011454 | 6 |
+| 23135 | 65 | p → e | 0.0099 | 5 |
+| 23220 | 65 | p → e | 0.0109 | 5 |
+| 23103 | 65 | p → e | 0.0110 | 5 |
 
-Alle foutrecords met bronfeatures zijn bewaard in
-[shared_error_records.csv](comparison_team/shared_error_records.csv).
-Eén tabelrij kan per foutmakend model terugkomen. Gemiddelde scores vertellen niet welke
-combinaties problematisch zijn; daarom behoudt het notebook deze voorbeelden en het aantal
-ontbrekende kenmerken. De voorbeelden alleen bewijzen geen oorzakelijk effect van imputatie.
+De vijf soorten met de hoogste FN-fractie bij deze configuratie:
 
-Het accuracyverschil tussen AWS100 en Andrew RF500/Gradient Boosting is slechts **twee
-records op 12.185**, ongeveer **0,0164 procentpunt**. Een exacte gepaarde McNemar-toets
-geeft in beide vergelijkingen p=0,5: dit kleine testverschil bewijst niet dat AWS100
-statistisch beter presteert. Het bewijst ook geen equivalentie.
-De paarvergelijkingen in het JSON-bestand zijn exploratief, zonder meervoudige-toetscorrectie;
-de CV-regel en praktische tie-breaker blijven het selectiecriterium.
+| Primaire soort | Groep | FN / records | FN-fractie |
+| --- | --- | --- | --- |
+| False Panther Cap | 2 | 353 / 353 | 100.00% |
+| Ivory Clitocybe | 20 | 353 / 353 | 100.00% |
+| Wood Woolly-foot | 21 | 353 / 353 | 100.00% |
+| Stinking Russula | 65 | 353 / 353 | 100.00% |
+| Birch Russula | 67 | 353 / 353 | 100.00% |
 
-We schrijven de betere uitkomsten op UCI niet toe aan alleen "meer training" of "AWS".
-Andrew's oorspronkelijke input had minder kenmerken, twee noisevelden en een andere
-klasseverdeling/ontbrekendheid. De nieuwe vergelijking houdt de rijen en bronfeatures gelijk;
-een specifiek effect van datavolume, featurekeuze of noise vraagt afzonderlijke ablation.
+Voor deze soorten bestaan geen trainingsvoorbeelden binnen hun evaluatiefold.
+De fouten wijzen op zwakke overdracht naar die soorten; ze bewijzen niet welk kenmerk
+de fout veroorzaakt. Omdat de data gesimuleerd is en soortgroepen intern verwant zijn,
+worden tienduizenden records niet voorgesteld als evenveel onafhankelijke veldwaarnemingen.
+Er wordt geen naïeve rijgewijze significantietoets gebruikt om een winnaar te bewijzen.
+Alle fouten met twintig bronfeatures en fold/soortgroep staan in
+[selected_error_records.csv](comparison_species/selected_error_records.csv).
+Foutaantallen per soort en per configuratie staan in
+[species_errors.csv](comparison_species/species_errors.csv).
 
-## 6a. Waarom 100%? Controle op volledig ongeziene soorten
+## 6. Training, eenvoud en praktische afweging
 
-100% is voor deze dataset niet op zichzelf bewijs van een programmeerfout. De auteurs
-rapporteren voor Random Forest eveneens vijfvoudige CV accuracy en F2 van 1,0. Hun
-gegevens zijn gesimuleerd met 353 voorbeelden per soort.
-[Wagner et al., Scientific Reports](https://www.nature.com/articles/s41598-021-87602-3).
+| Configuratie | Gem. fit per fold (s) | Gem. train accuracy | Gem. validatie accuracy |
+| --- | --- | --- | --- |
+| Andrew RF500 | 8.18 | Niet opnieuw gemeten | 0.6591 |
+| Andrew RF200 (API-configuratie) | 11.95 | 1.0000 | 0.6599 |
+| Jorre AWS RF100 (baseline) | 5.81 | 1.0000 | 0.6351 |
+| Jorre AWS RF100 (getuned) | 4.99 | Niet opnieuw gemeten | 0.6281 |
+| Andrew Gradient Boosting | 845.42 | 1.0000 | 0.6231 |
+| Andrew Logistic v1-config | 0.83 | 0.8585 | 0.6245 |
+| Andrew XGBoost | 2.01 | 0.9996 | 0.6215 |
+| Andrew Logistic + poly | 1.32 | 0.8725 | 0.5970 |
+| Beslisboom depth 5 (baseline) | 0.37 | 0.7690 | 0.5627 |
+| Meerderheidsreferentie | 0.30 | 0.5539 | 0.5539 |
 
-**Verificatie van de groepen.** Het originele archief bevat 173 primaire soorten en
-61.069 secundaire records in 173 opeenvolgende blokken van 353. De audit controleert
-de klassevolgorde en alle 2.941 combinaties van soort en categorisch kenmerk tegen
-de primaire data, zonder afwijkingen. Pas daarna wordt `source_row // 353` als
-groepsnummer gebruikt; de oorspronkelijke bronrij blijft na deduplicatie behouden.
-De groeps-ID, soortnaam, rij-index en doelkolom worden nooit aan het model gevoerd.
-Deze reconstructie is specifiek voor de gecontroleerde UCI-bestandsversie.
+Tijden zijn lokale Windows-metingen, geen AWS-kosten of Render-latencybenchmark.
+AWS gebruikt twee threads; RF500/XGBoost gebruiken beschikbare threads; RF200 behoudt
+de bestaande instellingen. AWS getuned en RF500 hergebruiken de geverifieerde resultaten
+van de eerdere identieke soorten-folds, inclusief toen gemeten fit-tijden. Hun trainmetrics
+werden niet opgeslagen en worden niet achteraf ingevuld. Andere foldruns bewaren trainmetrics.
+Een train-validatiekloof beschrijft gedrag, maar bewijst niet één oorzaak.
+Er zijn 0 vastgelegde waarschuwingen tijdens de nieuwe evaluatie/refit;
+de volledige berichten staan in het resultaat-JSON en worden in het notebook getoond.
 
-**Protocol.** Twee vaste volledige pipelineconfiguraties worden lokaal opnieuw gefit
-met vijfvoudige `StratifiedGroupKFold`, shuffle en seed 42. Alle records van één soort
-zitten in dezelfde validatiefold; elke fold heeft nul soortoverlap met training.
-Imputatie en encoding worden binnen elke trainingsfold gefit. De opgeslagen AWS-pipeline
-zelf is hiervoor niet gebruikt: die heeft al voorbeelden van alle soorten gezien.
-De metrics hieronder worden gepoold over 60.923 voorspellingen buiten de training.
-[scikit-learn: grouped cross-validation](https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-iterators-for-grouped-data).
+Voor modelkeuze wegen de groepsvalidatiescores zwaarder dan snelheid. Een eenvoudiger
+model kan voldoende zijn als de score vergelijkbaar is; het type algoritme, aantal bomen
+of het gebruik van AWS bewijst op zichzelf geen betere generalisatie.
 
-| Configuratie | Random test accuracy | Soorten apart: accuracy | Recall p | F1 p | FN |
-| --- | --- | --- | --- | --- | --- |
-| Jorre AWS RF100 (getuned) | 100.0000% | 62.84% | 66.95% | 0.666175 | 11153 |
-| Andrew RF500 | 99.9836% | 65.93% | 68.37% | 0.689709 | 10674 |
+## 7. Eindkeuze, deployment en resterende opdrachtvereisten
 
-![Random split tegenover ongeziene soorten](comparison_team/generalization_comparison.png)
+**Kies voorlopig Andrew RF500 voor het vastgelegde doel 'ongeziene gesimuleerde soorten'.**
+Dit is de hoogst scorende beschikbare getrainde configuratie onder het beschreven
+balanced-accuracyprotocol. Rapporteer daarbij de recall, FN en spreiding; de uitkomsten
+onderbouwen geen perfecte voorspellingen of prestaties op echte paddenstoelen.
 
-De oorspronkelijke random test gebruikt 12.185 records; deze diagnostische groeps-CV
-gebruikt 60.923 records met per fold opnieuw gefitte modellen. Het zijn verschillende
-generalisatievragen en geen gepaarde vergelijking op één testset. Andrew RF500 scoort
-in deze controle hoger dan AWS100, maar de overige kandidaten zijn niet met dit
-groepsprotocol geëvalueerd. Hiermee is geen definitieve teamrangschikking vastgesteld.
+Een volledige hertraining van deze configuratie op de 60.923 unieke records is opgeslagen
+als [selected_pipeline.joblib](comparison_species/selected_pipeline.joblib), met twintig
+inputs en volledige preprocessing. De outputlabels zijn `0=e` en `1=p`; een API moet
+deze mapping expliciet toepassen. Die fit is een overdrachtsartifact: de trainingsscore
+ervan geldt niet als extra testresultaat. De versie- en hashgegevens staan in het JSON.
 
-**Negatieve controle.** Bij willekeurig geschudde labels haalt dezelfde AWS-configuratie
-49.82% balanced accuracy en ROC-AUC 0.4964 op de oorspronkelijke random test.
-Dat gedrag past bij toeval. Samen met het gecontroleerde featureschema levert dit
-geen aanwijzing voor een rechtstreeks meegevoerde doelkolom; het sluit niet ieder
-mogelijk datalek uit. De duidelijke terugval bij ongeziene soorten laat vooral zien
-dat de random split de prestaties voor nieuwe soorten sterk overschat.
+De live Mushroom-API gebruikt nog de eerdere Andrew RF200 met twaalf inputs.
+Een omschakeling vraagt een bewuste keuze, passende serving-versies, twintig frontend/API-
+velden, de juiste labelmapping en een controle van API-voorspellingen tegen dezelfde pipeline. Deze vergelijking
+wijzigt de backend niet. De Citi Bike-deployment van het team blijft een afzonderlijk onderdeel.
 
-**Conclusie voor modelkeuze.** Voor interpolatie binnen deze 173 gesimuleerde soorten
-blijft de random vergelijking bruikbaar. Voor ongeziene soorten moet het team alle
-kandidaten en tuning met gescheiden soortgroepen vergelijken, en een ongebruikte
-eindtest vastleggen. Deze audit is achteraf toegevoegd nadat de random scores bekend
-waren en vormt geen nieuwe onaangeraakte eindtest. Ook soorten-CV test geen echte
-veldmetingen. De eerdere brede conclusie dat AWS het beste model is, wordt ingetrokken.
+Voor de eindinlevering volgens de opdracht:
 
-## 7. Training, complexiteit en praktische keuze
+1. Laat het team deze vergelijking en de preprocessing reviewen en zelf kunnen uitleggen.
+2. Voeg eventueel nog ontbrekende AutoML- en tuningruns toe onder hetzelfde groepsprotocol.
+   Houd tuning volledig binnen trainingsgroepen; verander geen drempel op de eindtest.
+3. Er is geen onaangeraakte eindtest meer voor dit ontwikkeltraject. Leg vóór nieuw
+   onderzoek een onafhankelijke evaluatie vast, of motiveer deze groeps-CV als de
+   beschikbare ontwikkelvalidatie. Noem de huidige scores geen finale onafhankelijke test.
+4. Controleer ook de overige opdrachtbestanden: EDA, definitieve voorbereiding, model-
+   notebooks per dataset, AWS-notebook, Citi Bike-vergelijking en werkende deploymentpipeline.
 
-| Configuratie | Train F1 p | Test F1 p | Fit (s) | Proba 12.185 records (ms) | Pipeline (MiB) |
-| --- | --- | --- | --- | --- | --- |
-| Jorre AWS RF100 (getuned) | 1.000000 | 1.000000 | 7.11 | 163.20 | 1.765 |
-| Jorre AWS RF100 (baseline) | 1.000000 | 1.000000 | 7.55 | 136.15 | 1.971 |
-| Andrew RF500 | 0.999907 | 0.999852 | 10.13 | 289.26 | 8.820 |
-| Andrew Gradient Boosting | 1.000000 | 0.999852 | 121.94 | 616.25 | 3.296 |
-| Andrew XGBoost | 0.998573 | 0.998294 | 2.62 | 123.33 | 0.242 |
-| Andrew Logistic + poly | 0.858052 | 0.859302 | 1.07 | 63.83 | 0.004 |
-| Andrew Logistic v1-config | 0.855929 | 0.859198 | 0.75 | 58.52 | 0.004 |
+De modelvergelijking is hiermee uitgevoerd; dit rapport verklaart niet het hele project
+automatisch af. De opdracht vraagt uiteindelijk een GitHub-link en een mondelinge verdediging.
 
-Train-testverschillen kunnen op overfitting wijzen, maar zijn geen bewijs van één oorzaak.
-Een zwakkere LR-score op train én test wijst op beperkingen van deze representatie of
-instellingen; het bewijst niet dat alle lineaire modellen slecht zijn.
+## 8. Reproduceren en bewaarde bewijzen
 
-Tijden zijn lokale metingen op Windows 11 met twintig logische CPU's. Fit is één training
-op 48.738 records; proba-tijd is de mediaan van vijf batches van 12.185 records; pipelinegrootte
-is joblib-compressie 3 inclusief preprocessing. AWS-configuraties gebruiken twee threads,
-Andrew RF/XGBoost `n_jobs=-1`. Dit is geen gecontroleerde vergelijking van algoritmische
-rekenefficiëntie en geen Render-latencybenchmark. Modelgrootte en beschikbaarheid zijn wel
-praktische afwegingen wanneer validatiescores gelijk zijn.
-
-Er zijn exact gelijke beste CV F1- en recall-scores voor: **Jorre AWS RF100 (getuned), Jorre AWS RF100 (baseline)**. De vooraf vastgelegde voorkeur kiest bij zulke gelijke scores het reeds beschikbare, geregulariseerde AWS RF100 als die configuratie ertussen staat. Dit geldt uitsluitend binnen de oorspronkelijke random split.
-De aanvullende soortcontrole ondersteunt geen algemene voorkeur voor AWS.
-De keuze binnen de random split wordt niet voorgesteld als
-een statistisch bewezen uniek beste model. Het AWS-notebookmodel is beschikbaar als complete
-pipeline; een gedeelde prestatie zou op zichzelf geen reden zijn om een veel groter model
-naar de backend te verhuizen.
-
-## 8. Beperkingen en acties voor de eindinlevering
-
-De opdracht vraagt ook AutoML, systematische tuning, uitleg per model, EDA en een werkende
-deploymentpipeline. De gezamenlijke vergelijking vult alleen het modelvergelijkingsdeel aan.
-Voor de definitieve inlevering zijn onder meer nog nodig:
-
-1. Leg het uiteindelijke probleem en generalisatiedoel vast. Een random split binnen
-   gesimuleerde soorten is geen test op nieuwe soorten of echte paddenstoelen. Gebruik
-   bij het doel 'nieuwe soorten' het gecontroleerde groepsprotocol voor alle kandidaten.
-2. Voeg ontbrekende AutoML/team-experimenten toe aan hetzelfde datacontract en protocol.
-   Behoud tuninglogs; rapporteer ook experimenten zonder verbetering.
-3. Gebruik een eindtest die niet al voor ontwikkeling is bekeken, of motiveer een passend
-   alternatief. Het huidige AWS-testresultaat is eerder bekend geweest.
-4. Laat het team de preprocessing, metrickeuze, tie-breaker en concrete fouten reviewen
-   en zelf kunnen uitleggen. Gebruik modelbestanden met de passende versies.
-5. Als het team voor het AWS-model kiest: pas API en frontend bewust van Andrew's twaalf
-   velden naar de twintig AWS-features aan, en valideer voorspellingen tegen het notebook.
-   Het gepubliceerde model is op dit moment nog de oudere RF200.
-
-Het laden van een scikit-learn-pipeline uit een andere versie is geen betrouwbare migratie;
-zie [model persistence](https://scikit-learn.org/stable/model_persistence.html).
-Deze uitbreiding heeft de originele bronnotebooks en modelbestanden niet aangepast.
-
-## 9. Reproduceren en bewijs
-
-Voer vanuit de repositoryroot twee afzonderlijke omgevingen uit:
+De nieuwe fits gebruiken de gepinde omgeving uit `comparison-requirements.txt`:
 
 ```powershell
-py -3.13 -m venv .venv-aws-audit
-.\.venv-aws-audit\Scripts\python.exe -m pip install -r secondary_mushroom/requirements-aws-audit.txt
-.\.venv-aws-audit\Scripts\python.exe secondary_mushroom/audit_aws_model.py
-
 py -3.13 -m venv .venv-analysis
 .\.venv-analysis\Scripts\python.exe -m pip install -r secondary_mushroom/comparison-requirements.txt
-.\.venv-analysis\Scripts\python.exe secondary_mushroom/compare_team_models.py
-.\.venv-analysis\Scripts\python.exe secondary_mushroom/audit_species_generalization.py
-.\.venv-analysis\Scripts\python.exe secondary_mushroom/build_team_comparison_report.py --execute
+.\.venv-analysis\Scripts\python.exe secondary_mushroom/compare_species_models.py
+.\.venv-analysis\Scripts\python.exe secondary_mushroom/build_species_comparison_report.py --execute
 ```
 
-De twee omgevingen scheiden het laden van het originele artifact (1.7.2) van nieuwe fits
-(1.9.1). De notebooks laden standaard de bewaarde resultaten; een volledige hertraining
-gebeurt met het script of `RUN_TRAINING=True`. Op andere hardware kunnen timing en sommige
-numerieke uitkomsten veranderen. Bewaar bij nieuwe runs de hashes, parameters en versies.
+De scripts downloaden de oorspronkelijke UCI-data met code en controleren soortgroepen.
+De twee eerder geverifieerde configuraties worden alleen bij dezelfde data, folds en
+parameters hergebruikt. De overige resultaten worden per configuratie bewaard zodat
+onderbroken runs kunnen worden hervat. Het notebook leest standaard de opgeslagen
+voorspellingen, berekent de metrics opnieuw en controleert de selectie en soortscheiding.
+Voor een nieuwe volledige run kunnen de per-configuratie resultaatcaches worden verwijderd.
+Het originele AWS-artifact wordt uitsluitend in zijn afzonderlijke 1.7.2-auditomgeving geladen.
 
-| Bestand | Inhoud |
+| Bewijs | Bestand |
 | --- | --- |
-| [09_compare_models.ipynb](09_compare_models.ipynb) | Uitgevoerd hoofdnotebook: Andrew + Jorre/AWS |
-| [09_compare_andrew_models.ipynb](09_compare_andrew_models.ipynb) | Historische reproductie van Andrew's eigen 5.000-rijenexperiment |
-| [audit_aws_model.py](audit_aws_model.py) | Controle van het ongewijzigde opgeslagen AWS-model |
-| [compare_team_models.py](compare_team_models.py) | Gezamenlijke lokale training en CV-selectie |
-| [audit_species_generalization.py](audit_species_generalization.py) | Groepsverificatie, vijfvoudige soorten-CV en geschudde-labelcontrole |
-| [generalization_audit.json](comparison_team/generalization_audit.json) | Soortoverlap, groepsprotocol en diagnostische resultaten |
-| [species_lookup.csv](comparison_team/species_lookup.csv) | Gecontroleerde koppeling van groeps-ID naar primaire soort |
-| [species_cv_folds.csv](comparison_team/species_cv_folds.csv) | Alle tien model/fold-evaluaties |
-| [species_model_comparison.csv](comparison_team/species_model_comparison.csv) | Gepoolde metrics bij ongeziene soorten |
-| [species_oof_predictions.csv](comparison_team/species_oof_predictions.csv) | Voorspelling, bronrij, soortgroep en validatiefold van alle unieke records |
-| [shuffled_label_predictions.csv](comparison_team/shuffled_label_predictions.csv) | Individuele voorspellingen van de negatieve controle |
-| [comparison_data.py](comparison_data.py) | Gecodeerde UCI-download, deduplicatie en gedeelde split |
-| [build_team_comparison_report.py](build_team_comparison_report.py) | Rapport en uitgevoerd notebook opbouwen |
-| [aws_artifact_audit.json](comparison_team/aws_artifact_audit.json) | Modelhash, schema, omgeving en opnieuw berekende AWS-scores |
-| [aws_artifact_predictions.csv](comparison_team/aws_artifact_predictions.csv) | Alle voorspellingen van het oorspronkelijke AWS-artifact |
-| [shared_comparison_summary.json](comparison_team/shared_comparison_summary.json) | Gedeelde parameters, versies, scores en keuze |
-| [shared_cv_folds.csv](comparison_team/shared_cv_folds.csv) | Alle 24 model/fold-evaluaties |
-| [shared_split_manifest.csv](comparison_team/shared_split_manifest.csv) | Unieke rij-index, originele bronrij, train/test en fold |
-| [shared_model_comparison.csv](comparison_team/shared_model_comparison.csv) | Exacte vergelijkingstabel |
-| [shared_test_predictions.csv](comparison_team/shared_test_predictions.csv) | Labels en p-scores per model op dezelfde testrecords |
-| [shared_error_records.csv](comparison_team/shared_error_records.csv) | Concrete foutrecords per model |
+| Eén uitgevoerd vergelijkingsnotebook | [09_compare_models.ipynb](09_compare_models.ipynb) |
+| Trainings- en vergelijkingscode | [compare_species_models.py](compare_species_models.py) |
+| Rapport/notebookgenerator | [build_species_comparison_report.py](build_species_comparison_report.py) |
+| Vastgelegd protocol | [protocol.json](comparison_species/protocol.json) |
+| Scores, parameters, omgeving, waarschuwingen en modelkeuze | [comparison_summary.json](comparison_species/comparison_summary.json) |
+| Exacte metrictabel | [model_comparison.csv](comparison_species/model_comparison.csv) |
+| Alle 50 fold-evaluaties | [cv_folds.csv](comparison_species/cv_folds.csv) |
+| Bronrij, soortgroep en fold van iedere unieke rij | [split_manifest.csv](comparison_species/split_manifest.csv) |
+| Alle labels en p-scores buiten training | [oof_predictions.csv](comparison_species/oof_predictions.csv) |
+| Volledig hertrainde gekozen pipeline | [selected_pipeline.joblib](comparison_species/selected_pipeline.joblib) |
+
+Versies: Python 3.13.7, scikit-learn 1.9.1,
+pandas 3.0.2, NumPy 2.5.3 en joblib
+1.6.0. Modelhash: `dba934c55ef07b2137006f9b05f02371a5b6f763ebeb5d7e333e898a8be42f61`.
+Voor het laden van het artifact moet `secondary_mushroom` op het Python-importpad staan;
+de pipeline verwijst waar nodig naar de bewaarde schoonmaakfunctie in `compare_andrew_models`.
+Bewaar deze bestanden en gebruik dezelfde dependencies bij reproductie.

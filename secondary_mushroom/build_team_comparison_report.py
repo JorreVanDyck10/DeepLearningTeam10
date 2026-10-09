@@ -598,6 +598,10 @@ display(pd.Series({key: sum(counts.values()) for key, counts in summary['warning
 
 
 def main():
+    # Keep the main notebook on the complete species comparison once it exists.
+    if (ROOT / 'secondary_mushroom/comparison_species/comparison_summary.json').exists():
+        from build_species_comparison_report import main as build_species_main
+        return build_species_main()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--execute', action='store_true')
     args = parser.parse_args()

@@ -142,30 +142,29 @@ other models, including a 500-tree Random Forest. The API and website use the ol
 compared directly with scores from the full Secondary Mushroom dataset.
 See [the export/deployment instructions](SolutionAndrew/MushroomDataset/DEPLOYMENT.md).
 
-## Andrew + Jorre/AWS Mushroom model comparison
+## Mushroom model comparison: Andrew + Jorre/AWS
 
-The [extended Dutch comparison report](secondary_mushroom/09_vergelijkingsrapport.md)
+The [Dutch assignment comparison report](secondary_mushroom/09_vergelijkingsrapport.md)
 and [executed main comparison notebook](secondary_mushroom/09_compare_models.ipynb)
-now include Jorre's unchanged AWS artifact, its tuning results, and new local fits of Andrew's
-configurations on the same full UCI data. All configurations use the same 48,738 training
-records, three validation folds and 12,185 test records with 20 original features.
-Andrew's saved Logistic Regression has different settings and is evaluated separately.
+compare nine available trained configurations and a majority reference on identical
+five-fold species-disjoint cross-validation. The inputs are the same twenty original
+UCI features and 60,923 unique records. Selection uses mean fold balanced accuracy,
+with F1 p and recall p as tie-breakers. Precision, recall, F1, ROC-AUC, average precision,
+confusion matrices, training times and concrete errors are retained for every candidate.
 
-The AWS100 configurations tie at CV F1=1.0 and make no test errors on the random row split;
-the preference for regularized AWS100 applies only within that protocol. Andrew RF500 and Gradient Boosting each
-miss two poisonous records on this common test set (99.9836% accuracy). These are new local
-fits with an adapted input schema, not scores reassigned to Andrew's original 12-feature models.
-The [historical Andrew-only report](secondary_mushroom/09_andrew_vergelijkingsrapport.md)
-and [its executed notebook](secondary_mushroom/09_compare_andrew_models.ipynb) preserve
-the original 5,000-row comparison. The common test set was previously viewed in the AWS
-notebook, so the report documents the limits of the provisional conclusion.
-All 173 simulated species occur in both random train and test. An additional diagnostic
-refits two fixed configurations with five species-disjoint folds: AWS100 reaches 62.84%
-accuracy and Andrew RF500 65.93%. There is no overall winner established for unseen species;
-the other candidates still need evaluation under that protocol. The report and notebook
-include verified group membership, out-of-fold predictions and a shuffled-label control.
-This comparison does not replace the deployed RF200. See the report for inference audit,
-error analysis, environment requirements and the steps needed before deploying AWS100.
+The original random split remains documented: all 173 simulated species occurred in
+both train and test. Its perfect AWS100 scores do not establish generalization to
+unseen species. The [original Andrew-only comparison](secondary_mushroom/09_andrew_vergelijkingsrapport.md)
+preserves his separate 5,000-row results; the unchanged SageMaker artifact and tuning
+exports remain in `SolutionJorre/MushroomDataset`.
+
+The report states the CV-selected configuration and its limits. These are new local
+fits with an adapted twenty-feature schema, not new scores for the original artifacts.
+The [full-data selected pipeline](secondary_mushroom/comparison_species/selected_pipeline.joblib)
+is a handoff artifact with labels `0=e`, `1=p`, not a new test result. The existing
+Mushroom RF200 deployment is unchanged; switching requires the documented input,
+label-mapping and serving-version changes. Team review and any missing AutoML/tuning
+experiments remain separate assignment work.
 
 ## Citi Bike API
 

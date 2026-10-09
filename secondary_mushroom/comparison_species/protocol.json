@@ -1,0 +1,27 @@
+{
+  "primary_metric": "mean fold balanced accuracy",
+  "tie_breakers": [
+    "mean fold F1 p",
+    "mean fold recall p",
+    "fixed candidate order"
+  ],
+  "selection_excludes_majority": true,
+  "folds": 5,
+  "shuffle": true,
+  "random_state": 42,
+  "target": "generalization to unseen simulated species",
+  "new_tuning": false,
+  "untouched_final_test": false,
+  "candidates": [
+    "decision_tree_5",
+    "aws_tuned",
+    "aws_baseline",
+    "random_forest_200",
+    "random_forest_500",
+    "gradient_boosting",
+    "xgboost",
+    "logistic_polynomial",
+    "logistic_artifact_config",
+    "majority"
+  ]
+}
