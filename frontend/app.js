@@ -127,6 +127,27 @@ const number = (value) => new Intl.NumberFormat("nl-BE", { maximumFractionDigits
 for (let hour = 0; hour < 24; hour++) $("#city-hour").append(new Option(`${String(hour).padStart(2, "0")}:00`, hour));
 $("#city-hour").value = "8";
 let cityBusy = false;
+let cityMetadata;
+function updateCityMode() {
+  const demo = $("#city-mode").value === "demo";
+  $("#city-upload").hidden = demo;
+  $("#city-history").required = !demo;
+  if (demo && cityMetadata) {
+    $("#city-date").min = cityMetadata.demo_start;
+    $("#city-date").max = cityMetadata.demo_end;
+    if ($("#city-date").value < cityMetadata.demo_start || $("#city-date").value > cityMetadata.demo_end) $("#city-date").value = cityMetadata.default_date;
+  } else {
+    $("#city-date").removeAttribute("min"); $("#city-date").removeAttribute("max");
+  }
+  $("#city-context").textContent = demo
+    ? "Demonstratie met ontwikkelingshistorie van april 2026; geen onafhankelijke accuracy-test."
+    : "Kies een datum waarvoor je de 14 volledige voorafgaande dagen hebt. Toekomstige datums zijn toegestaan; de vorige dag moet volledig afgelopen zijn.";
+}
+$("#city-mode").addEventListener("change", updateCityMode);
+api("/citibike/model").then(data => {
+  if (data.model_id !== window.CityBike.MODEL_ID) throw new Error("Backend gebruikt niet Raouls gekozen model.");
+  cityMetadata = data; updateCityMode();
+}).catch(error => { $("#city-context").textContent = error.message; });
 $("#city-form").addEventListener("input", () => {
   if (!cityBusy) { $("#city-result").innerHTML = '<p class="muted">Nog geen voorspelling.</p>'; $("#city-day").hidden = true; }
 });
@@ -139,11 +160,17 @@ $("#city-form").addEventListener("submit", async (event) => {
   $("#city-day").hidden = true;
   $("#city-result").innerHTML = '<p>Voorspelling ophalen…</p><p class="muted">De server kan ongeveer een minuut nodig hebben om op te starten.</p>';
   try {
-    const data = await api("/predict/citibike", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({date:$("#city-date").value, hour:Number($("#city-hour").value)})});
-    if (!Number.isFinite(data.predicted_ride_starts) || !Array.isArray(data.daily_predictions) || data.daily_predictions.length !== 24 || data.daily_predictions.some((row, index) => row.hour !== index || !Number.isFinite(row.predicted_ride_starts) || row.predicted_ride_starts < 0)) throw new Error("Onverwacht API-resultaat.");
+    const payload = {date:$("#city-date").value, hour:Number($("#city-hour").value), mode:$("#city-mode").value};
+    if (payload.mode === "history") {
+      const file = $("#city-history").files[0];
+      if (!file || file.size > 5 * 1024 * 1024) throw new Error("Upload een CSV met uurtellingen van maximaal 5 MB.");
+      payload.history = window.CityBike.recentHistory(window.CityBike.parseHistoryCsv(await file.text()), payload.date);
+    }
+    const data = await api("/predict/citibike", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload)});
+    window.CityBike.validateCityResult(data);
     $("#city-result").innerHTML = '<div class="result-label"></div><p class="city-time"></p><p class="muted city-warning"></p>';
     $("#city-result .result-label").textContent = `${number(data.predicted_ride_starts)} ritstarts`;
-    $(".city-time").textContent = `${data.date}, ${String(data.hour).padStart(2,"0")}:00–${String(data.hour+1).padStart(2,"0")}:00 (New York)`;
+    $(".city-time").textContent = `${data.date}, ${String(data.hour).padStart(2,"0")}:00–${String(data.hour+1).padStart(2,"0")}:00 (New York). Dagtotaal: ${number(data.daily_total)}. Model: Raouls Random Forest.`;
     $(".city-warning").textContent = data.warning;
     drawCityChart(data.daily_predictions, data.hour);
     $("#city-day").hidden = false;
@@ -189,7 +216,8 @@ function drawCityChart(rows, selectedHour) {
 }
 
 window.Team10API.requestJson("citibike_metrics.json").then(metrics=>{
-  const entries=[["MAE beslisboom",number(metrics.results.decision_tree.mae)], ["MAE vast gemiddelde",number(metrics.results.global_mean.mae)], ["MAE per weekdag / uur",number(metrics.results.weekday_hour_mean.mae)]];
+  if (metrics.model_id !== window.CityBike.MODEL_ID) throw new Error("Oude modelresultaten.");
+  const entries=[["Eindtest-RMSE Random Forest",number(metrics.metrics.RMSE)], ["Eindtest-MAE Random Forest",number(metrics.metrics.MAE)], ["Eindtest-RMSE weekbaseline",number(metrics.baseline_metrics.RMSE)]];
   for(const [label,value] of entries) {
     const tile=document.createElement("div");tile.className="metric";
     const strong=document.createElement("strong");strong.textContent=value;

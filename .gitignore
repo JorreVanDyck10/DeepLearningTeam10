@@ -24,6 +24,7 @@ __pycache__/
 .venv/
 .venv-analysis/
 .venv-aws-audit/
+.venv-serving*/
 venv/
 .env
 .env.*

@@ -1,0 +1,20 @@
+{
+  "verified_at": "2026-10-09T13:12:54.541743+00:00",
+  "local_python": "3.11.0",
+  "api_tests_passed": 17,
+  "javascript_tests_passed": 13,
+  "browser_demo_prediction_verified": true,
+  "browser_csv_upload_prediction_verified": true,
+  "demo_and_uploaded_history_predictions_equal": true,
+  "selected_model_id": "raoul_tuned_random_forest_320",
+  "demo_date": "2026-04-30",
+  "demo_hour": 8,
+  "demo_predicted_ride_starts": 11860.514053352299,
+  "demo_daily_total": 146893.23465047695,
+  "cold_release_download_verified": true,
+  "cold_release_download_seconds": 7.23,
+  "local_server_sampled_RSS_MiB": 250.2,
+  "memory_measurement_limitation": "One Windows process RSS sample after requests, not continuous peak or Render memory measurement.",
+  "test_observations_read_for_export": false,
+  "live_deployment_verified": false
+}

@@ -80,18 +80,27 @@ Render-instellingen.
 ## Citi Bike gebruiken
 
 ```powershell
-Invoke-RestMethod -Uri http://127.0.0.1:8000/predict/citibike -Method Post -ContentType 'application/json' -Body '{"date":"2025-01-25","hour":8}'
+Invoke-RestMethod -Uri http://127.0.0.1:8000/predict/citibike -Method Post -ContentType 'application/json' -Body '{"date":"2026-04-30","hour":8,"mode":"demo"}'
 ```
 
 De datum is lokale tijd in New York. Het uur is een geheel getal van 0 tot 23.
 De respons bevat de gekozen voorspelling en 24 voorspellingen voor de daggrafiek.
-De kleine beslisboom gebruikt alleen uur en weekdag. Hij is getraind op januari
-2025; andere maanden krijgen een waarschuwing in de respons.
+Raouls gekozen Random Forest gebruikt kalenderkenmerken en eerdere tellingen.
+Gebruik `{"date":"2026-04-30","hour":8,"mode":"demo"}` voor de historische demo.
+Voor andere datums stuur je `mode="history"` en precies 336 records in `history`
+met `timestamp`, `rides` en `area="NYC"`: de 14 volledige voorafgaande lokale dagen.
+De toekomst en Jersey City zijn verboden als historie. Er zijn altijd 24 kloklabels:
+het ontbrekende voorjaaruur is nul; het herhaalde najaarsuur wordt samengevoegd.
 
-Het modelpad kan via `CITIBIKE_MODEL_PATH` worden overschreven. Standaard gebruikt
-de API `nyc_citi_bike/models/baseline_hourly_tree.joblib`. Het artifact bevat ook
-de metadata; de API laadt geen ritgegevens. Zie
-[nyc_citi_bike/README.md](../nyc_citi_bike/README.md) voor training en evaluatie.
+De API laadt een lossless export van exact hetzelfde getunede 320-bomenmodel.
+Alle splits en bladwaarden blijven behouden; er wordt niet opnieuw getraind.
+De arrays worden memory-mapped en bij ontbrekende bestanden uit een gepinde
+GitHub Release gedownload, met SHA-256-controle vóór gebruik. De release staat
+buiten Git. `RAOUL_CITIBIKE_MODEL_DIR` kan de lokale opslagmap aanpassen.
+De oude `CITIBIKE_MODEL_PATH` selecteert geen baseline meer. Bij een ontbrekend
+of fout model geeft de route 503 in plaats van op de baseline terug te vallen.
+`GET /citibike/model` en `/health` rapporteren `raoul_tuned_random_forest_320`.
+Zie [de nieuwe deploymentdocumentatie](../docs/citibike_raoul.md).
 
 ## Bijdrage
 

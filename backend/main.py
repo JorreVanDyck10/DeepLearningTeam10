@@ -5,6 +5,7 @@ from datetime import date
 import logging
 import os
 from pathlib import Path
+from typing import Literal
 
 import joblib
 from fastapi import FastAPI, HTTPException, Request
@@ -15,7 +16,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from secondary_mushroom.predict import predict_records
 from backend.mushroom_model import DEFAULT_MODEL, MODEL_ID
-from nyc_citi_bike.predict import DEFAULT_MODEL as CITY_MODEL, predict_day
+from backend.raoul_citibike import ensure_artifact, predict as predict_city, model_metadata, MODEL_ID as CITY_MODEL_ID
 
 logger = logging.getLogger(__name__)
 DISCLAIMER = "Educatieve voorspelling op hypothetische data; niet gebruiken om echte paddenstoelen te eten."
@@ -47,10 +48,19 @@ class MushroomPrediction(BaseModel):
     disclaimer: str
 
 
+class CityHistory(BaseModel):
+    model_config = ConfigDict(extra="forbid", allow_inf_nan=False, strict=True)
+    timestamp: str
+    rides: float = Field(ge=0)
+    area: Literal["NYC"]
+
+
 class CityInput(BaseModel):
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
     date: date
     hour: int = Field(ge=0, le=23, strict=True)
+    mode: Literal["demo", "history"] = "demo"
+    history: list[CityHistory] | None = Field(default=None, min_length=336, max_length=336)
 
 
 @asynccontextmanager
@@ -71,10 +81,8 @@ async def lifespan(app: FastAPI):
         logger.exception("Mushroom model could not be loaded from %s", model_path)
     app.state.city_model = None
     try:
-        artifact = joblib.load(Path(os.getenv("CITIBIKE_MODEL_PATH", str(CITY_MODEL))))
-        if list(artifact["model"].feature_names_in_) != ["hour", "weekday"]:
-            raise ValueError("Citi Bike model does not match the API features.")
-        app.state.city_model = artifact
+        # Legacy CITIBIKE_MODEL_PATH cannot silently select the January baseline.
+        app.state.city_model = ensure_artifact()
     except Exception:
         logger.exception("Citi Bike model could not be loaded")
     yield
@@ -84,8 +92,8 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="DeepLearningTeam10 API",
-    description="Voorspellingen met Andrew's Random Forest en de Citi Bike-baseline.",
-    version="0.3.0",
+    description="Voorspellingen met Andrew's Random Forest en Raouls getunede Citi Bike Random Forest.",
+    version="0.4.0",
     lifespan=lifespan,
 )
 
@@ -109,7 +117,8 @@ def health(request: Request):
         status_code=200 if ready else 503,
         content={"status": "ok" if ready else "not_ready",
                  "mushroom_model_loaded": mushroom_ready, "citibike_model_loaded": city_ready,
-                 "mushroom_model_id": MODEL_ID},
+                 "mushroom_model_id": MODEL_ID,
+                 "citibike_model_id": CITY_MODEL_ID if city_ready else None},
     )
 
 
@@ -142,7 +151,19 @@ def predict_citibike(payload: CityInput, request: Request):
     artifact = request.app.state.city_model
     if artifact is None:
         raise HTTPException(status_code=503, detail="Citi Bike-model niet beschikbaar.")
-    return predict_day(artifact, payload.date, payload.hour)
+    try:
+        history = [row.model_dump() for row in payload.history] if payload.history is not None else None
+        return predict_city(artifact, payload.date, payload.hour, payload.mode, history)
+    except (ValueError, TypeError) as error:
+        raise HTTPException(status_code=422, detail=str(error)) from error
+
+
+@app.get("/citibike/model")
+def citibike_metadata(request: Request):
+    artifact = request.app.state.city_model
+    if artifact is None:
+        raise HTTPException(status_code=503, detail="Raouls Citi Bike-model niet beschikbaar.")
+    return model_metadata(artifact)
 
 
 class FrontendFiles(StaticFiles):

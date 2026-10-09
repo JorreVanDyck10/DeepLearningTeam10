@@ -1,0 +1,13 @@
+{
+  "model_id": "raoul_tuned_random_forest_320",
+  "original_model_sha256": "aea5c81d306facc1fadd8dd1888a08219d3afabda16a11b63db7271a694f509f",
+  "validation_parity_rows": 1464,
+  "prediction_max_absolute_difference": 3.637978807091713e-12,
+  "archive_bytes": 89693072,
+  "compact_forest_bytes": 235649542,
+  "export_seconds": 24.28900109999813,
+  "test_observations_read": false,
+  "training_performed": false,
+  "model_changed": false,
+  "release_url": "https://github.com/JorreVanDyck10/DeepLearningTeam10/releases/download/raoul-citibike-rf-20261009/raoul-citibike-rf-20261009.zip"
+}

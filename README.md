@@ -168,8 +168,11 @@ error analysis, environment requirements and the steps needed before deploying A
 
 ## Citi Bike API
 
-The published backend now also provides `POST /predict/citibike`, using the saved
-January 2025 hourly decision-tree baseline. The website sends date and hour and
-shows a prediction plus the 24-hour chart. The model uses only hour and weekday;
-predictions outside January 2025 include a warning. See
-[nyc_citi_bike/README.md](nyc_citi_bike/README.md) for evaluation and training.
+The backend and website now use **Raoul's selected 320-tree Random Forest** for
+`POST /predict/citibike`. The form supports development-only historical demos
+and an upload of the 14 preceding full days of NYC hourly counts. Date/hour alone
+are insufficient for a new operational forecast. The same trained trees are
+served through a lossless, memory-mapped export downloaded from a checksum-pinned
+GitHub Release; model artifacts remain outside Git. The project page shows the
+existing July–August 2026 test metrics. See
+[deployment and input contract](docs/citibike_raoul.md).

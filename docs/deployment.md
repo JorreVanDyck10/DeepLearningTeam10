@@ -65,10 +65,12 @@ alleen een optionele override voor deze browser.
 - `POST /predict/mushroom`: paddenstoelenvoorspelling
 - `POST /predict/citibike`: ritstarts per uur en 24 uurvoorspellingen
 
-De gepubliceerde backend ondersteunt beide formulieren. Het opgeslagen Citi Bike-
-model staat in `nyc_citi_bike/models/baseline_hourly_tree.joblib`; het gebruikt
-uur en weekdag en is getraind op januari 2025. Zie de
-[Citi Bike-documentatie](../nyc_citi_bike/README.md) voor de dataperiode en metrics.
+De backend ondersteunt beide formulieren. Citi Bike gebruikt Raouls geselecteerde
+320-bomenmodel via een lossless, memory-mapped export buiten Git. Het formulier
+biedt een historische demonstratie en upload van recente NYC-uurtellingen.
+Zie [Citi Bike met Raouls model](citibike_raoul.md) voor het voorspelcontract,
+reproduceerbare export, release/checksums en verificatie. Het oude baselinepad
+wordt niet meer door de team-API gebruikt.
 
 Lokale controle:
 

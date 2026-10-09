@@ -1,0 +1,19 @@
+{
+  "model_id": "raoul_tuned_random_forest_320",
+  "url": "https://github.com/JorreVanDyck10/DeepLearningTeam10/releases/download/raoul-citibike-rf-20261009/raoul-citibike-rf-20261009.zip",
+  "archive_sha256": "6c2d7e7ee76f8f1e75b5af7597267a8ba1e98ac7b08f7bc6aeda82b783c177da",
+  "archive_bytes": 89693072,
+  "original_model_sha256": "aea5c81d306facc1fadd8dd1888a08219d3afabda16a11b63db7271a694f509f",
+  "files": {
+    "forest.npy": "7474e810905ffdf5b267134e0725a4d7a901dd30f01680f40442aede8217531f",
+    "offsets.npy": "ca73650d99b97da354fde7d73b218f9afaad382e6fee206aac30d0df64e37b52",
+    "metadata.json": "5df05e88c2e6558894461ac0176898af170823a4772c489327982a12b189b4d4",
+    "development_history.csv": "84c4910402d345996aa5934599eb8b0f3ef2972c0e6a5c2faa2181feb97506ac"
+  },
+  "feature_code_sha256": {
+    "citibike/features.py": "89ecb9eca9cf86d3e53ac364dd809455e71f3fe0ee5e0cdcee769f9de3b3c6ea",
+    "citibike/inference.py": "17cbd537195f922cff43d6d7ecb3ef0ebea36d134ec3d960d7a3c3399fbf4d0f",
+    "citibike/datasets.py": "d1c2526e12d11b02909a215d8fab285a707a7b45c690d069d578b0a3e508e33e",
+    "citibike/config.py": "aece80e72fee4559cc8f8abbcb36c48d5b859c418990510c82263464d5972a1f"
+  }
+}

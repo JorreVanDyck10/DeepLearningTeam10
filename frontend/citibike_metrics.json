@@ -1,49 +1,49 @@
 {
-  "model": "decision_tree_depth_5",
+  "model_id": "raoul_tuned_random_forest_320",
+  "name": "Raoul \u2014 getunede Random Forest (320 bomen)",
   "features": [
-    "hour",
-    "weekday"
+    "hour_sin",
+    "hour_cos",
+    "weekday_sin",
+    "weekday_cos",
+    "year_sin",
+    "year_cos",
+    "is_weekend",
+    "clock_hours",
+    "lag_1d",
+    "lag_2d",
+    "lag_7d",
+    "lag_14d",
+    "same_hour_mean_7d",
+    "previous_day_total"
   ],
-  "target": "NYC network ride starts per local hour",
-  "timezone": "America/New_York",
-  "source_sha256": "f5ad2d34d4a719d10aa4146e3c2c1cc298dd339f3cdd730decf903f46f0acb0c",
-  "source_month": "202501",
-  "cleaning": {
-    "raw_rows": 2124475,
-    "invalid_start_times": 0,
-    "outside_month": 207,
-    "retained_ride_starts": 2124268
+  "original_model_sha256": "aea5c81d306facc1fadd8dd1888a08219d3afabda16a11b63db7271a694f509f",
+  "training_period": [
+    "2013-06-15 00:00:00",
+    "2026-06-30"
+  ],
+  "test_period": [
+    "2026-07-01",
+    "2026-08-31"
+  ],
+  "metrics": {
+    "RMSE": 1979.5071598723391,
+    "MAE": 1076.225847238327,
+    "R2": 0.8280149196256662
   },
-  "train_start": "2025-01-01 00:00:00",
-  "train_end": "2025-01-24 23:00:00",
-  "test_start": "2025-01-25 00:00:00",
-  "test_end": "2025-01-31 23:00:00",
-  "train_hours": 576,
-  "test_hours": 168,
-  "hypothesis": {
-    "statement": "Daily share of ride starts between 07:00 and 09:00 is higher on weekdays than weekends.",
-    "data": "Training days only; one observation per day, not per ride.",
-    "weekday_days": 18,
-    "weekend_days": 6,
-    "weekday_mean_share": 0.14353890521814727,
-    "weekend_mean_share": 0.05172258118438305,
-    "effect_percentage_points": 9.181632403376423,
-    "p_value": 0.0004,
-    "limitations": "Small single-month sample; holiday, weather and temporal dependence can confound this comparison. No causal conclusion."
+  "baseline_metrics": {
+    "RMSE": 2608.7775064111906,
+    "MAE": 1453.5282258064517,
+    "R2": 0.7012893531864324
   },
-  "results": {
-    "decision_tree": {
-      "mae": 831.2991847532664,
-      "rmse": 1221.9974514402031
-    },
-    "global_mean": {
-      "mae": 2009.3860160383601,
-      "rmse": 2410.4641140033636
-    },
-    "weekday_hour_mean": {
-      "mae": 728.7703373015872,
-      "rmse": 1052.8840292152413
-    }
-  },
-  "limitations": "January-only baseline. No weather, holidays, station data or annual seasonality. Counts include source rows without ride-ID deduplication. Test set is reserved for this fixed baseline evaluation."
+  "RMSE_improvement_percent": 24.12127308643189,
+  "demo_start": "2026-04-15",
+  "demo_end": "2026-04-30",
+  "default_date": "2026-04-30",
+  "history_days": 14,
+  "nodes": 9425974,
+  "trees": 320,
+  "export": "lossless tree splits and leaves; float32 inputs; float64 thresholds and means",
+  "dataset_fingerprint": "409eb1829fa0565f464bbd031cc4e17c8c64f7c9aae466267259f9bc64c14753",
+  "selection_fingerprint": "2c52dfeebfcc41e144bb8867dc90506e1da73640cb9c7e668003f027c4abf4df"
 }

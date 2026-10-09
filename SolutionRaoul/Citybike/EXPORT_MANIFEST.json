@@ -1091,6 +1091,18 @@
       "generated": true,
       "export_sha256": "d8b44db4df76b51c66562293f50d70485f5abfd54193fc39422c82aedad0044b",
       "export_bytes": 66
+    },
+    {
+      "path": "reports/frontend_model_export.json",
+      "generated": true,
+      "export_sha256": "6d33036948760b42ece365f2b86347f6661598b3810ef03dfd366257cc1443eb",
+      "export_bytes": 599
+    },
+    {
+      "path": "reports/frontend_deployment_verification.json",
+      "generated": true,
+      "export_sha256": "cba10214ddf9b9f3deb05cfe5f2c9256d43bd934a20ca83e74fa1d248899e716",
+      "export_bytes": 849
     }
   ],
   "verification": {

@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css">
   <script src="config.js" defer></script>
   <script src="api.js" defer></script>
+  <script src="citibike.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -38,18 +39,25 @@
     <section id="citibike" class="page" hidden>
       <h1>Citi Bike voorspellen</h1>
       <p>Voorspel het aantal vertrekkende ritten per uur in het NYC-netwerk.</p>
-      <p class="notice">Eerste model op januari 2025. Voor andere maanden is dit alleen een demonstratie. Alle uren zijn lokale tijd in New York.</p>
+      <p class="notice">Raouls getunede Random Forest voorspelt om 00:00 New York-tijd de hele dag. Voor een eigen voorspelling zijn de 14 volledige voorafgaande dagen met NYC-uurtellingen nodig.</p>
       <div class="workspace">
         <section class="panel">
           <h2>Datum en uur</h2>
           <form id="city-form">
+            <label for="city-mode">Historie</label>
+            <select id="city-mode"><option value="demo">Historische demonstratie</option><option value="history">Eigen recente historie</option></select>
             <div class="fields">
-              <div><label for="city-date">Datum</label><input id="city-date" type="date" value="2025-01-25" required></div>
+              <div><label for="city-date">Datum</label><input id="city-date" type="date" value="2026-04-30" required></div>
               <div><label for="city-hour">Uur (New York)</label><select id="city-hour"></select></div>
             </div>
+            <div id="city-upload" hidden>
+              <label for="city-history">CSV met NYC-uurtellingen</label><input id="city-history" type="file" accept=".csv,text/csv">
+              <p class="muted">Kolommen: timestamp, rides, area. Gebruik lokale uurvakken zonder tijdzone, bijvoorbeeld 2026-04-29 08:00:00,1234,NYC. Geen tellingen van de voorspeldag. Het ontbrekende voorjaaruur is nul; het herhaalde najaarsuur is samengevoegd.</p>
+            </div>
+            <p id="city-context" class="muted">Demonstratie met ontwikkelingshistorie van april 2026; geen onafhankelijke accuracy-test.</p>
             <button id="city-button" class="primary" type="submit">Voorspellen</button>
           </form>
-          <p class="muted">De beslisboom gebruikt het uur en de weekdag. Het model voorspelt geen individuele ritduur of vrije fietsen.</p>
+          <p class="muted">Het model gebruikt kalenderkenmerken en eerdere tellingen. Er is geen live tellingenfeed. Voor toekomstige datums lever je zelf recente historie aan. Het model voorspelt geen individuele ritduur of vrije fietsen.</p>
         </section>
         <section class="panel" aria-live="polite" aria-atomic="true"><h2>Resultaat</h2><div id="city-result"><p class="muted">Nog geen voorspelling.</p></div></section>
       </div>
@@ -69,9 +77,9 @@
       <p class="muted">Resultaten op 1.000 testrecords uit Andrew's dataset van 5.000 records; 4.000 records zijn gebruikt voor training. Het model herkent nog niet alle giftige paddenstoelen correct.</p>
       <p>De analyses en modelvergelijkingen staan in de notebooks.</p>
       <h2>Citi Bike-model</h2>
-      <p>Beslisboom met uur en weekdag als kenmerken. Getraind op 1–24 januari 2025; getest op 25–31 januari 2025.</p>
+      <p>Raouls geselecteerde Random Forest met 320 bomen. Getraind op NYC-uurtellingen tot en met juni 2026; onafhankelijk getest op juli–augustus 2026.</p>
       <div id="city-metrics" class="metrics"></div>
-      <p class="muted">MAE is de gemiddelde absolute fout in ritstarts per uur. Het gemiddelde per weekdag en uur scoort hier beter dan de beslisboom. De API gebruikt voorlopig de eerste beslisboom; verdere vergelijking en selectie volgen.</p>
+      <p class="muted">RMSE weegt grote fouten zwaarder; MAE is de gemiddelde absolute fout in ritstarts per lokaal uurvak. De eindtest-RMSE is 24,12% lager dan de weekbaseline. Deze prestaties veronderstellen tijdig beschikbare voorafgaande tellingen en garanderen geen gelijke kwaliteit in toekomstige maanden.</p>
       <p><a href="https://github.com/JorreVanDyck10/DeepLearningTeam10" target="_blank" rel="noopener">GitHub-repository</a> · <a href="https://archive.ics.uci.edu/dataset/848/secondary+mushroom+dataset" target="_blank" rel="noopener">Paddenstoelendataset</a></p>
     </section>
     <details class="settings">
