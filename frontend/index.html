@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team 10 — Machine Learning</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header><strong>Team 10 · Machine Learning</strong><span id="connection" class="connection">Verbinding controleren…</span></header>
+  <nav aria-label="Hoofdnavigatie">
+    <a href="#mushroom" class="nav-link active">Paddenstoelen</a>
+    <a href="#citibike" class="nav-link">Citi Bike</a>
+    <a href="#project" class="nav-link">Project</a>
+  </nav>
+  <main>
+    <section id="mushroom" class="page">
+      <h1>Paddenstoelen voorspellen</h1>
+      <p>Vul de kenmerken in of gebruik het voorbeeld.</p>
+      <p class="notice">Schooldemo met hypothetische data. Niet gebruiken om te bepalen of echte paddenstoelen eetbaar zijn.</p>
+      <div class="workspace">
+        <section class="panel">
+          <div class="form-heading"><h2>Kenmerken</h2><button id="example" type="button">Voorbeeld invullen</button></div>
+          <p class="muted">Laat onbekende kenmerken leeg.</p>
+          <form id="mushroom-form">
+            <div id="basic-fields" class="fields"></div>
+            <details class="advanced"><summary>Meer kenmerken</summary><div id="advanced-fields" class="fields"></div></details>
+            <div class="form-actions"><button id="predict-button" class="primary" type="submit">Voorspellen</button><button id="reset-button" type="button">Wissen</button></div>
+          </form>
+        </section>
+        <section class="panel result-panel" aria-live="polite" aria-atomic="true"><h2>Resultaat</h2><div id="result"><p class="muted">Nog geen voorspelling.</p></div></section>
+      </div>
+    </section>
+    <section id="citibike" class="page" hidden>
+      <h1>Citi Bike voorspellen</h1>
+      <p>Voorspel het aantal vertrekkende ritten per uur in het NYC-netwerk.</p>
+      <p class="notice">Eerste model op januari 2025. Voor andere maanden is dit alleen een demonstratie. Alle uren zijn lokale tijd in New York.</p>
+      <div class="workspace">
+        <section class="panel">
+          <h2>Datum en uur</h2>
+          <form id="city-form">
+            <div class="fields">
+              <div><label for="city-date">Datum</label><input id="city-date" type="date" value="2025-01-25" required></div>
+              <div><label for="city-hour">Uur (New York)</label><select id="city-hour"></select></div>
+            </div>
+            <button id="city-button" class="primary" type="submit">Voorspellen</button>
+          </form>
+          <p class="muted">De beslisboom gebruikt het uur en de weekdag. Het model voorspelt geen individuele ritduur of vrije fietsen.</p>
+        </section>
+        <section class="panel" aria-live="polite" aria-atomic="true"><h2>Resultaat</h2><div id="city-result"><p class="muted">Nog geen voorspelling.</p></div></section>
+      </div>
+      <section id="city-day" class="panel day-panel" hidden>
+        <h2>Voorspellingen voor de hele dag</h2>
+        <p class="muted">Dit zijn 24 modelvoorspellingen, geen gemeten ritten.</p>
+        <div id="city-chart"></div>
+        <details><summary>Aantallen per uur</summary><table><thead><tr><th>Uur</th><th>Voorspelde ritstarts</th></tr></thead><tbody id="city-table"></tbody></table></details>
+      </section>
+    </section>
+    <section id="project" class="page" hidden>
+      <h1>Project</h1>
+      <p>Jorre Van Dyck, Milan Wouters, Raoul Buffels en Andrew Noeyens.</p>
+      <h2>Paddenstoelenmodel</h2>
+      <p>De eerste versie gebruikt een beslisboom met een maximale diepte van 5.</p>
+      <div id="metrics" class="metrics"></div>
+      <p class="muted">Resultaten op de testset van de baseline. Het model herkent nog niet alle giftige paddenstoelen correct.</p>
+      <p>De analyses en modelvergelijkingen staan in de notebooks.</p>
+      <h2>Citi Bike-model</h2>
+      <p>Beslisboom met uur en weekdag als kenmerken. Getraind op 1–24 januari 2025; getest op 25–31 januari 2025.</p>
+      <div id="city-metrics" class="metrics"></div>
+      <p class="muted">MAE is de gemiddelde absolute fout in ritstarts per uur. Het gemiddelde per weekdag en uur scoort hier beter dan de beslisboom. De API gebruikt voorlopig de eerste beslisboom; verdere vergelijking en selectie volgen.</p>
+      <p><a href="https://github.com/JorreVanDyck10/DeepLearningTeam10" target="_blank" rel="noopener">GitHub-repository</a> · <a href="https://archive.ics.uci.edu/dataset/848/secondary+mushroom+dataset" target="_blank" rel="noopener">Paddenstoelendataset</a></p>
+    </section>
+    <details class="settings">
+      <summary>Verbindingsinstellingen</summary>
+      <form id="settings-form">
+        <label for="api-url">Backend-URL</label>
+        <div class="settings-row"><input id="api-url" type="url" placeholder="https://jullie-api.onrender.com" required><button type="submit">Opslaan</button></div>
+        <p id="settings-message" role="status"></p>
+      </form>
+    </details>
+  </main>
+</body>
+</html>

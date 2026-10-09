@@ -1,0 +1,683 @@
+{
+  "fields": [
+    {
+      "name": "cap-diameter",
+      "label": "Hoeddiameter",
+      "unit": "cm"
+    },
+    {
+      "name": "cap-shape",
+      "label": "Hoedvorm",
+      "unit": "",
+      "options": [
+        [
+          "b",
+          "Klokvormig"
+        ],
+        [
+          "c",
+          "Kegelvormig"
+        ],
+        [
+          "f",
+          "Vlak"
+        ],
+        [
+          "o",
+          "Anders"
+        ],
+        [
+          "p",
+          "Bolvormig"
+        ],
+        [
+          "s",
+          "Ingedrukt"
+        ],
+        [
+          "x",
+          "Bol"
+        ]
+      ]
+    },
+    {
+      "name": "cap-color",
+      "label": "Hoedkleur",
+      "unit": "",
+      "options": [
+        [
+          "b",
+          "Beige"
+        ],
+        [
+          "e",
+          "Rood"
+        ],
+        [
+          "g",
+          "Grijs"
+        ],
+        [
+          "k",
+          "Zwart"
+        ],
+        [
+          "l",
+          "Blauw"
+        ],
+        [
+          "n",
+          "Bruin"
+        ],
+        [
+          "o",
+          "Oranje"
+        ],
+        [
+          "p",
+          "Roze"
+        ],
+        [
+          "r",
+          "Groen"
+        ],
+        [
+          "u",
+          "Paars"
+        ],
+        [
+          "w",
+          "Wit"
+        ],
+        [
+          "y",
+          "Geel"
+        ]
+      ]
+    },
+    {
+      "name": "stem-height",
+      "label": "Steelhoogte",
+      "unit": "cm"
+    },
+    {
+      "name": "stem-width",
+      "label": "Steeldikte",
+      "unit": "mm"
+    },
+    {
+      "name": "season",
+      "label": "Seizoen",
+      "unit": "",
+      "options": [
+        [
+          "a",
+          "Herfst"
+        ],
+        [
+          "s",
+          "Lente"
+        ],
+        [
+          "u",
+          "Zomer"
+        ],
+        [
+          "w",
+          "Winter"
+        ]
+      ]
+    },
+    {
+      "name": "cap-surface",
+      "label": "Hoedoppervlak",
+      "unit": "",
+      "options": [
+        [
+          "d",
+          "Droog"
+        ],
+        [
+          "e",
+          "Vlezig"
+        ],
+        [
+          "g",
+          "Gegroefd"
+        ],
+        [
+          "h",
+          "Glanzend"
+        ],
+        [
+          "i",
+          "Vezelig"
+        ],
+        [
+          "k",
+          "Zijdeachtig"
+        ],
+        [
+          "l",
+          "Leerachtig"
+        ],
+        [
+          "missing",
+          "Datasetcode missing"
+        ],
+        [
+          "s",
+          "Glad"
+        ],
+        [
+          "t",
+          "Kleverig"
+        ],
+        [
+          "w",
+          "Gerimpeld"
+        ],
+        [
+          "y",
+          "Schubbig"
+        ]
+      ]
+    },
+    {
+      "name": "does-bruise-or-bleed",
+      "label": "Verkleurt of bloedt",
+      "unit": "",
+      "options": [
+        [
+          "f",
+          "Nee"
+        ],
+        [
+          "t",
+          "Ja"
+        ]
+      ]
+    },
+    {
+      "name": "gill-attachment",
+      "label": "Lamelaanhechting",
+      "unit": "",
+      "options": [
+        [
+          "a",
+          "Breed aangehecht"
+        ],
+        [
+          "d",
+          "Aflopend"
+        ],
+        [
+          "e",
+          "Vrij"
+        ],
+        [
+          "f",
+          "Geen"
+        ],
+        [
+          "missing",
+          "Datasetcode missing"
+        ],
+        [
+          "p",
+          "Poriën"
+        ],
+        [
+          "s",
+          "Uitgebocht"
+        ],
+        [
+          "x",
+          "Smal aangehecht"
+        ]
+      ]
+    },
+    {
+      "name": "gill-spacing",
+      "label": "Afstand tussen lamellen",
+      "unit": "",
+      "options": [
+        [
+          "c",
+          "Dicht bij elkaar"
+        ],
+        [
+          "d",
+          "Ver uit elkaar"
+        ],
+        [
+          "f",
+          "Geen"
+        ],
+        [
+          "missing",
+          "Datasetcode missing"
+        ]
+      ]
+    },
+    {
+      "name": "gill-color",
+      "label": "Lamelkleur",
+      "unit": "",
+      "options": [
+        [
+          "b",
+          "Beige"
+        ],
+        [
+          "e",
+          "Rood"
+        ],
+        [
+          "f",
+          "Geen"
+        ],
+        [
+          "g",
+          "Grijs"
+        ],
+        [
+          "k",
+          "Zwart"
+        ],
+        [
+          "n",
+          "Bruin"
+        ],
+        [
+          "o",
+          "Oranje"
+        ],
+        [
+          "p",
+          "Roze"
+        ],
+        [
+          "r",
+          "Groen"
+        ],
+        [
+          "u",
+          "Paars"
+        ],
+        [
+          "w",
+          "Wit"
+        ],
+        [
+          "y",
+          "Geel"
+        ]
+      ]
+    },
+    {
+      "name": "stem-root",
+      "label": "Steelbasis",
+      "unit": "",
+      "options": [
+        [
+          "b",
+          "Knolvormig"
+        ],
+        [
+          "c",
+          "Knotsvormig"
+        ],
+        [
+          "f",
+          "Geen"
+        ],
+        [
+          "missing",
+          "Datasetcode missing"
+        ],
+        [
+          "r",
+          "Wortelend"
+        ],
+        [
+          "s",
+          "Gezwollen"
+        ]
+      ]
+    },
+    {
+      "name": "stem-surface",
+      "label": "Steeloppervlak",
+      "unit": "",
+      "options": [
+        [
+          "f",
+          "Geen"
+        ],
+        [
+          "g",
+          "Gegroefd"
+        ],
+        [
+          "h",
+          "Glanzend"
+        ],
+        [
+          "i",
+          "Vezelig"
+        ],
+        [
+          "k",
+          "Zijdeachtig"
+        ],
+        [
+          "missing",
+          "Datasetcode missing"
+        ],
+        [
+          "s",
+          "Glad"
+        ],
+        [
+          "t",
+          "Kleverig"
+        ],
+        [
+          "y",
+          "Schubbig"
+        ]
+      ]
+    },
+    {
+      "name": "stem-color",
+      "label": "Steelkleur",
+      "unit": "",
+      "options": [
+        [
+          "b",
+          "Beige"
+        ],
+        [
+          "e",
+          "Rood"
+        ],
+        [
+          "f",
+          "Geen"
+        ],
+        [
+          "g",
+          "Grijs"
+        ],
+        [
+          "k",
+          "Zwart"
+        ],
+        [
+          "l",
+          "Blauw"
+        ],
+        [
+          "n",
+          "Bruin"
+        ],
+        [
+          "o",
+          "Oranje"
+        ],
+        [
+          "p",
+          "Roze"
+        ],
+        [
+          "r",
+          "Groen"
+        ],
+        [
+          "u",
+          "Paars"
+        ],
+        [
+          "w",
+          "Wit"
+        ],
+        [
+          "y",
+          "Geel"
+        ]
+      ]
+    },
+    {
+      "name": "veil-type",
+      "label": "Type sluier",
+      "unit": "",
+      "options": [
+        [
+          "missing",
+          "Datasetcode missing"
+        ],
+        [
+          "u",
+          "Algemeen"
+        ]
+      ]
+    },
+    {
+      "name": "veil-color",
+      "label": "Sluierkleur",
+      "unit": "",
+      "options": [
+        [
+          "e",
+          "Rood"
+        ],
+        [
+          "k",
+          "Zwart"
+        ],
+        [
+          "missing",
+          "Datasetcode missing"
+        ],
+        [
+          "n",
+          "Bruin"
+        ],
+        [
+          "u",
+          "Paars"
+        ],
+        [
+          "w",
+          "Wit"
+        ],
+        [
+          "y",
+          "Geel"
+        ]
+      ]
+    },
+    {
+      "name": "has-ring",
+      "label": "Ring aanwezig",
+      "unit": "",
+      "options": [
+        [
+          "f",
+          "Nee"
+        ],
+        [
+          "t",
+          "Ja"
+        ]
+      ]
+    },
+    {
+      "name": "ring-type",
+      "label": "Ringtype",
+      "unit": "",
+      "options": [
+        [
+          "e",
+          "Vergankelijk"
+        ],
+        [
+          "f",
+          "Geen"
+        ],
+        [
+          "g",
+          "Gegroefd"
+        ],
+        [
+          "l",
+          "Groot"
+        ],
+        [
+          "m",
+          "Beweegbaar"
+        ],
+        [
+          "missing",
+          "Datasetcode missing"
+        ],
+        [
+          "p",
+          "Hangend"
+        ],
+        [
+          "r",
+          "Uitstaand"
+        ],
+        [
+          "z",
+          "Zone"
+        ]
+      ]
+    },
+    {
+      "name": "spore-print-color",
+      "label": "Kleur sporenafdruk",
+      "unit": "",
+      "options": [
+        [
+          "g",
+          "Grijs"
+        ],
+        [
+          "k",
+          "Zwart"
+        ],
+        [
+          "missing",
+          "Datasetcode missing"
+        ],
+        [
+          "n",
+          "Bruin"
+        ],
+        [
+          "p",
+          "Roze"
+        ],
+        [
+          "r",
+          "Groen"
+        ],
+        [
+          "u",
+          "Paars"
+        ],
+        [
+          "w",
+          "Wit"
+        ]
+      ]
+    },
+    {
+      "name": "habitat",
+      "label": "Leefomgeving",
+      "unit": "",
+      "options": [
+        [
+          "d",
+          "Bos"
+        ],
+        [
+          "g",
+          "Gras"
+        ],
+        [
+          "h",
+          "Heide"
+        ],
+        [
+          "l",
+          "Bladeren"
+        ],
+        [
+          "m",
+          "Weide"
+        ],
+        [
+          "p",
+          "Paden"
+        ],
+        [
+          "u",
+          "Stedelijk"
+        ],
+        [
+          "w",
+          "Afvalterrein"
+        ]
+      ]
+    }
+  ],
+  "example": {
+    "cap-diameter": 3.16,
+    "cap-shape": "o",
+    "cap-surface": null,
+    "cap-color": "k",
+    "does-bruise-or-bleed": "f",
+    "gill-attachment": "f",
+    "gill-spacing": "f",
+    "gill-color": "f",
+    "stem-height": 3.74,
+    "stem-width": 16.42,
+    "stem-root": null,
+    "stem-surface": "g",
+    "stem-color": "n",
+    "veil-type": null,
+    "veil-color": null,
+    "has-ring": "f",
+    "ring-type": "f",
+    "spore-print-color": null,
+    "habitat": "d",
+    "season": "u"
+  },
+  "metrics": {
+    "accuracy": 0.7336068937217891,
+    "balanced_accuracy": 0.7511632688395447,
+    "precision_poisonous": 0.8947487040793329,
+    "recall_poisonous": 0.5882352941176471,
+    "f1_poisonous": 0.7098158412301091,
+    "roc_auc_poisonous": 0.8067269879243004,
+    "poisonous_predicted_edible": 2779,
+    "confusion_matrix_labels": [
+      "e",
+      "p"
+    ],
+    "confusion_matrix": [
+      [
+        4969,
+        467
+      ],
+      [
+        2779,
+        3970
+      ]
+    ]
+  }
+}
