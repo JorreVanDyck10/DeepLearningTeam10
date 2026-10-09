@@ -21,15 +21,7 @@ window.addEventListener("hashchange", route);
 route();
 
 async function api(path, options = {}) {
-  const response = await fetch(`${apiUrl}${path}`, { cache: "no-store", ...options, signal: AbortSignal.timeout(120000) });
-  const data = await response.json();
-  if (!response.ok) {
-    if (response.status === 404) throw new Error("Deze voorspelroute is nog niet beschikbaar op de backend.");
-    let message = typeof data.detail === "string" ? data.detail : "Controleer de invoer en probeer opnieuw.";
-    if (Array.isArray(data.detail)) message = data.detail.map((item) => `${item.loc.slice(1).join(".")}: ${item.msg}`).join(" · ");
-    throw new Error(response.status === 503 ? "Het model is nog niet beschikbaar op de server." : message);
-  }
-  return data;
+  return window.Team10API.requestJson(`${apiUrl}${path}`, options);
 }
 async function checkConnection() {
   const status = $("#connection");
@@ -114,9 +106,7 @@ $("#mushroom-form").addEventListener("submit", async (event) => {
 
 async function init() {
   try {
-    const response = await fetch("metadata.json");
-    if (!response.ok) throw new Error("Metadata niet beschikbaar.");
-    metadata = await response.json();
+    metadata = await window.Team10API.requestJson("metadata.json");
     metadata.fields.forEach((field, i) => $(i < 6 ? "#basic-fields" : "#advanced-fields").append(fieldElement(field)));
     for (const [label, value] of [["Accuracy", percent(metadata.metrics.accuracy)], ["Recall giftige klasse", percent(metadata.metrics.recall_poisonous)], ["Giftig als eetbaar voorspeld", String(metadata.metrics.poisonous_predicted_edible)]]) {
       const tile = document.createElement("div"); tile.className = "metric";
@@ -125,8 +115,9 @@ async function init() {
       tile.append(strong, caption); $("#metrics").append(tile);
     }
     checkConnection();
-  } catch {
-    $("#result").textContent = "Het formulier kon niet worden geladen. Open de website via de lokale HTTP-server, niet als los bestand.";
+  } catch (error) {
+    const message = error instanceof TypeError ? "Geen verbinding met de server." : error.name === "TimeoutError" ? "De server reageerde niet op tijd." : error.message;
+    $("#result").textContent = `Het formulier kon niet worden geladen. ${message} Vernieuw de pagina en probeer opnieuw.`;
     $("#predict-button").disabled = true;
   }
 }
@@ -197,7 +188,7 @@ function drawCityChart(rows, selectedHour) {
   $("#city-chart").replaceChildren(svg);
 }
 
-fetch("citibike_metrics.json").then(response => {if(!response.ok) throw new Error(); return response.json();}).then(metrics=>{
+window.Team10API.requestJson("citibike_metrics.json").then(metrics=>{
   const entries=[["MAE beslisboom",number(metrics.results.decision_tree.mae)], ["MAE vast gemiddelde",number(metrics.results.global_mean.mae)], ["MAE per weekdag / uur",number(metrics.results.weekday_hour_mean.mae)]];
   for(const [label,value] of entries) {
     const tile=document.createElement("div");tile.className="metric";

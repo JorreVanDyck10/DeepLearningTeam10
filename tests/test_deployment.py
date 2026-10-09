@@ -25,7 +25,7 @@ class DeploymentTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn("text/html", response.headers["content-type"])
         self.assertIn('id="mushroom-form"', response.text)
-        for path in ("/index.html", "/config.js", "/app.js", "/styles.css",
+        for path in ("/index.html", "/config.js", "/api.js", "/app.js", "/styles.css",
                      "/metadata.json", "/citibike_metrics.json"):
             with self.subTest(path=path):
                 asset = self.client.get(path)

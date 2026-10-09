@@ -28,4 +28,7 @@ jobs:
       - name: Check JavaScript syntax
         run: |
           node --check frontend/config.js
+          node --check frontend/api.js
           node --check frontend/app.js
+      - name: Check API response handling
+        run: node --test tests/test_api_client.cjs
