@@ -13,8 +13,9 @@ lokale Streamlit-inference en gemeten lokale hertraining. Begin bij het
 [overzichtsnotebook](SolutionRaoul/Citybike/notebooks/citybike_analysis.ipynb).
 De vastgelegde eindtest-RMSE is 1.979,51 ritten per uurvak, 24,12% lager dan de
 weekbaseline. Data, modellen en Python-omgeving blijven lokaal en worden niet
-gecommit. Deze bijdrage vervangt de bestaande website, API of Citi Bike-baseline
-niet; AWS blijft voor deze uitwerking een afzonderlijke latere taak.
+gecommit. De teamwebsite en API gebruiken inmiddels dit gekozen model via een
+[lossless deployment-export](docs/citibike_raoul.md). AWS blijft voor deze
+uitwerking een afzonderlijke latere taak.
 
 ## Project structure
 

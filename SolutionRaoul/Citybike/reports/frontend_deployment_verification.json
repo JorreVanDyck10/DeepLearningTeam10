@@ -16,5 +16,29 @@
   "local_server_sampled_RSS_MiB": 250.2,
   "memory_measurement_limitation": "One Windows process RSS sample after requests, not continuous peak or Render memory measurement.",
   "test_observations_read_for_export": false,
-  "live_deployment_verified": false
+  "live_deployment_verified": true,
+  "live_verified_at": "2026-10-09T13:18:48.429557+00:00",
+  "live_url": "https://deeplearningteam10-api.onrender.com/#citibike",
+  "live_predictions": {
+    "demo": {
+      "response_seconds": 3.133710699970834,
+      "model_id": "raoul_tuned_random_forest_320",
+      "prediction_max_absolute_difference": 1.8189894035458565e-12,
+      "hour_prediction": 11860.514053352299,
+      "daily_total": 146893.23465047695
+    },
+    "history": {
+      "response_seconds": 3.2993044999893755,
+      "model_id": "raoul_tuned_random_forest_320",
+      "prediction_max_absolute_difference": 1.8189894035458565e-12,
+      "hour_prediction": 11860.514053352299,
+      "daily_total": 146893.23465047695
+    }
+  },
+  "live_browser_demo_verified": true,
+  "live_browser_screenshot": "docs/citibike_raoul_frontend.jpg",
+  "github_ci_url": "https://github.com/JorreVanDyck10/DeepLearningTeam10/actions/runs/37935263402",
+  "github_ci_python": "3.13",
+  "github_ci_OS": "ubuntu-latest",
+  "github_ci_result": "success"
 }

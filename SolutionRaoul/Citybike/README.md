@@ -1,5 +1,11 @@
 # Raoul Buffels — Citi Bike
 
+De [openbare teamwebsite](https://deeplearningteam10-api.onrender.com/#citibike)
+gebruikt inmiddels het hier geselecteerde 320-bomenmodel. Zie
+[frontend/API-deployment](../../docs/citibike_raoul.md) voor de lossless export,
+historische demonstratie en eigen recente historie. De hieronder beschreven
+export uit de oorspronkelijke lokale studie behoudt haar provenance.
+
 Dit is de deelbare export van de volledig uitgevoerde Citi Bike-uitwerking. Begin bij [`notebooks/citybike_analysis.ipynb`](notebooks/citybike_analysis.ipynb). De code, acht uitgevoerde notebooks, figuren, tests, requirements, manifesten, modelkaart en lokale trainingsmetingen staan in deze map.
 
 Oorspronkelijke uitvoering: `C:\Deeplearning\CloudAI\Citybike_full`. Rapporten behouden de oorspronkelijke paden en fingerprints als provenance; ze zijn geen bewijs van een nieuwe run in deze repository. `EXPORT_MANIFEST.json` legt de gekopieerde bestanden en eventuele documentatieaanpassingen vast. Kerncode, voorspelfunctie en modelregels blijven identiek.
@@ -394,5 +400,6 @@ dezelfde trainingsrijen, zonder tuning of testlabels, en vergelijkt de voorspell
 Daarna bedient Streamlit AppTest het echte formulier en controleert de 24 uitvoerwaarden
 tegen de gedeelde offline voorspelfunctie. Dezelfde geëvalueerde modelversie wordt in de app gebruikt.
 
-AWS-training en een eventuele API/online hosting blijven openstaande onderdelen
-van de volledige schoolopdracht; deze uitwerking levert het overeengekomen lokale pakket.
+AWS-training blijft een afzonderlijke latere taak. De team-API en online
+frontend gebruiken inmiddels het gekozen model; de lokale Streamlit-app blijft
+ook beschikbaar. Automatische hertraining op nieuwe tellingen is een aparte taak.

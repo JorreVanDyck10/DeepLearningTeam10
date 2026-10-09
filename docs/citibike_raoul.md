@@ -108,3 +108,16 @@ getoonde demonstratie-uitkomst is geen nieuwe eindtest. Weer/evenementen en
 latere maanden kunnen afwijken. Codex implementeerde en controleerde deze
 frontend/API-koppeling en lossless export; de menselijke bijdrageverdeling blijft
 door het team aan te vullen.
+
+## Live controle op 9 oktober 2026
+
+De [openbare website](https://deeplearningteam10-api.onrender.com/#citibike) meldt
+`raoul_tuned_random_forest_320`. Demo en eigen-historieroute geven dezelfde 24
+voorspellingen als het oorspronkelijke model, tot maximaal 1,82×10⁻¹² numeriek
+verschil. Twee gemeten warme API-aanvragen duurden circa 3,1 en 3,3 seconden.
+17 Python- en 13 JavaScript-tests slagen; ook de
+[GitHub-controles op Linux/Python 3.13](https://github.com/JorreVanDyck10/DeepLearningTeam10/actions/runs/37935263402)
+zijn geslaagd. Exacte metingen staan in
+`SolutionRaoul/Citybike/reports/frontend_deployment_verification.json`.
+
+![Publieke Citi Bike-voorspelling met Raouls model](citibike_raoul_frontend.jpg)

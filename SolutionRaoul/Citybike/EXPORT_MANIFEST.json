@@ -202,8 +202,8 @@
       "path": "README.md",
       "source_sha256": "498a75769c26e1b9905fe9c61010c02d76cc1e49e98a34c3b8a230ba3939dd5b",
       "source_bytes": 21804,
-      "export_sha256": "380bb26aedcb2d5bedaa9420d31a2d128a125a63914a0c2f6b4f43e7f1a36456",
-      "export_bytes": 24256,
+      "export_sha256": "be126fe7fbe1d6e4980d1b4091f16fcafadde0113cc7606ed9598075b9ae81b5",
+      "export_bytes": 24697,
       "documentation_changed": true
     },
     {
@@ -1101,8 +1101,8 @@
     {
       "path": "reports/frontend_deployment_verification.json",
       "generated": true,
-      "export_sha256": "cba10214ddf9b9f3deb05cfe5f2c9256d43bd934a20ca83e74fa1d248899e716",
-      "export_bytes": 849
+      "export_sha256": "c3f63184b92fe38f5e21c114e8755256556f717535032b65448e76ed31313f15",
+      "export_bytes": 1831
     }
   ],
   "verification": {
