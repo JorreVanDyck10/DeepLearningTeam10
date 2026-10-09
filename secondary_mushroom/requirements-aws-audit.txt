@@ -1,0 +1,7 @@
+# Separate environment: matches the artifact's scikit-learn/pandas versions.
+# Python 3.13 needs a newer NumPy than SageMaker's Python 3.10 environment.
+scikit-learn==1.7.2
+pandas==2.3.3
+numpy==2.2.6
+scipy==1.15.3
+joblib==1.6.0

@@ -1,4 +1,5 @@
-# Separate report environment, matching Andrew's saved scikit-learn artifacts.
+# Shared local training/report environment, matching Andrew's artifact version.
+# Audit Jorre's unchanged AWS artifact separately with requirements-aws-audit.txt.
 scikit-learn==1.9.1
 pandas==3.0.2
 numpy==2.5.3

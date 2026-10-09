@@ -1,8 +1,10 @@
 # Vergelijkingsrapport: Andrew's Mushroom-modellen
 
+**Historische deelvergelijking:** zie [het uitgebreide teamrapport](09_vergelijkingsrapport.md) voor Andrew + Jorre/AWS op dezelfde UCI-data.
+
 **DeepLearningTeam10 — 9 oktober 2026.** Analyse van de modeldefinities en bestanden uit
 broncommit [`17c4a61`](https://github.com/JorreVanDyck10/DeepLearningTeam10/commit/17c4a61).
-Bijbehorend uitgevoerd notebook: [09_compare_models.ipynb](09_compare_models.ipynb).
+Bijbehorend uitgevoerd notebook: [09_compare_andrew_models.ipynb](09_compare_andrew_models.ipynb).
 
 ## Besluit en afbakening
 
@@ -354,7 +356,7 @@ versies, waarschuwingen en hashes staan in het resultaatbestand.
 
 | Bestand | Bewijs / gebruik |
 | --- | --- |
-| [09_compare_models.ipynb](09_compare_models.ipynb) | Uitgevoerd vergelijkingsnotebook, uitleg, tabellen, grafieken, foutanalyse en conclusie |
+| [09_compare_andrew_models.ipynb](09_compare_andrew_models.ipynb) | Uitgevoerd vergelijkingsnotebook, uitleg, tabellen, grafieken, foutanalyse en conclusie |
 | [compare_andrew_models.py](compare_andrew_models.py) | Hertraining, CV-selectie, test-audit en modelbestandcontrole |
 | [build_comparison_report.py](build_comparison_report.py) | Bouwt dit rapport en voert optioneel het notebook uit |
 | [comparison_summary.json](comparison_andrew/comparison_summary.json) | Volledige metrics, parameters, herkomst, versies en artifact-audit |

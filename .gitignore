@@ -23,6 +23,7 @@ __pycache__/
 *.py[cod]
 .venv/
 .venv-analysis/
+.venv-aws-audit/
 venv/
 .env
 .env.*
