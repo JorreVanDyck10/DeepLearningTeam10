@@ -15,6 +15,7 @@
 !secondary_mushroom/models/baseline_decision_tree.joblib
 !nyc_citi_bike/models/baseline_hourly_tree.joblib
 !SolutionAndrew/MushroomDataset/models/random_forest.joblib
+!SolutionJorre/MushroomDataset/mushroom_pipeline.joblib
 
 # Local Python/Jupyter files and secrets.
 .ipynb_checkpoints/
