@@ -1,0 +1,146 @@
+{
+  "started_at": "2026-10-09T07:44:31.717920+00:00",
+  "processes": [
+    {
+      "stage": "prepare",
+      "pid": 24684,
+      "samples": 3709,
+      "peak_rss_bytes": 4902912,
+      "last_sample_at": "2026-10-09T08:53:18.305059+00:00"
+    },
+    {
+      "stage": "prepare",
+      "pid": 34396,
+      "samples": 3709,
+      "peak_rss_bytes": 3829600256,
+      "last_sample_at": "2026-10-09T08:53:18.345108+00:00"
+    },
+    {
+      "stage": "prepare",
+      "pid": 7024,
+      "samples": 172,
+      "peak_rss_bytes": 4313088,
+      "last_sample_at": "2026-10-09T09:13:48.511116+00:00"
+    },
+    {
+      "stage": "prepare",
+      "pid": 30944,
+      "samples": 172,
+      "peak_rss_bytes": 3350405120,
+      "last_sample_at": "2026-10-09T09:13:48.569362+00:00"
+    },
+    {
+      "stage": "prepare",
+      "pid": 25060,
+      "samples": 1669,
+      "peak_rss_bytes": 4307877888,
+      "last_sample_at": "2026-10-09T09:48:56.285277+00:00"
+    },
+    {
+      "stage": "prepare",
+      "pid": 38020,
+      "samples": 1669,
+      "peak_rss_bytes": 3678208,
+      "last_sample_at": "2026-10-09T09:48:56.294554+00:00"
+    },
+    {
+      "stage": "prepare",
+      "pid": 28036,
+      "samples": 280,
+      "peak_rss_bytes": 4300861440,
+      "last_sample_at": "2026-10-09T10:06:28.134940+00:00"
+    },
+    {
+      "stage": "prepare",
+      "pid": 28916,
+      "samples": 280,
+      "peak_rss_bytes": 3665920,
+      "last_sample_at": "2026-10-09T10:06:28.135463+00:00"
+    },
+    {
+      "stage": "research",
+      "pid": 8076,
+      "samples": 1060,
+      "peak_rss_bytes": 4109901824,
+      "last_sample_at": "2026-10-09T10:25:04.000681+00:00"
+    },
+    {
+      "stage": "research",
+      "pid": 31288,
+      "samples": 1060,
+      "peak_rss_bytes": 4354048,
+      "last_sample_at": "2026-10-09T10:25:04.014705+00:00"
+    },
+    {
+      "stage": "train",
+      "pid": 40616,
+      "samples": 140,
+      "peak_rss_bytes": 4464640,
+      "last_sample_at": "2026-10-09T10:27:30.412872+00:00"
+    },
+    {
+      "stage": "train",
+      "pid": 44604,
+      "samples": 140,
+      "peak_rss_bytes": 542998528,
+      "last_sample_at": "2026-10-09T10:27:30.447964+00:00"
+    },
+    {
+      "stage": "train",
+      "pid": 13564,
+      "samples": 3940,
+      "peak_rss_bytes": 1499566080,
+      "last_sample_at": "2026-10-09T11:48:05.452446+00:00"
+    },
+    {
+      "stage": "train",
+      "pid": 49512,
+      "samples": 3940,
+      "peak_rss_bytes": 4370432,
+      "last_sample_at": "2026-10-09T11:48:05.469961+00:00"
+    },
+    {
+      "stage": "evaluate",
+      "pid": 9440,
+      "samples": 19,
+      "peak_rss_bytes": 956542976,
+      "last_sample_at": "2026-10-09T11:48:25.406625+00:00"
+    },
+    {
+      "stage": "evaluate",
+      "pid": 33324,
+      "samples": 19,
+      "peak_rss_bytes": 4284416,
+      "last_sample_at": "2026-10-09T11:48:25.422262+00:00"
+    },
+    {
+      "stage": "verify",
+      "pid": 16192,
+      "samples": 119,
+      "peak_rss_bytes": 2241937408,
+      "last_sample_at": "2026-10-09T11:50:30.427024+00:00"
+    },
+    {
+      "stage": "verify",
+      "pid": 38932,
+      "samples": 119,
+      "peak_rss_bytes": 4284416,
+      "last_sample_at": "2026-10-09T11:50:30.437540+00:00"
+    },
+    {
+      "stage": "notebooks",
+      "pid": 16592,
+      "samples": 34,
+      "peak_rss_bytes": 52101120,
+      "last_sample_at": "2026-10-09T11:51:06.189189+00:00"
+    },
+    {
+      "stage": "notebooks",
+      "pid": 32868,
+      "samples": 34,
+      "peak_rss_bytes": 4288512,
+      "last_sample_at": "2026-10-09T11:51:06.201741+00:00"
+    }
+  ],
+  "note": "1-second sampled RSS of CLI main processes, not combined worker memory. Preparation monitoring started after early partitions; restarts can leave gaps. Not an exact continuous peak."
+}

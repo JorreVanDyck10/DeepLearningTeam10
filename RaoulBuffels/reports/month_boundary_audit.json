@@ -1,0 +1,88 @@
+[
+  {
+    "area": "NYC",
+    "modern_equivalent_copies_removed": 512,
+    "station_id_serialization_alias_ids": [
+      "9C5F8DE7C994C151",
+      "E8186EECD7540A81",
+      "2C9464568B525A0E",
+      "4E39E4597D76F26B",
+      "537A8B677AD3B808",
+      "969096DB9DAB87E8",
+      "447F6AEC09297EDF",
+      "BD5020B1DA16B09F"
+    ],
+    "timestamp_precision_alias_ids": [],
+    "timestamp_precision_proof": "JC only: one complete whole-second version, identical second floors and other canonical fields; retain higher precision. NYC precision is unchanged.",
+    "station_alias_proof": "fractional trailing-zero serialization only; same ride-ID and all other canonical fields including known station name/coordinates; original ID strings retained",
+    "legacy_source_segment_proofs": [],
+    "legacy_equivalent_copies_removed": 0,
+    "unproven_legacy_segments": [
+      {
+        "source_path": "C:/Deeplearning/CloudAI/Citybike_full/data/processed/NYC/year=2013/month=06/rides.parquet",
+        "natural_month": "2013-07",
+        "rows": 1,
+        "unmatched_rows": 1,
+        "potential_matching_rows": 0,
+        "action": "segment not proven equivalent; preserve all legacy multiplicities"
+      }
+    ],
+    "actual_retained_timestamp_bounds": [
+      "2013-06-01 00:00:01",
+      "2026-08-31 23:58:01.765000"
+    ],
+    "cross_id_conflicts": 0,
+    "normalization": "actual local departure month; unknown coverage stays flagged in source partition",
+    "uncovered_boundary_rows": 0
+  },
+  {
+    "area": "JC",
+    "modern_equivalent_copies_removed": 42,
+    "station_id_serialization_alias_ids": [],
+    "timestamp_precision_alias_ids": [
+      "09D67B6866E802DA",
+      "15413FAB9CC9F156",
+      "1AB4E466DCCC4147",
+      "269CAE1A61663378",
+      "2FBED42B501D1159",
+      "40AAF58F03CBD1F0",
+      "612F18F0B4CA0CF8",
+      "62D5B0CD7B079E74",
+      "68C4F62000FD4501",
+      "6A13932BD8683F64",
+      "6C1EF96E26CAABF5",
+      "7453148EC052D0B8",
+      "77F2B926DDF1923F",
+      "7E522D332F75FD8E",
+      "825B1D77387B9EE7",
+      "89604EBA54E45F13",
+      "8A760FD89527D93A",
+      "BEC16E8A915D8F22",
+      "C724964BEAACDDBB",
+      "CF7D29AB228C4E0E",
+      "D0839C782C0C4A50",
+      "DE3E512C705435C3",
+      "E7535E475E9EC93E",
+      "FF41BAE64F443E05"
+    ],
+    "timestamp_precision_proof": "JC only: one complete whole-second version, identical second floors and other canonical fields; retain higher precision. NYC precision is unchanged.",
+    "station_alias_proof": "fractional trailing-zero serialization only; same ride-ID and all other canonical fields including known station name/coordinates; original ID strings retained",
+    "legacy_source_segment_proofs": [
+      {
+        "source_path": "C:/Deeplearning/CloudAI/Citybike_full/data/processed/JC/year=2020/month=09/rides.parquet",
+        "natural_month": "2020-10",
+        "rows": 13451,
+        "proof": "complete off-month source segment contained with multiplicity in natural-month canonical multiset (EXCEPT ALL); no generic row deduplication"
+      }
+    ],
+    "legacy_equivalent_copies_removed": 13451,
+    "unproven_legacy_segments": [],
+    "actual_retained_timestamp_bounds": [
+      "2015-09-21 14:53:16",
+      "2026-08-31 23:53:36.692000"
+    ],
+    "cross_id_conflicts": 0,
+    "normalization": "actual local departure month; unknown coverage stays flagged in source partition",
+    "uncovered_boundary_rows": 0
+  }
+]

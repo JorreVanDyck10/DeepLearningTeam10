@@ -1,0 +1,114 @@
+[
+  {
+    "feature": "hour_sin",
+    "available_at": "kalender bekend vóór 00:00 op D",
+    "available_at_prediction": true,
+    "availability_assumption": "kalender deterministisch bekend",
+    "target_information": "geen doelwaarden",
+    "leaks": false
+  },
+  {
+    "feature": "hour_cos",
+    "available_at": "kalender bekend vóór 00:00 op D",
+    "available_at_prediction": true,
+    "availability_assumption": "kalender deterministisch bekend",
+    "target_information": "geen doelwaarden",
+    "leaks": false
+  },
+  {
+    "feature": "weekday_sin",
+    "available_at": "kalender bekend vóór 00:00 op D",
+    "available_at_prediction": true,
+    "availability_assumption": "kalender deterministisch bekend",
+    "target_information": "geen doelwaarden",
+    "leaks": false
+  },
+  {
+    "feature": "weekday_cos",
+    "available_at": "kalender bekend vóór 00:00 op D",
+    "available_at_prediction": true,
+    "availability_assumption": "kalender deterministisch bekend",
+    "target_information": "geen doelwaarden",
+    "leaks": false
+  },
+  {
+    "feature": "year_sin",
+    "available_at": "kalender bekend vóór 00:00 op D",
+    "available_at_prediction": true,
+    "availability_assumption": "kalender deterministisch bekend",
+    "target_information": "geen doelwaarden",
+    "leaks": false
+  },
+  {
+    "feature": "year_cos",
+    "available_at": "kalender bekend vóór 00:00 op D",
+    "available_at_prediction": true,
+    "availability_assumption": "kalender deterministisch bekend",
+    "target_information": "geen doelwaarden",
+    "leaks": false
+  },
+  {
+    "feature": "is_weekend",
+    "available_at": "kalender bekend vóór 00:00 op D",
+    "available_at_prediction": true,
+    "availability_assumption": "kalender deterministisch bekend",
+    "target_information": "geen doelwaarden",
+    "leaks": false
+  },
+  {
+    "feature": "clock_hours",
+    "available_at": "kalender bekend vóór 00:00 op D",
+    "available_at_prediction": true,
+    "availability_assumption": "kalender deterministisch bekend",
+    "target_information": "geen doelwaarden",
+    "leaks": false
+  },
+  {
+    "feature": "lag_1d",
+    "available_at": "uitsluitend volledige dagen vóór D; rolling eerst shift(1)",
+    "available_at_prediction": "voorwaardelijk: externe tellingen bekend vóór D",
+    "availability_assumption": "Offline backtest veronderstelt tijdige externe vertrektellingen. Publieke maandarchieven bewijzen geen realtime beschikbaarheid; publicatielatentie is niet gemodelleerd.",
+    "target_information": "historische doelwaarden toegestaan",
+    "leaks": false
+  },
+  {
+    "feature": "lag_2d",
+    "available_at": "uitsluitend volledige dagen vóór D; rolling eerst shift(1)",
+    "available_at_prediction": "voorwaardelijk: externe tellingen bekend vóór D",
+    "availability_assumption": "Offline backtest veronderstelt tijdige externe vertrektellingen. Publieke maandarchieven bewijzen geen realtime beschikbaarheid; publicatielatentie is niet gemodelleerd.",
+    "target_information": "historische doelwaarden toegestaan",
+    "leaks": false
+  },
+  {
+    "feature": "lag_7d",
+    "available_at": "uitsluitend volledige dagen vóór D; rolling eerst shift(1)",
+    "available_at_prediction": "voorwaardelijk: externe tellingen bekend vóór D",
+    "availability_assumption": "Offline backtest veronderstelt tijdige externe vertrektellingen. Publieke maandarchieven bewijzen geen realtime beschikbaarheid; publicatielatentie is niet gemodelleerd.",
+    "target_information": "historische doelwaarden toegestaan",
+    "leaks": false
+  },
+  {
+    "feature": "lag_14d",
+    "available_at": "uitsluitend volledige dagen vóór D; rolling eerst shift(1)",
+    "available_at_prediction": "voorwaardelijk: externe tellingen bekend vóór D",
+    "availability_assumption": "Offline backtest veronderstelt tijdige externe vertrektellingen. Publieke maandarchieven bewijzen geen realtime beschikbaarheid; publicatielatentie is niet gemodelleerd.",
+    "target_information": "historische doelwaarden toegestaan",
+    "leaks": false
+  },
+  {
+    "feature": "same_hour_mean_7d",
+    "available_at": "uitsluitend volledige dagen vóór D; rolling eerst shift(1)",
+    "available_at_prediction": "voorwaardelijk: externe tellingen bekend vóór D",
+    "availability_assumption": "Offline backtest veronderstelt tijdige externe vertrektellingen. Publieke maandarchieven bewijzen geen realtime beschikbaarheid; publicatielatentie is niet gemodelleerd.",
+    "target_information": "historische doelwaarden toegestaan",
+    "leaks": false
+  },
+  {
+    "feature": "previous_day_total",
+    "available_at": "uitsluitend volledige dagen vóór D; rolling eerst shift(1)",
+    "available_at_prediction": "voorwaardelijk: externe tellingen bekend vóór D",
+    "availability_assumption": "Offline backtest veronderstelt tijdige externe vertrektellingen. Publieke maandarchieven bewijzen geen realtime beschikbaarheid; publicatielatentie is niet gemodelleerd.",
+    "target_information": "historische doelwaarden toegestaan",
+    "leaks": false
+  }
+]

@@ -4,6 +4,18 @@ Milan Wouters
 Raoul Buffels
 Andrew Noeyens
 
+## Raoul Buffels — volledige Citi Bike-uitwerking
+
+[`RaoulBuffels/`](RaoulBuffels/README.md) bevat Raouls afzonderlijke Citi Bike-bijdrage:
+reproduceerbare preprocessing en training, acht uitgevoerde Nederlandse notebooks,
+NYC/Jersey City-scheiding, manifesten, statistisch onderzoek, modelvergelijking,
+lokale Streamlit-inference en gemeten lokale hertraining. Begin bij het
+[overzichtsnotebook](RaoulBuffels/notebooks/citybike_analysis.ipynb).
+De vastgelegde eindtest-RMSE is 1.979,51 ritten per uurvak, 24,12% lager dan de
+weekbaseline. Data, modellen en Python-omgeving blijven lokaal en worden niet
+gecommit. Deze bijdrage vervangt de bestaande website, API of Citi Bike-baseline
+niet; AWS blijft voor deze uitwerking een afzonderlijke latere taak.
+
 ## Project structure
 
 Each dataset has its own folder:

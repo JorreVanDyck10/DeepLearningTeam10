@@ -1,0 +1,12 @@
+{
+  "area": "NYC",
+  "development_only": true,
+  "sample_rows": 200000,
+  "sample_over_24h": 104,
+  "sample_over_7days": 16,
+  "median_minutes": 9.883633333333332,
+  "maximum_minutes": 610844.0770333334,
+  "interpretation": "Extreme start/eindtijden kunnen weken of maanden uiteenliggen. Dit meet een geregistreerde open rit, niet aantoonbaar voortdurend fietsen. Registratiefouten of laat afgesloten ritten zijn mogelijke verklaringen, geen bewezen oorzaken. De mediaan beschrijft een typische geregistreerde duur beter dan het gemiddelde.",
+  "action": "Positieve identificeerbare duur blijft behouden en langduur wordt gemarkeerd. Geen statistische cutoff of nieuwe verwijderregel; individuele ritduur is niet het gekozen modeldoel.",
+  "sampling_limitation": "Deterministische, begrensde steekproef; voorbeelden bewijzen geen foutfrequentie in de hele dataset."
+}

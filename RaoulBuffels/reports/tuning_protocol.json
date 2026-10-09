@@ -1,0 +1,15 @@
+{
+  "created_at": "2026-10-09T10:46:52.600937+00:00",
+  "models": [
+    "lightgbm",
+    "random_forest"
+  ],
+  "configurations": {
+    "lightgbm": 20,
+    "random_forest": 6
+  },
+  "seed": 42,
+  "fold_fingerprint": "59238f467d526664e56943f96d102928ede96e4e371fecff4fa382847c7601ad",
+  "test_used": false,
+  "reason": "Resource budget fixed before tuning: Random Forest comparison measured about five minutes; LightGBM about seven seconds. Six seeded RF configurations, up to twenty for other candidates. Same data and folds; no search budget chosen using test results."
+}

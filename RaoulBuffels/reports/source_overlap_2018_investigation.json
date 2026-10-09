@@ -1,0 +1,29 @@
+[
+  {
+    "source": {
+      "source": "C:\\Deeplearning\\citibike_data\\2018-citibike-tripdata.zip",
+      "source_sha256": "91f39eda364531181bb2b983afb69e6875106e5032c6d8418cee647115e386d7",
+      "nested": null,
+      "members": [
+        "2018-citibike-tripdata/201804-citibike-tripdata.csv",
+        "2018-citibike-tripdata/201804-citibike-tripdata_1.csv",
+        "2018-citibike-tripdata/201804-citibike-tripdata_2.csv"
+      ],
+      "parent": "2018-citibike-tripdata"
+    },
+    "count": 2615086
+  },
+  {
+    "source": {
+      "source": "C:\\Deeplearning\\citibike_data\\2018-citibike-tripdata.zip",
+      "source_sha256": "91f39eda364531181bb2b983afb69e6875106e5032c6d8418cee647115e386d7",
+      "nested": null,
+      "members": [
+        "2018-citibike-tripdata/4_April/201804-citibike-tripdata_1.csv",
+        "2018-citibike-tripdata/4_April/201804-citibike-tripdata_2.csv"
+      ],
+      "parent": "2018-citibike-tripdata\\4_April"
+    },
+    "count": 1307543
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "chosen_prediction_problem": "NYC geregistreerde vertrekken per uurvak, dagvooruit om 00:00",
+  "target": "hourly_demand",
+  "created_at": "2026-10-09T10:25:04.407723+00:00",
+  "dataset_fingerprint": "409eb1829fa0565f464bbd031cc4e17c8c64f7c9aae466267259f9bc64c14753",
+  "reason": "Sterke wekelijkse associatie op ontwikkelingsdata plus nuttige uurresolutie; echte voorspelbaarheid volgt uit latere validatie.",
+  "contract": {
+    "target": "hourly_demand",
+    "prediction_time": "00:00 America/New_York op voorspeldag D",
+    "horizon": "alle 24 lokale kloklabels op D (23/25 fysieke uren bij DST)",
+    "available": "kalender van D; gemeten tellingen strikt vóór D",
+    "forbidden": "tellingen eerder op D, weer achteraf, eindstation, duur van toekomstige ritten"
+  },
+  "gate": "Holm-p<.05 en onderste 95%-CI weekcorrelatie>.3",
+  "no_test_access": true,
+  "eda_seconds": 1107.3708780000452
+}

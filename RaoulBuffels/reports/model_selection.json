@@ -1,0 +1,100 @@
+{
+  "created_at": "2026-10-09T11:46:34.182420+00:00",
+  "name": "tuned_random_forest",
+  "validation_metrics": {
+    "RMSE": 1940.4928799155434,
+    "MAE": 1114.4796009120078,
+    "R2": 0.8435166230821073
+  },
+  "baseline_validation_metrics": {
+    "RMSE": 2826.1649200028373,
+    "MAE": 1510.1277322404371,
+    "R2": 0.6680756562584867
+  },
+  "validation_RMSE_improvement_percent": 31.338299963273364,
+  "parameters": {
+    "columns": null,
+    "estimator__bootstrap": true,
+    "estimator__ccp_alpha": 0.0,
+    "estimator__criterion": "squared_error",
+    "estimator__max_depth": null,
+    "estimator__max_features": 0.6,
+    "estimator__max_leaf_nodes": null,
+    "estimator__max_samples": null,
+    "estimator__min_impurity_decrease": 0.0,
+    "estimator__min_samples_leaf": 4,
+    "estimator__min_samples_split": 2,
+    "estimator__min_weight_fraction_leaf": 0.0,
+    "estimator__monotonic_cst": null,
+    "estimator__n_estimators": 320,
+    "estimator__n_jobs": 2,
+    "estimator__oob_score": false,
+    "estimator__random_state": 42,
+    "estimator__verbose": 0,
+    "estimator__warm_start": false,
+    "estimator": "RandomForestRegressor(max_features=0.6, min_samples_leaf=4, n_estimators=320,\n                      n_jobs=2, random_state=42)"
+  },
+  "window_years": null,
+  "features": [
+    "hour_sin",
+    "hour_cos",
+    "weekday_sin",
+    "weekday_cos",
+    "year_sin",
+    "year_cos",
+    "is_weekend",
+    "clock_hours",
+    "lag_1d",
+    "lag_2d",
+    "lag_7d",
+    "lag_14d",
+    "same_hour_mean_7d",
+    "previous_day_total"
+  ],
+  "contract": {
+    "target": "hourly_demand",
+    "prediction_time": "00:00 America/New_York op voorspeldag D",
+    "horizon": "alle 24 lokale kloklabels op D (23/25 fysieke uren bij DST)",
+    "available": "kalender van D; gemeten tellingen strikt vóór D",
+    "forbidden": "tellingen eerder op D, weer achteraf, eindstation, duur van toekomstige ritten"
+  },
+  "dataset_fingerprint": "409eb1829fa0565f464bbd031cc4e17c8c64f7c9aae466267259f9bc64c14753",
+  "modeling_code_version": {
+    "fingerprint": "5e9e6c06925f3567af7df22f1599c33d137b15e511e3332765e0126405297235",
+    "files": {
+      "citibike\\__init__.py": "5aed44662340daefa83368739bd8921a31e749ffdb117e30346da0c2739b5555",
+      "citibike\\analysis.py": "0ac5d50a29ba024a04dadbbe38a4278194f92d1b53d55fcc9a57db7f2120eac6",
+      "citibike\\assembly.py": "f75971f7f9e60d0ba4a934cae1cab789ff1e681d401325eaa34ec07878f2e9a2",
+      "citibike\\config.py": "aece80e72fee4559cc8f8abbcb36c48d5b859c418990510c82263464d5972a1f",
+      "citibike\\datasets.py": "d1c2526e12d11b02909a215d8fab285a707a7b45c690d069d578b0a3e508e33e",
+      "citibike\\features.py": "89ecb9eca9cf86d3e53ac364dd809455e71f3fe0ee5e0cdcee769f9de3b3c6ea",
+      "citibike\\inference.py": "17cbd537195f922cff43d6d7ecb3ef0ebea36d134ec3d960d7a3c3399fbf4d0f",
+      "citibike\\modeling.py": "28aafe6ae754b5fbc0b82e0711da4feee91ce6b141c96844cfa34334d7612cf4",
+      "citibike\\notebooks.py": "f14da1cd7689a0fd818655e4e1a5881b021374e2c16aabd78a93a829953faab6",
+      "citibike\\plots.py": "3dc604611c8782d26b7bc949788457cfb066f3e41579730f3681a6f7bc2d5202",
+      "citibike\\prepare.py": "d312ec3dc4f78a9bdba7a2c0be9da58e5defad36b6e1e5b151a0b599b607f2d9",
+      "citibike\\verify.py": "1c10ff72b0deb7782921a03aaf0e64a145db94e6d0ca45129d99510dbdb2f634"
+    },
+    "git_commit": "e13811ef5d6c806262db7265ebca7e155d282eb8",
+    "git_status": "M \"Discussion topics/chapter 4.md\"\n M \"Exercises/1 working env and streamlit/1 - Working with a venv.ipynb\"\n M \"Exercises/1 working env and streamlit/2 - Streamlit 101.ipynb\"\n M \"Exercises/1 working env and streamlit/3 - First streamlit.py\"\n M \"Exercises/2 first model/3 - MPG app.py\"\n M \"Exercises/2 first model/5 - titanic app (solved).py\"\n M \"Exercises/3 model quality/3 - Metrics.ipynb\"\n M \"Exercises/3 model quality/5.1 - Install PyCaret.ipynb\"\n M \"Exercises/3 model quality/5.2 - PyCaret.ipynb\"\n M Exercises/files/requirements.txt\n M \"Exercises_solved/1 working env and streamlit/3 - First streamlit.py\"\n M \"Exercises_solved/2 first model/3 - MPG app.py\"\n M \"Exercises_solved/2 first model/5 - titanic app (solved).py\"\n?? Citybike/\n?? Citybike_full/\n?? Mushroom/",
+    "packages": {
+      "numpy": "1.26.4",
+      "pandas": "2.1.4",
+      "scipy": "1.11.4",
+      "scikit-learn": "1.4.2",
+      "duckdb": "1.5.6",
+      "pyarrow": "25.0.1",
+      "pycaret": "3.3.2",
+      "lightgbm": "4.6.0",
+      "joblib": "1.3.2",
+      "streamlit": "1.65.0",
+      "matplotlib": "3.7.5",
+      "psutil": "7.2.2"
+    }
+  },
+  "fold_fingerprint": "59238f467d526664e56943f96d102928ede96e4e371fecff4fa382847c7601ad",
+  "prediction_code_fingerprint": "54679b92f35b8e0a737539e7bc1422f9c4c56c9c93119c599c97e6de299003aa",
+  "selection_rule": "lowest validation RMSE; strictly less than 1% difference choose simpler model",
+  "training_seconds": 4368.530259500025,
+  "test_seen": false
+}

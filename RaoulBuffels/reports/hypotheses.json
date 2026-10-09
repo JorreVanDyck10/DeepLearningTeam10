@@ -1,0 +1,101 @@
+[
+  {
+    "label": "Ochtendrit-aandeel: werkdag minus weekend",
+    "H0": "Gemiddeld blokeffect is nul",
+    "H1": "Gemiddeld blokeffect verschilt van nul",
+    "alpha": 0.05,
+    "test": "two-sided sign-flip van niet-overlappende vierweekblokken",
+    "statistic": 9.551946323231398,
+    "effect_size": 9.551946323231398,
+    "unit": "procentpunt",
+    "p_value": 4.999750012499375e-05,
+    "ci95": [
+      9.088124610066025,
+      10.020100731495694
+    ],
+    "weeks": 172,
+    "blocks": 43,
+    "block_weeks": 4,
+    "repetitions": 20000,
+    "standardized_effect": 6.14991634744944,
+    "assumptions": "Blokken voldoende onafhankelijk; sign-flip vereist symmetrie onder H0. Associatie, geen causaliteit.",
+    "holm_p_value": 0.00014999250037498125,
+    "reject_H0": true,
+    "family": "drie kandidaatdoel-hypothesen; vooraf vastgelegd vóór berekening",
+    "sensitivity_8weeks": {
+      "statistic": 9.489230766012948,
+      "p_value": 4.999750012499375e-05,
+      "ci95": [
+        9.033733218693163,
+        9.966998655109983
+      ],
+      "blocks": 21
+    }
+  },
+  {
+    "label": "Associatie van uurtelling met hetzelfde uur vorige week",
+    "H0": "Gemiddeld blokeffect is nul",
+    "H1": "Gemiddeld blokeffect verschilt van nul",
+    "alpha": 0.05,
+    "test": "two-sided sign-flip van niet-overlappende vierweekblokken",
+    "statistic": 0.8560999316906954,
+    "effect_size": 0.8560999316906954,
+    "unit": "Pearson r",
+    "p_value": 4.999750012499375e-05,
+    "ci95": [
+      0.8365037699140101,
+      0.8757808290518364
+    ],
+    "weeks": 172,
+    "blocks": 43,
+    "block_weeks": 4,
+    "repetitions": 20000,
+    "standardized_effect": 12.805251299521743,
+    "assumptions": "Blokken voldoende onafhankelijk; sign-flip vereist symmetrie onder H0. Associatie, geen causaliteit.",
+    "holm_p_value": 0.00014999250037498125,
+    "reject_H0": true,
+    "family": "drie kandidaatdoel-hypothesen; vooraf vastgelegd vóór berekening",
+    "sensitivity_8weeks": {
+      "statistic": 0.8572124821447673,
+      "p_value": 4.999750012499375e-05,
+      "ci95": [
+        0.8320944456541911,
+        0.8820850833228705
+      ],
+      "blocks": 21
+    }
+  },
+  {
+    "label": "Dagmediaan ritduur: casual minus member",
+    "H0": "Gemiddeld blokeffect is nul",
+    "H1": "Gemiddeld blokeffect verschilt van nul",
+    "alpha": 0.05,
+    "test": "two-sided sign-flip van niet-overlappende vierweekblokken",
+    "statistic": 4.0145634056876,
+    "effect_size": 4.0145634056876,
+    "unit": "minuten",
+    "p_value": 4.999750012499375e-05,
+    "ci95": [
+      3.715054931968839,
+      4.320043804259509
+    ],
+    "weeks": 172,
+    "blocks": 43,
+    "block_weeks": 4,
+    "repetitions": 20000,
+    "standardized_effect": 3.9083293923898266,
+    "assumptions": "Blokken voldoende onafhankelijk; sign-flip vereist symmetrie onder H0. Associatie, geen causaliteit.",
+    "holm_p_value": 0.00014999250037498125,
+    "reject_H0": true,
+    "family": "drie kandidaatdoel-hypothesen; vooraf vastgelegd vóór berekening",
+    "sensitivity_8weeks": {
+      "statistic": 4.031788058230484,
+      "p_value": 4.999750012499375e-05,
+      "ci95": [
+        3.6055237738917163,
+        4.457691442117452
+      ],
+      "blocks": 21
+    }
+  }
+]

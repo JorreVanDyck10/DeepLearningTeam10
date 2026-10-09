@@ -1,0 +1,45 @@
+[
+  {
+    "target": "hourly_demand",
+    "useful": "Schat geregistreerd vertrekvolume; geen onvervulde vraag",
+    "type": "time-series forecasting via regression",
+    "target_present": true,
+    "unit": "ritten per klokvak",
+    "modeling_rows_before_features": 113208,
+    "leakage_risk": "tellingen op D zijn verboden; alleen volledige dagen vóór D",
+    "evidence": "weekcorrelatie 0.8561; Holm-p 0.000149993",
+    "available_features": "kalender en uitsluitend afgeronde dagen",
+    "deployment": "datum plus 14 volledige historische dagen",
+    "selected": true,
+    "data_quality": "Aaneengesloten volledige bronmaanden en gevalideerde vertrektijden; ontbrekende bronmaanden worden niet als nul ingevuld. Tellingen meten gebruik, geen onvervulde vraag."
+  },
+  {
+    "target": "daily_demand",
+    "useful": "Dagplanning, minder detail voor piekuren",
+    "type": "time-series forecasting via regression",
+    "target_present": true,
+    "unit": "ritten per kalenderdag",
+    "modeling_rows_before_features": 4717,
+    "leakage_risk": "delen van het huidige dagtotaal mogen niet als invoer dienen",
+    "deployment": "datum plus voorafgaande dagtotalen",
+    "evidence": "dagaggregaties en seizoenstrends onderzocht; uurdoel behoudt operationele resolutie",
+    "available_features": "kalender en voorafgaande dagtotalen",
+    "selected": false,
+    "data_quality": "Dezelfde gevalideerde vertrekken als het uurdoel, samengevoegd per dag; minder waarnemingen en verlies van piekuurdetail."
+  },
+  {
+    "target": "duration",
+    "useful": "Verwachting bij vertrek",
+    "type": "regression at departure",
+    "target_present": true,
+    "unit": "minuten",
+    "modeling_rows_before_features": 303478007,
+    "leakage_risk": "eindstation, eindtijd en routeafstand achteraf zijn verboden",
+    "deployment": "starttijd, startstation en bekende gebruiker/fietscategorie",
+    "evidence": "casual-member dagmedianenverschil 4.0146 minuten; groepsverschil bewijst geen individuele voorspelbaarheid",
+    "available_features": "startstation, starttijd, bekende categorieën",
+    "limitations": "eindbestemming ontbreekt bij vertrek; zware staart; historische schema- en stationwijzigingen",
+    "selected": false,
+    "data_quality": "Alleen positieve identificeerbare fysieke duur en vóór fitmoment beschikbare eindlabels. Ambigue moderne najaarsuren uitgesloten; extreme open ritten en historische onbekende categorieën beperken de interpretatie."
+  }
+]

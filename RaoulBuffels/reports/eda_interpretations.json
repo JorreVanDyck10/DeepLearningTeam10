@@ -1,0 +1,57 @@
+[
+  {
+    "area": "NYC",
+    "question": "temporal",
+    "interpretation": "De ontwikkelingsdata bevatten 303,498,919 bruikbare vertrekken. Het recente daggemiddelde is 111,039 ritten en het maximum 202,031. Groei kan samenhangen met systeemuitbreiding; dit bewijst geen oorzaak. De onvolledige eindjaren zijn niet rechtstreeks met volledige jaren vergelijkbaar."
+  },
+  {
+    "area": "NYC",
+    "question": "hour_weekday",
+    "interpretation": "Het gemiddelde uurvolume varieert van 206.0 tot 12,186.0 ritten over de weekdag/uur-combinaties. Dit beschrijft covariatie; de geblokte hypothesetoets onderzoekt een specifiek verschil. Alleen ontwikkeling vanaf 2023 is gebruikt."
+  },
+  {
+    "area": "NYC",
+    "question": "duration",
+    "interpretation": "De deterministische steekproef bevat 200,000 ritten. Mediaan: 9.88 minuten; IQR: 11.56 minuten; maximum: 610,844.1 minuten. Boxplot-uitbijters worden alleen verborgen in deze weergave, niet verwijderd uit de data. Exacte groepsaantallen en benaderde volledige-data-kwantielen staan in de aggregatietabellen."
+  },
+  {
+    "area": "NYC",
+    "question": "user_bike",
+    "interpretation": "91,944,421 ritten hebben geen bekend fietstype, onder meer door het historische schema. Unknown wordt daarom niet als een echte fietscategorie geïnterpreteerd. Veranderingen in categorieën kunnen zowel gedrag als registratie weerspiegelen."
+  },
+  {
+    "area": "NYC",
+    "question": "stations",
+    "interpretation": "De drukste station-ID in deze aggregatie heeft 871,222 vertrekken en 3 verschillende naamlabels. Dit is een historisch totaal; stations met meer actieve jaren hebben meer gelegenheid om ritten te verzamelen. ID's uit verschillende schema's worden niet zonder bewijs samengevoegd."
+  },
+  {
+    "area": "NYC",
+    "question": "routes",
+    "interpretation": "De meest voorkomende geregistreerde route heeft 77,240 ritten. Routevolumes zeggen niets over onvervulde vraag en zijn geen geschikte invoer bij vertrek als de bestemming nog onbekend is."
+  },
+  {
+    "area": "NYC",
+    "question": "spatial",
+    "interpretation": "Deze geaggregeerde kaart toont 199,951 steekproefritten binnen het getoonde geografische venster. Buitenliggende punten zijn alleen buiten beeld gehouden. Geldige wereldcoördinaten zijn nog geen bewijs van een betrouwbaar NYC-station."
+  },
+  {
+    "area": "NYC",
+    "question": "acf",
+    "interpretation": "Op deze recente ontwikkelingsperiode is de autocorrelatie bij 24 uur 0.863 en bij 168 uur 0.876. Trend en seizoenen kunnen deze correlaties verhogen; dit is geen zelfstandig bewijs van voorspelprestatie. De latere modellen moeten de baseline op ongeziene perioden verslaan."
+  },
+  {
+    "area": "JC",
+    "question": "temporal",
+    "interpretation": "De ontwikkelingsdata bevatten 6,471,987 bruikbare vertrekken. Het recente daggemiddelde is 2,676 ritten en het maximum 4,817. Groei kan samenhangen met systeemuitbreiding; dit bewijst geen oorzaak. De onvolledige eindjaren zijn niet rechtstreeks met volledige jaren vergelijkbaar."
+  },
+  {
+    "area": "JC",
+    "question": "duration",
+    "interpretation": "De deterministische steekproef bevat 6,674 ritten. Mediaan: 6.55 minuten; IQR: 6.94 minuten; maximum: 3,942.2 minuten. Boxplot-uitbijters worden alleen verborgen in deze weergave, niet verwijderd uit de data. Exacte groepsaantallen en benaderde volledige-data-kwantielen staan in de aggregatietabellen."
+  },
+  {
+    "area": "JC",
+    "question": "user_bike",
+    "interpretation": "1,689,209 ritten hebben geen bekend fietstype, onder meer door het historische schema. Unknown wordt daarom niet als een echte fietscategorie geïnterpreteerd. Veranderingen in categorieën kunnen zowel gedrag als registratie weerspiegelen."
+  }
+]

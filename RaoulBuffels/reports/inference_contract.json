@@ -1,0 +1,16 @@
+{
+  "prediction_day": "offsetloze kalenderdatum; voorspelling om 00:00 America/New_York",
+  "history_columns": {
+    "timestamp": "offsetloos lokaal uur, uniek en aaneengesloten",
+    "rides": "eindig niet-negatief aantal geregistreerde vertrekken",
+    "area": "uitsluitend NYC"
+  },
+  "history_requirement": "minimaal 14 volledige aansluitende dagen strikt vóór de voorspeldag",
+  "DST": "24 kloklabels; ontbrekend uur nul, herhaald uur samengevoegd",
+  "output_columns": {
+    "timestamp": "lokaal kloklabel",
+    "clock_hours": "0, 1 of 2 fysieke uren",
+    "predicted_rides": "niet-negatieve verwachting, ritten per klokvak"
+  },
+  "training_at_inference": false
+}

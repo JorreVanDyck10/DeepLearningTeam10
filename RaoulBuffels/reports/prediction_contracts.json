@@ -1,0 +1,26 @@
+{
+  "created_at": "2026-10-09T10:06:37.050180+00:00",
+  "contracts": [
+    {
+      "target": "hourly_demand",
+      "prediction_time": "00:00 America/New_York op voorspeldag D",
+      "horizon": "alle 24 lokale kloklabels op D (23/25 fysieke uren bij DST)",
+      "available": "kalender van D; gemeten tellingen strikt vóór D",
+      "forbidden": "tellingen eerder op D, weer achteraf, eindstation, duur van toekomstige ritten"
+    },
+    {
+      "target": "daily_demand",
+      "prediction_time": "00:00 America/New_York op voorspeldag D",
+      "horizon": "volledig dagtotaal op D",
+      "available": "kalender van D; historie strikt vóór D",
+      "forbidden": "delen van dagtotaal D; informatie die pas op D beschikbaar komt"
+    },
+    {
+      "target": "duration",
+      "prediction_time": "bij vertrek van één rit",
+      "horizon": "duur tot beëindiging van deze rit (geen vaste kalenderhorizon)",
+      "available": "starttijd, startstation, bekende gebruiker- en fietscategorie",
+      "forbidden": "eindtijd, eindstation, ritduur; nog niet afgeronde trainingslabels"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "finished_at": "2026-10-09T11:48:25.875501+00:00",
+  "rows": 1488,
+  "metrics": {
+    "RMSE": 1979.5071598723391,
+    "MAE": 1076.225847238327,
+    "R2": 0.8280149196256662
+  },
+  "baseline_metrics": {
+    "RMSE": 2608.7775064111906,
+    "MAE": 1453.5282258064517,
+    "R2": 0.7012893531864324
+  },
+  "RMSE_improvement_percent": 24.12127308643189,
+  "MSE_gain_week_bootstrap_ci95": [
+    1161795.8570921829,
+    4198151.224649241
+  ],
+  "ci_limitation": "Slechts circa negen weekblokken; onzekerheidsinterval is indicatief en veronderstelt beperkte afhankelijkheid.",
+  "selected_model": "tuned_random_forest",
+  "test_period": [
+    "2026-07-01",
+    "2026-08-31"
+  ],
+  "fixed_model_rolling_observation": true,
+  "retuned_after_test": false,
+  "selection_fingerprint": "2c52dfeebfcc41e144bb8867dc90506e1da73640cb9c7e668003f027c4abf4df",
+  "model_sha256": "aea5c81d306facc1fadd8dd1888a08219d3afabda16a11b63db7271a694f509f"
+}

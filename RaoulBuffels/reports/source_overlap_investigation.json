@@ -1,0 +1,134 @@
+[
+  {
+    "source": {
+      "source": "C:\\Deeplearning\\citibike_data\\2013-citibike-tripdata.zip",
+      "source_sha256": "4f9936239e741078da5c64206702240d15c5d57fdba2c16bb49b98f589b137b9",
+      "nested": null,
+      "members": [
+        "2013-citibike-tripdata/201306-citibike-tripdata.csv"
+      ],
+      "parent": "2013-citibike-tripdata"
+    },
+    "count": 577703,
+    "sample": [
+      {
+        "ride_id": "None",
+        "rideable_type": "unknown",
+        "started_at": "2013-06-01 00:00:01",
+        "ended_at": "2013-06-01 00:11:36",
+        "start_station_id": "444",
+        "start_station_name": "Broadway & W 24 St",
+        "end_station_id": "434",
+        "end_station_name": "9 Ave & W 18 St",
+        "start_lat": "40.7423543",
+        "start_lng": "-73.98915076",
+        "end_lat": "40.74317449",
+        "end_lng": "-74.00366443",
+        "member_casual": "member",
+        "bike_id": "19678",
+        "reported_duration_seconds": "695.0",
+        "missing_started_at": "False",
+        "missing_ended_at": "False",
+        "duration_minutes": "11.583333333333334",
+        "area": "NYC",
+        "valid_demand": "True",
+        "valid_start_coordinates": "True",
+        "valid_end_coordinates": "True",
+        "valid_duration": "True",
+        "long_duration_flag": "False"
+      },
+      {
+        "ride_id": "None",
+        "rideable_type": "unknown",
+        "started_at": "2013-06-01 00:00:08",
+        "ended_at": "2013-06-01 00:11:41",
+        "start_station_id": "444",
+        "start_station_name": "Broadway & W 24 St",
+        "end_station_id": "434",
+        "end_station_name": "9 Ave & W 18 St",
+        "start_lat": "40.7423543",
+        "start_lng": "-73.98915076",
+        "end_lat": "40.74317449",
+        "end_lng": "-74.00366443",
+        "member_casual": "member",
+        "bike_id": "16649",
+        "reported_duration_seconds": "693.0",
+        "missing_started_at": "False",
+        "missing_ended_at": "False",
+        "duration_minutes": "11.55",
+        "area": "NYC",
+        "valid_demand": "True",
+        "valid_start_coordinates": "True",
+        "valid_end_coordinates": "True",
+        "valid_duration": "True",
+        "long_duration_flag": "False"
+      }
+    ]
+  },
+  {
+    "source": {
+      "source": "C:\\Deeplearning\\citibike_data\\2013-citibike-tripdata.zip",
+      "source_sha256": "4f9936239e741078da5c64206702240d15c5d57fdba2c16bb49b98f589b137b9",
+      "nested": null,
+      "members": [
+        "2013-citibike-tripdata/6_June/201306-citibike-tripdata_1.csv"
+      ],
+      "parent": "2013-citibike-tripdata\\6_June"
+    },
+    "count": 577703,
+    "sample": [
+      {
+        "ride_id": "None",
+        "rideable_type": "unknown",
+        "started_at": "2013-06-01 00:00:01",
+        "ended_at": "2013-06-01 00:11:36",
+        "start_station_id": "444",
+        "start_station_name": "Broadway & W 24 St",
+        "end_station_id": "434.0",
+        "end_station_name": "9 Ave & W 18 St",
+        "start_lat": "40.7423543",
+        "start_lng": "-73.98915076",
+        "end_lat": "40.74317449",
+        "end_lng": "-74.00366443",
+        "member_casual": "member",
+        "bike_id": "19678",
+        "reported_duration_seconds": "695.0",
+        "missing_started_at": "False",
+        "missing_ended_at": "False",
+        "duration_minutes": "11.583333333333334",
+        "area": "NYC",
+        "valid_demand": "True",
+        "valid_start_coordinates": "True",
+        "valid_end_coordinates": "True",
+        "valid_duration": "True",
+        "long_duration_flag": "False"
+      },
+      {
+        "ride_id": "None",
+        "rideable_type": "unknown",
+        "started_at": "2013-06-01 00:00:08",
+        "ended_at": "2013-06-01 00:11:41",
+        "start_station_id": "444",
+        "start_station_name": "Broadway & W 24 St",
+        "end_station_id": "434.0",
+        "end_station_name": "9 Ave & W 18 St",
+        "start_lat": "40.7423543",
+        "start_lng": "-73.98915076",
+        "end_lat": "40.74317449",
+        "end_lng": "-74.00366443",
+        "member_casual": "member",
+        "bike_id": "16649",
+        "reported_duration_seconds": "693.0",
+        "missing_started_at": "False",
+        "missing_ended_at": "False",
+        "duration_minutes": "11.55",
+        "area": "NYC",
+        "valid_demand": "True",
+        "valid_start_coordinates": "True",
+        "valid_end_coordinates": "True",
+        "valid_duration": "True",
+        "long_duration_flag": "False"
+      }
+    ]
+  }
+]

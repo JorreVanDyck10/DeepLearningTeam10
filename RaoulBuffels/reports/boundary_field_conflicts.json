@@ -1,0 +1,29 @@
+{
+  "duplicate_ids": 512,
+  "field_conflict_counts": {
+    "rideable_type": 0,
+    "started_at": 0,
+    "ended_at": 0,
+    "start_station_id": 0,
+    "start_station_name": 0,
+    "end_station_id": 8,
+    "end_station_name": 0,
+    "start_lat": 0,
+    "start_lng": 0,
+    "end_lat": 0,
+    "end_lng": 0,
+    "member_casual": 0,
+    "bike_id": 0,
+    "reported_duration_seconds": 0
+  },
+  "conflicting_ids": [
+    "9C5F8DE7C994C151",
+    "E8186EECD7540A81",
+    "969096DB9DAB87E8",
+    "537A8B677AD3B808",
+    "BD5020B1DA16B09F",
+    "447F6AEC09297EDF",
+    "4E39E4597D76F26B",
+    "2C9464568B525A0E"
+  ]
+}

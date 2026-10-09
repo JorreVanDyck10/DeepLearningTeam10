@@ -1,0 +1,16 @@
+column,missing
+ride_id,91944421
+rideable_type,0
+started_at,0
+ended_at,0
+start_station_id,77666
+start_station_name,77666
+end_station_id,622634
+end_station_name,600940
+start_lat,74342
+start_lng,74342
+end_lat,552234
+end_lng,552234
+member_casual,0
+bike_id,211554498
+reported_duration_seconds,211554498

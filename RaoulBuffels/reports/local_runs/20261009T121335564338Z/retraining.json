@@ -1,0 +1,62 @@
+{
+  "started_at": "2026-10-09T12:14:56.269390+00:00",
+  "rows": 114336,
+  "training_end_exclusive": "2026-07-01",
+  "model_parameters": {
+    "columns": null,
+    "estimator__bootstrap": true,
+    "estimator__ccp_alpha": 0.0,
+    "estimator__criterion": "squared_error",
+    "estimator__max_depth": null,
+    "estimator__max_features": 0.6,
+    "estimator__max_leaf_nodes": null,
+    "estimator__max_samples": null,
+    "estimator__min_impurity_decrease": 0.0,
+    "estimator__min_samples_leaf": 4,
+    "estimator__min_samples_split": 2,
+    "estimator__min_weight_fraction_leaf": 0.0,
+    "estimator__monotonic_cst": null,
+    "estimator__n_estimators": 320,
+    "estimator__n_jobs": 2,
+    "estimator__oob_score": false,
+    "estimator__random_state": 42,
+    "estimator__verbose": 0,
+    "estimator__warm_start": false,
+    "estimator": "RandomForestRegressor(max_features=0.6, min_samples_leaf=4, n_estimators=320,\n                      n_jobs=2, random_state=42)"
+  },
+  "loading": {
+    "seconds": 2.2238979999674484,
+    "process_cpu_seconds": 1.859375,
+    "sampled_process_tree_peak_RSS_GiB": 1.3919944763183594,
+    "RSS_samples": 11,
+    "sampling_interval_seconds": 0.2
+  },
+  "fit": {
+    "seconds": 74.40797329996713,
+    "process_cpu_seconds": 150.96875,
+    "sampled_process_tree_peak_RSS_GiB": 1.5224494934082031,
+    "RSS_samples": 342,
+    "sampling_interval_seconds": 0.2
+  },
+  "saving": {
+    "seconds": 2.0946643999777734,
+    "process_cpu_seconds": 0.890625,
+    "sampled_process_tree_peak_RSS_GiB": 1.5178070068359375,
+    "RSS_samples": 10,
+    "sampling_interval_seconds": 0.2
+  },
+  "prediction_max_absolute_difference": 3.637978807091713e-12,
+  "saved_model": "C:\\Deeplearning\\CloudAI\\Citybike_full\\models\\local_runs\\20261009T121335564338Z\\retrained_fixed_model.joblib",
+  "saved_model_sha256": "8eca8f7437184ecb8a2c8307c1b27f46a463c8faf4499f3461d9ef3c0c01f662",
+  "saved_model_MiB": 647.3329000473022,
+  "reloaded_predictions_verified": true,
+  "comparison_is_accuracy_evaluation": false,
+  "test_used": false,
+  "total": {
+    "seconds": 80.50931479991414,
+    "process_cpu_seconds": 155.5625,
+    "sampled_process_tree_peak_RSS_GiB": 1.8189582824707031,
+    "RSS_samples": 370,
+    "sampling_interval_seconds": 0.2
+  }
+}

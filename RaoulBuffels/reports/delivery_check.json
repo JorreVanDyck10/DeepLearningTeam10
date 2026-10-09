@@ -1,0 +1,66 @@
+{
+  "completed_at": "2026-10-09T12:43:07.712106+00:00",
+  "notebooks": [
+    {
+      "name": "01_EDA_en_hypothesen.ipynb",
+      "executed_code_cells": 12,
+      "outputs": 21,
+      "sha256": "abba1472257407719e828fd2e7c8ff33aecd4e0e2acb3fe20afad85cb351b5d5",
+      "error_cells": 0
+    },
+    {
+      "name": "02_definitieve_voorbereiding.ipynb",
+      "executed_code_cells": 5,
+      "outputs": 5,
+      "sha256": "5aca5f66881f5e0fb21a8502e59e274252475138c6164b803441fe470b78bd6a",
+      "error_cells": 0
+    },
+    {
+      "name": "03_baseline_en_Ridge.ipynb",
+      "executed_code_cells": 5,
+      "outputs": 21,
+      "sha256": "749d3daa70a9d35f0611612178742827be0fc3ee2e838e5a6f2ae00a2e8c76ce",
+      "error_cells": 0
+    },
+    {
+      "name": "04_PyCaret_vergelijking.ipynb",
+      "executed_code_cells": 4,
+      "outputs": 4,
+      "sha256": "c0706a01f6e339a40b13fcf47f423679902553e931b3b67ea3ffb875cb02c37d",
+      "error_cells": 0
+    },
+    {
+      "name": "05_Random_Forest.ipynb",
+      "executed_code_cells": 5,
+      "outputs": 12,
+      "sha256": "0420d615e1f5b3461be8b0c4be1479b171d708c66fbcaab4f2760f885c2ea130",
+      "error_cells": 0
+    },
+    {
+      "name": "06_LightGBM.ipynb",
+      "executed_code_cells": 5,
+      "outputs": 12,
+      "sha256": "b3e50c4a722e5b497e2fd10a87d726c0c6e2a3e3c412984bfba40578dc1805e3",
+      "error_cells": 0
+    },
+    {
+      "name": "07_eindvergelijking.ipynb",
+      "executed_code_cells": 4,
+      "outputs": 11,
+      "sha256": "a77b7885700d7d8b18b6e41deda6c62067cedb98414272be2674891577265c9e",
+      "error_cells": 0
+    },
+    {
+      "name": "citybike_analysis.ipynb",
+      "executed_code_cells": 37,
+      "outputs": 85,
+      "sha256": "ba0410f948228f8b4954e58e482bc99d51d36572cb88f61f246dfdc09fe425dd",
+      "error_cells": 0
+    }
+  ],
+  "tests_passed": 27,
+  "model_sha256": "aea5c81d306facc1fadd8dd1888a08219d3afabda16a11b63db7271a694f509f",
+  "selected_model": "tuned_random_forest",
+  "verification_complete": true,
+  "AWS_scope": "afzonderlijke latere taak"
+}

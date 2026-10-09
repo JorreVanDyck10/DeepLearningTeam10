@@ -1,0 +1,5 @@
+{
+  "sample_rows": 6674,
+  "duplicate_sample_rows": 0,
+  "interpretation": "Exact equality of selected sample fields is a diagnostic, not proof of erroneous duplicated trips. Legacy identical trips are retained. No population count extrapolation."
+}

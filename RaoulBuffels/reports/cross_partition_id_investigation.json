@@ -1,0 +1,24 @@
+[
+  {
+    "ride_id":"B9E96A1777C53FDD",
+    "started_at":"2026-04-30T23:42:42.184",
+    "ended_at":"2026-05-01T00:08:38.055",
+    "start_station_id":"5481.04",
+    "end_station_id":"3811.05",
+    "rideable_type":"electric_bike",
+    "member_casual":"member",
+    "valid_demand":true,
+    "filename":"C:\/Deeplearning\/CloudAI\/Citybike_full\/data\/processed\/NYC\/year=2026\/month=04\/rides.parquet"
+  },
+  {
+    "ride_id":"B9E96A1777C53FDD",
+    "started_at":"2026-04-30T23:42:42.184",
+    "ended_at":"2026-05-01T00:08:38.055",
+    "start_station_id":"5481.04",
+    "end_station_id":"3811.05",
+    "rideable_type":"electric_bike",
+    "member_casual":"member",
+    "valid_demand":false,
+    "filename":"C:\/Deeplearning\/CloudAI\/Citybike_full\/data\/processed\/NYC\/year=2026\/month=05\/rides.parquet"
+  }
+]

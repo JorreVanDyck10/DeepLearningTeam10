@@ -1,0 +1,13 @@
+.venv/
+data/
+models/
+__pycache__/
+.ipynb_checkpoints/
+*.parquet
+*.joblib
+*.pkl
+*.duckdb*
+*.sqlite*
+logs/
+*.log
+.streamlit/secrets.toml

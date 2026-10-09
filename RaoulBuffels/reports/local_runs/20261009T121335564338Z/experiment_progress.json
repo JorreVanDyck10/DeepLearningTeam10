@@ -1,0 +1,184 @@
+[
+  {
+    "name": "count_poisson",
+    "parameters": {
+      "n_estimators": 400,
+      "num_leaves": 31,
+      "learning_rate": 0.05,
+      "min_child_samples": 50,
+      "n_jobs": 2,
+      "verbosity": -1,
+      "random_state": 42,
+      "deterministic": true,
+      "force_col_wise": true,
+      "objective": "poisson"
+    },
+    "folds": [
+      {
+        "fold": 1,
+        "RMSE": 1086.2411613517074,
+        "MAE": 685.307037357244,
+        "R2": 0.7429293451224519,
+        "seconds": 1.6541475999401882
+      },
+      {
+        "fold": 2,
+        "RMSE": 1024.182959247274,
+        "MAE": 672.7649623546193,
+        "R2": 0.7848980296193035,
+        "seconds": 1.5146236999426037
+      },
+      {
+        "fold": 3,
+        "RMSE": 1085.5126370630196,
+        "MAE": 729.2064876531792,
+        "R2": 0.6124555244895438,
+        "seconds": 1.5251161999767646
+      },
+      {
+        "fold": 4,
+        "RMSE": 1878.1661933503062,
+        "MAE": 1197.0566547854685,
+        "R2": 0.7089910002460612,
+        "seconds": 1.4161993999732658
+      },
+      {
+        "fold": 5,
+        "RMSE": 2032.443430029505,
+        "MAE": 1206.318488657024,
+        "R2": 0.7750221641058301,
+        "seconds": 1.550895499996841
+      }
+    ],
+    "cv_RMSE": 1421.3092762083625,
+    "measurement": {
+      "seconds": 7.671742299920879,
+      "process_cpu_seconds": 15.21875,
+      "sampled_process_tree_peak_RSS_GiB": 0.2651176452636719,
+      "RSS_samples": 36,
+      "sampling_interval_seconds": 0.2
+    }
+  },
+  {
+    "name": "robust_huber",
+    "parameters": {
+      "n_estimators": 400,
+      "num_leaves": 31,
+      "learning_rate": 0.05,
+      "min_child_samples": 50,
+      "n_jobs": 2,
+      "verbosity": -1,
+      "random_state": 42,
+      "deterministic": true,
+      "force_col_wise": true,
+      "objective": "huber",
+      "alpha": 0.9
+    },
+    "folds": [
+      {
+        "fold": 1,
+        "RMSE": 2142.455270156088,
+        "MAE": 1769.068628525904,
+        "R2": -5.4157590333892e-05,
+        "seconds": 1.3741821999428794
+      },
+      {
+        "fold": 2,
+        "RMSE": 2252.9431504012623,
+        "MAE": 1895.245650187259,
+        "R2": -0.040853875610506574,
+        "seconds": 1.3135471000568941
+      },
+      {
+        "fold": 3,
+        "RMSE": 1864.8423276418837,
+        "MAE": 1614.7206019172684,
+        "R2": -0.14376293657266404,
+        "seconds": 1.3432420999743044
+      },
+      {
+        "fold": 4,
+        "RMSE": 3841.0435850211393,
+        "MAE": 2892.0880708616005,
+        "R2": -0.2171296788075059,
+        "seconds": 1.340224999934435
+      },
+      {
+        "fold": 5,
+        "RMSE": 5063.565307685623,
+        "MAE": 3863.171812597331,
+        "R2": -0.3964186269451604,
+        "seconds": 1.364352700067684
+      }
+    ],
+    "cv_RMSE": 3032.9699281811995,
+    "measurement": {
+      "seconds": 6.7482050999533385,
+      "process_cpu_seconds": 13.40625,
+      "sampled_process_tree_peak_RSS_GiB": 0.2997398376464844,
+      "RSS_samples": 32,
+      "sampling_interval_seconds": 0.2
+    }
+  },
+  {
+    "name": "regularized_squared_error",
+    "parameters": {
+      "n_estimators": 400,
+      "num_leaves": 15,
+      "learning_rate": 0.05,
+      "min_child_samples": 50,
+      "n_jobs": 2,
+      "verbosity": -1,
+      "random_state": 42,
+      "deterministic": true,
+      "force_col_wise": true,
+      "objective": "regression",
+      "reg_lambda": 10.0
+    },
+    "folds": [
+      {
+        "fold": 1,
+        "RMSE": 1113.1927250711517,
+        "MAE": 704.5527409714274,
+        "R2": 0.7300143313886347,
+        "seconds": 0.9235095999902114
+      },
+      {
+        "fold": 2,
+        "RMSE": 1123.2268006513157,
+        "MAE": 751.471285242437,
+        "R2": 0.7412834494711613,
+        "seconds": 0.993915900005959
+      },
+      {
+        "fold": 3,
+        "RMSE": 1072.093544740502,
+        "MAE": 727.0439059829564,
+        "R2": 0.6219779394204947,
+        "seconds": 0.9449617000063881
+      },
+      {
+        "fold": 4,
+        "RMSE": 1842.0986785820107,
+        "MAE": 1192.5250490436242,
+        "R2": 0.7200605119004444,
+        "seconds": 0.8564202999696136
+      },
+      {
+        "fold": 5,
+        "RMSE": 1931.2359171625894,
+        "MAE": 1161.4597309150588,
+        "R2": 0.7968702838823669,
+        "seconds": 0.9471202000277117
+      }
+    ],
+    "cv_RMSE": 1416.3695332415139,
+    "measurement": {
+      "seconds": 4.676592899952084,
+      "process_cpu_seconds": 9.28125,
+      "sampled_process_tree_peak_RSS_GiB": 0.2875404357910156,
+      "RSS_samples": 22,
+      "sampling_interval_seconds": 0.2
+    }
+  }
+]

@@ -1,0 +1,65 @@
+{
+  "train_rows": 112872,
+  "validation_rows": 1464,
+  "folds": [
+    {
+      "train_start": 0,
+      "train_stop": 109512,
+      "validation_start": 109512,
+      "validation_stop": 110184,
+      "train_last_day": "2025-12-11",
+      "validation_first_day": "2025-12-12",
+      "validation_last_day": "2026-01-08"
+    },
+    {
+      "train_start": 0,
+      "train_stop": 110184,
+      "validation_start": 110184,
+      "validation_stop": 110856,
+      "train_last_day": "2026-01-08",
+      "validation_first_day": "2026-01-09",
+      "validation_last_day": "2026-02-05"
+    },
+    {
+      "train_start": 0,
+      "train_stop": 110856,
+      "validation_start": 110856,
+      "validation_stop": 111528,
+      "train_last_day": "2026-02-05",
+      "validation_first_day": "2026-02-06",
+      "validation_last_day": "2026-03-05"
+    },
+    {
+      "train_start": 0,
+      "train_stop": 111528,
+      "validation_start": 111528,
+      "validation_stop": 112200,
+      "train_last_day": "2026-03-05",
+      "validation_first_day": "2026-03-06",
+      "validation_last_day": "2026-04-02"
+    },
+    {
+      "train_start": 0,
+      "train_stop": 112200,
+      "validation_start": 112200,
+      "validation_stop": 112872,
+      "train_last_day": "2026-04-02",
+      "validation_first_day": "2026-04-03",
+      "validation_last_day": "2026-04-30"
+    }
+  ],
+  "fold_fingerprint": "59238f467d526664e56943f96d102928ede96e4e371fecff4fa382847c7601ad",
+  "train_data_fingerprint": "f5aec178a9fea0223f2d08c98b207909faf272d8a43ff1cae5b3f2634887833f",
+  "validation_data_fingerprint": "83d6332e2bdba4915e1ee1b4f753468e8fe682bc11feb23b2b587d991b331081",
+  "shuffle": false,
+  "preprocess": false,
+  "preprocessing": "Ridge scaler inside per-fold estimator pipeline",
+  "actual_internal_rows_checked": true,
+  "candidate_labels": [
+    "lightgbm",
+    "random_forest",
+    "ridge",
+    "seasonal_naive"
+  ],
+  "operational_prediction_rules": "same OperationalRegressor as sklearn and saved inference"
+}

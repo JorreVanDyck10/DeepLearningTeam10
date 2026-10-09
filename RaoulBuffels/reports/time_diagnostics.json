@@ -1,0 +1,9 @@
+{
+  "series": "dagtotalen vanaf 2023, uitsluitend ontwikkeling",
+  "ADF_statistic": -2.2415875473732845,
+  "ADF_p_value": 0.1914991453560917,
+  "ADF_lags": 28,
+  "daily_ACF_1": 0.8408410322241883,
+  "daily_ACF_7": 0.755345288238582,
+  "interpretation": "ADF toetst een unit root onder een specifiek model; seizoenen/structuurbreuken kunnen blijven bestaan. Dit is een diagnose en wordt niet gebruikt voor hypothese- of modelselectie."
+}

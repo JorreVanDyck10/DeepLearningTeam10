@@ -1,0 +1,21 @@
+{
+  "python_version": "3.11.0 (main, Oct 24 2022, 18:26:48) [MSC v.1933 64 bit (AMD64)]",
+  "python_executable": "C:\\Deeplearning\\CloudAI\\Citybike_full\\.venv\\Scripts\\python.exe",
+  "partitions_verified": 291,
+  "manifest_fingerprint_verified": true,
+  "pycaret_identical_folds": true,
+  "offline_app_predictions_equal": true,
+  "pycaret_identical_train_validation_rows": true,
+  "fixed_configuration_retraining_verified": true,
+  "retraining_seconds": 98.91165110003203,
+  "retraining_prediction_max_difference": 3.637978807091713e-12,
+  "streamlit_form_predictions_verified": true,
+  "manifest_required_fields_verified": true,
+  "model_ignored_by_git": true,
+  "evaluated_model_is_deployed": true,
+  "prediction_code_and_packages_locked": true,
+  "raw_rows": 355199439,
+  "retained_rows": 330714664,
+  "modeling_rows": 114336,
+  "test_rows": 1488
+}

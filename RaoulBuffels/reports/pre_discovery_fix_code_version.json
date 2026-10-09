@@ -1,0 +1,23 @@
+{
+  "fingerprint": "3d96ac0a8afb5cdd12dce898d91c12527f72e4d261a9d0cdc30de36e870dd3ca",
+  "files": {
+    "citibike\\prepare.py": "0c4a6e8f0fe47e151271009ea915ccde0d499823a655f434377857dcae662c0f",
+    "citibike\\config.py": "1789bb5353e97ee27088c09ef629476ccccb0a1adc8bcc28ded888d7cc7e8f52"
+  },
+  "git_commit": "e13811ef5d6c806262db7265ebca7e155d282eb8",
+  "git_status": "M \"Discussion topics/chapter 4.md\"\n M \"Exercises/1 working env and streamlit/1 - Working with a venv.ipynb\"\n M \"Exercises/1 working env and streamlit/2 - Streamlit 101.ipynb\"\n M \"Exercises/1 working env and streamlit/3 - First streamlit.py\"\n M \"Exercises/2 first model/3 - MPG app.py\"\n M \"Exercises/2 first model/5 - titanic app (solved).py\"\n M \"Exercises/3 model quality/3 - Metrics.ipynb\"\n M \"Exercises/3 model quality/5.1 - Install PyCaret.ipynb\"\n M \"Exercises/3 model quality/5.2 - PyCaret.ipynb\"\n M Exercises/files/requirements.txt\n M \"Exercises_solved/1 working env and streamlit/3 - First streamlit.py\"\n M \"Exercises_solved/2 first model/3 - MPG app.py\"\n M \"Exercises_solved/2 first model/5 - titanic app (solved).py\"\n?? Citybike/\n?? Citybike_full/\n?? Mushroom/",
+  "packages": {
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "scipy": "1.11.4",
+    "scikit-learn": "1.4.2",
+    "duckdb": "1.5.6",
+    "pyarrow": "25.0.1",
+    "pycaret": "3.3.2",
+    "lightgbm": "4.6.0",
+    "joblib": "1.3.2",
+    "streamlit": "1.65.0",
+    "matplotlib": "3.7.5",
+    "psutil": "7.2.2"
+  }
+}

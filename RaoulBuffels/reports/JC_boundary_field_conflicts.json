@@ -1,0 +1,19 @@
+{
+  "duplicate_ids": 42,
+  "field_conflict_counts": {
+    "rideable_type": 0,
+    "started_at": 24,
+    "ended_at": 24,
+    "start_station_id": 0,
+    "start_station_name": 0,
+    "end_station_id": 0,
+    "end_station_name": 0,
+    "start_lat": 0,
+    "start_lng": 0,
+    "end_lat": 0,
+    "end_lng": 0,
+    "member_casual": 0,
+    "bike_id": 0,
+    "reported_duration_seconds": 0
+  }
+}
