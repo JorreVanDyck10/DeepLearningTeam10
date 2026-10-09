@@ -13,7 +13,7 @@ De bestaande teamwebsite, Citi Bike-baseline, API en bijdragen van teamgenoten w
 Alleen uitvoeren als de oorspronkelijke mappen aanwezig zijn en de doelmappen nog niet bestaan:
 
 ```powershell
-Set-Location 'C:\Deeplearning\DeepLearningTeam10\RaoulBuffels'
+Set-Location 'C:\Deeplearning\DeepLearningTeam10\SolutionRaoul\Citybike'
 New-Item -ItemType Junction -Path 'data' -Target 'C:\Deeplearning\CloudAI\Citybike_full\data'
 New-Item -ItemType Junction -Path 'models' -Target 'C:\Deeplearning\CloudAI\Citybike_full\models'
 New-Item -ItemType Junction -Path '.venv' -Target 'C:\Deeplearning\CloudAI\Citybike_full\.venv'
@@ -54,7 +54,7 @@ standaard vier threads en maximaal 4 GiB intern geheugen. De totale proces-RSS
 kan hoger zijn door Arrow/Python; gesamplede RSS staat per partition in het manifest.
 
 ```text
-RaoulBuffels/
+SolutionRaoul/Citybike/
   citibike/       Python-modules voor pipeline, onderzoek, features en modellen
   notebooks/     volledig overzicht plus genummerde ondersteunende notebooks
   reports/       kleine, deelbare manifesten, statistiek en modelresultaten
@@ -108,7 +108,7 @@ uitgevoerd; `reports/delivery_check.json` legt hun checksums en uitvoercellen va
 
 ## Installatie — Windows PowerShell
 
-Voer de volgende commando's uit vanuit `C:\Deeplearning\DeepLearningTeam10\RaoulBuffels`:
+Voer de volgende commando's uit vanuit `C:\Deeplearning\DeepLearningTeam10\SolutionRaoul\Citybike`:
 
 ```powershell
 py -3.11 -m venv .venv
@@ -118,8 +118,9 @@ $env:CITIBIKE_SOURCE = 'C:\Deeplearning\citibike_data'
 .\.venv\Scripts\python.exe -X utf8 tools/run_tests.py
 ```
 
-Voor deze computer is de defaultbronmap al juist. Op een andere computer geef
-je `CITIBIKE_SOURCE` of `--source` expliciet op. Reserveer ruime vrije schijfruimte
+Geef vanuit deze geneste projectmap `CITIBIKE_SOURCE` of `--source` expliciet op;
+op deze computer is de bronmap `C:\Deeplearning\citibike_data`, zoals hierboven.
+Reserveer ruime vrije schijfruimte
 voor Parquet, staging en DuckDB-spill; de code dupliceert niet alle ruwe CSV's.
 `requirements-lock.txt` legt ook transitieve dependencies vast;
 `requirements.txt` documenteert de direct gebruikte packages. Gebruik Python 3.11.
@@ -323,7 +324,7 @@ de onderstaande commando's; `run.py train` start volledige modelselectie en word
 terecht geblokkeerd zodra de oorspronkelijke eindtest is geopend.
 
 ```powershell
-Set-Location 'C:\Deeplearning\DeepLearningTeam10\RaoulBuffels'
+Set-Location 'C:\Deeplearning\DeepLearningTeam10\SolutionRaoul\Citybike'
 # Alleen dezelfde vaste Random Forest opnieuw fitten en lokaal opslaan:
 .\.venv\Scripts\python.exe -X utf8 tools/local_training.py retrain
 # Drie nieuwe LightGBM-instellingen onderzoeken, zonder nieuwe eindtest:

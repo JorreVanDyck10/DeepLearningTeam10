@@ -1,7 +1,7 @@
 {
   "exported_at": "2026-10-09T12:42:22.318172+00:00",
   "source": "C:\\Deeplearning\\CloudAI\\Citybike_full",
-  "destination": "C:\\Deeplearning\\DeepLearningTeam10\\RaoulBuffels",
+  "destination": "C:\\Deeplearning\\DeepLearningTeam10\\SolutionRaoul\\Citybike",
   "author": "Raoul Buffels",
   "repository": "JorreVanDyck10/DeepLearningTeam10",
   "excluded": [
@@ -138,72 +138,72 @@
       "path": "notebooks/01_EDA_en_hypothesen.ipynb",
       "source_sha256": "1d3d532e91c2c608179b74aee20669e45447e9cdc085af2bf2520abea468cfbc",
       "source_bytes": 706689,
-      "export_sha256": "abba1472257407719e828fd2e7c8ff33aecd4e0e2acb3fe20afad85cb351b5d5",
-      "export_bytes": 707629,
+      "export_sha256": "c3105933169f6e064c63cc3fbba36449b16939c72c54212b116e6fec23e36bed",
+      "export_bytes": 707639,
       "documentation_changed": true
     },
     {
       "path": "notebooks/02_definitieve_voorbereiding.ipynb",
       "source_sha256": "31e04020df7fedd6ee15d74c8f5582bcb6ad30ad319c4c51d847e133d8da0d40",
       "source_bytes": 39823,
-      "export_sha256": "5aca5f66881f5e0fb21a8502e59e274252475138c6164b803441fe470b78bd6a",
-      "export_bytes": 40763,
+      "export_sha256": "43ef24a9c4676fb2b2192cebb0288858d54ac55b2c92564cb367e76b926c905c",
+      "export_bytes": 40773,
       "documentation_changed": true
     },
     {
       "path": "notebooks/03_baseline_en_Ridge.ipynb",
       "source_sha256": "e20bfc08dc7b0c5cfed9a96368a73c87f7e3c995d60d5d148318dd41bdf380f6",
       "source_bytes": 27479,
-      "export_sha256": "749d3daa70a9d35f0611612178742827be0fc3ee2e838e5a6f2ae00a2e8c76ce",
-      "export_bytes": 28419,
+      "export_sha256": "f8016bdddb82d544f73925932b574e349e3fded747dbc38e004bbb0eb2906171",
+      "export_bytes": 28429,
       "documentation_changed": true
     },
     {
       "path": "notebooks/04_PyCaret_vergelijking.ipynb",
       "source_sha256": "173db286b02f7ec55bedda381c5bcb2a4646cedc33fb6d33afb9157e9f6ee3f3",
       "source_bytes": 18635,
-      "export_sha256": "c0706a01f6e339a40b13fcf47f423679902553e931b3b67ea3ffb875cb02c37d",
-      "export_bytes": 19575,
+      "export_sha256": "a2481979ffdea39afff56f0ae05afebcf8946a478258b97ced8237c51cd128f2",
+      "export_bytes": 19585,
       "documentation_changed": true
     },
     {
       "path": "notebooks/05_Random_Forest.ipynb",
       "source_sha256": "5e4ef6cd2b8b20a74554657f8189dd5a9566ec8b067daae9a0578ed290bf084c",
       "source_bytes": 20848,
-      "export_sha256": "0420d615e1f5b3461be8b0c4be1479b171d708c66fbcaab4f2760f885c2ea130",
-      "export_bytes": 21788,
+      "export_sha256": "005d35ee6c6288964c0ca51a9b6731ed67d1d9e8a9afaf97b49a0ca615004c87",
+      "export_bytes": 21798,
       "documentation_changed": true
     },
     {
       "path": "notebooks/06_LightGBM.ipynb",
       "source_sha256": "18bb2b7e7d21d954ad8a0106bcf8e711f050291723edb6f35a9ff7bba979e17f",
       "source_bytes": 25994,
-      "export_sha256": "b3e50c4a722e5b497e2fd10a87d726c0c6e2a3e3c412984bfba40578dc1805e3",
-      "export_bytes": 26934,
+      "export_sha256": "11fb6da47ad73cc354a48f5fd747fc4e0078719202e333eafa309e059f48cf3e",
+      "export_bytes": 26944,
       "documentation_changed": true
     },
     {
       "path": "notebooks/07_eindvergelijking.ipynb",
       "source_sha256": "2ae4cc26cb45056353a2dee97c1195f4d03a75c9ea22d89bb586d51821c4a027",
       "source_bytes": 345154,
-      "export_sha256": "a77b7885700d7d8b18b6e41deda6c62067cedb98414272be2674891577265c9e",
-      "export_bytes": 346094,
+      "export_sha256": "eb082242db8f5c23aa84c73e1155eb8395f35ef0ec3c60341bcc902a41bce2a2",
+      "export_bytes": 346104,
       "documentation_changed": true
     },
     {
       "path": "notebooks/citybike_analysis.ipynb",
       "source_sha256": "a3520b89271f311792bfd249bb3d74f1117fde9f1a2857f8a0cb8894cedd0805",
       "source_bytes": 1449096,
-      "export_sha256": "ba0410f948228f8b4954e58e482bc99d51d36572cb88f61f246dfdc09fe425dd",
-      "export_bytes": 1450036,
+      "export_sha256": "76d4e101237501d4f1b32ba38b3c1d123ea33f351f17404963a57772909dc835",
+      "export_bytes": 1450046,
       "documentation_changed": true
     },
     {
       "path": "README.md",
       "source_sha256": "498a75769c26e1b9905fe9c61010c02d76cc1e49e98a34c3b8a230ba3939dd5b",
       "source_bytes": 21804,
-      "export_sha256": "d6e2aeb1d39f379e594d0b8e959c73d27a42fe38cd22edd12b07ad3d7feb68af",
-      "export_bytes": 24179,
+      "export_sha256": "380bb26aedcb2d5bedaa9420d31a2d128a125a63914a0c2f6b4f43e7f1a36456",
+      "export_bytes": 24256,
       "documentation_changed": true
     },
     {
@@ -242,7 +242,7 @@
       "path": "reports/delivery_check.json",
       "source_sha256": "74a4c2e7c5730906caecb4c6772f6969004b09f4c78369584706368e2b08c630",
       "source_bytes": 2100,
-      "export_sha256": "3668931b01d9992752c8395f17dbd437ecfde03b3b6088fba385d6cfd226b115",
+      "export_sha256": "91030a93075dff56671e2e87d337e7ed646de7df5a0e7fd7ae6e943919cf355c",
       "export_bytes": 2100,
       "documentation_changed": true
     },
@@ -1042,9 +1042,9 @@
       "path": "tools/export_contribution.py",
       "source_sha256": "e665ee5e379746404619fc3dabe67facd90ba87fc95447742a16a87f29bdfd10",
       "source_bytes": 6774,
-      "export_sha256": "e665ee5e379746404619fc3dabe67facd90ba87fc95447742a16a87f29bdfd10",
-      "export_bytes": 6774,
-      "documentation_changed": false
+      "export_sha256": "999a01633781188249ed52eb929d6216966c1941cf754ab31e8d6ca722535062",
+      "export_bytes": 6794,
+      "documentation_changed": true
     },
     {
       "path": "tools/local_training.py",
@@ -1101,6 +1101,9 @@
     "export_streamlit_predictions_equal_offline": true,
     "new_end_test_evaluation": false,
     "delivery_notebook_checksums_refreshed": true,
-    "git_line_ending_conversion_disabled": true
-  }
+    "git_line_ending_conversion_disabled": true,
+    "renamed_model_load_verified": true
+  },
+  "original_export_destination": "C:\\Deeplearning\\DeepLearningTeam10\\RaoulBuffels",
+  "folder_renamed_from": "RaoulBuffels"
 }

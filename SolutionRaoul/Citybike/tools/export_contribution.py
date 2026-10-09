@@ -41,7 +41,7 @@ def export(source, destination):
         'De codecellen zijn uitgevoerd in de oorspronkelijke lokale `Citybike_full`-omgeving '
         'op 9 oktober 2026. Deze export behoudt die echte uitvoer; alleen deze Markdown-cel '
         'is toegevoegd. Lokale paden, timings en fingerprints in de rapporten beschrijven '
-        'de oorspronkelijke uitvoering. Start voor heruitvoering vanuit `RaoulBuffels` '
+        'de oorspronkelijke uitvoering. Start voor heruitvoering vanuit `SolutionRaoul/Citybike` '
         'of de map `notebooks` met de bijbehorende Python 3.11-omgeving. '
         'AWS is een afzonderlijke latere taak.'
     )
@@ -50,7 +50,7 @@ def export(source, destination):
         notebook.cells.insert(0, nbformat.v4.new_markdown_cell(disclosure))
         nbformat.write(notebook, path)
     readme = (destination/'README.md').read_text(encoding='utf-8')
-    readme = readme.replace(str(source), str(destination)).replace('Citybike_full/', 'RaoulBuffels/')
+    readme = readme.replace(str(source), str(destination)).replace('Citybike_full/', 'SolutionRaoul/Citybike/')
     readme = readme.replace('Teamnaam, teamleden en echte bijdragen: **zelf invullen**, ook in de notebooks.',
                             'Team: **DeepLearningTeam10** — Jorre Van Dyck, Milan Wouters, Raoul Buffels en Andrew Noeyens.\n'
                             'Deze map bevat de Citi Bike-bijdrage van **Raoul Buffels**. De concrete menselijke\n'

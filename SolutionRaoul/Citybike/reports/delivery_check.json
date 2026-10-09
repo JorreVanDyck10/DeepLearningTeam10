@@ -1,60 +1,60 @@
 {
-  "completed_at": "2026-10-09T12:43:07.712106+00:00",
+  "completed_at": "2026-10-09T12:49:00.255982+00:00",
   "notebooks": [
     {
       "name": "01_EDA_en_hypothesen.ipynb",
       "executed_code_cells": 12,
       "outputs": 21,
-      "sha256": "abba1472257407719e828fd2e7c8ff33aecd4e0e2acb3fe20afad85cb351b5d5",
+      "sha256": "c3105933169f6e064c63cc3fbba36449b16939c72c54212b116e6fec23e36bed",
       "error_cells": 0
     },
     {
       "name": "02_definitieve_voorbereiding.ipynb",
       "executed_code_cells": 5,
       "outputs": 5,
-      "sha256": "5aca5f66881f5e0fb21a8502e59e274252475138c6164b803441fe470b78bd6a",
+      "sha256": "43ef24a9c4676fb2b2192cebb0288858d54ac55b2c92564cb367e76b926c905c",
       "error_cells": 0
     },
     {
       "name": "03_baseline_en_Ridge.ipynb",
       "executed_code_cells": 5,
       "outputs": 21,
-      "sha256": "749d3daa70a9d35f0611612178742827be0fc3ee2e838e5a6f2ae00a2e8c76ce",
+      "sha256": "f8016bdddb82d544f73925932b574e349e3fded747dbc38e004bbb0eb2906171",
       "error_cells": 0
     },
     {
       "name": "04_PyCaret_vergelijking.ipynb",
       "executed_code_cells": 4,
       "outputs": 4,
-      "sha256": "c0706a01f6e339a40b13fcf47f423679902553e931b3b67ea3ffb875cb02c37d",
+      "sha256": "a2481979ffdea39afff56f0ae05afebcf8946a478258b97ced8237c51cd128f2",
       "error_cells": 0
     },
     {
       "name": "05_Random_Forest.ipynb",
       "executed_code_cells": 5,
       "outputs": 12,
-      "sha256": "0420d615e1f5b3461be8b0c4be1479b171d708c66fbcaab4f2760f885c2ea130",
+      "sha256": "005d35ee6c6288964c0ca51a9b6731ed67d1d9e8a9afaf97b49a0ca615004c87",
       "error_cells": 0
     },
     {
       "name": "06_LightGBM.ipynb",
       "executed_code_cells": 5,
       "outputs": 12,
-      "sha256": "b3e50c4a722e5b497e2fd10a87d726c0c6e2a3e3c412984bfba40578dc1805e3",
+      "sha256": "11fb6da47ad73cc354a48f5fd747fc4e0078719202e333eafa309e059f48cf3e",
       "error_cells": 0
     },
     {
       "name": "07_eindvergelijking.ipynb",
       "executed_code_cells": 4,
       "outputs": 11,
-      "sha256": "a77b7885700d7d8b18b6e41deda6c62067cedb98414272be2674891577265c9e",
+      "sha256": "eb082242db8f5c23aa84c73e1155eb8395f35ef0ec3c60341bcc902a41bce2a2",
       "error_cells": 0
     },
     {
       "name": "citybike_analysis.ipynb",
       "executed_code_cells": 37,
       "outputs": 85,
-      "sha256": "ba0410f948228f8b4954e58e482bc99d51d36572cb88f61f246dfdc09fe425dd",
+      "sha256": "76d4e101237501d4f1b32ba38b3c1d123ea33f351f17404963a57772909dc835",
       "error_cells": 0
     }
   ],
