@@ -29,6 +29,10 @@ jobs:
         run: |
           python frontend/export_metadata.py
           git diff --exit-code -- frontend/metadata.json
+      - name: Check final submission index and preserved sources
+        run: |
+          python -m pip install nbformat==5.11.1
+          python Final/tools/verify_final.py
       - name: Check JavaScript syntax
         run: |
           node --check frontend/config.js

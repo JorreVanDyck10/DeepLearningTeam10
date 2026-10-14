@@ -2,9 +2,9 @@
   "source_pipeline_sha256": "5b451a756dd5c03ace50e32d18d7a230198df40570e547c9085e87215bddf42c",
   "model_id": "mushroom_final_rf300",
   "test_rows_verified": 900,
-  "additional_rows_verified": 5006,
+  "additional_rows_verified": 5000,
   "label_disagreements": 0,
-  "max_probability_difference": 2.220446049250313e-16,
+  "max_probability_difference": 3.3306690738754696e-16,
   "tolerance": 1e-12,
   "export_sklearn": "1.4.2",
   "forest_sha256": "91d8dbf0192c5ce98d0f3e97175c4260d8bec5ffffaa9f887bd7ec1ed4541dc7"

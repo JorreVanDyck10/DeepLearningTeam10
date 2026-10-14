@@ -1,0 +1,86 @@
+[
+  {
+    "notebook": "Mushroom/01_EDA.ipynb",
+    "code_cells": 10,
+    "executed": 10,
+    "errors": 0,
+    "seconds": 3.0998259000480175
+  },
+  {
+    "notebook": "Mushroom/02_voorbereiding.ipynb",
+    "code_cells": 3,
+    "executed": 3,
+    "errors": 0,
+    "seconds": 1.8262663000496104
+  },
+  {
+    "notebook": "Mushroom/03_baseline.ipynb",
+    "code_cells": 2,
+    "executed": 2,
+    "errors": 0,
+    "seconds": 1.9281809000531211
+  },
+  {
+    "notebook": "Mushroom/04_AutoML.ipynb",
+    "code_cells": 2,
+    "executed": 2,
+    "errors": 0,
+    "seconds": 1.710694200010039
+  },
+  {
+    "notebook": "Mushroom/05_Random_Forest.ipynb",
+    "code_cells": 2,
+    "executed": 2,
+    "errors": 0,
+    "seconds": 32.6103173000738
+  },
+  {
+    "notebook": "Mushroom/06_Gradient_Boosting.ipynb",
+    "code_cells": 2,
+    "executed": 2,
+    "errors": 0,
+    "seconds": 16.24158809997607
+  },
+  {
+    "notebook": "Mushroom/07_Logistic_Regression.ipynb",
+    "code_cells": 2,
+    "executed": 2,
+    "errors": 0,
+    "seconds": 11.812216900056228
+  },
+  {
+    "notebook": "Mushroom/09_vergelijking.ipynb",
+    "code_cells": 5,
+    "executed": 5,
+    "errors": 0,
+    "seconds": 2.6157970000058413
+  },
+  {
+    "notebook": "CitiBike/03_baseline.ipynb",
+    "code_cells": 1,
+    "executed": 1,
+    "errors": 0,
+    "seconds": 4.166542899911292
+  },
+  {
+    "notebook": "CitiBike/04_Ridge.ipynb",
+    "code_cells": 1,
+    "executed": 1,
+    "errors": 0,
+    "seconds": 1.173908400000073
+  },
+  {
+    "notebook": "CitiBike/10_deployment.ipynb",
+    "code_cells": 1,
+    "executed": 1,
+    "errors": 0,
+    "seconds": 4.097078900085762
+  },
+  {
+    "notebook": "Mushroom/10_deployment.ipynb",
+    "code_cells": 3,
+    "executed": 3,
+    "errors": 0,
+    "seconds": 8.699124499922618
+  }
+]

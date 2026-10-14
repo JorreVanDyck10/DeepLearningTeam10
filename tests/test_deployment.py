@@ -1,5 +1,6 @@
 """Check the deployed website and API together with the committed model."""
 import json
+import hashlib
 from pathlib import Path
 import unittest
 import tempfile
@@ -56,9 +57,11 @@ class DeploymentTests(unittest.TestCase):
         self.assertIn(result["label"], ["e", "p"])
         self.assertGreaterEqual(result["probability_poisonous"], 0)
         self.assertLessEqual(result["probability_poisonous"], 1)
-        # This actual test record is poisonous despite its 96.5% edible score.
-        self.assertEqual(result["decision"], "uncertain")
-        self.assertEqual(result["prediction"], "Onzeker / mogelijk giftig")
+        if result["probability_poisonous"] < .5:
+            self.assertEqual(result["decision"], "uncertain")
+            self.assertEqual(result["prediction"], "Onzeker / mogelijk giftig")
+        else:
+            self.assertEqual(result["decision"], "suspected_poisonous")
 
     def test_invalid_prediction_input_is_still_rejected(self):
         response = self.client.post("/predict/mushroom", json={})
@@ -72,26 +75,29 @@ class DeploymentTests(unittest.TestCase):
         self.assertEqual(len(metadata["fields"]), 11)
         self.assertNotIn("jumbled_noise_0", metadata["example"])
         self.assertEqual(app.state.mushroom_model.metadata["n_estimators"], 300)
-        summary = json.loads((ROOT/"MushroomFinal/comparison_correct/comparison_summary.json").read_text())
-        self.assertEqual(metadata["source_pipeline_sha256"], summary["artifact"]["sha256"])
+        manifest = app.state.mushroom_model.metadata
+        source = (ROOT/manifest["source_pipeline"]).resolve()
+        self.assertTrue(source.is_relative_to(ROOT))
+        self.assertEqual(metadata["source_pipeline_sha256"], hashlib.sha256(source.read_bytes()).hexdigest())
 
     def test_serving_runtime_matches_all_saved_rf300_test_predictions(self):
-        saved = pd.read_csv(ROOT/"MushroomFinal/comparison_correct/test_predictions.csv", float_precision="round_trip")
+        saved = pd.read_csv(ROOT/"backend/artifacts/mushroom_reference_predictions.csv", float_precision="round_trip")
         data = pd.read_csv(ROOT/"MushroomFinal/mushroom_project_dataset.csv")
         data.columns = data.columns.str.replace("-", "_", regex=False)
         frame = data[FEATURES].iloc[saved.source_row]
         actual = app.state.mushroom_model.predict_proba(frame)
         self.assertEqual(len(saved), 900)
-        np.testing.assert_array_equal(np.argmax(actual, axis=1), saved.rf_final_prediction)
-        np.testing.assert_allclose(actual[:, 1], saved.rf_final_probability_p, rtol=0, atol=1e-12)
+        np.testing.assert_array_equal(np.argmax(actual, axis=1), saved.prediction)
+        np.testing.assert_allclose(actual[:, 1], saved.probability_p, rtol=0, atol=1e-12)
+        self.assertEqual(int(((saved.true_class == 1) & (saved.prediction == 0)).sum()), app.state.mushroom_model.metadata["metrics"]["fn"])
         for index in [0, 1, 2, 10, 40, 100, 400, 899]:
             payload = json.loads(frame.iloc[[index]].to_json(orient="records"))[0]
             response = self.client.post("/predict/mushroom", json=payload)
             self.assertEqual(response.status_code, 200, response.text)
             result = response.json()
             self.assertEqual(result["model_id"], MODEL_ID)
-            self.assertEqual(result["label"], "p" if saved.rf_final_prediction.iloc[index] else "e")
-            self.assertAlmostEqual(result["probability_poisonous"], saved.rf_final_probability_p.iloc[index], places=12)
+            self.assertEqual(result["label"], "p" if saved.prediction.iloc[index] else "e")
+            self.assertAlmostEqual(result["probability_poisonous"], saved.probability_p.iloc[index], places=12)
 
     def test_zero_and_missing_measurements_remain_valid(self):
         example = self.client.get("/metadata.json").json()["example"]

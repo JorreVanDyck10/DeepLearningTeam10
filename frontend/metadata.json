@@ -19,8 +19,6 @@
     "cv_macro_f1_mean": 0.761876334978805,
     "cv_macro_f1_std": 0.021452356968246284,
     "cv_recall_p_mean": 0.6043895861425164,
-    "cv_balanced_accuracy_mean": 0.7519590366861894,
-    "mean_fold_fit_seconds": 6.356659199972637,
     "accuracy": 0.8133333333333334,
     "balanced_accuracy": 0.780541289168446,
     "macro_f1": 0.7913723066054398,
@@ -33,14 +31,13 @@
     "fp": 47,
     "fn": 121,
     "tp": 220,
-    "train_accuracy": 0.958780487804878,
     "recall_poisonous": 0.6451612903225806,
     "poisonous_predicted_edible": 121
   },
   "dataset_rows": 5000,
   "train_rows": 4100,
   "test_rows": 900,
-  "validation_note": "Ontwikkeltest; deze testset is eerder gebruikt tijdens het onderzoek.",
+  "validation_note": "Ontwikkeltest; eerder bekeken. Geen onafhankelijke eindtest.",
   "source_pipeline_sha256": "5b451a756dd5c03ace50e32d18d7a230198df40570e547c9085e87215bddf42c",
   "fields": [
     {

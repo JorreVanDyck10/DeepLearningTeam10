@@ -43,3 +43,7 @@ venv/
 .env
 .env.*
 !.env.example
+Final/.generated/
+Final/Mushroom/artifacts/*.joblib
+!Final/Mushroom/artifacts/current_pipeline.joblib
+.venv-final/

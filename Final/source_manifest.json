@@ -1,0 +1,108 @@
+{
+  "base_commit": "69ca5201b934213360b3c2abd3b381d6251142b7",
+  "copies": [
+    {
+      "final": "Final/Mushroom/01_EDA.ipynb",
+      "source": "MushroomFinal/mushroom_project.ipynb",
+      "note": "EDA section; repository-relative data path",
+      "source_sha256_lf": "467cc73e2370fddbcc0f70d2497e595c2e773e3932f148deb6a428c028fb0ad0"
+    },
+    {
+      "final": "Final/Mushroom/03_baseline.ipynb",
+      "source": "MushroomFinal/mushroom_project.ipynb",
+      "note": "One model family; fresh fold-local reproduction and historical tuning context",
+      "source_sha256_lf": "467cc73e2370fddbcc0f70d2497e595c2e773e3932f148deb6a428c028fb0ad0"
+    },
+    {
+      "final": "Final/Mushroom/05_Random_Forest.ipynb",
+      "source": "MushroomFinal/mushroom_project.ipynb",
+      "note": "One model family; fresh fold-local reproduction and historical tuning context",
+      "source_sha256_lf": "467cc73e2370fddbcc0f70d2497e595c2e773e3932f148deb6a428c028fb0ad0"
+    },
+    {
+      "final": "Final/Mushroom/06_Gradient_Boosting.ipynb",
+      "source": "MushroomFinal/mushroom_project.ipynb",
+      "note": "One model family; fresh fold-local reproduction and historical tuning context",
+      "source_sha256_lf": "467cc73e2370fddbcc0f70d2497e595c2e773e3932f148deb6a428c028fb0ad0"
+    },
+    {
+      "final": "Final/Mushroom/07_Logistic_Regression.ipynb",
+      "source": "MushroomFinal/mushroom_project.ipynb",
+      "note": "One model family; fresh fold-local reproduction and historical tuning context",
+      "source_sha256_lf": "467cc73e2370fddbcc0f70d2497e595c2e773e3932f148deb6a428c028fb0ad0"
+    },
+    {
+      "final": "Final/Mushroom/04_AutoML.ipynb",
+      "source": "MushroomFinal/mushroom_project.ipynb",
+      "note": "Curated copy; original preserved",
+      "source_sha256_lf": "467cc73e2370fddbcc0f70d2497e595c2e773e3932f148deb6a428c028fb0ad0"
+    },
+    {
+      "final": "Final/Mushroom/08_AWS.ipynb",
+      "source": "SolutionJorre/MushroomDataset/correct_dataset/04_aws_correct_dataset.ipynb",
+      "note": "Curated copy; provenance and stale wording clarified",
+      "source_sha256_lf": "7eceb8bd5792b00f2534db3eb76f00f097c5a8c825f63b466a8295c1c6194442"
+    },
+    {
+      "final": "Final/Mushroom/09_vergelijking.ipynb",
+      "source": "secondary_mushroom/09_compare_models.ipynb",
+      "note": "Curated copy; provenance and stale wording clarified",
+      "source_sha256_lf": "95ac463594bce449297115b673eee94419aab75ca3927540394f6f0cdb67f29d"
+    },
+    {
+      "final": "Final/Mushroom/10_deployment.ipynb",
+      "source": "secondary_mushroom/10_deploy.ipynb",
+      "note": "Curated copy; provenance and stale wording clarified",
+      "source_sha256_lf": "43ecf22a7ffd81da9aecfb2184256db9ae0699e454c6107d41e6792837cb39b3"
+    },
+    {
+      "final": "Final/CitiBike/01_EDA_en_hypothesen.ipynb",
+      "source": "SolutionRaoul/Citybike/notebooks/01_EDA_en_hypothesen.ipynb",
+      "note": "Source outputs retained; repository discovery adapted, no new final-test evaluation",
+      "source_sha256_lf": "2b0bc2fcba82c7b833c8056948d4ea796c31a7899f1f3a22edc7d0b06185249a"
+    },
+    {
+      "final": "Final/CitiBike/02_voorbereiding.ipynb",
+      "source": "SolutionRaoul/Citybike/notebooks/02_definitieve_voorbereiding.ipynb",
+      "note": "Source outputs retained; repository discovery adapted, no new final-test evaluation",
+      "source_sha256_lf": "eadc03799c063ffbc3b973e1b987fa1383016521016ea945cf98d50822a105fa"
+    },
+    {
+      "final": "Final/CitiBike/05_AutoML.ipynb",
+      "source": "SolutionRaoul/Citybike/notebooks/04_PyCaret_vergelijking.ipynb",
+      "note": "Source outputs retained; repository discovery adapted, no new final-test evaluation",
+      "source_sha256_lf": "9bc03f630f61b263d84c773479880d76b33c4c034a18515ee7a5669e4cb20a2c"
+    },
+    {
+      "final": "Final/CitiBike/06_Random_Forest.ipynb",
+      "source": "SolutionRaoul/Citybike/notebooks/05_Random_Forest.ipynb",
+      "note": "Source outputs retained; repository discovery adapted, no new final-test evaluation",
+      "source_sha256_lf": "f0b1f071514c4ba02058797dd0a7ca4393452cb8bb12cb28170cbb15c48dbded"
+    },
+    {
+      "final": "Final/CitiBike/07_LightGBM.ipynb",
+      "source": "SolutionRaoul/Citybike/notebooks/06_LightGBM.ipynb",
+      "note": "Source outputs retained; repository discovery adapted, no new final-test evaluation",
+      "source_sha256_lf": "ce5ba8dcb55c1de210cd8a3ed1c323b3619ca0f646de395facec72089682e595"
+    },
+    {
+      "final": "Final/CitiBike/09_vergelijking.ipynb",
+      "source": "SolutionRaoul/Citybike/notebooks/07_eindvergelijking.ipynb",
+      "note": "Source outputs retained; repository discovery adapted, no new final-test evaluation",
+      "source_sha256_lf": "2b6752eda5345de28ce6ae305bc7f98046cf84eab245a614f417a8ce33fcc10b"
+    },
+    {
+      "final": "Final/CitiBike/03_baseline.ipynb",
+      "source": "SolutionRaoul/Citybike/notebooks/03_baseline_en_Ridge.ipynb",
+      "note": "Split model families into independent report notebooks; original offline fit preserved",
+      "source_sha256_lf": "d146aefd347afe7b960ba1f81aa4d4998048282ce7d229c9b231f984158aaaa3"
+    },
+    {
+      "final": "Final/CitiBike/04_Ridge.ipynb",
+      "source": "SolutionRaoul/Citybike/notebooks/03_baseline_en_Ridge.ipynb",
+      "note": "Split model families into independent report notebooks; original offline fit preserved",
+      "source_sha256_lf": "d146aefd347afe7b960ba1f81aa4d4998048282ce7d229c9b231f984158aaaa3"
+    }
+  ],
+  "preservation": "Original source files were not moved or replaced. Generated notebook outputs do not claim a new original study."
+}

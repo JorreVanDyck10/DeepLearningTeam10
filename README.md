@@ -1,4 +1,12 @@
 # DeepLearningTeam10
+
+**Voor de eindbeoordeling: begin bij [Final/README.md](Final/README.md).**
+Die leesmap bevat de definitieve notebookvolgorde, aparte modelnotebooks,
+automatische training en publicatie, presentatie en Canvas-inlevertekst.
+De oorspronkelijke bijdragen en oudere experimenten hieronder blijven behouden.
+Stap 5 (menselijke bijdragen en controle van de GenAI-policy) rondt Jorre nog af;
+de aanwezigheid van deze map betekent niet dat Canvas al is ingediend.
+
 Jorre Van Dyck
 Milan Wouters
 Raoul Buffels

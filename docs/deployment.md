@@ -1,5 +1,9 @@
 # Automatische deployment
 
+De volledige Mushroom-keten traint en valideert inmiddels ook opnieuw vóór
+publicatie. Zie [Final/AUTOMATISERING.md](../Final/AUTOMATISERING.md).
+De beschrijving hieronder blijft het hostinggedeelte van die keten.
+
 De bestaande Render Web Service `deeplearningteam10-api` serveert nu zowel de
 website uit `frontend/` als de FastAPI-backend. De openbare website is:
 

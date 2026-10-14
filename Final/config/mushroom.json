@@ -1,0 +1,18 @@
+{
+  "model": "rf_final",
+  "description": "Fixed research choice; automatic refitting is not a new model search.",
+  "classifier_parameters": {
+    "n_estimators": 300,
+    "max_depth": 20,
+    "max_features": null,
+    "min_samples_split": 4,
+    "min_samples_leaf": 1,
+    "class_weight": "balanced",
+    "random_state": 42,
+    "n_jobs": 2
+  },
+  "minimum_cv_macro_f1": 0.761876334978805,
+  "minimum_cv_recall_p": 0.6043895861425164,
+  "tolerance": 1e-12,
+  "selection_data": "Only the five training folds. Development-test labels never decide promotion."
+}
