@@ -46,6 +46,8 @@ De gekozen pipeline verwacht elf velden en geeft `0=e`, `1=p`. API en website zi
 nu gekoppeld aan een verliesvrije RF300-export; de API vertaalt naar `e` en `p`.
 Zie [deploymentdocumentatie](../docs/mushroom_rf300.md) voor de exportaudit,
 versiecontrole en hosting.
+Het [uitgevoerde deploymentnotebook](../secondary_mushroom/10_deploy.ipynb) legt
+deze stap van de opdracht vast, inclusief live controles en automatische updates.
 
 Bijdragen: Andrew maakte de originele uitwerking. Codex voerde op verzoek van Jorre
 de datasetcorrectie, gedeelde evaluatie, PyCaret-uitvoering en rapportage uit.

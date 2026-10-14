@@ -141,6 +141,8 @@ features and checks the backend model ID `mushroom_final_rf300`.
 Test accuracy is 81.33% and poisonous recall 64.52%; these are development-test
 results on the correct 5,000-row course dataset. See
 [the deployment and export documentation](docs/mushroom_rf300.md).
+The [executed deployment notebook](secondary_mushroom/10_deploy.ipynb) documents
+hosting, GitHub-triggered publication, input validation and verified live inference.
 
 ## Mushroom — corrected final comparison (5,000-row course CSV)
 

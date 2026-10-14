@@ -78,5 +78,22 @@ Controleer na beide deployments `/health` op `mushroom_final_rf300`, vul het
 voorbeeld in op [de website](https://10messi10.netlify.app/) en klik Voorspellen.
 Controleer ook Citi Bike op `raoul_tuned_random_forest_320`.
 
+## Uitgevoerde controle
+
+De deployment van commit `bcdc853` is op 14 oktober 2026 gecontroleerd:
+22 Python-tests en 16 JavaScript-tests slagen, evenals de GitHub Actions-run
+[Website and API checks](https://github.com/JorreVanDyck10/DeepLearningTeam10/actions/runs/38591551285).
+Render-health en Netlify-metadata melden beide `mushroom_final_rf300`.
+Acht publieke API-voorspellingen komen binnen 10⁻¹² overeen met de opgeslagen
+testlabels en kansen. De Netlify-CORS-preflight slaagt.
+
+Een browsercontrole heeft **Voorbeeld invullen → Voorspellen** uitgevoerd,
+de elf velden en projectmetrics gecontroleerd, en daarna Citi Bike gebruikt.
+Beide formulieren geven een geldige voorspelling zonder JavaScript-fouten.
+Citi Bike geeft ook via de publieke API dezelfde 24 historievoorspellingen als
+de bestaande referentiefixture. Het
+[uitgevoerde deploymentnotebook](../secondary_mushroom/10_deploy.ipynb) bevat de
+herhaalbare artifact-, inference- en publieke controles met hun uitvoer.
+
 Codex maakte op verzoek van Jorre de export, API-koppeling, formuliermigratie,
 controles en documentatie. Het team reviewt en verdedigt de modelkeuze.
