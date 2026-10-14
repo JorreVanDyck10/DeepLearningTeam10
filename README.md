@@ -143,6 +143,9 @@ results on the correct 5,000-row course dataset. See
 [the deployment and export documentation](docs/mushroom_rf300.md).
 The [executed deployment notebook](secondary_mushroom/10_deploy.ipynb) documents
 hosting, GitHub-triggered publication, input validation and verified live inference.
+The result message now abstains from confirming edibility: even >=95% edible
+model scores included poisonous validation examples. Scientific labels and scores
+remain unchanged. See [the decision audit and policy](docs/mushroom_decisions.md).
 
 ## Mushroom — corrected final comparison (5,000-row course CSV)
 

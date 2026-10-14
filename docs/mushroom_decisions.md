@@ -65,3 +65,13 @@ Het [auditbestand](../MushroomFinal/comparison_correct/decision_threshold_audit.
 bevat de volledige vaste-grenzenanalyse en bronhashes. Zie ook de primaire
 documentatie over [beslisdrempels](https://scikit-learn.org/stable/modules/classification_threshold.html)
 en [kanskalibratie](https://scikit-learn.org/stable/modules/calibration.html).
+
+Op 14 oktober 2026 zijn 26 Python-tests en 19 JavaScript-tests geslaagd, evenals
+de [GitHub-controles van deze wijziging](https://github.com/JorreVanDyck10/DeepLearningTeam10/actions/runs/38593879069).
+De publieke backend geeft de nieuwe policy-ID terug. Een browsercontrole op
+Netlify toont voor het standaardvoorbeeld **Onzeker / mogelijk giftig**, met
+de oorspronkelijke 3,5% giftigheidsscore. Acht publieke referentievoorspellingen
+behouden hun oorspronkelijke labels en kansen en gebruiken de nieuwe boodschap.
+Ook het Citi Bike-formulier werkt nog. Het
+[deploymentnotebook](../secondary_mushroom/10_deploy.ipynb) is opnieuw uitgevoerd
+en bevat de nieuwe beslisregel en live uitvoer.
