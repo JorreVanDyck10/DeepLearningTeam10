@@ -1,0 +1,70 @@
+{
+  "selected_model": "rf_final",
+  "ranking": [
+    {
+      "model": "rf_final",
+      "cv_macro_f1_mean": 0.761876334978805,
+      "cv_macro_f1_std": 0.021452356968246284,
+      "cv_recall_p_mean": 0.6043895861425164,
+      "cv_balanced_accuracy_mean": 0.7519590366861894,
+      "mean_fold_fit_seconds": 6.356659199972637
+    },
+    {
+      "model": "rf_500_previous",
+      "cv_macro_f1_mean": 0.7590367324463146,
+      "cv_macro_f1_std": 0.024585348921836985,
+      "cv_recall_p_mean": 0.5876444352245618,
+      "cv_balanced_accuracy_mean": 0.7482973514772218,
+      "mean_fold_fit_seconds": 2.7362467399798334
+    },
+    {
+      "model": "aws_baseline_local",
+      "cv_macro_f1_mean": 0.7531237776573464,
+      "cv_macro_f1_std": 0.026357729057287952,
+      "cv_recall_p_mean": 0.5683269370397263,
+      "cv_balanced_accuracy_mean": 0.7419746322780971,
+      "mean_fold_fit_seconds": 0.7918119600042701
+    },
+    {
+      "model": "rf_200_api",
+      "cv_macro_f1_mean": 0.7457996105084747,
+      "cv_macro_f1_std": 0.02705466519796923,
+      "cv_recall_p_mean": 0.5753884451820351,
+      "cv_balanced_accuracy_mean": 0.7360855319634894,
+      "mean_fold_fit_seconds": 1.7437695200322196
+    },
+    {
+      "model": "aws_tuned_local",
+      "cv_macro_f1_mean": 0.7331445177020451,
+      "cv_macro_f1_std": 0.031390695958875565,
+      "cv_recall_p_mean": 0.5006804273415622,
+      "cv_balanced_accuracy_mean": 0.7214920299965255,
+      "mean_fold_fit_seconds": 0.6803585600107909
+    },
+    {
+      "model": "gb_final",
+      "cv_macro_f1_mean": 0.7191752950269573,
+      "cv_macro_f1_std": 0.018511921785273992,
+      "cv_recall_p_mean": 0.5032527746084432,
+      "cv_balanced_accuracy_mean": 0.709436780616753,
+      "mean_fold_fit_seconds": 3.070312999980524
+    },
+    {
+      "model": "lr_final",
+      "cv_macro_f1_mean": 0.6256684420268022,
+      "cv_macro_f1_std": 0.0156952400433581,
+      "cv_recall_p_mean": 0.5567285551291359,
+      "cv_balanced_accuracy_mean": 0.6274640117608005,
+      "mean_fold_fit_seconds": 0.3081215800018981
+    },
+    {
+      "model": "tree_baseline",
+      "cv_macro_f1_mean": 0.5808685915844969,
+      "cv_macro_f1_std": 0.023066020238084538,
+      "cv_recall_p_mean": 0.24615911212529823,
+      "cv_balanced_accuracy_mean": 0.5995289570411152,
+      "mean_fold_fit_seconds": 0.05378040000796318
+    }
+  ],
+  "selection_made_before_test_predictions": true
+}

@@ -5,6 +5,13 @@ import os
 from pathlib import Path
 import sys
 
+if __name__ == '__main__':
+    corrected = Path(__file__).resolve().parents[1] / 'MushroomFinal/build_correct_comparison.py'
+    if corrected.exists():
+        import runpy
+        runpy.run_path(str(corrected), run_name='__main__')
+        raise SystemExit(0)
+
 import nbformat
 from nbclient import NotebookClient
 import pandas as pd

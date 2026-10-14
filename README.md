@@ -142,29 +142,30 @@ other models, including a 500-tree Random Forest. The API and website use the ol
 compared directly with scores from the full Secondary Mushroom dataset.
 See [the export/deployment instructions](SolutionAndrew/MushroomDataset/DEPLOYMENT.md).
 
-## Mushroom model comparison: Andrew + Jorre/AWS
+## Mushroom — corrected final comparison (5,000-row course CSV)
 
-The [Dutch assignment comparison report](secondary_mushroom/09_vergelijkingsrapport.md)
-and [executed main comparison notebook](secondary_mushroom/09_compare_models.ipynb)
-compare nine available trained configurations and a majority reference on identical
-five-fold species-disjoint cross-validation. The inputs are the same twenty original
-UCI features and 60,923 unique records. Selection uses mean fold balanced accuracy,
-with F1 p and recall p as tie-breakers. Precision, recall, F1, ROC-AUC, average precision,
-confusion matrices, training times and concrete errors are retained for every candidate.
+Use **[MushroomFinal/mushroom_project_dataset.csv](MushroomFinal/mushroom_project_dataset.csv)**.
+The full 61,069-row UCI download was the wrong source for this course submission.
+Its previous random and species-disjoint comparisons are retained only as historical
+experiments; their scores and selected pipeline are not the final recommendation.
 
-The original random split remains documented: all 173 simulated species occurred in
-both train and test. Its perfect AWS100 scores do not establish generalization to
-unseen species. The [original Andrew-only comparison](secondary_mushroom/09_andrew_vergelijkingsrapport.md)
-preserves his separate 5,000-row results; the unchanged SageMaker artifact and tuning
-exports remain in `SolutionJorre/MushroomDataset`.
+The [executed main comparison notebook](secondary_mushroom/09_compare_models.ipynb)
+and [corrected report](secondary_mushroom/09_vergelijkingsrapport.md) compare the final
+models, earlier RF configurations and locally refitted AWS settings on the same
+4,100/900 rows, with five training folds. `jumbled_noise_0` is removed;
+`jumbled_noise_1` remains. All eleven feature names use underscores.
 
-The report states the CV-selected configuration and its limits. These are new local
-fits with an adapted twenty-feature schema, not new scores for the original artifacts.
-The [full-data selected pipeline](secondary_mushroom/comparison_species/selected_pipeline.joblib)
-is a handoff artifact with labels `0=e`, `1=p`, not a new test result. The existing
-Mushroom RF200 deployment is unchanged; switching requires the documented input,
-label-mapping and serving-version changes. Team review and any missing AutoML/tuning
-experiments remain separate assignment work.
+The [final project notebook](MushroomFinal/mushroom_project.ipynb) now contains an
+actually executed PyCaret 3.3.2 section and its conclusion. Use Python 3.11 and
+[MushroomFinal/requirements-comparison.txt](MushroomFinal/requirements-comparison.txt).
+The complete new pipeline and all audit files are in
+[MushroomFinal/comparison_correct](MushroomFinal/comparison_correct/).
+
+The website still uses the older twelve-field RF200. This comparison does not switch
+it automatically. The old AWS run also needs replacement: execute the prepared
+[correct-data SageMaker notebook](SolutionJorre/MushroomDataset/04_aws_correct_dataset.ipynb)
+on AWS and download its corrected exports. Local AWS-configuration scores are not
+presented as new cloud training.
 
 ## Citi Bike API
 

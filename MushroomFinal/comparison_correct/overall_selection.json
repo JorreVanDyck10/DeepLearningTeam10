@@ -1,0 +1,9 @@
+{
+  "selected_model": "rf_final",
+  "source": "fixed candidate pipelines",
+  "mean_cv_macro_f1": 0.761876334978805,
+  "best_pycaret_cv_macro_f1": 0.7427182909,
+  "criterion": "training CV macro F1; test not used in the automatic ranking",
+  "test_previously_known": true,
+  "selection_is_provisional": true
+}

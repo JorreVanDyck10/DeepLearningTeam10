@@ -17,6 +17,11 @@
 !SolutionAndrew/MushroomDataset/models/random_forest.joblib
 !SolutionJorre/MushroomDataset/mushroom_pipeline.joblib
 !secondary_mushroom/comparison_species/selected_pipeline.joblib
+!MushroomFinal/comparison_correct/selected_pipeline.joblib
+!MushroomFinal/comparison_correct/pycaret_best_pipeline.pkl
+MushroomFinal/comparison_correct/cache/
+.venv-comparison/
+logs.log
 
 # Per-configuration checkpoints are local; combined scores/predictions are published.
 secondary_mushroom/comparison_species/*_predictions.csv

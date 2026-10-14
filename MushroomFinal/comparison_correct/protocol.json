@@ -1,0 +1,45 @@
+{
+  "source": "MushroomFinal/mushroom_project_dataset.csv",
+  "dataset": {
+    "bytes": 155766,
+    "sha256": "1f215c4cf999b5df6b05caf0cab9fc40e693e9f4d2fa1cb24f5c66b175a72281",
+    "sha256_lf": "1f1a25f2f330458ed95ce9f6ffe3241582312a42cb21797a2b7bd5e5ad281114"
+  },
+  "raw_rows": 5000,
+  "features": [
+    "cap_diameter",
+    "stem_height",
+    "stem_width",
+    "spore_print_color",
+    "gill_color",
+    "habitat",
+    "season",
+    "ring_type",
+    "cap_shape",
+    "stem_surface",
+    "jumbled_noise_1"
+  ],
+  "removed": [
+    "jumbled_noise_0"
+  ],
+  "class_encoding": {
+    "e": 0,
+    "p": 1
+  },
+  "train_rows": 4100,
+  "test_rows": 900,
+  "test_size": 0.18,
+  "random_state": 42,
+  "stratified": true,
+  "folds": 5,
+  "fold_shuffle": true,
+  "primary_metric": "mean CV macro F1",
+  "tie_breakers": [
+    "mean CV recall p",
+    "fixed candidate order"
+  ],
+  "test_previously_used": true,
+  "species_grouping": "Unavailable; source row is not a species ID",
+  "aws_status": "Local refit of prior AWS settings; new SageMaker run still required",
+  "old_61069_row_results": "Not valid for the final course comparison"
+}

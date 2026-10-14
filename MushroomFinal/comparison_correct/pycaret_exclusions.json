@@ -1,0 +1,7 @@
+{
+  "lightgbm": {
+    "error_type": "OSError",
+    "reason": "exception: access violation reading 0x0000000000000000",
+    "version": "4.7.0"
+  }
+}

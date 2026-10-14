@@ -1,3 +1,10 @@
+> **Datasetcorrectie — 14 oktober 2026:** de oorspronkelijke exports in deze map
+> zijn getraind op de verkeerde UCI-dataset van 61.069 rijen. De 100%-scores tellen
+> niet als resultaat op het cursusbestand. Gebruik voor een nieuwe SageMaker-run
+> [04_aws_correct_dataset.ipynb](04_aws_correct_dataset.ipynb) en de CSV van 5.000 rijen
+> uit `MushroomFinal`. Dat vervangingsnotebook is voorbereid maar nog niet op AWS uitgevoerd.
+> De nieuwe gezamenlijke vergelijking bevat alleen lokale hertrainingen van de AWS-instellingen.
+
 # Jorre - Mushroom-model op AWS SageMaker
 
 Random Forest getraind en getuned in een AWS SageMaker-notebookomgeving,
