@@ -162,10 +162,12 @@ The complete new pipeline and all audit files are in
 [MushroomFinal/comparison_correct](MushroomFinal/comparison_correct/).
 
 The website still uses the older twelve-field RF200. This comparison does not switch
-it automatically. The old AWS run also needs replacement: execute the prepared
-[correct-data SageMaker notebook](SolutionJorre/MushroomDataset/04_aws_correct_dataset.ipynb)
-on AWS and download its corrected exports. Local AWS-configuration scores are not
-presented as new cloud training.
+it automatically. Jorre's corrected SageMaker training and four-candidate tuning are
+now complete; the [executed AWS exports](SolutionJorre/MushroomDataset/correct_dataset/README.md)
+use the provided 5,000-row data and eleven features. Independent artifact inference
+reproduces 80.11% accuracy, 58.94% poisonous recall and CV macro F1 0.753124, matching
+the local AWS baseline. RF300 remains the provisional CV choice. The old UCI AWS run
+is historical and its 100% score is not used for submission.
 
 ## Citi Bike API
 

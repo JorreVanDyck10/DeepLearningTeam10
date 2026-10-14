@@ -5,5 +5,7 @@
   "best_pycaret_cv_macro_f1": 0.7427182909,
   "criterion": "training CV macro F1; test not used in the automatic ranking",
   "test_previously_known": true,
-  "selection_is_provisional": true
+  "selection_is_provisional": true,
+  "correct_aws_export_included": true,
+  "correct_aws_cv_macro_f1": 0.7531237776573464
 }

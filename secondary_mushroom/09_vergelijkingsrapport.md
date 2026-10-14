@@ -3,7 +3,7 @@
 **DeepLearningTeam10 · bijgewerkt 14 oktober 2026**
 
 Bijdragen: Andrew Noeyens maakte het finale Mushroom-notebook, de modelkeuzes en
-tuning. Jorre Van Dyck maakte de eerdere AWS-run. Codex heeft op verzoek van Jorre
+tuning. Jorre Van Dyck voerde de gecorrigeerde AWS-training en tuning uit. Codex heeft op verzoek van Jorre
 de dataset gecorrigeerd, de gezamenlijke hertraining uitgevoerd, PyCaret gerepareerd
 en daadwerkelijk uitgevoerd, en deze vergelijking gemaakt. Het team moet de inhoud
 reviewen en zelf kunnen uitleggen. Hiermee is het gebruik van generatieve AI vermeld.
@@ -120,6 +120,42 @@ Dit maakt duidelijk waarom alleen accuracy onvoldoende is. De gekozen RF300 mist
 121 van 341 p-records (35.48%). De ROC-AUC/AP beoordelen ranking
 van modelscores; een onderzoek naar kanskalibratie is niet uitgevoerd.
 
+### Nieuwe uitgevoerde SageMaker-run op het juiste bestand
+
+Jorre heeft de training en vierkandidatentuning opnieuw op SageMaker uitgevoerd.
+De [ongewijzigde exports](../SolutionJorre/MushroomDataset/correct_dataset/) bevatten
+het uitgevoerde notebook, de volledige pipeline, tuninglogs en resultaten.
+De bronhash, elf features, 4.100/900-verdeling en scikit-learn-versie zijn gecontroleerd.
+Het model is apart geladen en alle testmetrics zijn uit zijn voorspellingen herberekend.
+
+| Bomen | Max depth | Min leaf | CV macro F1 | SD | Rank |
+| --- | --- | --- | --- | --- | --- |
+| 100 | Geen limiet | 1 | 0.753124 | 0.023575 | 1 |
+| 200 | Geen limiet | 1 | 0.751852 | 0.021729 | 2 |
+| 100 | 24 | 2 | 0.733145 | 0.028077 | 3 |
+| 200 | 16 | 2 | 0.696682 | 0.022347 | 4 |
+
+SD is hier de populatiestandaardafwijking over vijf folds, zoals GridSearchCV exporteert.
+De beste instelling is **100 bomen, geen depth-limiet en leaf 1**: de baseline wint.
+De search toont dus geen verbetering boven die baseline; de eerder getunede instelling
+depth 24/leaf 2 scoort lager. CV macro F1 is **0.753124**.
+
+Op dezelfde 900 testrecords: **80.11% accuracy**, macro F1
+**0.7725**, **58.94% recall p**, **140 FN** en **39 FP**.
+De confusion matrix is `[[520, 39], [140, 201]]`, met e/p als rij- en kolomvolgorde.
+De opgeslagen SageMaker-pipeline en de lokale AWS-baseline verschillen in
+**0 testlabels**; het maximale p-scoreverschil is
+0. Ook alle vijf CV macro-F1-scores
+komen overeen met de lokale baseline. Dat is bevestiging van dezelfde configuratie,
+geen extra onafhankelijke modelverbetering of tiende configuratie in de ranking.
+
+SageMaker: Python 3.10.20, sklearn 1.4.2;
+de lokale audit gebruikt Python 3.11.0 met dezelfde sklearn,
+pandas, NumPy en joblib. Het exportbestand is niet opnieuw getraind of gewijzigd.
+Het rijlidmaatschap is uit de uitgevoerde splitcode gereconstrueerd; een afzonderlijk
+oorspronkelijk cloud-trainingsmanifest is niet geëxporteerd.
+
+
 Het oorspronkelijke notebook meldde 82,00% / 78,11% / 68,67% voor RF/GB/LR.
 De gezamenlijke nieuwe fits geven respectievelijk 81.33%,
 78.44% en 68.33%.
@@ -217,14 +253,15 @@ De frontend en API zijn door dit vergelijkingswerk niet omgeschakeld. Een overst
 vereist elf invoervelden, verwijderen van jumbled_noise_0, naamnormalisatie, de juiste
 labelmapping, serving-versies en controles tegen dezelfde pipeline.
 
-**AWS-status:** de oude SageMaker-export en 100%-score gebruiken het verkeerde bestand.
-De twee AWS-configuraties hierboven zijn **lokale hertrainingen** op de juiste CSV.
-Zij zijn geen bewijs van een nieuwe AWS-training/tuning. Het voorbereide notebook
-[04_aws_correct_dataset.ipynb](../SolutionJorre/MushroomDataset/04_aws_correct_dataset.ipynb)
-moet nog op SageMaker met de juiste CSV worden uitgevoerd en geëxporteerd.
+**AWS-status:** de nieuwe SageMaker-training en tuning op het juiste bestand zijn
+uitgevoerd en de exports zijn gecontroleerd. Zie de nieuwe AWS-sectie hierboven en het
+[uitgevoerde notebook](../SolutionJorre/MushroomDataset/correct_dataset/04_aws_correct_dataset.ipynb).
+De bestaande twee AWS-rijen blijven herkenbaar als lokale fits; de echte SageMaker-
+uitkomst is apart gecontroleerd en komt overeen met de baseline-rij. De oude 100%-run
+op UCI is uitsluitend historisch. RF300 blijft de voorlopige keuze op CV macro F1.
 
 Er is nog geen onaangeraakte eindtest, noch een test op volledig ongeziene soorten of
-echte veldmetingen. Teamreview, de nieuwe AWS-run en een eventuele deploymentmigratie
+echte veldmetingen. Teamreview en een eventuele deploymentmigratie
 blijven afzonderlijke onderdelen voor de eindinlevering.
 
 ## 8. Reproduceren en bewijs
@@ -234,6 +271,7 @@ py -3.11 -m venv .venv-comparison
 .\.venv-comparison\Scripts\python.exe -m pip install -r MushroomFinal/requirements-comparison.txt
 .\.venv-comparison\Scripts\python.exe MushroomFinal/compare_correct_dataset.py --stage manual
 .\.venv-comparison\Scripts\python.exe MushroomFinal/execute_pycaret_notebook.py
+.\.venv-comparison\Scripts\python.exe MushroomFinal/audit_correct_aws.py
 .\.venv-comparison\Scripts\python.exe MushroomFinal/build_correct_comparison.py --execute
 ```
 
@@ -250,6 +288,8 @@ py -3.11 -m venv .venv-comparison
 | [pycaret_audit.json](../MushroomFinal/comparison_correct/pycaret_audit.json) | Exacte PyCaret-rijen, versies, bronhash en scorercontrole |
 | [comparison_summary.json](../MushroomFinal/comparison_correct/comparison_summary.json) | Parameters, omgeving, artifacthash en waarschuwingen |
 | [overall_selection.json](../MushroomFinal/comparison_correct/overall_selection.json) | Keuze inclusief controle tegen de beste PyCaret-score |
+| [aws_artifact_audit.json](../MushroomFinal/comparison_correct/aws_artifact_audit.json) | Controle van de nieuwe echte AWS-export |
+| [aws_artifact_predictions.csv](../MushroomFinal/comparison_correct/aws_artifact_predictions.csv) | Alle 900 opnieuw berekende AWS-voorspellingen |
 
 Oude UCI-resultaten blijven voor herkomstcontrole in `comparison_team` en
 `comparison_species`, maar zijn expliciet historisch en tellen niet als eindvergelijking.

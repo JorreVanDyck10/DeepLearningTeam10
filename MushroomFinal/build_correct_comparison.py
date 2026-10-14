@@ -29,6 +29,48 @@ def build_report():
     three=pd.read_csv(OUT/'pycaret_three.csv',index_col=0)
     pctest=pd.read_csv(OUT/'pycaret_test_metrics.csv')
     pc_audit=json.loads((OUT/'pycaret_audit.json').read_text(encoding='utf-8'))
+    aws=json.loads((OUT/'aws_artifact_audit.json').read_text(encoding='utf-8')) if (OUT/'aws_artifact_audit.json').exists() else None
+    if aws:
+        assert aws['dataset']==summary['protocol']['dataset']['sha256_lf']
+        assert aws['cv_macro_f1']<=metrics.loc[summary['selected_model'],'cv_macro_f1_mean']
+        tuning=pd.read_csv(ROOT/'SolutionJorre/MushroomDataset/correct_dataset/correct_aws_tuning_results.csv')
+        aws_table=table(['Bomen','Max depth','Min leaf','CV macro F1','SD','Rank'],
+            [[int(r.param_classifier__n_estimators),'Geen limiet' if pd.isna(r.param_classifier__max_depth) else int(r.param_classifier__max_depth),
+              int(r.param_classifier__min_samples_leaf),f'{r.mean_test_score:.6f}',f'{r.std_test_score:.6f}',int(r.rank_test_score)]
+             for _,r in tuning.sort_values('rank_test_score').iterrows()])
+        am=aws['recomputed_metrics']
+        aws_section=f'''### Nieuwe uitgevoerde SageMaker-run op het juiste bestand
+
+Jorre heeft de training en vierkandidatentuning opnieuw op SageMaker uitgevoerd.
+De [ongewijzigde exports](../SolutionJorre/MushroomDataset/correct_dataset/) bevatten
+het uitgevoerde notebook, de volledige pipeline, tuninglogs en resultaten.
+De bronhash, elf features, 4.100/900-verdeling en scikit-learn-versie zijn gecontroleerd.
+Het model is apart geladen en alle testmetrics zijn uit zijn voorspellingen herberekend.
+
+{aws_table}
+
+SD is hier de populatiestandaardafwijking over vijf folds, zoals GridSearchCV exporteert.
+De beste instelling is **100 bomen, geen depth-limiet en leaf 1**: de baseline wint.
+De search toont dus geen verbetering boven die baseline; de eerder getunede instelling
+depth 24/leaf 2 scoort lager. CV macro F1 is **{aws['cv_macro_f1']:.6f}**.
+
+Op dezelfde 900 testrecords: **{am['accuracy']:.2%} accuracy**, macro F1
+**{am['macro_f1']:.4f}**, **{am['recall_p']:.2%} recall p**, **{am['fn']} FN** en **{am['fp']} FP**.
+De confusion matrix is `[[{am['tn']}, {am['fp']}], [{am['fn']}, {am['tp']}]]`, met e/p als rij- en kolomvolgorde.
+De opgeslagen SageMaker-pipeline en de lokale AWS-baseline verschillen in
+**{aws['local_baseline_label_disagreements']} testlabels**; het maximale p-scoreverschil is
+{aws['local_baseline_max_probability_difference']:.3g}. Ook alle vijf CV macro-F1-scores
+komen overeen met de lokale baseline. Dat is bevestiging van dezelfde configuratie,
+geen extra onafhankelijke modelverbetering of tiende configuratie in de ranking.
+
+SageMaker: Python {aws['aws_versions']['python']}, sklearn {aws['aws_versions']['sklearn']};
+de lokale audit gebruikt Python {aws['audit_versions']['python']} met dezelfde sklearn,
+pandas, NumPy en joblib. Het exportbestand is niet opnieuw getraind of gewijzigd.
+Het rijlidmaatschap is uit de uitgevoerde splitcode gereconstrueerd; een afzonderlijk
+oorspronkelijk cloud-trainingsmanifest is niet geëxporteerd.
+'''
+    else:
+        aws_section='De nieuwe SageMaker-export moet nog worden toegevoegd; de AWS-rijen zijn lokale hertrainingen.'
     exclusion_note=('LightGBM is niet in de ranking opgenomen: deze Windows-omgeving geeft bij '
         'fitten een native OSError/access violation. Dit is afzonderlijk gecontroleerd en '
         'vastgelegd in pycaret_exclusions.json; het is geen slechte modelscore. '
@@ -40,7 +82,8 @@ def build_report():
     write_json(OUT/'overall_selection.json',{'selected_model':selected,'source':'fixed candidate pipelines',
         'mean_cv_macro_f1':float(row.cv_macro_f1_mean),'best_pycaret_cv_macro_f1':float(pc.iloc[0]['Macro F1']),
         'criterion':'training CV macro F1; test not used in the automatic ranking',
-        'test_previously_known':True,'selection_is_provisional':True})
+        'test_previously_known':True,'selection_is_provisional':True,
+        'correct_aws_export_included':bool(aws),'correct_aws_cv_macro_f1':aws['cv_macro_f1'] if aws else None})
     ordered=[*rank.index,'dummy']
     cvtable=table(['Configuratie','CV macro F1 ± SD','CV recall p','CV balanced acc.'],
         [[NAMES[k],f'{metrics.loc[k,"cv_macro_f1_mean"]:.4f} ± {metrics.loc[k,"cv_macro_f1_std"]:.4f}',
@@ -83,7 +126,7 @@ def build_report():
 **DeepLearningTeam10 · bijgewerkt 14 oktober 2026**
 
 Bijdragen: Andrew Noeyens maakte het finale Mushroom-notebook, de modelkeuzes en
-tuning. Jorre Van Dyck maakte de eerdere AWS-run. Codex heeft op verzoek van Jorre
+tuning. Jorre Van Dyck voerde de gecorrigeerde AWS-training en tuning uit. Codex heeft op verzoek van Jorre
 de dataset gecorrigeerd, de gezamenlijke hertraining uitgevoerd, PyCaret gerepareerd
 en daadwerkelijk uitgevoerd, en deze vergelijking gemaakt. Het team moet de inhoud
 reviewen en zelf kunnen uitleggen. Hiermee is het gebruik van generatieve AI vermeld.
@@ -180,6 +223,8 @@ Dit maakt duidelijk waarom alleen accuracy onvoldoende is. De gekozen RF300 mist
 {int(row.fn)} van 341 p-records ({1-row.recall_p:.2%}). De ROC-AUC/AP beoordelen ranking
 van modelscores; een onderzoek naar kanskalibratie is niet uitgevoerd.
 
+{aws_section}
+
 Het oorspronkelijke notebook meldde 82,00% / 78,11% / 68,67% voor RF/GB/LR.
 De gezamenlijke nieuwe fits geven respectievelijk {metrics.loc['rf_final','accuracy']:.2%},
 {metrics.loc['gb_final','accuracy']:.2%} en {metrics.loc['lr_final','accuracy']:.2%}.
@@ -249,14 +294,15 @@ De frontend en API zijn door dit vergelijkingswerk niet omgeschakeld. Een overst
 vereist elf invoervelden, verwijderen van jumbled_noise_0, naamnormalisatie, de juiste
 labelmapping, serving-versies en controles tegen dezelfde pipeline.
 
-**AWS-status:** de oude SageMaker-export en 100%-score gebruiken het verkeerde bestand.
-De twee AWS-configuraties hierboven zijn **lokale hertrainingen** op de juiste CSV.
-Zij zijn geen bewijs van een nieuwe AWS-training/tuning. Het voorbereide notebook
-[04_aws_correct_dataset.ipynb](../SolutionJorre/MushroomDataset/04_aws_correct_dataset.ipynb)
-moet nog op SageMaker met de juiste CSV worden uitgevoerd en geëxporteerd.
+**AWS-status:** de nieuwe SageMaker-training en tuning op het juiste bestand zijn
+uitgevoerd en de exports zijn gecontroleerd. Zie de nieuwe AWS-sectie hierboven en het
+[uitgevoerde notebook](../SolutionJorre/MushroomDataset/correct_dataset/04_aws_correct_dataset.ipynb).
+De bestaande twee AWS-rijen blijven herkenbaar als lokale fits; de echte SageMaker-
+uitkomst is apart gecontroleerd en komt overeen met de baseline-rij. De oude 100%-run
+op UCI is uitsluitend historisch. RF300 blijft de voorlopige keuze op CV macro F1.
 
 Er is nog geen onaangeraakte eindtest, noch een test op volledig ongeziene soorten of
-echte veldmetingen. Teamreview, de nieuwe AWS-run en een eventuele deploymentmigratie
+echte veldmetingen. Teamreview en een eventuele deploymentmigratie
 blijven afzonderlijke onderdelen voor de eindinlevering.
 
 ## 8. Reproduceren en bewijs
@@ -266,6 +312,7 @@ py -3.11 -m venv .venv-comparison
 .\\.venv-comparison\\Scripts\\python.exe -m pip install -r MushroomFinal/requirements-comparison.txt
 .\\.venv-comparison\\Scripts\\python.exe MushroomFinal/compare_correct_dataset.py --stage manual
 .\\.venv-comparison\\Scripts\\python.exe MushroomFinal/execute_pycaret_notebook.py
+.\\.venv-comparison\\Scripts\\python.exe MushroomFinal/audit_correct_aws.py
 .\\.venv-comparison\\Scripts\\python.exe MushroomFinal/build_correct_comparison.py --execute
 ```
 
@@ -282,6 +329,8 @@ py -3.11 -m venv .venv-comparison
 | [pycaret_audit.json](../MushroomFinal/comparison_correct/pycaret_audit.json) | Exacte PyCaret-rijen, versies, bronhash en scorercontrole |
 | [comparison_summary.json](../MushroomFinal/comparison_correct/comparison_summary.json) | Parameters, omgeving, artifacthash en waarschuwingen |
 | [overall_selection.json](../MushroomFinal/comparison_correct/overall_selection.json) | Keuze inclusief controle tegen de beste PyCaret-score |
+| [aws_artifact_audit.json](../MushroomFinal/comparison_correct/aws_artifact_audit.json) | Controle van de nieuwe echte AWS-export |
+| [aws_artifact_predictions.csv](../MushroomFinal/comparison_correct/aws_artifact_predictions.csv) | Alle 900 opnieuw berekende AWS-voorspellingen |
 
 Oude UCI-resultaten blijven voor herkomstcontrole in `comparison_team` en
 `comparison_species`, maar zijn expliciet historisch en tellen niet als eindvergelijking.
@@ -355,7 +404,34 @@ errors=pd.read_csv(OUT/'selected_errors.csv')
 key=summary['selected_model']
 assert len(errors)==metrics.loc[key,'fn']+metrics.loc[key,'fp']
 display(errors[errors.true_class==1].sort_values('probability_p').head(3))
-print('Keuze:',NAMES[key],'; AWS-configuraties zijn lokaal hertraind, geen nieuwe SageMaker-run.')'''))
+print('Keuze:',NAMES[key],'; de echte SageMaker-export is daarnaast afzonderlijk gecontroleerd.')'''))
+    if (OUT/'aws_artifact_audit.json').exists():
+        cells.append(nbformat.v4.new_markdown_cell('''## Controle van het echte AWS-artifact
+
+Deze cel laadt de ontvangen SageMaker-pipeline opnieuw en controleert alle 900 labels,
+p-scores, metrics, tuningfolds en de vergelijking met de lokale baseline. Er vindt
+geen nieuwe modeltraining plaats.'''))
+        cells.append(nbformat.v4.new_code_cell('''import joblib
+aws=json.loads((OUT/'aws_artifact_audit.json').read_text(encoding='utf-8'))
+aws_predictions=pd.read_csv(OUT/'aws_artifact_predictions.csv',float_precision='round_trip')
+path=ROOT/'SolutionJorre/MushroomDataset/correct_dataset/correct_mushroom_pipeline.joblib'
+assert digest(path)['sha256']==aws['artifact']['sha256']
+aws_model=joblib.load(path)
+assert list(aws_model.feature_names_in_)==X.columns.tolist()
+assert list(aws_model.classes_)==[0,1]
+assert aws_predictions.source_row.tolist()==test.tolist()
+assert np.array_equal(aws_model.predict(X.iloc[test]),aws_predictions.prediction)
+assert np.allclose(aws_model.predict_proba(X.iloc[test])[:,1],aws_predictions.probability_p,rtol=0,atol=1e-12)
+actual=evaluate(aws_predictions.true_class,aws_predictions.prediction,aws_predictions.probability_p)
+for name,value in actual.items(): assert abs(value-aws['recomputed_metrics'][name])<1e-12
+tuning=pd.read_csv(ROOT/'SolutionJorre/MushroomDataset/correct_dataset/correct_aws_tuning_results.csv',float_precision='round_trip')
+best=tuning[tuning.rank_test_score==1].iloc[0]
+assert abs(best.mean_test_score-aws['cv_macro_f1'])<1e-12
+assert np.allclose(best[[f'split{i}_test_score' for i in range(5)]].astype(float),cv[cv.model=='aws_baseline_local'].sort_values('fold').macro_f1,rtol=0,atol=1e-12)
+assert aws['local_baseline_label_disagreements']==0 and not aws['warnings']
+display(pd.Series(aws['recomputed_metrics'],name='Echte SageMaker-export'))
+display(tuning[['param_classifier__n_estimators','param_classifier__max_depth','param_classifier__min_samples_leaf','mean_test_score','rank_test_score']])
+print('SageMaker-run toegevoegd; RF300 blijft gekozen op CV macro F1.')'''))
     cells.append(nbformat.v4.new_markdown_cell('''Controleer het herlaadbare artifact en zijn elf invoervelden. Deze pipeline bevat
 de volledige preprocessing; de labelmapping is 0=e, 1=p.'''))
     cells.append(nbformat.v4.new_code_cell('''import joblib

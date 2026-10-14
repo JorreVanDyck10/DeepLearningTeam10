@@ -16,6 +16,7 @@
 !nyc_citi_bike/models/baseline_hourly_tree.joblib
 !SolutionAndrew/MushroomDataset/models/random_forest.joblib
 !SolutionJorre/MushroomDataset/mushroom_pipeline.joblib
+!SolutionJorre/MushroomDataset/correct_dataset/correct_mushroom_pipeline.joblib
 !secondary_mushroom/comparison_species/selected_pipeline.joblib
 !MushroomFinal/comparison_correct/selected_pipeline.joblib
 !MushroomFinal/comparison_correct/pycaret_best_pipeline.pkl

@@ -32,10 +32,15 @@ Voor interactief gebruik in Jupyter, registreer en selecteer de juiste kernel:
 Kies daarna **Mushroom Python 3.11** in Jupyter. De volledig vastgelegde uitgevoerde
 omgeving staat ook in `requirements-lock.txt`.
 
-De oude AWS-training gebruikte het verkeerde bestand. De AWS-configuraties zijn voor
-de vergelijking lokaal opnieuw getraind. Het voorbereide
-[SageMaker-notebook](../SolutionJorre/MushroomDataset/04_aws_correct_dataset.ipynb)
-moet nog op AWS worden uitgevoerd om het AWS-onderdeel te corrigeren.
+Jorre heeft de AWS-training en tuning opnieuw uitgevoerd op de juiste CSV. De
+[uitgevoerde SageMaker-exports](../SolutionJorre/MushroomDataset/correct_dataset/README.md)
+zijn opgenomen en de opgeslagen pipeline is afzonderlijk gecontroleerd: 80,11%
+accuracy, 58,94% giftige recall en CV macro F1 0,753124. De uitkomst komt overeen met
+de lokale AWS-baseline; RF300 blijft voorlopig gekozen. Herhaal de audit met:
+
+```powershell
+.\.venv-comparison\Scripts\python.exe MushroomFinal/audit_correct_aws.py
+```
 
 De nieuwe pipeline verwacht elf velden en geeft `0=e`, `1=p`. De website is nog niet
 overgeschakeld. De oude API gebruikt twaalf velden en een ander artifact.

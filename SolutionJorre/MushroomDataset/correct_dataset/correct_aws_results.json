@@ -1,0 +1,58 @@
+{
+  "source": "mushroom_project_dataset.csv",
+  "source_sha256_lf": "1f1a25f2f330458ed95ce9f6ffe3241582312a42cb21797a2b7bd5e5ad281114",
+  "rows": 5000,
+  "train_rows": 4100,
+  "test_rows": 900,
+  "features": [
+    "cap_diameter",
+    "stem_height",
+    "stem_width",
+    "spore_print_color",
+    "gill_color",
+    "habitat",
+    "season",
+    "ring_type",
+    "cap_shape",
+    "stem_surface",
+    "jumbled_noise_1"
+  ],
+  "removed": [
+    "jumbled_noise_0"
+  ],
+  "class_encoding": {
+    "e": 0,
+    "p": 1
+  },
+  "best_parameters": {
+    "classifier__max_depth": null,
+    "classifier__min_samples_leaf": 1,
+    "classifier__n_estimators": 100
+  },
+  "cv_macro_f1": 0.7531237776573464,
+  "accuracy": 0.8011111111111111,
+  "balanced_accuracy": 0.7598376866944009,
+  "macro_f1": 0.7725344128182718,
+  "precision_p": 0.8375,
+  "recall_p": 0.5894428152492669,
+  "f1_p": 0.6919104991394148,
+  "roc_auc": 0.8457262917127885,
+  "confusion_matrix": [
+    [
+      520,
+      39
+    ],
+    [
+      140,
+      201
+    ]
+  ],
+  "versions": {
+    "python": "3.10.20",
+    "sklearn": "1.4.2",
+    "pandas": "2.1.4",
+    "numpy": "1.26.4",
+    "joblib": "1.3.2"
+  },
+  "execution_environment": "AWS SageMaker - record only after actual execution"
+}

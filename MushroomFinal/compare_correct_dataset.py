@@ -121,7 +121,8 @@ def prepare():
         'random_state':42,'stratified':True,'folds':5,'fold_shuffle':True,
         'primary_metric':'mean CV macro F1','tie_breakers':['mean CV recall p','fixed candidate order'],
         'test_previously_used':True,'species_grouping':'Unavailable; source row is not a species ID',
-        'aws_status':'Local refit of prior AWS settings; new SageMaker run still required',
+        'aws_status':('Corrected SageMaker exports received and artifact audited; original comparison rows remain local refits'
+            if (OUT/'aws_artifact_audit.json').exists() else 'Local refit of prior AWS settings; new SageMaker run still required'),
         'old_61069_row_results':'Not valid for the final course comparison'}
     write_json(OUT/'protocol.json',protocol)
     return raw,X,y,train,test,folds,protocol

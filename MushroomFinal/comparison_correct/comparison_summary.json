@@ -41,7 +41,7 @@
     ],
     "test_previously_used": true,
     "species_grouping": "Unavailable; source row is not a species ID",
-    "aws_status": "Local refit of prior AWS settings; new SageMaker run still required",
+    "aws_status": "Corrected SageMaker exports received and artifact audited; original comparison rows remain local refits",
     "old_61069_row_results": "Not valid for the final course comparison"
   },
   "selected_model": "rf_final",
