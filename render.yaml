@@ -17,4 +17,4 @@ services:
       - key: RAOUL_CITIBIKE_MODEL_DIR
         value: SolutionRaoul/Citybike/models/serving
       - key: CORS_ORIGINS
-        value: http://localhost:5173,http://127.0.0.1:5173
+        value: http://localhost:5173,http://127.0.0.1:5173,https://10messi10.netlify.app

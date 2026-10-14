@@ -7,9 +7,13 @@ Citi Bike voorspelt een gekozen uur en toont daarnaast 24 uurvoorspellingen als 
 Alle websitebestanden staan in deze map: `index.html`, `styles.css`, `app.js`,
 `config.js`, `api.js`, `metadata.json` en `citibike_metrics.json`. `export_metadata.py`
 is een hulpscript om de paddenstoelenmetadata opnieuw te exporteren.
-De standaard backend-URL is automatisch hetzelfde domein als de website.
-Website en API worden samen gehost op `https://deeplearningteam10-api.onrender.com/`.
-Beide voorspelroutes zijn beschikbaar op dezelfde backend.
+Op `https://10messi10.netlify.app/` kiest de frontend automatisch de backend
+`https://deeplearningteam10-api.onrender.com`. Render staat deze specifieke
+frontend-origin toe, ook als de bestaande Render-omgeving nog alleen localhost
+in `CORS_ORIGINS` heeft staan. Op Render zelf gebruiken website en API hetzelfde
+domein. Beide voorspelroutes zijn beschikbaar op dezelfde backend.
+Een opgeslagen Netlify-URL uit de oude configuratie wordt automatisch vervangen;
+een bewust ingestelde andere backend blijft behouden.
 
 Het voorlopige paddenstoelenmodel is Andrew's Random Forest uit
 `SolutionAndrew/MushroomDataset/`. Het formulier toont de twaalf bijbehorende
@@ -42,7 +46,17 @@ gevalideerd; voorspellingen worden rechtstreeks bij de actuele API opgevraagd.
 Zie [de deployment-instructies](../docs/deployment.md) voor de eenmalige
 Render-instellingen, GitHub-controles en de lokale testopdracht.
 
-## Optioneel: een afzonderlijke Render Static Site
+## Netlify en andere afzonderlijke static sites
+
+De bestaande Netlify-site `10messi10` volgt de GitHub-repository automatisch en
+publiceert de map `frontend`. Push de wijzigingen naar `main` en wacht tot zowel
+Netlify als Render de nieuwe commit hebben gepubliceerd. Open daarna
+`https://10messi10.netlify.app/#citibike` en test de historische demonstratie.
+Voor deze site hoef je bij Verbindingsinstellingen geen backend-URL in te vullen.
+De backend wordt rechtstreeks aangeroepen zodat de wachttijd voor Render's
+koude start niet door een Netlify-proxytimeout wordt verkort.
+
+Voor een andere afzonderlijke Render Static Site:
 
 1. Stel `window.GREENLAB_API_URL` in `frontend/config.js` in op de echte HTTPS-URL van de backend.
 2. Commit en push de frontendmap naar jullie GitHub-repository.
@@ -54,8 +68,8 @@ Render-instellingen, GitHub-controles en de lokale testopdracht.
 6. Test de publieke site, ook na minstens 15 minuten zonder API-verkeer.
 
 De Verbindingsinstellingen op de website kunnen de URL voor de huidige browser overschrijven.
-Dit is handig voor ontwikkelen. Bij een afzonderlijke Static Site moet je `config.js`
-aanpassen naar de publieke API-URL; de standaard gebruikt hetzelfde domein als de site.
+Dit is handig voor ontwikkelen. Voor andere afzonderlijke Static Sites moet je
+`config.js` en de toegestane backend-origin aanpassen naar de werkelijke domeinen.
 De frontend wacht maximaal twee minuten op de API en toont uitleg over de koude start.
 
 ## Modelmetadata bijwerken

@@ -99,9 +99,12 @@ app = FastAPI(
 
 # Comma-separated frontend URLs. Never add paths or a trailing slash.
 origins = os.getenv("CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173")
+allowed_origins = [origin.strip() for origin in origins.split(",") if origin.strip()]
+# Keep the published team frontend working with existing Render env settings.
+allowed_origins.append("https://10messi10.netlify.app")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[origin.strip() for origin in origins.split(",") if origin.strip()],
+    allow_origins=allowed_origins,
     allow_methods=["GET", "POST"],
     allow_headers=["Content-Type"],
 )

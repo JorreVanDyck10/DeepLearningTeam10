@@ -2,9 +2,9 @@
 const $ = (selector) => document.querySelector(selector);
 let metadata;
 let busy = false;
-let apiUrl = window.GREENLAB_API_URL;
-try { apiUrl = localStorage.getItem("greenlab-api") || apiUrl; } catch { /* Storage may be disabled. */ }
-apiUrl = apiUrl.replace(/\/+$/, "");
+let savedApiUrl;
+try { savedApiUrl = localStorage.getItem("greenlab-api"); } catch { /* Storage may be disabled. */ }
+let apiUrl = window.Team10APIConfig.resolveApiUrl(window.location, savedApiUrl);
 $("#api-url").value = apiUrl;
 const percent = (n) => new Intl.NumberFormat("nl-BE", { style: "percent", maximumFractionDigits: 1 }).format(n);
 

@@ -1,7 +1,25 @@
-// Render serves the website and API together: the API URL follows this deployment.
-// The separate local frontend server on port 5173 uses the local API on port 8000.
-const separateLocalFrontend = ["localhost", "127.0.0.1", "[::1]"].includes(window.location.hostname)
-  && window.location.port === "5173";
-window.GREENLAB_API_URL = separateLocalFrontend
-  ? `${window.location.protocol}//${window.location.hostname}:8000`
-  : window.location.origin;
+"use strict";
+
+function resolveApiUrl(location, savedUrl) {
+  const netlifyFrontend = location.hostname === "10messi10.netlify.app";
+  const separateLocalFrontend = ["localhost", "127.0.0.1", "[::1]"].includes(location.hostname)
+    && location.port === "5173";
+  const defaultUrl = netlifyFrontend
+    ? "https://deeplearningteam10-api.onrender.com"
+    : separateLocalFrontend
+      ? `${location.protocol}//${location.hostname}:8000`
+      : location.origin;
+
+  // Migrate the old Netlify default; retain deliberately configured backends.
+  if (savedUrl && !(netlifyFrontend && savedUrl.replace(/\/+$/, "") === location.origin)) {
+    return savedUrl.replace(/\/+$/, "");
+  }
+  return defaultUrl;
+}
+
+if (typeof module === "object" && module.exports) {
+  module.exports = { resolveApiUrl };
+} else {
+  window.Team10APIConfig = { resolveApiUrl };
+  window.GREENLAB_API_URL = resolveApiUrl(window.location);
+}
