@@ -56,8 +56,8 @@ python -m uvicorn backend.main:app --reload
 
 Open `http://127.0.0.1:8000/`. Dezelfde server serveert de website en API.
 De aparte ontwikkelserver op poort 5173 blijft ook werken; `config.js` kiest dan
-automatisch de backend op poort 8000. Verbindingsinstellingen op de website zijn
-alleen een optionele override voor deze browser.
+automatisch de backend op poort 8000. De backend-URL is niet via de website
+aanpasbaar; oude browserinstellingen worden genegeerd.
 
 ## Controleren
 

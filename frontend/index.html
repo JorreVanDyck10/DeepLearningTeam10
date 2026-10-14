@@ -23,8 +23,6 @@
       <h1>Paddenstoelen voorspellen</h1>
       <p>Vul de kenmerken in of gebruik het voorbeeld.</p>
       <p>De uitkomst is “Model voorspelt: giftig” of “Onzeker / mogelijk giftig”. Ook een hoge modelscore voor de eetbare klasse bevestigt geen eetbaarheid.</p>
-      <p class="muted">Geselecteerd model: Random Forest met 300 bomen, uit de vergelijking op het cursusbestand van 5.000 records.</p>
-      <p class="notice">Schooldemo met hypothetische data. Niet gebruiken om te bepalen of echte paddenstoelen eetbaar zijn.</p>
       <div class="workspace">
         <section class="panel">
           <div class="form-heading"><h2>Kenmerken</h2><button id="example" type="button">Voorbeeld invullen</button></div>
@@ -85,14 +83,6 @@
       <p class="muted">RMSE weegt grote fouten zwaarder; MAE is de gemiddelde absolute fout in ritstarts per lokaal uurvak. De eindtest-RMSE is 24,12% lager dan de weekbaseline. Deze prestaties veronderstellen tijdig beschikbare voorafgaande tellingen en garanderen geen gelijke kwaliteit in toekomstige maanden.</p>
       <p><a href="https://github.com/JorreVanDyck10/DeepLearningTeam10" target="_blank" rel="noopener">GitHub-repository</a> · <a href="https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/mushroom_project_dataset.csv" target="_blank" rel="noopener">Gebruikte paddenstoelendataset</a></p>
     </section>
-    <details class="settings">
-      <summary>Verbindingsinstellingen</summary>
-      <form id="settings-form">
-        <label for="api-url">Backend-URL</label>
-        <div class="settings-row"><input id="api-url" type="url" placeholder="https://jullie-api.onrender.com" required><button type="submit">Opslaan</button></div>
-        <p id="settings-message" role="status"></p>
-      </form>
-    </details>
   </main>
 </body>
 </html>

@@ -12,7 +12,7 @@ async function requestJson(url, options = {}) {
 
   if (!response.ok) {
     if ([404, 405].includes(response.status)) {
-      throw new Error("Deze route is nog niet beschikbaar op de backend. Controleer de backend-URL bij Verbindingsinstellingen.");
+      throw new Error("Deze functie is nog niet beschikbaar. Vernieuw de pagina of probeer het later opnieuw.");
     }
     if (response.status >= 500) {
       const detail = typeof data?.detail === "string" ? data.detail : null;
@@ -30,7 +30,7 @@ async function requestJson(url, options = {}) {
   }
   if (!body.trim()) throw new Error("De server gaf een leeg antwoord. Wacht even en probeer opnieuw.");
   if (!data || typeof data !== "object" || Array.isArray(data)) {
-    throw new Error("De server gaf geen geldig JSON-antwoord. Controleer de backend-URL en probeer opnieuw.");
+    throw new Error("De server gaf geen geldig antwoord. Probeer het later opnieuw.");
   }
   return data;
 }

@@ -22,7 +22,7 @@ test("Render remains same-origin and the separate local frontend uses port 8000"
   }
 });
 
-test("an explicitly configured backend still takes precedence", () => {
+test("obsolete browser settings cannot override the automatic backend", () => {
   assert.equal(resolveApiUrl(location("https://10messi10.netlify.app"), "https://custom.example/"),
-    "https://custom.example");
+    "https://deeplearningteam10-api.onrender.com");
 });

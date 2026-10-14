@@ -53,7 +53,7 @@ function recentHistory(rows, date) {
 }
 
 function validateCityResult(data) {
-  if (data.model_id !== CITY_MODEL_ID) throw new Error("Deze backend gebruikt nog niet Raouls gekozen model. Wacht op de deployment of controleer de backend-URL.");
+  if (data.model_id !== CITY_MODEL_ID) throw new Error("Het nieuwe City Bike-model is nog niet beschikbaar. Wacht op de update en vernieuw de pagina.");
   if (!Number.isFinite(data.predicted_ride_starts) || !Number.isFinite(data.daily_total) ||
       !Array.isArray(data.daily_predictions) || data.daily_predictions.length !== 24 ||
       data.daily_predictions.some((row, index) => row.hour !== index ||

@@ -2,10 +2,7 @@
 const $ = (selector) => document.querySelector(selector);
 let metadata;
 let busy = false;
-let savedApiUrl;
-try { savedApiUrl = localStorage.getItem("greenlab-api"); } catch { /* Storage may be disabled. */ }
-let apiUrl = window.Team10APIConfig.resolveApiUrl(window.location, savedApiUrl);
-$("#api-url").value = apiUrl;
+const apiUrl = window.Team10APIConfig.resolveApiUrl(window.location);
 const percent = (n) => new Intl.NumberFormat("nl-BE", { style: "percent", maximumFractionDigits: 1 }).format(n);
 
 function route() {
@@ -38,18 +35,6 @@ async function checkConnection() {
     status.classList.add("ready");
   } catch { status.textContent = "Backend niet bereikbaar"; }
 }
-$("#settings-form").addEventListener("submit", (event) => {
-  event.preventDefault();
-  const url = new URL($("#api-url").value);
-  if (!["http:", "https:"].includes(url.protocol) || url.username || url.password || url.search || url.hash) {
-    $("#settings-message").textContent = "Gebruik een HTTP(S)-URL zonder inloggegevens, query of fragment.";
-    return;
-  }
-  apiUrl = url.href.replace(/\/+$/, "");
-  try { localStorage.setItem("greenlab-api", apiUrl); } catch { /* Still usable for this visit. */ }
-  $("#settings-message").textContent = "URL ingesteld voor deze browser.";
-  checkConnection();
-});
 
 function fieldElement(field) {
   const wrapper = document.createElement("div");
@@ -86,7 +71,7 @@ $("#mushroom-form").addEventListener("submit", async (event) => {
     payload[field.name] = value === "" ? null : field.options ? value : Number(value);
   }
   busy = true;
-  const controls = [...document.querySelectorAll("#mushroom-form input, #mushroom-form select, #mushroom-form button, #example, #settings-form button")];
+  const controls = [...document.querySelectorAll("#mushroom-form input, #mushroom-form select, #mushroom-form button, #example")];
   controls.forEach((el) => { el.disabled = true; });
   $("#predict-button").textContent = "Voorspelling ophalen…";
   $("#result").innerHTML = '<p>Voorspelling ophalen…</p><p class="muted">De server kan ongeveer een minuut nodig hebben om op te starten.</p>';
@@ -94,14 +79,14 @@ $("#mushroom-form").addEventListener("submit", async (event) => {
     const result = await api("/predict/mushroom", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
     if (result.model_id !== metadata.model_id) throw new Error("De backend gebruikt nog een andere modelversie. Wacht op de deployment en vernieuw de pagina.");
     const decision = window.MushroomDecision.present(result);
-    $("#result").innerHTML = '<div class="result-label"></div><p class="score"></p><p class="decision-explanation"></p><p class="muted">De modelscore is geen bewezen kans op giftigheid. Niet gebruiken als eetadvies.</p>';
+    $("#result").innerHTML = '<div class="result-label"></div><p class="score"></p><p class="decision-explanation"></p>';
     $(".result-label").textContent = decision.title;
     $(".decision-explanation").textContent = decision.explanation;
     $(".score").textContent = `Modelscore giftige klasse: ${percent(result.probability_poisonous)}`;
     $("#connection").textContent = "Backend verbonden";
     $("#connection").classList.add("ready");
   } catch (error) {
-    $("#result").innerHTML = '<p>Voorspelling niet gelukt.</p><p class="error"></p><p class="muted">Controleer de URL bij Verbindingsinstellingen en of de backend draait.</p>';
+    $("#result").innerHTML = '<p>Voorspelling niet gelukt.</p><p class="error"></p>';
     $(".error").textContent = error instanceof TypeError ? "Geen verbinding met de API. Controleer de server en CORS-instellingen." : error.name === "TimeoutError" ? "De server reageerde niet binnen twee minuten. Probeer opnieuw." : error.message;
   } finally {
     busy = false;
@@ -182,7 +167,7 @@ $("#city-form").addEventListener("submit", async (event) => {
     $("#city-day").hidden = false;
   } catch (error) {
     $("#city-result").innerHTML = '<p>Voorspelling niet gelukt.</p><p class="error"></p>';
-    $("#city-result .error").textContent = error instanceof TypeError ? "Geen verbinding met de backend. Controleer de verbindingsinstellingen." : error.name === "TimeoutError" ? "De server reageerde niet binnen twee minuten. Probeer opnieuw." : error.message;
+    $("#city-result .error").textContent = error instanceof TypeError ? "Geen verbinding met de server. Probeer het later opnieuw." : error.name === "TimeoutError" ? "De server reageerde niet binnen twee minuten. Probeer opnieuw." : error.message;
   } finally {
     cityBusy = false;
     controls.forEach((el) => { el.disabled = false; });

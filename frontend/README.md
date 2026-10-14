@@ -18,8 +18,7 @@ Op `https://10messi10.netlify.app/` kiest de frontend automatisch de backend
 frontend-origin toe, ook als de bestaande Render-omgeving nog alleen localhost
 in `CORS_ORIGINS` heeft staan. Op Render zelf gebruiken website en API hetzelfde
 domein. Beide voorspelroutes zijn beschikbaar op dezelfde backend.
-Een opgeslagen Netlify-URL uit de oude configuratie wordt automatisch vervangen;
-een bewust ingestelde andere backend blijft behouden.
+De backend-URL wordt automatisch bepaald; oude browserinstellingen worden genegeerd.
 
 Het paddenstoelenmodel is de gekozen RF300 uit `MushroomFinal/comparison_correct/`.
 Het formulier toont elf underscore-velden; `jumbled_noise_0` is verwijderd en
@@ -59,13 +58,13 @@ De bestaande Netlify-site `10messi10` volgt de GitHub-repository automatisch en
 publiceert de map `frontend`. Push de wijzigingen naar `main` en wacht tot zowel
 Netlify als Render de nieuwe commit hebben gepubliceerd. Open daarna
 `https://10messi10.netlify.app/#citibike` en test de historische demonstratie.
-Voor deze site hoef je bij Verbindingsinstellingen geen backend-URL in te vullen.
+De website heeft geen invoerveld voor een backend-URL.
 De backend wordt rechtstreeks aangeroepen zodat de wachttijd voor Render's
 koude start niet door een Netlify-proxytimeout wordt verkort.
 
 Voor een andere afzonderlijke Render Static Site:
 
-1. Stel `window.GREENLAB_API_URL` in `frontend/config.js` in op de echte HTTPS-URL van de backend.
+1. Pas `resolveApiUrl` in `frontend/config.js` aan voor de nieuwe frontendhost en echte HTTPS-URL van de backend.
 2. Commit en push de frontendmap naar jullie GitHub-repository.
 3. Kies op Render **New > Static Site**, dezelfde repo en branch.
 4. Laat Root Directory leeg, gebruik `echo "Static site: no build required"` als Build Command
@@ -74,8 +73,7 @@ Voor een andere afzonderlijke Render Static Site:
    in `render.yaml`, naast de lokale origins. Push en laat de backend opnieuw deployen.
 6. Test de publieke site, ook na minstens 15 minuten zonder API-verkeer.
 
-De Verbindingsinstellingen op de website kunnen de URL voor de huidige browser overschrijven.
-Dit is handig voor ontwikkelen. Voor andere afzonderlijke Static Sites moet je
+Voor andere afzonderlijke Static Sites moet je
 `config.js` en de toegestane backend-origin aanpassen naar de werkelijke domeinen.
 De frontend wacht maximaal twee minuten op de API en toont uitleg over de koude start.
 

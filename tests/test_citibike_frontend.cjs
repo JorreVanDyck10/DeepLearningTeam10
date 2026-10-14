@@ -25,7 +25,7 @@ test("only fourteen previous calendar days go to the API", () => {
   assert.throws(() => recentHistory(rows.slice(1), "2026-11-01"), /336/);
 });
 test("a baseline response can never be presented as Raouls model", () => {
-  assert.throws(() => validateCityResult({ model_id: "baseline_hourly_tree" }), /nog niet Raouls/);
+  assert.throws(() => validateCityResult({ model_id: "baseline_hourly_tree" }), /nieuwe City Bike-model is nog niet beschikbaar/);
   const daily_predictions = Array.from({ length: 24 }, (_, hour) => ({ hour, predicted_ride_starts: 100, clock_hours: 1 }));
   assert.doesNotThrow(() => validateCityResult({ model_id: MODEL_ID, daily_total: 2400, predicted_ride_starts: 100, daily_predictions }));
   assert.throws(() => validateCityResult({ model_id: MODEL_ID, daily_total: 2400, predicted_ride_starts: 100, daily_predictions: daily_predictions.slice(1) }));

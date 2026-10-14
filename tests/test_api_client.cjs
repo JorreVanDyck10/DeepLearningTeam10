@@ -40,7 +40,7 @@ test("HTML gateway response is not shown as JSON or raw HTML", async () => {
 test("empty missing route still reports that the route is unavailable", async () => {
   for (const status of [404, 405]) {
     respond("", status);
-    await assert.rejects(requestJson("/predict/citibike"), /route is nog niet beschikbaar/);
+    await assert.rejects(requestJson("/predict/citibike"), /functie is nog niet beschikbaar/);
   }
 });
 
@@ -57,7 +57,7 @@ test("field validation messages are retained", async () => {
 test("invalid or non-object successful response is rejected", async () => {
   for (const body of ["<html>Login</html>", '{"label":', "null", "[]"]) {
     respond(body);
-    await assert.rejects(requestJson("/predict/mushroom"), /geen geldig JSON-antwoord/);
+    await assert.rejects(requestJson("/predict/mushroom"), /geen geldig antwoord/);
   }
 });
 
