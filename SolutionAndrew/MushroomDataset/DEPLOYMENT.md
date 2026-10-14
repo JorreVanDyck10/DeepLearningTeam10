@@ -1,3 +1,6 @@
+> Historische RF200-export. De team-API gebruikt inmiddels de gekozen RF300.
+> Zie [actuele deployment en export](../../docs/mushroom_rf300.md).
+
 # Voorlopig gepubliceerd model
 
 De website gebruikt voorlopig het Random Forest uit `mushroom.ipynb`:

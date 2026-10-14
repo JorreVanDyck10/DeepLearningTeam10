@@ -1,106 +1,101 @@
-"""Export Andrew's notebook model, including its deterministic measurement cleaning."""
+"""Serve the selected RF300 through a lossless, version-independent NumPy export."""
 import hashlib
 import json
 from pathlib import Path
 
-import joblib
 import numpy as np
 import pandas as pd
-from sklearn.compose import ColumnTransformer
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import (
-    accuracy_score, balanced_accuracy_score, confusion_matrix,
-    precision_score, recall_score, f1_score, roc_auc_score,
-)
-from sklearn.model_selection import train_test_split
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import FunctionTransformer, OneHotEncoder
 
-ROOT = Path(__file__).resolve().parent.parent
-SOURCE = ROOT / "SolutionAndrew/MushroomDataset"
-DEFAULT_MODEL = SOURCE / "models/random_forest.joblib"
-METRICS = SOURCE / "metrics/random_forest.json"
-MODEL_ID = "andrew_random_forest_200"
-FEATURES = [
-    "cap-diameter", "stem-height", "stem-width", "spore-print-color",
-    "gill-color", "habitat", "season", "ring-type", "cap-shape",
-    "stem-surface", "jumbled_noise_0", "jumbled_noise_1",
-]
+ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_MODEL = ROOT / 'backend/artifacts/mushroom_rf300.json'
+MODEL_ID = 'mushroom_final_rf300'
+FEATURES = ['cap_diameter', 'stem_height', 'stem_width', 'spore_print_color',
+            'gill_color', 'habitat', 'season', 'ring_type', 'cap_shape',
+            'stem_surface', 'jumbled_noise_1']
 
 
 def clean_measurements(frame):
-    """Match notebook cell 8 for training and every subsequent prediction."""
-    cleaned = frame.copy()
-    columns = ["stem-height", "stem-width"]
-    cleaned[columns] = cleaned[columns].replace(0, np.nan)
-    return cleaned
+    """Legacy pickle reference only; the selected RF300 does not use this cleaning."""
+    result = frame.copy()
+    result[['stem-height', 'stem-width']] = result[['stem-height', 'stem-width']].replace(0, np.nan)
+    return result
 
 
-def export_model():
-    source_file = SOURCE / "mushroom_project_dataset.csv"
-    data = pd.read_csv(source_file)
-    X, y = data.drop(columns="class"), data["class"]
-    if list(X.columns) != FEATURES or not y.isin(["e", "p"]).all():
-        raise ValueError("Andrew's dataset does not match the expected features/classes.")
+class PortableMushroom:
+    """Original imputation, one-hot encoding, float32 inputs and tree averaging."""
+    def __init__(self, manifest_path=DEFAULT_MODEL):
+        path = Path(manifest_path)
+        self.metadata = json.loads(path.read_text(encoding='utf-8'))
+        m = self.metadata
+        if m['model_id'] != MODEL_ID or m['features'] != FEATURES or m['n_estimators'] != 300:
+            raise ValueError('Unexpected Mushroom model or feature contract')
+        if Path(m['forest_file']).name != m['forest_file']:
+            raise ValueError('Invalid Mushroom artifact path')
+        forest = path.parent / m['forest_file']
+        if hashlib.sha256(forest.read_bytes()).hexdigest() != m['forest_sha256']:
+            raise ValueError('Mushroom artifact checksum mismatch')
+        with np.load(forest, allow_pickle=False) as arrays:
+            self.left = arrays['left']; self.right = arrays['right']
+            self.feature = arrays['feature']; self.threshold = arrays['threshold']
+            self.probabilities = arrays['probabilities']; self.offsets = arrays['offsets']
+        count = len(self.left)
+        if (self.offsets.shape != (301,) or self.offsets[0] != 0 or self.offsets[-1] != count
+                or not (np.diff(self.offsets) > 0).all()
+                or any(len(v) != count for v in [self.right, self.feature, self.threshold, self.probabilities])
+                or self.probabilities.shape != (count, 2)):
+            raise ValueError('Invalid Mushroom forest schema')
+        self.feature_names_in_ = np.asarray(FEATURES, dtype=object)
+        self.classes_ = np.asarray([0, 1])
 
-    numeric = X.select_dtypes(include="number").columns.tolist()
-    categorical = X.select_dtypes(exclude="number").columns.tolist()
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42, stratify=y,
-    )
-    preprocessor = ColumnTransformer([
-        ("num", SimpleImputer(strategy="median"), numeric),
-        ("cat", Pipeline([
-            ("imputer", SimpleImputer(strategy="most_frequent")),
-            ("encoder", OneHotEncoder(handle_unknown="ignore")),
-        ]), categorical),
-    ])
-    model = Pipeline([
-        ("clean_measurements", FunctionTransformer(clean_measurements)),
-        ("preprocessor", preprocessor),
-        ("classifier", RandomForestClassifier(
-            n_estimators=200, random_state=42, class_weight="balanced", n_jobs=2,
-        )),
-    ])
-    model.fit(X_train, y_train)
-    predicted = model.predict(X_test)
-    probabilities = model.predict_proba(X_test)[:, list(model.classes_).index("p")]
-    cm = confusion_matrix(y_test, predicted, labels=["e", "p"])
-    metrics = {
-        "model_id": MODEL_ID,
-        "model_name": "Andrew — Random Forest (200 bomen)",
-        "source_notebook": "SolutionAndrew/MushroomDataset/mushroom.ipynb",
-        "dataset": "SolutionAndrew/MushroomDataset/mushroom_project_dataset.csv",
-        "dataset_sha256": hashlib.sha256(source_file.read_bytes()).hexdigest(),
-        "dataset_rows": len(data), "train_rows": len(X_train), "test_rows": len(X_test),
-        "features": FEATURES,
-        "parameters": {"n_estimators": 200, "random_state": 42, "class_weight": "balanced"},
-        "test_metrics": {
-            "accuracy": float(accuracy_score(y_test, predicted)),
-            "balanced_accuracy": float(balanced_accuracy_score(y_test, predicted)),
-            "precision_poisonous": float(precision_score(y_test, predicted, pos_label="p")),
-            "recall_poisonous": float(recall_score(y_test, predicted, pos_label="p")),
-            "f1_poisonous": float(f1_score(y_test, predicted, pos_label="p")),
-            "roc_auc_poisonous": float(roc_auc_score(y_test == "p", probabilities)),
-            "poisonous_predicted_edible": int(cm[1, 0]),
-            "confusion_matrix_labels": ["e", "p"],
-            "confusion_matrix": cm.tolist(),
-        },
-    }
-    example = json.loads(X_test.iloc[[0]].to_json(orient="records"))[0]
-    DEFAULT_MODEL.parent.mkdir(parents=True, exist_ok=True)
-    METRICS.parent.mkdir(parents=True, exist_ok=True)
-    joblib.dump(model, DEFAULT_MODEL, compress=3)
-    METRICS.write_text(json.dumps(metrics, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    (SOURCE / "example_mushroom.json").write_text(
-        json.dumps(example, ensure_ascii=False, indent=2) + "\n", encoding="utf-8",
-    )
-    print(json.dumps(metrics["test_metrics"], indent=2))
-    print(f"Saved {DEFAULT_MODEL.relative_to(ROOT)} ({DEFAULT_MODEL.stat().st_size:,} bytes)")
+    def _encode(self, frame):
+        if list(frame.columns) != FEATURES:
+            raise ValueError('Incorrect Mushroom input columns/order')
+        m = self.metadata
+        numeric = frame[m['numeric_features']].apply(pd.to_numeric, errors='raise').to_numpy(dtype=float)
+        numeric = np.where(np.isnan(numeric), np.asarray(m['numeric_medians']), numeric)
+        if not np.isfinite(numeric).all():
+            raise ValueError('Numeric Mushroom features must be finite or null')
+        pieces = [numeric]
+        for spec in m['categorical']:
+            values = frame[spec['name']].astype(object).where(frame[spec['name']].notna(), spec['imputation']).to_numpy()
+            pieces.append(np.column_stack([values == code for code in spec['categories']]).astype(float))
+        return np.column_stack(pieces).astype(np.float32)
 
+    def predict_proba(self, frame):
+        values = self._encode(frame)
+        result = np.zeros((len(frame), 2), dtype=float)
+        for start, stop in zip(self.offsets[:-1], self.offsets[1:]):
+            start, stop = int(start), int(stop)
+            indices = np.zeros(len(frame), dtype=np.int32)
+            for _ in range(21):
+                active = self.left[start + indices] != -1
+                if not active.any():
+                    break
+                rows = np.flatnonzero(active)
+                current = start + indices[rows]
+                columns = self.feature[current]
+                if ((columns < 0) | (columns >= values.shape[1])).any():
+                    raise ValueError('Invalid Mushroom split feature')
+                indices[rows] = np.where(values[rows, columns] <= self.threshold[current], self.left[current], self.right[current])
+                if ((indices[rows] < 0) | (start + indices[rows] >= stop)).any():
+                    raise ValueError('Invalid Mushroom child index')
+            else:
+                raise ValueError('Mushroom tree exceeds declared maximum depth')
+            result += self.probabilities[start + indices]
+        return result / 300
 
-if __name__ == "__main__":
-    # Keep pickle's function reference stable when run with python -m.
-    from backend.mushroom_model import export_model as export
-    export()
+    def predict(self, frame):
+        return np.argmax(self.predict_proba(frame), axis=1)
+
+    def predict_record(self, record):
+        if set(record) != set(FEATURES):
+            raise ValueError('Mushroom prediction requires the eleven selected features')
+        for spec in self.metadata['categorical']:
+            value = record[spec['name']]
+            if value is not None and value not in spec['categories']:
+                raise ValueError(f"Onbekende datasetcode voor {spec['name']}.")
+        frame = pd.DataFrame([record], columns=FEATURES).replace({None: np.nan})
+        proba = self.predict_proba(frame)[0]
+        label = 'p' if np.argmax(proba) == 1 else 'e'
+        return {'label': label, 'prediction': 'giftig' if label == 'p' else 'eetbaar',
+                'probability_poisonous': float(proba[1])}

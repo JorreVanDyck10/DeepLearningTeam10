@@ -131,16 +131,16 @@ See [docs/deployment.md](docs/deployment.md) for Render settings, local startup,
 checks and the distinction between deploying code and retraining models.
 
 
-## Provisional Mushroom model: Andrew
+## Selected Mushroom model: RF300
 
-The live website and API currently use Andrew's previously exported 200-tree Random Forest
-in `SolutionAndrew/MushroomDataset/models/random_forest.joblib`. Its metrics
-and example are stored alongside that artifact. Andrew's latest notebook now defines
-other models, including a 500-tree Random Forest. The API and website use the old export's
-12 features, including the optional noise fields. Reproduced test accuracy is
-78.2%; these figures describe Andrew's 5,000-record dataset and should not be
-compared directly with scores from the full Secondary Mushroom dataset.
-See [the export/deployment instructions](SolutionAndrew/MushroomDataset/DEPLOYMENT.md).
+The website and API are configured to serve the selected 300-tree Random Forest
+from `MushroomFinal/comparison_correct/selected_pipeline.joblib`, using a lossless
+NumPy export with the original preprocessing. All 900 saved test predictions
+match in the serving runtime. The frontend uses the same eleven underscore
+features and checks the backend model ID `mushroom_final_rf300`.
+Test accuracy is 81.33% and poisonous recall 64.52%; these are development-test
+results on the correct 5,000-row course dataset. See
+[the deployment and export documentation](docs/mushroom_rf300.md).
 
 ## Mushroom — corrected final comparison (5,000-row course CSV)
 
@@ -161,8 +161,8 @@ actually executed PyCaret 3.3.2 section and its conclusion. Use Python 3.11 and
 The complete new pipeline and all audit files are in
 [MushroomFinal/comparison_correct](MushroomFinal/comparison_correct/).
 
-The website still uses the older twelve-field RF200. This comparison does not switch
-it automatically. Jorre's corrected SageMaker training and four-candidate tuning are
+The selected RF300 is now connected to the backend and frontend. Jorre's corrected
+SageMaker training and four-candidate tuning are
 now complete; the [executed AWS exports](SolutionJorre/MushroomDataset/correct_dataset/README.md)
 use the provided 5,000-row data and eleven features. Independent artifact inference
 reproduces 80.11% accuracy, 58.94% poisonous recall and CV macro F1 0.753124, matching

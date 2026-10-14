@@ -1,7 +1,8 @@
 # Backend en website
 
-FastAPI gebruikt voorlopig Andrew's Random Forest met 200 bomen en twaalf invoervelden.
-Bij het starten laadt de API de volledige pipeline, inclusief preprocessing.
+FastAPI gebruikt de gekozen RF300 uit de vergelijking op de juiste cursusdata.
+Bij het starten laadt de API een verliesvrije export met alle preprocessing.
+Het formulier gebruikt elf underscore-velden; de response vermeldt de model-ID.
 De backend serveert ook de website op hetzelfde domein.
 Het bestaande Citi Bike-model wordt ook geladen. `/health` is gereed wanneer
 beide modellen beschikbaar zijn.
@@ -29,37 +30,24 @@ Open http://127.0.0.1:8000/ voor de website of `/docs` voor de interactieve API.
 ## Eerste voorspelling
 
 ```powershell
-$body = Get-Content SolutionAndrew/MushroomDataset/example_mushroom.json -Raw
+$body = (Get-Content frontend/metadata.json -Raw | ConvertFrom-Json).example | ConvertTo-Json
 Invoke-RestMethod -Uri http://127.0.0.1:8000/predict/mushroom -Method Post -ContentType 'application/json' -Body $body
 ```
 
-De tien gewone kenmerken zijn verplicht; ontbrekende waarden mogen `null` zijn.
-De twee extra datasetvelden `jumbled_noise_0` en `jumbled_noise_1` zijn optioneel
-en krijgen standaard `null`. Gebruik de oorspronkelijke datasetcodes. Extra velden,
-negatieve metingen en onbekende categorische codes geven HTTP 422.
-Nul voor `stem-height` of `stem-width` wordt, zoals in Andrew's notebook, een
-ontbrekende waarde voordat de pipeline deze invult.
-
-De respons bevat `label`, `prediction`, `probability_poisonous` en een educatieve
-disclaimer. De modeluitkomst is geen advies om een paddenstoel te eten.
+De tien gewone kenmerken zijn verplicht en nullable. Alleen `jumbled_noise_1` is
+optioneel, met standaard null. `jumbled_noise_0` is verwijderd. Extra velden,
+negatieve metingen en onbekende categorische codes geven HTTP 422. Nul blijft
+hier een echte meting. De response bevat `model_id`, `label`, `prediction`,
+`probability_poisonous` en een educatieve disclaimer.
 
 ## Opgeslagen model
 
-Standaard laadt de API:
-`SolutionAndrew/MushroomDataset/models/random_forest.joblib`.
-Het modelpad kan worden overschreven met `ANDREW_MUSHROOM_MODEL_PATH`.
-De oude instelling `MUSHROOM_MODEL_PATH` selecteert deze pipeline niet.
-
-Andrew's notebook blijft ongewijzigd. Voor het opnieuw exporteren van zijn model
-in dezelfde omgeving:
-
-```powershell
-.\.venv\Scripts\python.exe -m backend.mushroom_model
-.\.venv\Scripts\python.exe frontend/export_metadata.py
-```
-
-Zie [modeldocumentatie](../SolutionAndrew/MushroomDataset/DEPLOYMENT.md) voor de
-train/test-verdeling, opnieuw berekende scores en preprocessing.
+Standaard laadt de API `backend/artifacts/mushroom_rf300.json` en het bijbehorende
+NPZ-bos. `MUSHROOM_RF300_MANIFEST` kan het manifestpad aanpassen; de oude
+`ANDREW_MUSHROOM_MODEL_PATH` selecteert geen RF200 meer. De originele gekozen
+pipeline blijft onder `MushroomFinal/comparison_correct/selected_pipeline.joblib`.
+Zie [RF300 deployment en export](../docs/mushroom_rf300.md) voor bronhash,
+compatibiliteit, reproduceerbare export en controle op alle 900 testrecords.
 
 ## Deployment op Render
 
@@ -104,5 +92,5 @@ Zie [de nieuwe deploymentdocumentatie](../docs/citibike_raoul.md).
 
 ## Bijdrage
 
-Codex exporteerde Andrew's bestaande trainingspipeline en paste API, formulier,
-metadata en controles aan. Vul de GenAI-disclosure aan volgens het opleidingsbeleid.
+Codex koppelde de gekozen RF300 via een verliesvrije export aan API en formulier
+en voegde metadata- en voorspelcontroles toe. Vul de GenAI-disclosure aan volgens het opleidingsbeleid.

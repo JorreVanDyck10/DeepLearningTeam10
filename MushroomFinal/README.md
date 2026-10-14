@@ -42,8 +42,10 @@ de lokale AWS-baseline; RF300 blijft voorlopig gekozen. Herhaal de audit met:
 .\.venv-comparison\Scripts\python.exe MushroomFinal/audit_correct_aws.py
 ```
 
-De nieuwe pipeline verwacht elf velden en geeft `0=e`, `1=p`. De website is nog niet
-overgeschakeld. De oude API gebruikt twaalf velden en een ander artifact.
+De gekozen pipeline verwacht elf velden en geeft `0=e`, `1=p`. API en website zijn
+nu gekoppeld aan een verliesvrije RF300-export; de API vertaalt naar `e` en `p`.
+Zie [deploymentdocumentatie](../docs/mushroom_rf300.md) voor de exportaudit,
+versiecontrole en hosting.
 
 Bijdragen: Andrew maakte de originele uitwerking. Codex voerde op verzoek van Jorre
 de datasetcorrectie, gedeelde evaluatie, PyCaret-uitvoering en rapportage uit.

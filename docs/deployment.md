@@ -19,10 +19,12 @@ Een geopende pagina wordt niet vanzelf herladen. Vernieuw die na een deployment.
 De API laadt het meegeleverde model opnieuw bij de start van de nieuwe deployment.
 Automatische hertraining op nieuwe data is een afzonderlijke ML-pipeline.
 
-Het voorlopige paddenstoelenmodel is Andrew's Random Forest. Het artifact en de
-resultaten staan onder `SolutionAndrew/MushroomDataset/`. Zie
-[de modelinstructies](../SolutionAndrew/MushroomDataset/DEPLOYMENT.md) voor export
-en het samen bijwerken van model, metrics en websitevelden.
+Het paddenstoelenmodel is de gekozen RF300 uit de vergelijking op de 5.000
+cursusrecords. API en website gebruiken elf velden en dezelfde model-ID. De
+originele pipeline wordt verliesvrij geëxporteerd naar NumPy-arrays, zodat de
+bestaande servingomgeving bruikbaar blijft. Zie [RF300-deployment](mushroom_rf300.md)
+voor artifact, exportcontrole en het nieuwe API-contract. GitHub Actions bewaakt
+ook dat frontendmetadata bij dit artifact blijft passen.
 
 ## Eenmalige Render-instellingen
 

@@ -7,15 +7,13 @@ import os
 from pathlib import Path
 from typing import Literal
 
-import joblib
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
-from secondary_mushroom.predict import predict_records
-from backend.mushroom_model import DEFAULT_MODEL, MODEL_ID
+from backend.mushroom_model import DEFAULT_MODEL, MODEL_ID, PortableMushroom
 from backend.raoul_citibike import ensure_artifact, predict as predict_city, model_metadata, MODEL_ID as CITY_MODEL_ID
 
 logger = logging.getLogger(__name__)
@@ -23,25 +21,25 @@ DISCLAIMER = "Educatieve voorspelling op hypothetische data; niet gebruiken om e
 
 
 class MushroomInput(BaseModel):
-    """Andrew's twelve features; null represents missing data."""
+    """The selected pipeline's eleven features; null represents missing data."""
 
     model_config = ConfigDict(extra="forbid", allow_inf_nan=False, strict=True)
 
-    cap_diameter: float | None = Field(alias="cap-diameter", ge=0)
-    cap_shape: str | None = Field(alias="cap-shape")
-    gill_color: str | None = Field(alias="gill-color")
-    stem_height: float | None = Field(alias="stem-height", ge=0)
-    stem_width: float | None = Field(alias="stem-width", ge=0)
-    stem_surface: str | None = Field(alias="stem-surface")
-    ring_type: str | None = Field(alias="ring-type")
-    spore_print_color: str | None = Field(alias="spore-print-color")
+    cap_diameter: float | None = Field(ge=0)
+    cap_shape: str | None
+    gill_color: str | None
+    stem_height: float | None = Field(ge=0)
+    stem_width: float | None = Field(ge=0)
+    stem_surface: str | None
+    ring_type: str | None
+    spore_print_color: str | None
     habitat: str | None
     season: str | None
-    jumbled_noise_0: str | None = None
     jumbled_noise_1: str | None = None
 
 
 class MushroomPrediction(BaseModel):
+    model_id: str
     label: str
     prediction: str
     probability_poisonous: float
@@ -65,15 +63,14 @@ class CityInput(BaseModel):
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Only load model artifacts produced by our own training pipeline.
-    # Separate key prevents an old Render baseline setting selecting the old model.
-    model_path = Path(os.getenv("ANDREW_MUSHROOM_MODEL_PATH", str(DEFAULT_MODEL)))
+    # A new key prevents existing Render settings from selecting the old RF200 pickle.
+    model_path = Path(os.getenv("MUSHROOM_RF300_MANIFEST", str(DEFAULT_MODEL)))
     app.state.mushroom_model = None
     try:
-        model = joblib.load(model_path)
+        model = PortableMushroom(model_path)
         required = set(MushroomInput.model_fields[field].alias or field
                        for field in MushroomInput.model_fields)
-        if set(model.feature_names_in_) != required or "p" not in model.classes_:
+        if set(model.feature_names_in_) != required or model.classes_.tolist() != [0, 1]:
             raise ValueError("Model is incompatible with the Mushroom API contract.")
         app.state.mushroom_model = model
     except Exception:
@@ -92,8 +89,8 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="DeepLearningTeam10 API",
-    description="Voorspellingen met Andrew's Random Forest en Raouls getunede Citi Bike Random Forest.",
-    version="0.4.0",
+    description="Voorspellingen met de geselecteerde Mushroom RF300 en Raouls getunede Citi Bike Random Forest.",
+    version="0.5.0",
     lifespan=lifespan,
 )
 
@@ -130,23 +127,12 @@ def predict_mushroom(payload: MushroomInput, request: Request):
     model = request.app.state.mushroom_model
     if model is None:
         raise HTTPException(status_code=503, detail="Model niet beschikbaar. Controleer de serverlogs.")
-    record = payload.model_dump(by_alias=True)
-    # Reject unseen codes rather than silently predicting with unknown categories.
-    preprocessing = model.named_steps["preprocessor"]
-    for name, transformer, columns in preprocessing.transformers_:
-        if name == "remainder" or not hasattr(transformer, "steps"):
-            continue
-        encoder = transformer.steps[-1][1]
-        if hasattr(encoder, "categories_"):
-            for column, categories in zip(columns, encoder.categories_):
-                value = record[column]
-                if value is not None and value not in categories:
-                    raise HTTPException(status_code=422, detail=f"Onbekende datasetcode voor {column}.")
+    record = payload.model_dump()
     try:
-        prediction = predict_records(record, model=model)[0]
+        prediction = model.predict_record(record)
     except ValueError as error:
         raise HTTPException(status_code=422, detail=str(error)) from error
-    return {**prediction, "disclaimer": DISCLAIMER}
+    return {**prediction, "model_id": MODEL_ID, "disclaimer": DISCLAIMER}
 
 
 @app.post("/predict/citibike")

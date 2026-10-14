@@ -15,10 +15,11 @@ domein. Beide voorspelroutes zijn beschikbaar op dezelfde backend.
 Een opgeslagen Netlify-URL uit de oude configuratie wordt automatisch vervangen;
 een bewust ingestelde andere backend blijft behouden.
 
-Het voorlopige paddenstoelenmodel is Andrew's Random Forest uit
-`SolutionAndrew/MushroomDataset/`. Het formulier toont de twaalf bijbehorende
-velden en de testresultaten van deze specifieke dataset/modelversie.
-De twee ruisvelden zijn optionele extra datasetkenmerken.
+Het paddenstoelenmodel is de gekozen RF300 uit `MushroomFinal/comparison_correct/`.
+Het formulier toont elf underscore-velden; `jumbled_noise_0` is verwijderd en
+`jumbled_noise_1` is optioneel. Metrics zijn gemeten op de gedeelde 900
+ontwikkeltestrecords uit de juiste cursus-CSV. De website controleert de model-ID
+in health en voorspellingen. Zie [RF300-deployment](../docs/mushroom_rf300.md).
 
 ## Lokaal
 
@@ -78,7 +79,7 @@ De frontend wacht maximaal twee minuten op de API en toont uitleg over de koude 
 .\.venv\Scripts\python.exe frontend/export_metadata.py
 ```
 
-Dit leest alleen de vertrouwde pipeline van Andrew en exporteert de categorieÃ«n, het voorbeeld
+Dit leest het gecontroleerde RF300-servingmanifest en exporteert de categorieÃ«n, het voorbeeld
 en de metrics naar `metadata.json`. Controleer vertalingen bij model/schemawijzigingen.
 Categoriebetekenissen en meeteenheden komen uit de [UCI-metadata](https://archive.ics.uci.edu/dataset/848/secondary+mushroom+dataset).
 De UI toont alleen categorieÃ«n die de opgeslagen encoder kent. Onbekende waarden worden als null verstuurd.

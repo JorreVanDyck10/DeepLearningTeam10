@@ -1,14 +1,55 @@
 {
-  "model_id": "andrew_random_forest_200",
-  "model_name": "Andrew — Random Forest (200 bomen)",
+  "model_id": "mushroom_final_rf300",
+  "model_name": "Random Forest · 300 bomen",
+  "example": {
+    "cap_diameter": null,
+    "stem_height": null,
+    "stem_width": 20.71,
+    "spore_print_color": null,
+    "gill_color": "f",
+    "habitat": "l",
+    "season": "s",
+    "ring_type": "f",
+    "cap_shape": null,
+    "stem_surface": null,
+    "jumbled_noise_1": "x"
+  },
+  "metrics": {
+    "model": "rf_final",
+    "cv_macro_f1_mean": 0.761876334978805,
+    "cv_macro_f1_std": 0.021452356968246284,
+    "cv_recall_p_mean": 0.6043895861425164,
+    "cv_balanced_accuracy_mean": 0.7519590366861894,
+    "mean_fold_fit_seconds": 6.356659199972637,
+    "accuracy": 0.8133333333333334,
+    "balanced_accuracy": 0.780541289168446,
+    "macro_f1": 0.7913723066054398,
+    "precision_p": 0.8239700374531835,
+    "recall_p": 0.6451612903225806,
+    "f1_p": 0.7236842105263158,
+    "roc_auc": 0.862269763245007,
+    "average_precision": 0.8153987368974878,
+    "tn": 512,
+    "fp": 47,
+    "fn": 121,
+    "tp": 220,
+    "train_accuracy": 0.958780487804878,
+    "recall_poisonous": 0.6451612903225806,
+    "poisonous_predicted_edible": 121
+  },
+  "dataset_rows": 5000,
+  "train_rows": 4100,
+  "test_rows": 900,
+  "validation_note": "Ontwikkeltest; deze testset is eerder gebruikt tijdens het onderzoek.",
+  "source_pipeline_sha256": "5b451a756dd5c03ace50e32d18d7a230198df40570e547c9085e87215bddf42c",
   "fields": [
     {
-      "name": "cap-diameter",
+      "name": "cap_diameter",
       "label": "Hoeddiameter",
       "unit": "cm"
     },
     {
-      "name": "cap-shape",
+      "name": "cap_shape",
       "label": "Hoedvorm",
       "unit": "",
       "options": [
@@ -43,7 +84,7 @@
       ]
     },
     {
-      "name": "gill-color",
+      "name": "gill_color",
       "label": "Lamelkleur",
       "unit": "",
       "options": [
@@ -98,12 +139,12 @@
       ]
     },
     {
-      "name": "stem-height",
+      "name": "stem_height",
       "label": "Steelhoogte",
       "unit": "cm"
     },
     {
-      "name": "stem-width",
+      "name": "stem_width",
       "label": "Steeldikte",
       "unit": "mm"
     },
@@ -131,7 +172,7 @@
       ]
     },
     {
-      "name": "spore-print-color",
+      "name": "spore_print_color",
       "label": "Kleur sporenafdruk",
       "unit": "",
       "options": [
@@ -205,7 +246,7 @@
       ]
     },
     {
-      "name": "ring-type",
+      "name": "ring_type",
       "label": "Ringtype",
       "unit": "",
       "options": [
@@ -244,7 +285,7 @@
       ]
     },
     {
-      "name": "stem-surface",
+      "name": "stem_surface",
       "label": "Steeloppervlak",
       "unit": "",
       "options": [
@@ -283,43 +324,8 @@
       ]
     },
     {
-      "name": "jumbled_noise_0",
-      "label": "Extra datasetkenmerk 0 (ruis)",
-      "unit": "",
-      "options": [
-        [
-          "b",
-          "Datasetcode b"
-        ],
-        [
-          "c",
-          "Datasetcode c"
-        ],
-        [
-          "f",
-          "Datasetcode f"
-        ],
-        [
-          "o",
-          "Datasetcode o"
-        ],
-        [
-          "p",
-          "Datasetcode p"
-        ],
-        [
-          "s",
-          "Datasetcode s"
-        ],
-        [
-          "x",
-          "Datasetcode x"
-        ]
-      ]
-    },
-    {
       "name": "jumbled_noise_1",
-      "label": "Extra datasetkenmerk 1 (ruis)",
+      "label": "Extra datasetkenmerk (ruis)",
       "unit": "",
       "options": [
         [
@@ -352,42 +358,5 @@
         ]
       ]
     }
-  ],
-  "example": {
-    "cap-diameter": 13.76,
-    "stem-height": 10.81,
-    "stem-width": 24.64,
-    "spore-print-color": null,
-    "gill-color": null,
-    "habitat": "d",
-    "season": "u",
-    "ring-type": "f",
-    "cap-shape": "x",
-    "stem-surface": null,
-    "jumbled_noise_0": "x",
-    "jumbled_noise_1": "o"
-  },
-  "metrics": {
-    "accuracy": 0.782,
-    "balanced_accuracy": 0.7406770083149572,
-    "precision_poisonous": 0.7970479704797048,
-    "recall_poisonous": 0.5699208443271768,
-    "f1_poisonous": 0.6646153846153846,
-    "roc_auc_poisonous": 0.8369108468339855,
-    "poisonous_predicted_edible": 163,
-    "confusion_matrix_labels": [
-      "e",
-      "p"
-    ],
-    "confusion_matrix": [
-      [
-        566,
-        55
-      ],
-      [
-        163,
-        216
-      ]
-    ]
-  }
+  ]
 }

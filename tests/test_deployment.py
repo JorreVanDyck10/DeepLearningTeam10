@@ -2,11 +2,13 @@
 import json
 from pathlib import Path
 import unittest
+import tempfile
 import numpy as np
+import pandas as pd
 
 from fastapi.testclient import TestClient
 from backend.main import app
-from backend.mushroom_model import MODEL_ID, FEATURES
+from backend.mushroom_model import MODEL_ID, FEATURES, DEFAULT_MODEL, PortableMushroom
 from backend.raoul_citibike import MODEL_ID as CITY_MODEL_ID
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -59,28 +61,66 @@ class DeploymentTests(unittest.TestCase):
         response = self.client.post("/predict/mushroom", json={})
         self.assertEqual(response.status_code, 422)
 
-    def test_frontend_fields_match_andrews_model(self):
+    def test_frontend_fields_match_selected_rf300(self):
         metadata = self.client.get("/metadata.json").json()
         self.assertEqual(metadata["model_id"], MODEL_ID)
         self.assertEqual({field["name"] for field in metadata["fields"]}, set(FEATURES))
         self.assertEqual(set(metadata["example"]), set(FEATURES))
-        self.assertEqual(app.state.mushroom_model.named_steps["classifier"].n_estimators, 200)
+        self.assertEqual(len(metadata["fields"]), 11)
+        self.assertNotIn("jumbled_noise_0", metadata["example"])
+        self.assertEqual(app.state.mushroom_model.metadata["n_estimators"], 300)
+        summary = json.loads((ROOT/"MushroomFinal/comparison_correct/comparison_summary.json").read_text())
+        self.assertEqual(metadata["source_pipeline_sha256"], summary["artifact"]["sha256"])
 
-    def test_zero_measurements_match_unknown_values(self):
-        example = self.client.get("/metadata.json").json()["example"]
-        zeros = {**example, "stem-height": 0, "stem-width": 0}
-        unknown = {**example, "stem-height": None, "stem-width": None}
-        zero_result = self.client.post("/predict/mushroom", json=zeros)
-        unknown_result = self.client.post("/predict/mushroom", json=unknown)
-        self.assertEqual(zero_result.status_code, 200, zero_result.text)
-        self.assertEqual(zero_result.json(), unknown_result.json())
+    def test_serving_runtime_matches_all_saved_rf300_test_predictions(self):
+        saved = pd.read_csv(ROOT/"MushroomFinal/comparison_correct/test_predictions.csv", float_precision="round_trip")
+        data = pd.read_csv(ROOT/"MushroomFinal/mushroom_project_dataset.csv")
+        data.columns = data.columns.str.replace("-", "_", regex=False)
+        frame = data[FEATURES].iloc[saved.source_row]
+        actual = app.state.mushroom_model.predict_proba(frame)
+        self.assertEqual(len(saved), 900)
+        np.testing.assert_array_equal(np.argmax(actual, axis=1), saved.rf_final_prediction)
+        np.testing.assert_allclose(actual[:, 1], saved.rf_final_probability_p, rtol=0, atol=1e-12)
+        for index in [0, 1, 2, 10, 40, 100, 400, 899]:
+            payload = json.loads(frame.iloc[[index]].to_json(orient="records"))[0]
+            response = self.client.post("/predict/mushroom", json=payload)
+            self.assertEqual(response.status_code, 200, response.text)
+            result = response.json()
+            self.assertEqual(result["model_id"], MODEL_ID)
+            self.assertEqual(result["label"], "p" if saved.rf_final_prediction.iloc[index] else "e")
+            self.assertAlmostEqual(result["probability_poisonous"], saved.rf_final_probability_p.iloc[index], places=12)
 
-    def test_optional_noise_fields_can_be_omitted(self):
+    def test_zero_and_missing_measurements_remain_valid(self):
         example = self.client.get("/metadata.json").json()["example"]
-        example.pop("jumbled_noise_0")
+        cases = [{**example, "stem_height": 0, "stem_width": 0},
+                 {field: None for field in FEATURES}]
+        for payload in cases:
+            response = self.client.post("/predict/mushroom", json=payload)
+            self.assertEqual(response.status_code, 200, response.text)
+
+    def test_optional_noise_feature_can_be_omitted(self):
+        example = self.client.get("/metadata.json").json()["example"]
         example.pop("jumbled_noise_1")
         response = self.client.post("/predict/mushroom", json=example)
         self.assertEqual(response.status_code, 200, response.text)
+
+    def test_retired_features_and_invalid_values_are_rejected(self):
+        example = self.client.get("/metadata.json").json()["example"]
+        for payload in [{**example, "jumbled_noise_0": "a"}, {**example, "stem-height": 2},
+                        {**example, "stem_height": -1}, {**example, "cap_shape": "invalid"},
+                        {**example, "stem_width": "2.4"}]:
+            with self.subTest(payload=payload):
+                self.assertEqual(self.client.post("/predict/mushroom", json=payload).status_code, 422)
+
+    def test_changed_forest_is_rejected_before_loading(self):
+        metadata = json.loads(DEFAULT_MODEL.read_text(encoding="utf-8"))
+        with tempfile.TemporaryDirectory() as directory:
+            folder = Path(directory)
+            (folder/metadata["forest_file"]).write_bytes(b"changed artifact")
+            manifest = folder/"model.json"
+            manifest.write_text(json.dumps(metadata), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "checksum mismatch"):
+                PortableMushroom(manifest)
 
     def test_city_prediction_matches_the_frontend_chart_contract(self):
         response = self.client.post("/predict/citibike", json={"date": "2026-04-30", "hour": 8, "mode": "demo"})
@@ -154,6 +194,7 @@ class DeploymentTests(unittest.TestCase):
 
     def test_backend_and_model_files_are_not_served(self):
         for path in ("/backend/main.py", "/render.yaml",
+                     "/backend/artifacts/mushroom_rf300.npz", "/backend/artifacts/mushroom_rf300.json",
                      "/secondary_mushroom/models/baseline_decision_tree.joblib",
                      "/nyc_citi_bike/models/baseline_hourly_tree.joblib",
                      "/SolutionAndrew/MushroomDataset/models/random_forest.joblib"):

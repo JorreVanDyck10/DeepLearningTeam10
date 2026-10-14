@@ -25,6 +25,10 @@ jobs:
         run: python -m pip install -r backend/requirements-dev.txt
       - name: Check website and model inference
         run: python -m unittest discover -s tests -v
+      - name: Check Mushroom metadata matches the serving artifact
+        run: |
+          python frontend/export_metadata.py
+          git diff --exit-code -- frontend/metadata.json
       - name: Check JavaScript syntax
         run: |
           node --check frontend/config.js

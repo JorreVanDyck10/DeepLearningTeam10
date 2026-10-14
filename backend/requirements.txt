@@ -1,4 +1,4 @@
-# Inference dependencies match the saved baseline environment.
+# Existing serving runtime. Mushroom RF300 uses a lossless NumPy export (no sklearn pickle loading).
 fastapi==0.115.12
 uvicorn==0.20.0
 pandas==3.0.2

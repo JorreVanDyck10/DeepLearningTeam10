@@ -21,7 +21,7 @@
     <section id="mushroom" class="page">
       <h1>Paddenstoelen voorspellen</h1>
       <p>Vul de kenmerken in of gebruik het voorbeeld.</p>
-      <p class="muted">Voorlopig model: Andrew's Random Forest, getraind op 5.000 records.</p>
+      <p class="muted">Geselecteerd model: Random Forest met 300 bomen, uit de vergelijking op het cursusbestand van 5.000 records.</p>
       <p class="notice">Schooldemo met hypothetische data. Niet gebruiken om te bepalen of echte paddenstoelen eetbaar zijn.</p>
       <div class="workspace">
         <section class="panel">
@@ -29,7 +29,7 @@
           <p class="muted">Laat onbekende kenmerken leeg.</p>
           <form id="mushroom-form">
             <div id="basic-fields" class="fields"></div>
-            <details class="advanced"><summary>Meer kenmerken</summary><p class="muted">De twee extra ruiskenmerken horen bij Andrew's dataset en zijn geen biologische eigenschappen. Laat ze leeg als je ze niet kent.</p><div id="advanced-fields" class="fields"></div></details>
+            <details class="advanced"><summary>Meer kenmerken</summary><p class="muted">Het extra ruiskenmerk hoort bij de cursusdataset en is geen biologische eigenschap. Laat het leeg als je het niet kent.</p><div id="advanced-fields" class="fields"></div></details>
             <div class="form-actions"><button id="predict-button" class="primary" type="submit">Voorspellen</button><button id="reset-button" type="button">Wissen</button></div>
           </form>
         </section>
@@ -72,15 +72,15 @@
       <h1>Project</h1>
       <p>Jorre Van Dyck, Milan Wouters, Raoul Buffels en Andrew Noeyens.</p>
       <h2>Paddenstoelenmodel</h2>
-      <p>Voorlopig gebruiken we Andrew's Random Forest met 200 bomen en gebalanceerde klassegewichten. Het model gebruikt 12 invoervelden uit SolutionAndrew/MushroomDataset.</p>
+      <p>De geselecteerde Random Forest heeft 300 bomen, maximale diepte 20 en gebalanceerde klassegewichten. Het formulier gebruikt de elf kenmerken van de gekozen pipeline. Het eerste ruisveld is verwijderd; het tweede is optioneel.</p>
       <div id="metrics" class="metrics"></div>
-      <p class="muted">Resultaten op 1.000 testrecords uit Andrew's dataset van 5.000 records; 4.000 records zijn gebruikt voor training. Het model herkent nog niet alle giftige paddenstoelen correct.</p>
+      <p class="muted">Resultaten op 900 testrecords uit het cursusbestand van 5.000 records; 4.100 records zijn gebruikt voor training. Deze testset is tijdens het onderzoek al bekeken. Het model herkent nog niet alle giftige paddenstoelen correct.</p>
       <p>De analyses en modelvergelijkingen staan in de notebooks.</p>
       <h2>City Bike-model</h2>
       <p>Raouls geselecteerde Random Forest met 320 bomen. Getraind op NYC-uurtellingen tot en met juni 2026; onafhankelijk getest op juli–augustus 2026.</p>
       <div id="city-metrics" class="metrics"></div>
       <p class="muted">RMSE weegt grote fouten zwaarder; MAE is de gemiddelde absolute fout in ritstarts per lokaal uurvak. De eindtest-RMSE is 24,12% lager dan de weekbaseline. Deze prestaties veronderstellen tijdig beschikbare voorafgaande tellingen en garanderen geen gelijke kwaliteit in toekomstige maanden.</p>
-      <p><a href="https://github.com/JorreVanDyck10/DeepLearningTeam10" target="_blank" rel="noopener">GitHub-repository</a> · <a href="https://archive.ics.uci.edu/dataset/848/secondary+mushroom+dataset" target="_blank" rel="noopener">Paddenstoelendataset</a></p>
+      <p><a href="https://github.com/JorreVanDyck10/DeepLearningTeam10" target="_blank" rel="noopener">GitHub-repository</a> · <a href="https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/mushroom_project_dataset.csv" target="_blank" rel="noopener">Gebruikte paddenstoelendataset</a></p>
     </section>
     <details class="settings">
       <summary>Verbindingsinstellingen</summary>

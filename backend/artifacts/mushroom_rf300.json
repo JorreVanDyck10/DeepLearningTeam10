@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "model_id": "mushroom_final_rf300",
+  "model_name": "Random Forest · 300 bomen",
+  "features": [
+    "cap_diameter",
+    "stem_height",
+    "stem_width",
+    "spore_print_color",
+    "gill_color",
+    "habitat",
+    "season",
+    "ring_type",
+    "cap_shape",
+    "stem_surface",
+    "jumbled_noise_1"
+  ],
+  "classes": [
+    "e",
+    "p"
+  ],
+  "n_estimators": 300,
+  "source_pipeline": "MushroomFinal/comparison_correct/selected_pipeline.joblib",
+  "source_pipeline_sha256": "5b451a756dd5c03ace50e32d18d7a230198df40570e547c9085e87215bddf42c",
+  "forest_file": "mushroom_rf300.npz",
+  "forest_sha256": "91d8dbf0192c5ce98d0f3e97175c4260d8bec5ffffaa9f887bd7ec1ed4541dc7",
+  "numeric_features": [
+    "cap_diameter",
+    "stem_height",
+    "stem_width"
+  ],
+  "numeric_medians": [
+    6.13,
+    6.0,
+    11.34
+  ],
+  "categorical": [
+    {
+      "name": "spore_print_color",
+      "imputation": "k",
+      "categories": [
+        "g",
+        "k",
+        "n",
+        "p",
+        "r",
+        "u",
+        "w"
+      ]
+    },
+    {
+      "name": "gill_color",
+      "imputation": "w",
+      "categories": [
+        "b",
+        "e",
+        "f",
+        "g",
+        "k",
+        "n",
+        "o",
+        "p",
+        "r",
+        "u",
+        "w",
+        "y"
+      ]
+    },
+    {
+      "name": "habitat",
+      "imputation": "d",
+      "categories": [
+        "d",
+        "g",
+        "h",
+        "l",
+        "m",
+        "p",
+        "u",
+        "w"
+      ]
+    },
+    {
+      "name": "season",
+      "imputation": "a",
+      "categories": [
+        "a",
+        "s",
+        "u",
+        "w"
+      ]
+    },
+    {
+      "name": "ring_type",
+      "imputation": "f",
+      "categories": [
+        "e",
+        "f",
+        "g",
+        "l",
+        "m",
+        "p",
+        "r",
+        "z"
+      ]
+    },
+    {
+      "name": "cap_shape",
+      "imputation": "x",
+      "categories": [
+        "b",
+        "c",
+        "f",
+        "o",
+        "p",
+        "s",
+        "x"
+      ]
+    },
+    {
+      "name": "stem_surface",
+      "imputation": "s",
+      "categories": [
+        "f",
+        "g",
+        "h",
+        "i",
+        "k",
+        "s",
+        "t",
+        "y"
+      ]
+    },
+    {
+      "name": "jumbled_noise_1",
+      "imputation": "x",
+      "categories": [
+        "b",
+        "c",
+        "f",
+        "o",
+        "p",
+        "s",
+        "x"
+      ]
+    }
+  ],
+  "dataset_rows": 5000,
+  "train_rows": 4100,
+  "test_rows": 900,
+  "dataset_sha256_lf": "1f1a25f2f330458ed95ce9f6ffe3241582312a42cb21797a2b7bd5e5ad281114",
+  "metrics": {
+    "model": "rf_final",
+    "cv_macro_f1_mean": 0.761876334978805,
+    "cv_macro_f1_std": 0.021452356968246284,
+    "cv_recall_p_mean": 0.6043895861425164,
+    "cv_balanced_accuracy_mean": 0.7519590366861894,
+    "mean_fold_fit_seconds": 6.356659199972637,
+    "accuracy": 0.8133333333333334,
+    "balanced_accuracy": 0.780541289168446,
+    "macro_f1": 0.7913723066054398,
+    "precision_p": 0.8239700374531835,
+    "recall_p": 0.6451612903225806,
+    "f1_p": 0.7236842105263158,
+    "roc_auc": 0.862269763245007,
+    "average_precision": 0.8153987368974878,
+    "tn": 512,
+    "fp": 47,
+    "fn": 121,
+    "tp": 220,
+    "train_accuracy": 0.958780487804878,
+    "recall_poisonous": 0.6451612903225806,
+    "poisonous_predicted_edible": 121
+  },
+  "validation_note": "Ontwikkeltest; deze testset is eerder gebruikt tijdens het onderzoek.",
+  "example": {
+    "cap_diameter": null,
+    "stem_height": null,
+    "stem_width": 20.71,
+    "spore_print_color": null,
+    "gill_color": "f",
+    "habitat": "l",
+    "season": "s",
+    "ring_type": "f",
+    "cap_shape": null,
+    "stem_surface": null,
+    "jumbled_noise_1": "x"
+  }
+}

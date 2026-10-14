@@ -12,8 +12,8 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: "3.13.7"
-      - key: ANDREW_MUSHROOM_MODEL_PATH
-        value: SolutionAndrew/MushroomDataset/models/random_forest.joblib
+      - key: MUSHROOM_RF300_MANIFEST
+        value: backend/artifacts/mushroom_rf300.json
       - key: RAOUL_CITIBIKE_MODEL_DIR
         value: SolutionRaoul/Citybike/models/serving
       - key: CORS_ORIGINS

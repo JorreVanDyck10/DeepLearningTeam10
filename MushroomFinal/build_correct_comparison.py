@@ -289,10 +289,13 @@ labels `0=e, 1=p`. De testrecords zijn niet in dit artifact meegetraind.
 Gebruik de gepinde omgeving en bewaar `MushroomFinal/final_model_support.py` op het
 Python-importpad voor pipelines met extra schoonmaak/imputatie.
 
-De website gebruikt volgens de repository nog het oude model met twaalf velden.
-De frontend en API zijn door dit vergelijkingswerk niet omgeschakeld. Een overstap
-vereist elf invoervelden, verwijderen van jumbled_noise_0, naamnormalisatie, de juiste
-labelmapping, serving-versies en controles tegen dezelfde pipeline.
+API en website zijn gekoppeld aan een verliesvrije export van de gekozen RF300.
+De export bevat dezelfde preprocessing, splits en bladwaarden; alle 900 opgeslagen
+testvoorspellingen komen overeen. Het formulier gebruikt elf underscore-velden,
+zonder `jumbled_noise_0`, en controleert de model-ID `mushroom_final_rf300`.
+Zie [RF300-deployment en exportaudit](../docs/mushroom_rf300.md).
+De migratie is afzonderlijk uitgevoerd na de modelvergelijking; de preprocessing
+en labelmapping van het gekozen artifact blijven daarbij behouden.
 
 **AWS-status:** de nieuwe SageMaker-training en tuning op het juiste bestand zijn
 uitgevoerd en de exports zijn gecontroleerd. Zie de nieuwe AWS-sectie hierboven en het
@@ -302,7 +305,7 @@ uitkomst is apart gecontroleerd en komt overeen met de baseline-rij. De oude 100
 op UCI is uitsluitend historisch. RF300 blijft de voorlopige keuze op CV macro F1.
 
 Er is nog geen onaangeraakte eindtest, noch een test op volledig ongeziene soorten of
-echte veldmetingen. Teamreview en een eventuele deploymentmigratie
+echte veldmetingen. Teamreview en controle van de hosting
 blijven afzonderlijke onderdelen voor de eindinlevering.
 
 ## 8. Reproduceren en bewijs

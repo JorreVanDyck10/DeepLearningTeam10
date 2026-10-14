@@ -30,6 +30,10 @@ async function checkConnection() {
   try {
     const health = await api("/health");
     if (!health.mushroom_model_loaded) throw new Error("Model niet geladen");
+    if (metadata && health.mushroom_model_id !== metadata.model_id) {
+      status.textContent = "Backend gebruikt nog een andere modelversie. Wacht op de deployment en vernieuw de pagina.";
+      return;
+    }
     status.textContent = health.citibike_model_loaded ? "Backend verbonden" : "Paddenstoelenmodel verbonden";
     status.classList.add("ready");
   } catch { status.textContent = "Backend niet bereikbaar"; }
@@ -88,6 +92,7 @@ $("#mushroom-form").addEventListener("submit", async (event) => {
   $("#result").innerHTML = '<p>Voorspelling ophalen…</p><p class="muted">De server kan ongeveer een minuut nodig hebben om op te starten.</p>';
   try {
     const result = await api("/predict/mushroom", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+    if (result.model_id !== metadata.model_id) throw new Error("De backend gebruikt nog een andere modelversie. Wacht op de deployment en vernieuw de pagina.");
     if (!["p", "e"].includes(result.label) || !Number.isFinite(result.probability_poisonous) || result.probability_poisonous < 0 || result.probability_poisonous > 1) throw new Error("De API gaf een onverwacht resultaat terug.");
     $("#result").innerHTML = '<div class="result-label"></div><p class="score"></p><p class="muted">De modelscore geeft geen zekerheid over eetbaarheid.</p>';
     $(".result-label").textContent = result.label === "p" ? "Giftig / onbekend" : "Eetbaar";
