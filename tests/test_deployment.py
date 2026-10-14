@@ -30,7 +30,7 @@ class DeploymentTests(unittest.TestCase):
         self.assertIn("text/html", response.headers["content-type"])
         self.assertIn('id="mushroom-form"', response.text)
         for path in ("/index.html", "/config.js", "/api.js", "/app.js", "/styles.css",
-                     "/metadata.json", "/citibike_metrics.json", "/citibike.js"):
+                     "/metadata.json", "/citibike_metrics.json", "/citibike.js", "/mushroom.js"):
             with self.subTest(path=path):
                 asset = self.client.get(path)
                 self.assertEqual(asset.status_code, 200)
@@ -56,6 +56,9 @@ class DeploymentTests(unittest.TestCase):
         self.assertIn(result["label"], ["e", "p"])
         self.assertGreaterEqual(result["probability_poisonous"], 0)
         self.assertLessEqual(result["probability_poisonous"], 1)
+        # This actual test record is poisonous despite its 96.5% edible score.
+        self.assertEqual(result["decision"], "uncertain")
+        self.assertEqual(result["prediction"], "Onzeker / mogelijk giftig")
 
     def test_invalid_prediction_input_is_still_rejected(self):
         response = self.client.post("/predict/mushroom", json={})

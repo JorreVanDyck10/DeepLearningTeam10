@@ -93,9 +93,10 @@ $("#mushroom-form").addEventListener("submit", async (event) => {
   try {
     const result = await api("/predict/mushroom", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
     if (result.model_id !== metadata.model_id) throw new Error("De backend gebruikt nog een andere modelversie. Wacht op de deployment en vernieuw de pagina.");
-    if (!["p", "e"].includes(result.label) || !Number.isFinite(result.probability_poisonous) || result.probability_poisonous < 0 || result.probability_poisonous > 1) throw new Error("De API gaf een onverwacht resultaat terug.");
-    $("#result").innerHTML = '<div class="result-label"></div><p class="score"></p><p class="muted">De modelscore geeft geen zekerheid over eetbaarheid.</p>';
-    $(".result-label").textContent = result.label === "p" ? "Giftig / onbekend" : "Eetbaar";
+    const decision = window.MushroomDecision.present(result);
+    $("#result").innerHTML = '<div class="result-label"></div><p class="score"></p><p class="decision-explanation"></p><p class="muted">De modelscore is geen bewezen kans op giftigheid. Niet gebruiken als eetadvies.</p>';
+    $(".result-label").textContent = decision.title;
+    $(".decision-explanation").textContent = decision.explanation;
     $(".score").textContent = `Modelscore giftige klasse: ${percent(result.probability_poisonous)}`;
     $("#connection").textContent = "Backend verbonden";
     $("#connection").classList.add("ready");

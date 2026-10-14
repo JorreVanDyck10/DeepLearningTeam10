@@ -8,6 +8,7 @@
   <script src="config.js" defer></script>
   <script src="api.js" defer></script>
   <script src="citibike.js" defer></script>
+  <script src="mushroom.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -21,6 +22,7 @@
     <section id="mushroom" class="page">
       <h1>Paddenstoelen voorspellen</h1>
       <p>Vul de kenmerken in of gebruik het voorbeeld.</p>
+      <p>De uitkomst is “Model voorspelt: giftig” of “Onzeker / mogelijk giftig”. Ook een hoge modelscore voor de eetbare klasse bevestigt geen eetbaarheid.</p>
       <p class="muted">Geselecteerd model: Random Forest met 300 bomen, uit de vergelijking op het cursusbestand van 5.000 records.</p>
       <p class="notice">Schooldemo met hypothetische data. Niet gebruiken om te bepalen of echte paddenstoelen eetbaar zijn.</p>
       <div class="workspace">
@@ -75,6 +77,7 @@
       <p>De geselecteerde Random Forest heeft 300 bomen, maximale diepte 20 en gebalanceerde klassegewichten. Het formulier gebruikt de elf kenmerken van de gekozen pipeline. Het eerste ruisveld is verwijderd; het tweede is optioneel.</p>
       <div id="metrics" class="metrics"></div>
       <p class="muted">Resultaten op 900 testrecords uit het cursusbestand van 5.000 records; 4.100 records zijn gebruikt voor training. Deze testset is tijdens het onderzoek al bekeken. Het model herkent nog niet alle giftige paddenstoelen correct.</p>
+      <p class="muted">Deze metrics beschrijven de oorspronkelijke modelclassificatie met de 50%-grens. Het formulier gebruikt een voorzichtiger beslisregel en geeft geen bevestiging van eetbaarheid.</p>
       <p>De analyses en modelvergelijkingen staan in de notebooks.</p>
       <h2>City Bike-model</h2>
       <p>Raouls geselecteerde Random Forest met 320 bomen. Getraind op NYC-uurtellingen tot en met juni 2026; onafhankelijk getest op juli–augustus 2026.</p>

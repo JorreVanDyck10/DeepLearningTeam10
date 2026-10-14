@@ -39,6 +39,10 @@ optioneel, met standaard null. `jumbled_noise_0` is verwijderd. Extra velden,
 negatieve metingen en onbekende categorische codes geven HTTP 422. Nul blijft
 hier een echte meting. De response bevat `model_id`, `label`, `prediction`,
 `probability_poisonous` en een educatieve disclaimer.
+`label` is de ruwe e/p-modelklasse; `prediction` is nu de voorzichtige boodschap.
+`decision` en `decision_policy_id` scheiden beide expliciet. De API bevestigt
+geen eetbaarheid, ook niet bij 95% eetbare score. Zie
+[de analyse en beslisregel](../docs/mushroom_decisions.md).
 
 ## Opgeslagen model
 

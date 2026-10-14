@@ -1,5 +1,11 @@
 # Frontend Team 10
 
+Het Mushroom-resultaat bevestigt geen eetbaarheid. De website toont **Model
+voorspelt: giftig** of **Onzeker / mogelijk giftig**, met een modelscore. Ook bij
+95% eetbare score bleek trainingsvalidatie giftige gevallen te bevatten. API en
+frontend controleren daarom een aparte beslisregel-ID. Zie
+[analyse en beslisregel](../docs/mushroom_decisions.md).
+
 Een statische HTML/CSS/JavaScript-website in dezelfde repository als de API.
 Geen Node-installatie of buildtool nodig. De paddenstoelenpagina gebruikt echte API-inference;
 Citi Bike voorspelt een gekozen uur en toont daarnaast 24 uurvoorspellingen als grafiek en tabel. De projectpagina toont gemeten baseline-metrics voor beide datasets.

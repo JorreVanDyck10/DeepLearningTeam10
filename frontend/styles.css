@@ -25,7 +25,8 @@ a { color: #225e9a; }
 .notice { padding: 13px 16px; border: 1px solid #e9dfbe; background: #fff8e6; color: #786137; font-size: 12px; margin: 20px 0 24px; border-radius: 8px; }
 .workspace { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: 24px; align-items: stretch; }
 .panel { border: 1px solid #dfe7e2; padding: 26px; border-radius: 14px; background: #fff; box-shadow: 0 4px 16px #243d3105; }
-#mushroom .result-panel { background: #e7f0e6; border-color: #d3e3d2; }
+#mushroom .result-panel { background: #fff3dc; border-color: #e8cf9e; }
+#mushroom .result-label { color: #7b4b16; }
 #citibike .workspace > .panel:last-child { background: #e4eff8; border-color: #cbdfed; }
 .result-panel > h2, #citibike .workspace > .panel:last-child > h2 { color: var(--accent); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
 .form-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }

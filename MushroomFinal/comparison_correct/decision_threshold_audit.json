@@ -1,0 +1,139 @@
+{
+  "policy_id": "mushroom_no_edibility_confirmation_v1",
+  "conclusion": "No confirmation of edibility: 95% edible scores still include poisonous validation records.",
+  "calibrated": false,
+  "training_performed": false,
+  "test_used_for_threshold_selection": false,
+  "sources": {
+    "oof_predictions.csv": "c5a4c50f00caa7170dafce94941ba5019b524f6c6d5195eea9e28fdbf7b8c56a",
+    "test_predictions.csv": "7f788ad35af89966f84e3c517c59f6ce185159f92f0f3c130387c24712416466"
+  },
+  "thresholds": [
+    {
+      "split": "training_oof",
+      "rows": 4100,
+      "max_poison_score": 0.5,
+      "min_edible_score": 0.5,
+      "edible_calls": 2906,
+      "poisonous_among_edible_calls": 614,
+      "edible_rejected": 256
+    },
+    {
+      "split": "training_oof",
+      "rows": 4100,
+      "max_poison_score": 0.1,
+      "min_edible_score": 0.9,
+      "edible_calls": 200,
+      "poisonous_among_edible_calls": 21,
+      "edible_rejected": 2369
+    },
+    {
+      "split": "training_oof",
+      "rows": 4100,
+      "max_poison_score": 0.05,
+      "min_edible_score": 0.95,
+      "edible_calls": 55,
+      "poisonous_among_edible_calls": 7,
+      "edible_rejected": 2500
+    },
+    {
+      "split": "training_oof",
+      "rows": 4100,
+      "max_poison_score": 0.025,
+      "min_edible_score": 0.975,
+      "edible_calls": 9,
+      "poisonous_among_edible_calls": 2,
+      "edible_rejected": 2541
+    },
+    {
+      "split": "training_oof",
+      "rows": 4100,
+      "max_poison_score": 0.01,
+      "min_edible_score": 0.99,
+      "edible_calls": 4,
+      "poisonous_among_edible_calls": 1,
+      "edible_rejected": 2545
+    },
+    {
+      "split": "training_oof",
+      "rows": 4100,
+      "max_poison_score": 0.005,
+      "min_edible_score": 0.995,
+      "edible_calls": 2,
+      "poisonous_among_edible_calls": 1,
+      "edible_rejected": 2547
+    },
+    {
+      "split": "training_oof",
+      "rows": 4100,
+      "max_poison_score": 0,
+      "min_edible_score": 1,
+      "edible_calls": 0,
+      "poisonous_among_edible_calls": 0,
+      "edible_rejected": 2548
+    },
+    {
+      "split": "development_test_descriptive",
+      "rows": 900,
+      "max_poison_score": 0.5,
+      "min_edible_score": 0.5,
+      "edible_calls": 633,
+      "poisonous_among_edible_calls": 121,
+      "edible_rejected": 47
+    },
+    {
+      "split": "development_test_descriptive",
+      "rows": 900,
+      "max_poison_score": 0.1,
+      "min_edible_score": 0.9,
+      "edible_calls": 56,
+      "poisonous_among_edible_calls": 7,
+      "edible_rejected": 510
+    },
+    {
+      "split": "development_test_descriptive",
+      "rows": 900,
+      "max_poison_score": 0.05,
+      "min_edible_score": 0.95,
+      "edible_calls": 13,
+      "poisonous_among_edible_calls": 1,
+      "edible_rejected": 547
+    },
+    {
+      "split": "development_test_descriptive",
+      "rows": 900,
+      "max_poison_score": 0.025,
+      "min_edible_score": 0.975,
+      "edible_calls": 4,
+      "poisonous_among_edible_calls": 0,
+      "edible_rejected": 555
+    },
+    {
+      "split": "development_test_descriptive",
+      "rows": 900,
+      "max_poison_score": 0.01,
+      "min_edible_score": 0.99,
+      "edible_calls": 1,
+      "poisonous_among_edible_calls": 0,
+      "edible_rejected": 558
+    },
+    {
+      "split": "development_test_descriptive",
+      "rows": 900,
+      "max_poison_score": 0.005,
+      "min_edible_score": 0.995,
+      "edible_calls": 0,
+      "poisonous_among_edible_calls": 0,
+      "edible_rejected": 559
+    },
+    {
+      "split": "development_test_descriptive",
+      "rows": 900,
+      "max_poison_score": 0,
+      "min_edible_score": 1,
+      "edible_calls": 0,
+      "poisonous_among_edible_calls": 0,
+      "edible_rejected": 559
+    }
+  ]
+}

@@ -35,5 +35,6 @@ jobs:
           node --check frontend/api.js
           node --check frontend/app.js
           node --check frontend/citibike.js
+          node --check frontend/mushroom.js
       - name: Check API response handling
-        run: node --test tests/test_api_client.cjs tests/test_api_config.cjs tests/test_citibike_frontend.cjs
+        run: node --test tests/test_api_client.cjs tests/test_api_config.cjs tests/test_citibike_frontend.cjs tests/test_mushroom_frontend.cjs

@@ -14,6 +14,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 
 from backend.mushroom_model import DEFAULT_MODEL, MODEL_ID, PortableMushroom
+from backend.mushroom_policy import apply_policy
 from backend.raoul_citibike import ensure_artifact, predict as predict_city, model_metadata, MODEL_ID as CITY_MODEL_ID
 
 logger = logging.getLogger(__name__)
@@ -44,6 +45,8 @@ class MushroomPrediction(BaseModel):
     prediction: str
     probability_poisonous: float
     disclaimer: str
+    decision: Literal["uncertain", "suspected_poisonous"]
+    decision_policy_id: str
 
 
 class CityHistory(BaseModel):
@@ -90,7 +93,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="DeepLearningTeam10 API",
     description="Voorspellingen met de geselecteerde Mushroom RF300 en Raouls getunede Citi Bike Random Forest.",
-    version="0.5.0",
+    version="0.5.1",
     lifespan=lifespan,
 )
 
@@ -132,7 +135,7 @@ def predict_mushroom(payload: MushroomInput, request: Request):
         prediction = model.predict_record(record)
     except ValueError as error:
         raise HTTPException(status_code=422, detail=str(error)) from error
-    return {**prediction, "model_id": MODEL_ID, "disclaimer": DISCLAIMER}
+    return {**apply_policy(prediction), "model_id": MODEL_ID, "disclaimer": DISCLAIMER}
 
 
 @app.post("/predict/citibike")

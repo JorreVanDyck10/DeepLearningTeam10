@@ -52,6 +52,11 @@ metingen en onbekende categorische codes geven HTTP 422.
 De respons bevat `model_id="mushroom_final_rf300"`, `label="e"` of `"p"`,
 `prediction`, `probability_poisonous` en een educatieve disclaimer.
 De oorspronkelijke integerklassen 0 en 1 worden naar e en p vertaald.
+`label` blijft de oorspronkelijke modelklasse voor vergelijking. De website
+bevestigt geen eetbaarheid meer: `prediction` en `decision` volgen de
+[voorzichtige beslisregel](mushroom_decisions.md), met een aparte policy-ID.
+Ook een 95% eetbare modelscore bleek bij trainingsvalidatie nog giftige gevallen
+te bevatten. Het formulier toont daarom giftig of onzeker / mogelijk giftig.
 Het formulier en de metrics komen uit hetzelfde manifest. De website controleert
 of de backend dezelfde model-ID gebruikt en meldt een onvoltooide deployment.
 
