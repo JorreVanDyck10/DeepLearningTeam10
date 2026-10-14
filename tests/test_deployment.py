@@ -44,6 +44,7 @@ class DeploymentTests(unittest.TestCase):
         self.assertTrue(health.json()["mushroom_model_loaded"])
         self.assertTrue(health.json()["citibike_model_loaded"])
         self.assertEqual(health.json()["mushroom_model_id"], MODEL_ID)
+        self.assertEqual(health.json()["mushroom_model_revision"], app.state.mushroom_model.metadata["source_pipeline_sha256"])
         self.assertEqual(health.json()["citibike_model_id"], CITY_MODEL_ID)
         schema = self.client.get("/openapi.json").json()
         self.assertIn("/predict/mushroom", schema["paths"])
@@ -55,6 +56,7 @@ class DeploymentTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200, response.text)
         result = response.json()
         self.assertIn(result["label"], ["e", "p"])
+        self.assertEqual(result["model_revision"], metadata["source_pipeline_sha256"])
         self.assertGreaterEqual(result["probability_poisonous"], 0)
         self.assertLessEqual(result["probability_poisonous"], 1)
         if result["probability_poisonous"] < .5:

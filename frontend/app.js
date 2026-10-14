@@ -27,7 +27,7 @@ async function checkConnection() {
   try {
     const health = await api("/health");
     if (!health.mushroom_model_loaded) throw new Error("Model niet geladen");
-    if (metadata && health.mushroom_model_id !== metadata.model_id) {
+    if (metadata && (health.mushroom_model_id !== metadata.model_id || health.mushroom_model_revision !== metadata.source_pipeline_sha256)) {
       status.textContent = "Backend gebruikt nog een andere modelversie. Wacht op de deployment en vernieuw de pagina.";
       return;
     }
@@ -77,7 +77,7 @@ $("#mushroom-form").addEventListener("submit", async (event) => {
   $("#result").innerHTML = '<p>Voorspelling ophalen…</p><p class="muted">De server kan ongeveer een minuut nodig hebben om op te starten.</p>';
   try {
     const result = await api("/predict/mushroom", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
-    if (result.model_id !== metadata.model_id) throw new Error("De backend gebruikt nog een andere modelversie. Wacht op de deployment en vernieuw de pagina.");
+    if (result.model_id !== metadata.model_id || result.model_revision !== metadata.source_pipeline_sha256) throw new Error("De backend gebruikt nog een andere modelversie. Wacht op de deployment en vernieuw de pagina.");
     const decision = window.MushroomDecision.present(result);
     $("#result").innerHTML = '<div class="result-label"></div><p class="score"></p><p class="decision-explanation"></p>';
     $(".result-label").textContent = decision.title;

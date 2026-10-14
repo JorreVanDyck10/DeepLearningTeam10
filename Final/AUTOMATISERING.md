@@ -20,6 +20,9 @@ Documentatie- en presentatiewijzigingen veroorzaken geen onnodige modeltraining.
    Render en Netlify volgen de main-branch en laden de gevalideerde versie.
 
 De botcommit bevat alleen artifacts en metadata en activeert geen nieuwe training.
+De API meldt de werkelijke geladen modelhash in health en iedere voorspelling.
+De website vergelijkt die hash met haar metadata; bij een verschil wacht zij op
+de juiste deployment in plaats van oude voorspellingen bij nieuwe metrics te tonen.
 GitHub voorkomt bovendien dat GITHUB_TOKEN-pushes zomaar een nieuwe Actions-keten
 starten ([GitHub-documentatie](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow)).
 De servingcontroles zijn daarom al vóór publicatie onderdeel van dezelfde

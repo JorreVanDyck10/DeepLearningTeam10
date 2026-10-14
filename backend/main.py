@@ -41,6 +41,7 @@ class MushroomInput(BaseModel):
 
 class MushroomPrediction(BaseModel):
     model_id: str
+    model_revision: str
     label: str
     prediction: str
     probability_poisonous: float
@@ -93,7 +94,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="DeepLearningTeam10 API",
     description="Voorspellingen met de geselecteerde Mushroom RF300 en Raouls getunede Citi Bike Random Forest.",
-    version="0.5.1",
+    version="0.6.0",
     lifespan=lifespan,
 )
 
@@ -121,6 +122,7 @@ def health(request: Request):
         content={"status": "ok" if ready else "not_ready",
                  "mushroom_model_loaded": mushroom_ready, "citibike_model_loaded": city_ready,
                  "mushroom_model_id": MODEL_ID,
+                 "mushroom_model_revision": request.app.state.mushroom_model.metadata['source_pipeline_sha256'] if mushroom_ready else None,
                  "citibike_model_id": CITY_MODEL_ID if city_ready else None},
     )
 
@@ -135,7 +137,8 @@ def predict_mushroom(payload: MushroomInput, request: Request):
         prediction = model.predict_record(record)
     except ValueError as error:
         raise HTTPException(status_code=422, detail=str(error)) from error
-    return {**apply_policy(prediction), "model_id": MODEL_ID, "disclaimer": DISCLAIMER}
+    return {**apply_policy(prediction), "model_id": MODEL_ID,
+            "model_revision": model.metadata['source_pipeline_sha256'], "disclaimer": DISCLAIMER}
 
 
 @app.post("/predict/citibike")
