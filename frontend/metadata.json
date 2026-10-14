@@ -38,7 +38,7 @@
   "train_rows": 4100,
   "test_rows": 900,
   "validation_note": "Ontwikkeltest; eerder bekeken. Geen onafhankelijke eindtest.",
-  "source_pipeline_sha256": "5b451a756dd5c03ace50e32d18d7a230198df40570e547c9085e87215bddf42c",
+  "source_pipeline_sha256": "6410b277e49c3706fa4d70db548e2545066a78bcaa6406aa83fef418c489c626",
   "fields": [
     {
       "name": "cap_diameter",
