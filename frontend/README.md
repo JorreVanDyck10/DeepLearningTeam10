@@ -20,10 +20,12 @@ in `CORS_ORIGINS` heeft staan. Op Render zelf gebruiken website en API hetzelfde
 domein. Beide voorspelroutes zijn beschikbaar op dezelfde backend.
 De backend-URL wordt automatisch bepaald; oude browserinstellingen worden genegeerd.
 
-Het paddenstoelenmodel is de gekozen RF300 uit `MushroomFinal/comparison_correct/`.
+Het paddenstoelenmodel is een gevalideerde refit van de gekozen RF300-configuratie;
+het huidige artifact staat onder `Final/Mushroom/artifacts/` en het onderzoeksarchief
+blijft onder `MushroomFinal/comparison_correct/`.
 Het formulier toont elf underscore-velden; `jumbled_noise_0` is verwijderd en
 `jumbled_noise_1` is optioneel. Metrics zijn gemeten op de gedeelde 900
-ontwikkeltestrecords uit de juiste cursus-CSV. De website controleert de model-ID
+ontwikkeltestrecords uit de juiste cursus-CSV. De website controleert de model-ID en artifacthash
 in health en voorspellingen. Zie [RF300-deployment](../docs/mushroom_rf300.md).
 
 ## Lokaal

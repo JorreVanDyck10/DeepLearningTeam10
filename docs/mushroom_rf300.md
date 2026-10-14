@@ -1,8 +1,10 @@
 # Mushroom RF300 op de teamwebsite
 
-De API serveert `MushroomFinal/comparison_correct/selected_pipeline.joblib` via een
-verliesvrije NumPy-export. Dit is de gekozen Random Forest met 300 bomen en
-maximale diepte 20: geen opnieuw getraind vervangmodel. De training gebruikt de
+De API serveert een gevalideerde refit van de gekozen RF300-configuratie via een
+verliesvrije NumPy-export. De actieve pipeline staat onder
+`Final/Mushroom/artifacts/current_pipeline.joblib`; het onderzoeksartifact onder
+`MushroomFinal/comparison_correct` blijft behouden. Het model heeft 300 bomen en
+maximale diepte 20. De training gebruikt de
 juiste cursus-CSV met 5.000 rijen, elf kenmerken en een gedeelde 4.100/900-split.
 `jumbled_noise_0` is verwijderd; `jumbled_noise_1` blijft behouden.
 
@@ -16,22 +18,27 @@ eindtest en geen model voor consumptiebeslissingen. Zie het
 
 Het originele artifact is opgeslagen met scikit-learn 1.4.2. De bestaande
 Python 3.13-backend gebruikt andere libraryversies. Daarom exporteert
-`MushroomFinal/export_serving.py` alle oorspronkelijke splits, bladwaarden,
+de automatische workflow alle oorspronkelijke splits, bladwaarden,
 imputatiemedians, categorische modi en encoder-categorieën. De backend gebruikt
 NumPy voor exact dezelfde boomberekening, inclusief de oorspronkelijke float32
 modelinvoer. Er wordt geen oude sklearn-pickle in de servingomgeving geladen.
 
-- Bronartifact SHA-256: `5b451a756dd5c03ace50e32d18d7a230198df40570e547c9085e87215bddf42c`.
+- Onderzoeksartifact SHA-256: `5b451a756dd5c03ace50e32d18d7a230198df40570e547c9085e87215bddf42c`.
+- De actuele refit en zijn hash staan in `Final/Mushroom/artifacts/training_run.json`.
 - Manifest en bos: `backend/artifacts/mushroom_rf300.json` en `.npz`.
 - `backend/artifacts/mushroom_export_audit.json` registreert de exportcontrole.
-- Alle 900 opgeslagen testvoorspellingen en 5.006 aanvullende gevallen zijn
-  gecontroleerd: nul labelverschillen, maximale kansafwijking 2,23 × 10⁻¹⁶.
+- De eerste handmatige export controleerde 900 testvoorspellingen en 5.006
+  aanvullende gevallen: nul labelverschillen, maximale kansafwijking 2,23 × 10⁻¹⁶.
+  Iedere automatische refit controleert opnieuw de export op alle 5.000 rijen
+  en bewaart 900 servingreferenties die op Python 3.13 worden gecontroleerd.
 - De oorspronkelijke pipeline blijft het herlaadbare onderzoeksartifact.
 
-De export opnieuw maken vanuit de repository-root:
+De huidige training en publicatie reproduceren staat in
+[Final/AUTOMATISERING.md](../Final/AUTOMATISERING.md).
+De oorspronkelijke handmatige onderzoeksexport is daarnaast behouden:
 
 ```powershell
-# Alleen voor export: de Python 3.11-vergelijkingsomgeving met sklearn 1.4.2.
+# Historische onderzoeksexport; niet de automatische refit publiceren.
 .\.venv-comparison\Scripts\python.exe MushroomFinal/export_serving.py
 .\.venv-comparison\Scripts\python.exe frontend/export_metadata.py
 ```
@@ -50,7 +57,7 @@ meting, zoals in de gekozen RF300. Extra velden, oude hyphen-namen, negatieve
 metingen en onbekende categorische codes geven HTTP 422.
 
 De respons bevat `model_id="mushroom_final_rf300"`, `label="e"` of `"p"`,
-`prediction`, `probability_poisonous` en een educatieve disclaimer.
+`model_revision`, `prediction`, `probability_poisonous` en een educatieve disclaimer.
 De oorspronkelijke integerklassen 0 en 1 worden naar e en p vertaald.
 `label` blijft de oorspronkelijke modelklasse voor vergelijking. De website
 bevestigt geen eetbaarheid meer: `prediction` en `decision` volgen de
@@ -58,7 +65,8 @@ bevestigt geen eetbaarheid meer: `prediction` en `decision` volgen de
 Ook een 95% eetbare modelscore bleek bij trainingsvalidatie nog giftige gevallen
 te bevatten. Het formulier toont daarom giftig of onzeker / mogelijk giftig.
 Het formulier en de metrics komen uit hetzelfde manifest. De website controleert
-of de backend dezelfde model-ID gebruikt en meldt een onvoltooide deployment.
+zowel de model-ID als de exacte artifacthash uit de geladen pipeline.
+Bij een verschil meldt zij een onvoltooide deployment.
 
 ## Hosting en verificatie
 

@@ -14,7 +14,7 @@ vragen. Controleer eventuele actuele Canvas-mededelingen zelf.
 - [x] Uitgevoerde AWS-run met artifactaudit vindbaar.
 - [x] Frontend en API met beide gekozen modellen beschikbaar.
 - [x] Werkelijke Mushroom-train/valideer/publiceer-workflow toegevoegd.
-- [ ] Laatste GitHub-workflows en publieke website na de finale push controleren.
+- [x] Train/valideer/publiceer-workflow werkelijk geslaagd; beide publieke formulieren en exacte modelversie gecontroleerd. Zie [validatie](VALIDATIE.md).
 
 ## Stap 5 — door Jorre later af te ronden
 

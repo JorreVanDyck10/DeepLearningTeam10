@@ -50,6 +50,9 @@ Standaard laadt de API `backend/artifacts/mushroom_rf300.json` en het bijbehoren
 NPZ-bos. `MUSHROOM_RF300_MANIFEST` kan het manifestpad aanpassen; de oude
 `ANDREW_MUSHROOM_MODEL_PATH` selecteert geen RF200 meer. De originele gekozen
 pipeline blijft onder `MushroomFinal/comparison_correct/selected_pipeline.joblib`.
+De actuele automatische refit staat onder `Final/Mushroom/artifacts`; de
+trainingsreceipt verbindt die met de gevalideerde GitHub-run. Health en iedere
+voorspelling rapporteren de exacte geladen hash als modelrevisie.
 Zie [RF300 deployment en export](../docs/mushroom_rf300.md) voor bronhash,
 compatibiliteit, reproduceerbare export en controle op alle 900 testrecords.
 
