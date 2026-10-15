@@ -111,9 +111,10 @@ blijven voor herkomstcontrole bewaard en tellen niet als definitieve Mushroom-
 evaluatie. Oudere individuele notebooks blijven onderzoeksarchief; hun cijfers
 mogen niet worden gecombineerd met de nieuwe gedeelde split.
 
-**Stap 5 is gedeeltelijk afgerond:** Jorres vier bijdragen zijn bevestigd en de
-GenAI-verantwoording is uitgewerkt tegen de aangeleverde policy. De andere
-teamleden controleren nog hun eigen bijdrage/AI-inzet; iedereen moet de inhoud
+**Stap 5 is gedeeltelijk afgerond:** Jorre, Raoul en Milan hebben hun eigen
+bijdragen en beschreven AI-inzet bevestigd. Milan vermeldt cleaning/EDA, de
+herbouwde frontend en de recente Final-verbeteringen en eindcontrole met Codex.
+Andrew preciseert zijn eigen bijdrage/AI-inzet nog; iedereen moet de inhoud
 zelfstandig kunnen verdedigen. De [inlevercheck](INLEVERCHECK.md) houdt die
 persoonlijke controles afzonderlijk open.
 
@@ -122,5 +123,5 @@ persoonlijke controles afzonderlijk open.
 De eindoplevering sluit af met de [volledige GenAI Disclosure](GENAI_DISCLOSURE.md).
 Deze beschrijft AI-code versus menselijke bijdragen, proza en structuur, vijf echte
 prompts, reproduceerbare controles en concrete bijsturing. De [bijdragen](BIJDRAGEN.md)
-vermelden Jorres pipeline, backend, UI en AWS-training. De individuele review en
+vermelden de bevestigde onderdelen van Jorre, Raoul en Milan. De individuele review en
 zelfstandige beheersing door alle teamleden blijven menselijke eindcontroles.

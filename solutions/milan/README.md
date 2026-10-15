@@ -13,8 +13,12 @@ bestaande modellezer en elf invoervelden, maar mist meer giftige gevallen dan v2
 Voting heeft extra afhankelijkheden en een andere modellezer nodig. De website,
 gedeelde API, Final en automatische training zijn nog niet omgeschakeld.
 
-Deze map is op verzoek van de gebruiker door Codex gemaakt. Milan moet de inhoud,
-eigen bijdrage en AI-inzet zelf beoordelen en bevestigen. De map is een concept
+Deze map is op verzoek van Milan met substantiële hulp van Codex gemaakt.
+Milan bevestigde op 15 oktober 2026 zijn aandeel in cleaning/EDA, de herbouwde
+frontend en de recente Final-verbeteringen en eindcontrole met Codex. Zie de
+[bijdragen](../../Final/BIJDRAGEN.md) en [GenAI Disclosure](../../Final/GENAI_DISCLOSURE.md).
+Een bevestigde bijdrage staat los van persoonlijke inhoudelijke beheersing.
+De map is een concept
 naast de bestaande teamoplossing, op branch `codex/milan-final-review`.
 
 ## Eerst lezen
@@ -140,7 +144,9 @@ vergelijken, verbeteringen te melden en eventueel een alternatief in
 `solutions/milan` te maken. Codex las de lokale cursus en projectcode, schreef de
 review, trainingscode, audits en rapportnotebooks en voerde die controles uit.
 Ook de tweede en derde studie, kandidaatpakketten, previews en tests zijn met substantiële
-hulp van Codex gemaakt. Een persoonlijke goedkeuring door Milan is niet verondersteld.
+hulp van Codex gemaakt. Milans eigen bijdrage en beschreven AI-inzet zijn nu
+vastgelegd in de centrale verantwoording. Dat is geen automatische goedkeuring
+van alle onderzoekscijfers of verklaring van mondelinge beheersing.
 De uitkomsten komen uit de bewaarde berekeningen; een hogere score is niet
 verzonnen. De beperkte winst wordt expliciet vermeld. Er is geen persoonlijke
 menselijke review, Canvas-indiening of nieuwe cloudrun als afgerond aangemerkt.

@@ -1,0 +1,104 @@
+{
+  "base_commit": "e66acab55ab997ee377adcb205f99cf642de4767",
+  "scope": "Contribution and GenAI Markdown only; previous executed evidence retained as historical evidence, no new training claimed.",
+  "passed": true,
+  "notebooks_preserved": [
+    {
+      "notebook": "Final/CitiBike/01_EDA_en_hypothesen.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/CitiBike/02_voorbereiding.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/CitiBike/03_baseline.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/CitiBike/04_Ridge.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/CitiBike/05_AutoML.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/CitiBike/06_Random_Forest.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/CitiBike/07_LightGBM.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/CitiBike/09_vergelijking.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/CitiBike/10_deployment.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/Mushroom/01_EDA.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/Mushroom/02_voorbereiding.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/Mushroom/03_baseline.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/Mushroom/04_AutoML.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/Mushroom/05_Random_Forest.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/Mushroom/06_Gradient_Boosting.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/Mushroom/07_Logistic_Regression.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/Mushroom/08_AWS.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/Mushroom/09_vergelijking.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "Final/Mushroom/10_deployment.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "SolutionMilan/MushroomDataset/01_clean_en_explore.ipynb",
+      "code_and_execution_preserved": true
+    },
+    {
+      "notebook": "SolutionMilan/MushroomDataset/02_data_preparation.ipynb",
+      "code_and_execution_preserved": true
+    }
+  ],
+  "runtime_files_unchanged": 34,
+  "milan_specific_final_notebooks": [
+    "Mushroom/01_EDA.ipynb",
+    "Mushroom/02_voorbereiding.ipynb",
+    "Mushroom/09_vergelijking.ipynb",
+    "Mushroom/10_deployment.ipynb",
+    "CitiBike/10_deployment.ipynb"
+  ],
+  "original_milan_notebooks": [
+    "01_clean_en_explore.ipynb",
+    "02_data_preparation.ipynb"
+  ],
+  "idempotent_and_regenerated_contribution_blocks": true
+}

@@ -10,6 +10,7 @@ import nbformat
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from Final.tools.review_additions import apply_review_additions
+from Final.tools.contributions import apply_milan_contribution
 
 DEST = ROOT/'Final'
 PROVENANCE = []
@@ -30,6 +31,7 @@ def save(path, cells, source=None, note=None):
     target = DEST/path; target.parent.mkdir(parents=True, exist_ok=True)
     nb = nbformat.v4.new_notebook(cells=cells)
     nb.metadata.kernelspec = {'name':'python3', 'display_name':'Python 3.11 — Final', 'language':'python'}
+    apply_milan_contribution(nb,path)
     nbformat.validate(nb); nbformat.write(nb, target)
     if source:
         PROVENANCE.append({'final': str(target.relative_to(ROOT)).replace('\\','/'), 'source': source,
