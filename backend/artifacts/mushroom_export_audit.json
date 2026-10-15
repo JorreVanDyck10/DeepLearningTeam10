@@ -4,7 +4,7 @@
   "test_rows_verified": 900,
   "additional_rows_verified": 5000,
   "label_disagreements": 0,
-  "max_probability_difference": 2.220446049250313e-16,
+  "max_probability_difference": 3.3306690738754696e-16,
   "tolerance": 1e-12,
   "export_sklearn": "1.4.2",
   "forest_sha256": "bb562ebed41e524ae0f61dae9dc4f0ce5a321530752534fd0c4d357650dc5f65"
