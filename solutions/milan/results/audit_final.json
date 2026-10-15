@@ -1,0 +1,165 @@
+{
+  "scope": "Local source, stored predictions, serving export and synthetic causality checks. No new cloud training or live-hosting check.",
+  "training_rows": 4100,
+  "source_hash_mismatches": [],
+  "source_copies_checked": 17,
+  "notebooks": [
+    {
+      "path": "Final/CitiBike/01_EDA_en_hypothesen.ipynb",
+      "code_cells": 12,
+      "nonempty_code_cells": 12,
+      "execution_counts_present": 12,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/CitiBike/02_voorbereiding.ipynb",
+      "code_cells": 5,
+      "nonempty_code_cells": 5,
+      "execution_counts_present": 5,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/CitiBike/03_baseline.ipynb",
+      "code_cells": 1,
+      "nonempty_code_cells": 1,
+      "execution_counts_present": 1,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/CitiBike/04_Ridge.ipynb",
+      "code_cells": 1,
+      "nonempty_code_cells": 1,
+      "execution_counts_present": 1,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/CitiBike/05_AutoML.ipynb",
+      "code_cells": 4,
+      "nonempty_code_cells": 4,
+      "execution_counts_present": 4,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/CitiBike/06_Random_Forest.ipynb",
+      "code_cells": 5,
+      "nonempty_code_cells": 5,
+      "execution_counts_present": 5,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/CitiBike/07_LightGBM.ipynb",
+      "code_cells": 5,
+      "nonempty_code_cells": 5,
+      "execution_counts_present": 5,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/CitiBike/09_vergelijking.ipynb",
+      "code_cells": 4,
+      "nonempty_code_cells": 4,
+      "execution_counts_present": 4,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/CitiBike/10_deployment.ipynb",
+      "code_cells": 1,
+      "nonempty_code_cells": 1,
+      "execution_counts_present": 1,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/Mushroom/01_EDA.ipynb",
+      "code_cells": 10,
+      "nonempty_code_cells": 10,
+      "execution_counts_present": 10,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/Mushroom/02_voorbereiding.ipynb",
+      "code_cells": 3,
+      "nonempty_code_cells": 3,
+      "execution_counts_present": 3,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/Mushroom/03_baseline.ipynb",
+      "code_cells": 2,
+      "nonempty_code_cells": 2,
+      "execution_counts_present": 2,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/Mushroom/04_AutoML.ipynb",
+      "code_cells": 2,
+      "nonempty_code_cells": 2,
+      "execution_counts_present": 2,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/Mushroom/05_Random_Forest.ipynb",
+      "code_cells": 2,
+      "nonempty_code_cells": 2,
+      "execution_counts_present": 2,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/Mushroom/06_Gradient_Boosting.ipynb",
+      "code_cells": 2,
+      "nonempty_code_cells": 2,
+      "execution_counts_present": 2,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/Mushroom/07_Logistic_Regression.ipynb",
+      "code_cells": 2,
+      "nonempty_code_cells": 2,
+      "execution_counts_present": 2,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/Mushroom/08_AWS.ipynb",
+      "code_cells": 6,
+      "nonempty_code_cells": 5,
+      "execution_counts_present": 5,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/Mushroom/09_vergelijking.ipynb",
+      "code_cells": 5,
+      "nonempty_code_cells": 5,
+      "execution_counts_present": 5,
+      "stored_errors": 0
+    },
+    {
+      "path": "Final/Mushroom/10_deployment.ipynb",
+      "code_cells": 3,
+      "nonempty_code_cells": 3,
+      "execution_counts_present": 3,
+      "stored_errors": 0
+    }
+  ],
+  "broken_notebook_links": [
+    {
+      "notebook": "Final/Mushroom/09_vergelijking.ipynb",
+      "cell_index": 2,
+      "link": "09_compare_models.ipynb"
+    },
+    {
+      "notebook": "Final/Mushroom/10_deployment.ipynb",
+      "cell_index": 2,
+      "link": "09_compare_models.ipynb"
+    }
+  ],
+  "mushroom_saved_metric_comparisons": 396,
+  "portable_export_rows": 900,
+  "portable_export_max_probability_difference": 2.220446049250313e-16,
+  "active_pipeline_hash_matches_metadata": true,
+  "citibike_existing_test_metrics_recomputed": {
+    "RMSE": 1979.5071598723391,
+    "MAE": 1076.225847238327,
+    "R2": 0.8280149196256662
+  },
+  "citibike_existing_test_rows": 1488,
+  "citibike_chronological_folds_checked": 5,
+  "citibike_no_same_day_or_future_target_leakage_synthetic_check": true
+}

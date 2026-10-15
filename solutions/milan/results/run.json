@@ -1,0 +1,9 @@
+{
+  "finished_at_utc": "2026-10-15T12:32:54.036332+00:00",
+  "seconds": 334.8828819000046,
+  "outer_evaluations": 20,
+  "oof_rows": 16400,
+  "test_rows_scored": 0,
+  "new_deployment_artifact_created": false,
+  "source_sha256_lf_after": "1f1a25f2f330458ed95ce9f6ffe3241582312a42cb21797a2b7bd5e5ad281114"
+}

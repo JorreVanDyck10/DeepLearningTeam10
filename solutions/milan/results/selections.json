@@ -1,0 +1,67 @@
+[
+  {
+    "outer_fold": 1,
+    "best_parameters": {
+      "classifier__max_features": null,
+      "classifier__min_samples_leaf": 1,
+      "preprocessor__cat__impute__strategy": "most_frequent"
+    },
+    "inner_cv_macro_f1": 0.751418056099944,
+    "rf300_reference_threshold": 0.22020719091811392,
+    "rf300_reference_train_accuracy": 0.9740853658536586,
+    "rf_tuned_threshold": 0.21990307140423557,
+    "rf_tuned_train_accuracy": 0.9716463414634147
+  },
+  {
+    "outer_fold": 2,
+    "best_parameters": {
+      "classifier__max_features": null,
+      "classifier__min_samples_leaf": 1,
+      "preprocessor__cat__impute__strategy": "constant"
+    },
+    "inner_cv_macro_f1": 0.7560048361844468,
+    "rf300_reference_threshold": 0.21715505947095626,
+    "rf300_reference_train_accuracy": 0.9661585365853659,
+    "rf_tuned_threshold": 0.21298700769117881,
+    "rf_tuned_train_accuracy": 0.9753048780487805
+  },
+  {
+    "outer_fold": 3,
+    "best_parameters": {
+      "classifier__max_features": null,
+      "classifier__min_samples_leaf": 3,
+      "preprocessor__cat__impute__strategy": "constant"
+    },
+    "inner_cv_macro_f1": 0.7466387659536128,
+    "rf300_reference_threshold": 0.20627489989695744,
+    "rf300_reference_train_accuracy": 0.9689024390243902,
+    "rf_tuned_threshold": 0.2580735827731397,
+    "rf_tuned_train_accuracy": 0.9365853658536586
+  },
+  {
+    "outer_fold": 4,
+    "best_parameters": {
+      "classifier__max_features": null,
+      "classifier__min_samples_leaf": 1,
+      "preprocessor__cat__impute__strategy": "constant"
+    },
+    "inner_cv_macro_f1": 0.7457868117428488,
+    "rf300_reference_threshold": 0.2242191986720441,
+    "rf300_reference_train_accuracy": 0.9707317073170731,
+    "rf_tuned_threshold": 0.22121955718874686,
+    "rf_tuned_train_accuracy": 0.975
+  },
+  {
+    "outer_fold": 5,
+    "best_parameters": {
+      "classifier__max_features": null,
+      "classifier__min_samples_leaf": 3,
+      "preprocessor__cat__impute__strategy": "constant"
+    },
+    "inner_cv_macro_f1": 0.7511146853478662,
+    "rf300_reference_threshold": 0.2282883203559326,
+    "rf300_reference_train_accuracy": 0.963719512195122,
+    "rf_tuned_threshold": 0.2638637049091874,
+    "rf_tuned_train_accuracy": 0.9347560975609757
+  }
+]
