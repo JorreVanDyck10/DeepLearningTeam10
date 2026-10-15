@@ -1,0 +1,242 @@
+[
+  {
+    "family": "rf_compatible",
+    "fold": 1,
+    "best_parameters": {
+      "classifier__class_weight": "balanced",
+      "classifier__min_samples_leaf": 1,
+      "preprocessor__cat__impute__strategy": "constant"
+    },
+    "inner_cv_macro_f1": 0.7533010309291109,
+    "f1_threshold": 0.45999999999999996,
+    "seconds": 66.6225892000366
+  },
+  {
+    "family": "rf_compatible",
+    "fold": 2,
+    "best_parameters": {
+      "classifier__class_weight": "balanced",
+      "classifier__min_samples_leaf": 2,
+      "preprocessor__cat__impute__strategy": "constant"
+    },
+    "inner_cv_macro_f1": 0.751344422896412,
+    "f1_threshold": 0.42999999999999994,
+    "seconds": 68.87572019995423
+  },
+  {
+    "family": "rf_compatible",
+    "fold": 3,
+    "best_parameters": {
+      "classifier__class_weight": "balanced",
+      "classifier__min_samples_leaf": 1,
+      "preprocessor__cat__impute__strategy": "constant"
+    },
+    "inner_cv_macro_f1": 0.7529243474584545,
+    "f1_threshold": 0.45999999999999996,
+    "seconds": 68.00788560003275
+  },
+  {
+    "family": "rf_compatible",
+    "fold": 4,
+    "best_parameters": {
+      "classifier__class_weight": "balanced",
+      "classifier__min_samples_leaf": 2,
+      "preprocessor__cat__impute__strategy": "constant"
+    },
+    "inner_cv_macro_f1": 0.7387695668672535,
+    "f1_threshold": 0.45999999999999996,
+    "seconds": 70.42632180004148
+  },
+  {
+    "family": "rf_compatible",
+    "fold": 5,
+    "best_parameters": {
+      "classifier__class_weight": "balanced",
+      "classifier__min_samples_leaf": 2,
+      "preprocessor__cat__impute__strategy": "constant"
+    },
+    "inner_cv_macro_f1": 0.7497067028328616,
+    "f1_threshold": 0.47,
+    "seconds": 68.61467779998202
+  },
+  {
+    "family": "gradient_boosting",
+    "fold": 1,
+    "best_parameters": {
+      "classifier__learning_rate": 0.05,
+      "classifier__max_depth": 7,
+      "measurements__geometry": false,
+      "preprocessor": "ColumnTransformer(sparse_threshold=0,\n                  transformers=[('num',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(add_indicator=True,\n                                                                strategy='median'))]),\n                                 ['cap_diameter', 'stem_height', 'stem_width']),\n                                ('cat',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(fill_value='missing',\n                                                                strategy='constant')),\n                                                 ('encode',\n                                                  OneHotEncoder(handle_unknown='ignore',\n                                                                sparse_output=False))]),\n                                 ['spore_print_color', 'gill_color', 'habitat',\n                                  'season', 'ring_type', 'cap_shape',\n                                  'stem_surface', 'jumbled_noise_1'])])"
+    },
+    "inner_cv_macro_f1": 0.7487299458976232,
+    "f1_threshold": 0.48,
+    "seconds": 58.395396600011736
+  },
+  {
+    "family": "gradient_boosting",
+    "fold": 2,
+    "best_parameters": {
+      "classifier__learning_rate": 0.05,
+      "classifier__max_depth": 7,
+      "measurements__geometry": false,
+      "preprocessor": "ColumnTransformer(sparse_threshold=0,\n                  transformers=[('num',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(add_indicator=True,\n                                                                strategy='median'))]),\n                                 ['cap_diameter', 'stem_height', 'stem_width']),\n                                ('cat',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(fill_value='missing',\n                                                                strategy='constant')),\n                                                 ('encode',\n                                                  OneHotEncoder(handle_unknown='ignore',\n                                                                sparse_output=False))]),\n                                 ['spore_print_color', 'gill_color', 'habitat',\n                                  'season', 'ring_type', 'cap_shape',\n                                  'stem_surface', 'jumbled_noise_1'])])"
+    },
+    "inner_cv_macro_f1": 0.7490357015955523,
+    "f1_threshold": 0.49,
+    "seconds": 64.90160270000342
+  },
+  {
+    "family": "gradient_boosting",
+    "fold": 3,
+    "best_parameters": {
+      "classifier__learning_rate": 0.05,
+      "classifier__max_depth": 7,
+      "measurements__geometry": true,
+      "preprocessor": "ColumnTransformer(sparse_threshold=0,\n                  transformers=[('num',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(add_indicator=True,\n                                                                strategy='median'))]),\n                                 ['cap_diameter', 'stem_height', 'stem_width',\n                                  'cap_to_stem_height', 'stem_slenderness']),\n                                ('cat',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(fill_value='missing',\n                                                                strategy='constant')),\n                                                 ('encode',\n                                                  OneHotEncoder(handle_unknown='ignore',\n                                                                sparse_output=False))]),\n                                 ['spore_print_color', 'gill_color', 'habitat',\n                                  'season', 'ring_type', 'cap_shape',\n                                  'stem_surface', 'jumbled_noise_1'])])"
+    },
+    "inner_cv_macro_f1": 0.760887399100865,
+    "f1_threshold": 0.42999999999999994,
+    "seconds": 66.77523139998084
+  },
+  {
+    "family": "gradient_boosting",
+    "fold": 4,
+    "best_parameters": {
+      "classifier__learning_rate": 0.05,
+      "classifier__max_depth": 7,
+      "measurements__geometry": false,
+      "preprocessor": "ColumnTransformer(sparse_threshold=0,\n                  transformers=[('num',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(add_indicator=True,\n                                                                strategy='median'))]),\n                                 ['cap_diameter', 'stem_height', 'stem_width']),\n                                ('cat',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(fill_value='missing',\n                                                                strategy='constant')),\n                                                 ('encode',\n                                                  OneHotEncoder(handle_unknown='ignore',\n                                                                sparse_output=False))]),\n                                 ['spore_print_color', 'gill_color', 'habitat',\n                                  'season', 'ring_type', 'cap_shape',\n                                  'stem_surface', 'jumbled_noise_1'])])"
+    },
+    "inner_cv_macro_f1": 0.7324051511031696,
+    "f1_threshold": 0.41,
+    "seconds": 66.18327839998528
+  },
+  {
+    "family": "gradient_boosting",
+    "fold": 5,
+    "best_parameters": {
+      "classifier__learning_rate": 0.05,
+      "classifier__max_depth": 7,
+      "measurements__geometry": true,
+      "preprocessor": "ColumnTransformer(sparse_threshold=0,\n                  transformers=[('num',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(add_indicator=True,\n                                                                strategy='median'))]),\n                                 ['cap_diameter', 'stem_height', 'stem_width',\n                                  'cap_to_stem_height', 'stem_slenderness']),\n                                ('cat',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(fill_value='missing',\n                                                                strategy='constant')),\n                                                 ('encode',\n                                                  OneHotEncoder(handle_unknown='ignore',\n                                                                sparse_output=False))]),\n                                 ['spore_print_color', 'gill_color', 'habitat',\n                                  'season', 'ring_type', 'cap_shape',\n                                  'stem_surface', 'jumbled_noise_1'])])"
+    },
+    "inner_cv_macro_f1": 0.7407914924823465,
+    "f1_threshold": 0.42,
+    "seconds": 63.784115899994504
+  },
+  {
+    "family": "rf_features",
+    "fold": 1,
+    "best_parameters": {
+      "classifier__min_samples_leaf": 1,
+      "measurements__geometry": false,
+      "preprocessor": "ColumnTransformer(sparse_threshold=0,\n                  transformers=[('num',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(add_indicator=True,\n                                                                strategy='median'))]),\n                                 ['cap_diameter', 'stem_height', 'stem_width']),\n                                ('cat',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(fill_value='missing',\n                                                                strategy='constant')),\n                                                 ('encode',\n                                                  OneHotEncoder(handle_unknown='ignore',\n                                                                sparse_output=False))]),\n                                 ['spore_print_color', 'gill_color', 'habitat',\n                                  'season', 'ring_type', 'cap_shape',\n                                  'stem_surface', 'jumbled_noise_1'])])"
+    },
+    "inner_cv_macro_f1": 0.7550586970160857,
+    "f1_threshold": 0.47,
+    "seconds": 73.34813190001296
+  },
+  {
+    "family": "rf_features",
+    "fold": 2,
+    "best_parameters": {
+      "classifier__min_samples_leaf": 3,
+      "measurements__geometry": true,
+      "preprocessor": "ColumnTransformer(sparse_threshold=0,\n                  transformers=[('num',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(add_indicator=True,\n                                                                strategy='median'))]),\n                                 ['cap_diameter', 'stem_height', 'stem_width',\n                                  'cap_to_stem_height', 'stem_slenderness']),\n                                ('cat',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(fill_value='missing',\n                                                                strategy='constant')),\n                                                 ('encode',\n                                                  OneHotEncoder(handle_unknown='ignore',\n                                                                sparse_output=False))]),\n                                 ['spore_print_color', 'gill_color', 'habitat',\n                                  'season', 'ring_type', 'cap_shape',\n                                  'stem_surface', 'jumbled_noise_1'])])"
+    },
+    "inner_cv_macro_f1": 0.7558089340138373,
+    "f1_threshold": 0.51,
+    "seconds": 80.39190400001826
+  },
+  {
+    "family": "rf_features",
+    "fold": 3,
+    "best_parameters": {
+      "classifier__min_samples_leaf": 1,
+      "measurements__geometry": true,
+      "preprocessor": "ColumnTransformer(sparse_threshold=0,\n                  transformers=[('num',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(add_indicator=True,\n                                                                strategy='median'))]),\n                                 ['cap_diameter', 'stem_height', 'stem_width',\n                                  'cap_to_stem_height', 'stem_slenderness']),\n                                ('cat',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(fill_value='missing',\n                                                                strategy='constant')),\n                                                 ('encode',\n                                                  OneHotEncoder(handle_unknown='ignore',\n                                                                sparse_output=False))]),\n                                 ['spore_print_color', 'gill_color', 'habitat',\n                                  'season', 'ring_type', 'cap_shape',\n                                  'stem_surface', 'jumbled_noise_1'])])"
+    },
+    "inner_cv_macro_f1": 0.7571339299705828,
+    "f1_threshold": 0.47,
+    "seconds": 81.80354329996044
+  },
+  {
+    "family": "rf_features",
+    "fold": 4,
+    "best_parameters": {
+      "classifier__min_samples_leaf": 3,
+      "measurements__geometry": false,
+      "preprocessor": "ColumnTransformer(sparse_threshold=0,\n                  transformers=[('num',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(strategy='median'))]),\n                                 ['cap_diameter', 'stem_height', 'stem_width']),\n                                ('cat',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(fill_value='missing',\n                                                                strategy='constant')),\n                                                 ('encode',\n                                                  OneHotEncoder(handle_unknown='ignore',\n                                                                sparse_output=False))]),\n                                 ['spore_print_color', 'gill_color', 'habitat',\n                                  'season', 'ring_type', 'cap_shape',\n                                  'stem_surface', 'jumbled_noise_1'])])"
+    },
+    "inner_cv_macro_f1": 0.7378576893977734,
+    "f1_threshold": 0.49,
+    "seconds": 74.73261999996612
+  },
+  {
+    "family": "rf_features",
+    "fold": 5,
+    "best_parameters": {
+      "classifier__min_samples_leaf": 1,
+      "measurements__geometry": true,
+      "preprocessor": "ColumnTransformer(sparse_threshold=0,\n                  transformers=[('num',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(strategy='median'))]),\n                                 ['cap_diameter', 'stem_height', 'stem_width',\n                                  'cap_to_stem_height', 'stem_slenderness']),\n                                ('cat',\n                                 Pipeline(steps=[('impute',\n                                                  SimpleImputer(fill_value='missing',\n                                                                strategy='constant')),\n                                                 ('encode',\n                                                  OneHotEncoder(handle_unknown='ignore',\n                                                                sparse_output=False))]),\n                                 ['spore_print_color', 'gill_color', 'habitat',\n                                  'season', 'ring_type', 'cap_shape',\n                                  'stem_surface', 'jumbled_noise_1'])])"
+    },
+    "inner_cv_macro_f1": 0.7516892346197607,
+    "f1_threshold": 0.44999999999999996,
+    "seconds": 80.13811550004175
+  },
+  {
+    "family": "svm",
+    "fold": 1,
+    "best_parameters": {
+      "classifier__C": 10,
+      "classifier__gamma": "scale"
+    },
+    "inner_cv_macro_f1": 0.688874774481727,
+    "f1_threshold": 0.39999999999999997,
+    "seconds": 25.73894970002584
+  },
+  {
+    "family": "svm",
+    "fold": 2,
+    "best_parameters": {
+      "classifier__C": 10,
+      "classifier__gamma": "scale"
+    },
+    "inner_cv_macro_f1": 0.6895511016788359,
+    "f1_threshold": 0.39,
+    "seconds": 26.2751631999854
+  },
+  {
+    "family": "svm",
+    "fold": 3,
+    "best_parameters": {
+      "classifier__C": 10,
+      "classifier__gamma": "scale"
+    },
+    "inner_cv_macro_f1": 0.6943142591388254,
+    "f1_threshold": 0.39999999999999997,
+    "seconds": 26.902956400008406
+  },
+  {
+    "family": "svm",
+    "fold": 4,
+    "best_parameters": {
+      "classifier__C": 1,
+      "classifier__gamma": "scale"
+    },
+    "inner_cv_macro_f1": 0.6790704496835454,
+    "f1_threshold": 0.42,
+    "seconds": 22.58335369999986
+  },
+  {
+    "family": "svm",
+    "fold": 5,
+    "best_parameters": {
+      "classifier__C": 100,
+      "classifier__gamma": 0.01
+    },
+    "inner_cv_macro_f1": 0.6894583290719662,
+    "f1_threshold": 0.39999999999999997,
+    "seconds": 17.17554939998081
+  }
+]
