@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "input_rows": 5000,
+  "saved_reference_rows": 900,
+  "max_probability_difference": 3.3306690738754696e-16,
+  "label_disagreements": 0,
+  "model_revision": "6410b277e49c3706fa4d70db548e2545066a78bcaa6406aa83fef418c489c626",
+  "scope": "Export equivalence and stored-reference regression; no new independent accuracy test."
+}

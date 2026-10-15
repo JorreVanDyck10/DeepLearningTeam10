@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "notebooks": [
+    {
+      "notebook": "solutions/milan/11_Final_eindcontrole.ipynb",
+      "source": null,
+      "source_code_preserved": null,
+      "executed_code_cells": 9,
+      "embedded_plots": 0,
+      "sha256_lf": "8da1ed3f406ac48b058035af20901322ffb4b65f6bb67194f01b550991c17a12",
+      "passed": true
+    },
+    {
+      "notebook": "solutions/milan/eindcontrole/01_EDA_heruitgevoerd.ipynb",
+      "source": "Final/Mushroom/01_EDA.ipynb",
+      "source_code_preserved": true,
+      "executed_code_cells": 10,
+      "embedded_plots": 6,
+      "sha256_lf": "17cf64456e6e726a2edad03a1e6a222ad37863199397bbdc79287c9087c7b264",
+      "passed": true
+    },
+    {
+      "notebook": "solutions/milan/eindcontrole/09_vergelijking_heruitgevoerd.ipynb",
+      "source": "Final/Mushroom/09_vergelijking.ipynb",
+      "source_code_preserved": true,
+      "executed_code_cells": 5,
+      "embedded_plots": 2,
+      "sha256_lf": "0aaf32cd2f83702e00329df5325c94974caa2521ba69190cc934514893fddaf0",
+      "passed": true
+    }
+  ]
+}
