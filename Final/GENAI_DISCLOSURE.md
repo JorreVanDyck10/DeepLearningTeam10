@@ -155,29 +155,75 @@ notebookuitvoer te tonen. De AI-uitvoering en mijn opdrachtgeving worden
 hier afzonderlijk benoemd; een technische geslaagde test is geen bewijs dat
 ik of alle teamleden de volledige inhoud al mondeling hebben verdedigd.
 
-### Voorbeelden van mijn echte opdrachten
+### Voorbeelden van mijn opdrachten
 
-Deze citaten komen uit mijn eigen ontwikkelchat:
+Deze voorbeelden beschrijven mijn gebruik van Codex, in dezelfde vorm als de
+voorbeelden van Jorre. De blokcitaten zijn letterlijke fragmenten uit mijn
+zichtbare berichten. Punt 2 is een reconstructie op basis van mijn eigen
+beschrijving van het frontendwerk, inclusief andere CSS; de oorspronkelijke
+frontendprompt is hier niet beschikbaar. Punt 3 is een leesbare samenvatting
+van mijn bewaarde opdracht. Deze samenvattingen zijn geen letterlijke citaten.
 
-1. Kritisch vergelijken met de lessen:
+1. Een alternatief maken in mijn solutions-map om met Final te vergelijken:
 
-   > kijk in de final van de map en ga heel kritisch na of alles gebeurd is volgens de powerpoints en of er nog ergens verbeteringen mogelijk zijn
+   > je mag dan een concept maken in de github dus in solutions/milan een alternatief maken op basis van hoe we het hebben geleerd en dan vertellen tegen mij of je iets van de final beter kunt doen
 
-2. De werkwijze bij de cursus houden:
+   Ik vroeg om de huidige Final kritisch te beoordelen en een afzonderlijke
+   oplossing in `solutions/milan` uit te werken. Zo kon ik de aanpak en de
+   resultaten met de bestaande oplossing vergelijken voordat er iets aan Final
+   werd aangepast. De opdracht was om verbeteringen te zoeken die aansluiten
+   op de methoden uit de lessen.
+
+2. De frontend verbeteren met andere CSS en een aangepaste vormgeving
+   (gereconstrueerde samenvatting van mijn beschreven frontendwerk):
+
+   Ik vroeg hulp om de bestaande frontend te verbeteren en opnieuw vorm te geven
+   met andere CSS en aangepaste opmaak. Dit hoort bij mijn bijdrage aan de
+   herbouw van de frontend.
+
+3. Eerst uitsluitend in mijn eigen oplossing verderwerken (samenvatting):
+
+   Ik vroeg om verder te werken binnen `solutions/milan`, daar voldoende tijd
+   voor te nemen en alleen wijzigingen of toevoegingen uit te werken die echt
+   verbetering brengen. Ik wilde dat de onderdelen later gericht overgenomen
+   konden worden, met behoud van de werkende keten. Zo bleef het vergelijken
+   van een alternatief gescheiden van het aanpassen van de bestaande Final.
+
+4. De verbeteringen bij de geleerde werkwijze houden:
 
    > maak het dan nog beter, neem je tijd en doe het zoals we hebben geleerd
 
-3. Eerst de concrete gevolgen van een wijziging willen zien:
+   Ik vroeg om de oplossing verder te verbeteren volgens de cursus. De
+   alternatieven, zoals featureselectie en voting, moesten aansluiten op de
+   geleerde technieken en met berekende resultaten worden vergeleken.
+
+5. Eerst concrete codewijzigingen en hun gevolgen laten uitleggen:
 
    > zijn er bepaalde delen die je makkelijk in de final zou vervangen of toevoegen zonder dat er kans is dat het niet meer perfect werkt? zeg dan welke en ook welke stukken code en wat het zal doen verbeteren
 
-4. Daarna gerichte verbeteringen in Final toestaan:
+   Ik vroeg welke onderdelen gericht overgenomen konden worden, welke code
+   daarvoor nodig was en wat de verbetering zou opleveren. Daarbij gaf ik aan
+   dat het behoud van de bestaande werking belangrijk was. Een AI-voorstel
+   alleen was geen bewijs dat een wijziging zonder risico was; daarvoor waren
+   concrete controles nodig.
+
+6. Daarna gerichte verbeteringen in Final toestaan:
 
    > Ok doe maar in final waarvan je zeker bent dat het een verbetering is en dat alles blijft werken
 
-5. Uitvoerbaar bewijs vragen:
+   Na het afzonderlijke verbeteronderzoek gaf ik toestemming om de gerichte
+   aanvullingen in Final aan te brengen. Dit leidde tot herstelde links, de
+   aanvullende vergelijking en compatibele notebookversies. De experimentele
+   modellen vervingen het actieve model niet.
+
+7. Alles opnieuw testen en de uitgevoerde notebooks als bewijs tonen:
 
    > kun je het helemaal nog eens testen of alles werkt en bewijs sturen dat het werkt dus de notebook tonen
+
+   Ik vroeg om de werking opnieuw te controleren en het bewijs zichtbaar te
+   bewaren. Codex voerde de technische controles uit en bewaarde de echte
+   notebookuitvoer, grafieken, testresultaten en controles van de publieke
+   voorspelformulieren. De precieze scope en beperkingen staan hieronder.
 
 ### Controle van mijn recente wijzigingen
 
