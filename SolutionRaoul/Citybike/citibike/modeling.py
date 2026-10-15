@@ -184,8 +184,9 @@ def train():
         raise ValueError('Doelkeuze ontbreekt of brondata gewijzigd')
     start=time.perf_counter()
     atomic_json(REPORTS/'leakage_audit.json',leakage_audit())
-    full=make_features(historical_hourly(include_validation=True))
-    full.to_parquet(DATA/'modeling_development_validation.parquet',index=False)
+    from .model_data import load_model_data
+    prepared_training, prepared_validation, _ = load_model_data()
+    full=pd.concat([prepared_training,prepared_validation],ignore_index=True)
     validation=full[(full.day>=TRAIN_END)&(full.day<TEST_START)].reset_index(drop=True)
     training=full[full.day<TRAIN_END].reset_index(drop=True)
     window_rows=[]

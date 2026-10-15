@@ -26,7 +26,7 @@ if __name__=='__main__':
     if not (ROOT/'reports'/'data_manifest.json').exists():
         raise RuntimeError('Voorbereiding niet voltooid; zie processing.log')
     subprocess.run([sys.executable,'-X','utf8',str(ROOT/'tools'/'run_tests.py')],cwd=ROOT,check=True)
-    for stage,receipt in [('research','target_decision.json'),('train','model_artifact.json'),
+    for stage,receipt in [('research','target_decision.json'),('prepare-model-data','prepared_model_data.json'),('train','model_artifact.json'),
                           ('evaluate','final_evaluation.json'),('verify',None),('notebooks',None)]:
         if receipt and (ROOT/'reports'/receipt).exists():
             print(f'Reeds voltooid: {stage}',flush=True);continue

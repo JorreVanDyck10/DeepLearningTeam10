@@ -202,3 +202,18 @@ Deze beschrijft AI-code versus menselijke bijdragen, proza en structuur, vijf ec
 prompts, reproduceerbare controles en concrete bijsturing. De [bijdragen](Final/BIJDRAGEN.md)
 vermelden Jorres pipeline, backend, UI en AWS-training. De individuele review en
 zelfstandige beheersing door alle teamleden blijven menselijke eindcontroles.
+
+
+## Actuele Citi Bike-uitwerking van Raoul
+
+De gecontroleerde inleverversie staat in [SolutionRaoul/Citybike](SolutionRaoul/Citybike/README.md).
+Begin bij [00_projectoverzicht.ipynb](SolutionRaoul/Citybike/notebooks/00_projectoverzicht.ipynb).
+Deze versie bevat negen uitgevoerde notebooks, zelfstandige modelvoorbereiding,
+zichtbare vaste modeltraining en vergelijking. Het oorspronkelijke geëvalueerde
+RF-model en de eindtest zijn behouden. [OPDRACHTCONTROLE.md](SolutionRaoul/Citybike/OPDRACHTCONTROLE.md)
+toont bewijs en openstaande stappen.
+
+De nieuwe `citibike-retrain.yml` maakt met een lokale Windows-runner een gecontroleerd
+artefact; registratie en een geslaagde GitHub-run zijn nog nodig. Het live model
+wordt niet automatisch vervangen. Het aanwezige Mushroom-AWS-notebook en tuningexports
+blijven behouden; cloudprovenance moet nog worden bevestigd.

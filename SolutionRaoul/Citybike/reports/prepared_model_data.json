@@ -1,0 +1,94 @@
+{
+  "prepared_at": "2026-10-14T15:08:33.145076+00:00",
+  "contract": {
+    "target": "hourly_demand",
+    "area": "NYC",
+    "prediction_time": "00:00 America/New_York op voorspeldag D",
+    "history_days": 14,
+    "features": [
+      "hour_sin",
+      "hour_cos",
+      "weekday_sin",
+      "weekday_cos",
+      "year_sin",
+      "year_cos",
+      "is_weekend",
+      "clock_hours",
+      "lag_1d",
+      "lag_2d",
+      "lag_7d",
+      "lag_14d",
+      "same_hour_mean_7d",
+      "previous_day_total"
+    ],
+    "window_years": null,
+    "train_end_exclusive": "2026-05-01",
+    "validation_end_exclusive": "2026-07-01",
+    "test_start": "2026-07-01",
+    "test_end_exclusive": "2026-09-01"
+  },
+  "path": "C:\\Deeplearning\\CloudAI\\Citybike_full\\data\\modeling_development_validation.parquet",
+  "sha256": "2be4c1fa94f1ee4657020c8912af03e6aadd7735d8ba0d44b45ada956991c51f",
+  "dataset_fingerprint": "409eb1829fa0565f464bbd031cc4e17c8c64f7c9aae466267259f9bc64c14753",
+  "existing_dataset_equal": true,
+  "rows": 114336,
+  "train_rows": 112872,
+  "validation_rows": 1464,
+  "train_start": "2013-06-15 00:00:00",
+  "train_end_exclusive": "2026-05-01",
+  "validation_start": "2026-05-01",
+  "validation_end_exclusive": "2026-07-01",
+  "test_start": "2026-07-01",
+  "test_end_exclusive": "2026-09-01",
+  "folds": [
+    {
+      "train_start": 0,
+      "train_stop": 109512,
+      "validation_start": 109512,
+      "validation_stop": 110184,
+      "train_last_day": "2025-12-11",
+      "validation_first_day": "2025-12-12",
+      "validation_last_day": "2026-01-08"
+    },
+    {
+      "train_start": 0,
+      "train_stop": 110184,
+      "validation_start": 110184,
+      "validation_stop": 110856,
+      "train_last_day": "2026-01-08",
+      "validation_first_day": "2026-01-09",
+      "validation_last_day": "2026-02-05"
+    },
+    {
+      "train_start": 0,
+      "train_stop": 110856,
+      "validation_start": 110856,
+      "validation_stop": 111528,
+      "train_last_day": "2026-02-05",
+      "validation_first_day": "2026-02-06",
+      "validation_last_day": "2026-03-05"
+    },
+    {
+      "train_start": 0,
+      "train_stop": 111528,
+      "validation_start": 111528,
+      "validation_stop": 112200,
+      "train_last_day": "2026-03-05",
+      "validation_first_day": "2026-03-06",
+      "validation_last_day": "2026-04-02"
+    },
+    {
+      "train_start": 0,
+      "train_stop": 112200,
+      "validation_start": 112200,
+      "validation_stop": 112872,
+      "train_last_day": "2026-04-02",
+      "validation_first_day": "2026-04-03",
+      "validation_last_day": "2026-04-30"
+    }
+  ],
+  "fold_fingerprint": "59238f467d526664e56943f96d102928ede96e4e371fecff4fa382847c7601ad",
+  "training_results_required": false,
+  "test_labels_read": false,
+  "test_preparation": "Ruwe testpartitions technisch opgeschoond; testtoegang blijft vergrendeld. Geen testfeatures of scores in modelnotebooks."
+}

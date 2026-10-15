@@ -1,41 +1,22 @@
-# Raoul Buffels — Citi Bike
-
-De [openbare teamwebsite](https://deeplearningteam10-api.onrender.com/#citibike)
-gebruikt inmiddels het hier geselecteerde 320-bomenmodel. Zie
-[frontend/API-deployment](../../docs/citibike_raoul.md) voor de lossless export,
-historische demonstratie en eigen recente historie. De hieronder beschreven
-export uit de oorspronkelijke lokale studie behoudt haar provenance.
-
-Dit is de deelbare export van de volledig uitgevoerde Citi Bike-uitwerking. Begin bij [`notebooks/citybike_analysis.ipynb`](notebooks/citybike_analysis.ipynb). De code, acht uitgevoerde notebooks, figuren, tests, requirements, manifesten, modelkaart en lokale trainingsmetingen staan in deze map.
-
-Oorspronkelijke uitvoering: `C:\Deeplearning\CloudAI\Citybike_full`. Rapporten behouden de oorspronkelijke paden en fingerprints als provenance; ze zijn geen bewijs van een nieuwe run in deze repository. `EXPORT_MANIFEST.json` legt de gekopieerde bestanden en eventuele documentatieaanpassingen vast. Kerncode, voorspelfunctie en modelregels blijven identiek.
-
-Op deze computer zijn `data`, `models` en `.venv` lokaal via directory-junctions gekoppeld aan de originele uitwerking. Die koppelingen en hun inhoud worden niet gecommit. Op een andere computer maak je een eigen omgeving en download/verwerk je de bronnen volgens de commando's hieronder. Het modelbestand van circa 647 MiB blijft lokaal; training is reproduceerbaar met de vastgelegde code en configuratie.
-
-De bestaande teamwebsite, Citi Bike-baseline, API en bijdragen van teamgenoten worden door deze export niet vervangen. AWS-training blijft een latere taak.
-
-## Lokale koppelingen opnieuw maken op Raouls computer
-
-Alleen uitvoeren als de oorspronkelijke mappen aanwezig zijn en de doelmappen nog niet bestaan:
-
-```powershell
-Set-Location 'C:\Deeplearning\DeepLearningTeam10\SolutionRaoul\Citybike'
-New-Item -ItemType Junction -Path 'data' -Target 'C:\Deeplearning\CloudAI\Citybike_full\data'
-New-Item -ItemType Junction -Path 'models' -Target 'C:\Deeplearning\CloudAI\Citybike_full\models'
-New-Item -ItemType Junction -Path '.venv' -Target 'C:\Deeplearning\CloudAI\Citybike_full\.venv'
-```
-
 # Citi Bike: volledig onderzoek met beschermde eindtest
 
 Deze afzonderlijke uitwerking volgt **OBTAIN → SCRUB → EXPLORE → MODEL → INTERPRET
 → DEPLOY**. De bestaande `Citybike`-uitwerking wordt niet aangepast. NYC is het
 hoofdonderzoek; Jersey City wordt afzonderlijk verwerkt en geanalyseerd.
 
-Team: **DeepLearningTeam10** — Jorre Van Dyck, Milan Wouters, Raoul Buffels en Andrew Noeyens.
-Deze map bevat de Citi Bike-bijdrage van **Raoul Buffels**. De concrete menselijke
-taakverdeling moet het team zelf aanvullen; er worden geen bijdragen verzonnen.
+Groepsnaam: **Messi10**. Team: Jorre Van Dyck, Milan Wouters, Raoul Buffels en Andrew Noeyens.
+Citi Bike: Raoul Buffels; deploymenthulp: Jorre Van Dyck. De bestaande bijdragevermeldingen
+staan in ieder notebook; andere bijdragen worden niet verzonnen.
 Codex hielp met implementatie, uitleg, tests en uitvoering. Controleer de GenAI-regels
 van de opleiding en zorg dat ieder teamlid de keuzes zelf kan verdedigen.
+
+De actuele controle tegenover de officiële opdracht staat in [OPDRACHTCONTROLE.md](OPDRACHTCONTROLE.md).
+[AUDIT.md](AUDIT.md) bewaart de eerdere audit en beschrijft de laatste correctieronde.
+De bestaande teamfrontend staat in `C:\Deeplearning\DeepLearningTeam10\frontend`
+en wordt op [Netlify](https://10messi10.netlify.app/#citibike) gehost. Die versie
+blijft de frontend voor Citi Bike, met de bestaande Render-backend. Zie
+[DEPLOYMENT.md](DEPLOYMENT.md). Streamlit blijft een lokale demo.
+De oorspronkelijke modelkeuze en eindtest blijven vastgelegd.
 
 De ontwikkeling bevat ook extreme geregistreerde ritduren, met start en einde
 weken of maanden uiteen. Dat bewijst geen voortdurend fietsen. Registratiefouten
@@ -60,9 +41,9 @@ standaard vier threads en maximaal 4 GiB intern geheugen. De totale proces-RSS
 kan hoger zijn door Arrow/Python; gesamplede RSS staat per partition in het manifest.
 
 ```text
-SolutionRaoul/Citybike/
+Citybike_full/
   citibike/       Python-modules voor pipeline, onderzoek, features en modellen
-  notebooks/     volledig overzicht plus genummerde ondersteunende notebooks
+  notebooks/     negen genummerde notebooks, beginnend met 00_projectoverzicht
   reports/       kleine, deelbare manifesten, statistiek en modelresultaten
   tests/         controles van bronoverlap, tijd, gebied en inference
   data/          gegenereerde Parquet, caches en tijdelijk werk (Git-ignore)
@@ -107,14 +88,17 @@ De laatste hervatte voorbereiding duurde 5,1 minuten, inclusief cachecontrole.
 De hoogste gesamplede CLI-proces-RSS was 4,01 GiB; dit is geen gecombineerde
 worker-RSS en geen exacte continue piekmeting. DuckDB zelf had een 4 GiB-limiet.
 
-Alle **27 tests** slagen. Hertraining van de vaste configuratie duurde 98,9 seconden
+De oorspronkelijke **27 tests** slaagden. De uitgebreidere actuele testtelling staat
+in `reports/test_results.json` en de auditcontrole in `reports/audit_validation.json`.
+De oorspronkelijke hertraining van de vaste configuratie duurde 98,9 seconden
 en verschilde hoogstens 3,64×10⁻¹² ritten in voorspellingen. Het echte Streamlit-
-formulier en offline code leverden dezelfde 24 waarden. De acht notebooks zijn
-uitgevoerd; `reports/delivery_check.json` legt hun checksums en uitvoercellen vast.
+formulier en offline code leverden dezelfde 24 waarden. De oorspronkelijke acht notebooks waren
+uitgevoerd. De nieuwe negen notebooks hebben actuele outputs;
+`reports/delivery_check.json` legt hun checksums en uitvoercellen vast.
 
 ## Installatie — Windows PowerShell
 
-Voer de volgende commando's uit vanuit `C:\Deeplearning\DeepLearningTeam10\SolutionRaoul\Citybike`:
+Voer de volgende commando's uit vanuit `C:\Deeplearning\CloudAI\Citybike_full`:
 
 ```powershell
 py -3.11 -m venv .venv
@@ -124,9 +108,8 @@ $env:CITIBIKE_SOURCE = 'C:\Deeplearning\citibike_data'
 .\.venv\Scripts\python.exe -X utf8 tools/run_tests.py
 ```
 
-Geef vanuit deze geneste projectmap `CITIBIKE_SOURCE` of `--source` expliciet op;
-op deze computer is de bronmap `C:\Deeplearning\citibike_data`, zoals hierboven.
-Reserveer ruime vrije schijfruimte
+Voor deze computer is de defaultbronmap al juist. Op een andere computer geef
+je `CITIBIKE_SOURCE` of `--source` expliciet op. Reserveer ruime vrije schijfruimte
 voor Parquet, staging en DuckDB-spill; de code dupliceert niet alle ruwe CSV's.
 `requirements-lock.txt` legt ook transitieve dependencies vast;
 `requirements.txt` documenteert de direct gebruikte packages. Gebruik Python 3.11.
@@ -136,9 +119,40 @@ en de vroegste voorbereiding kunnen buiten de meting vallen.
 
 ## Uitvoeringsvolgorde
 
+**Bestaande afgeronde studie openen:** gebruik de reeds aanwezige data/modellen.
+`research` en `train` worden terecht geblokkeerd na opening van de eindtest.
+
+```powershell
+.\.venv\Scripts\python.exe -X utf8 tools/run_tests.py
+.\.venv\Scripts\python.exe -X utf8 run.py notebooks
+.\.venv\Scripts\python.exe -X utf8 tools/check_delivery.py
+```
+
+Start voor de bestaande teamfrontend de teambackend uit DEPLOYMENT.md.
+Notebook 02 voert de echte preparation uit;
+met bestaande bronnen en geldige caches controleert het checksums en hergebruikt
+het partitions. Dat kan meerdere minuten duren. De web-API traint niets.
+
+**Een volledige nieuwe reproductie:** gebruik een nieuwe projectkopie met code,
+notebooks en requirements. Bewaar alleen `reports/source_inventory.json` als
+downloadmanifest; de overige gegenereerde rapporten, `data/` en `models/` moeten
+in die nieuwe kopie leeg zijn. De originele studie blijft behouden. Download
+eerst de exacte ZIP-bronnen als die nog ontbreken:
+
+```powershell
+.\.venv\Scripts\python.exe -X utf8 run.py download --source 'D:\citibike_data'
+$env:CITIBIKE_SOURCE = 'D:\citibike_data'
+```
+
+Voer vervolgens in die nieuwe kopie de onderstaande volledige workflow uit.
+De voorbereiding is reproduceerbaar. De modelnotebooks bouwen, fitten en evalueren
+de vaste estimators opnieuw, zonder nieuwe tuning of selectie. Reproducties staan
+in reports/notebook_reproduction; historische rapporten blijven behouden.
+
 ```powershell
 .\.venv\Scripts\python.exe -X utf8 run.py prepare
 .\.venv\Scripts\python.exe -X utf8 run.py research
+.\.venv\Scripts\python.exe -X utf8 run.py prepare-model-data
 .\.venv\Scripts\python.exe -X utf8 run.py train
 .\.venv\Scripts\python.exe -X utf8 run.py evaluate
 .\.venv\Scripts\python.exe -X utf8 run.py verify
@@ -162,10 +176,39 @@ Als de provider een archief gewijzigd heeft, stopt de checksumcontrole. Dat is
 een nieuwe bronversie en geen stilzwijgend identieke reproductie.
 
 Open de notebooks in Jupyter of VS Code met de interpreter `.venv\Scripts\python.exe`.
-`citybike_analysis.ipynb` bevat het volledige verhaal. De notebooks 01–07 geven
-de EDA, definitieve voorbereiding zonder grafieken, afzonderlijke modellen en
-eindvergelijking. De notebookrunner bewaart echte uitvoer en start expliciet
-dezelfde interpreter; hij voert geen nieuwe modelselectie uit.
+Begin bij `00_projectoverzicht.ipynb`. De definitieve volgorde is:
+
+```text
+00_projectoverzicht.ipynb
+01a_dataonderzoek_en_cleaning.ipynb
+01b_EDA_en_hypothesen.ipynb
+02_definitieve_voorbereiding.ipynb
+03_baseline_en_Ridge.ipynb
+04_PyCaret_vergelijking.ipynb
+05_Random_Forest.ipynb
+06_LightGBM.ipynb
+07_eindvergelijking.ipynb
+```
+
+Notebook 02 werkt zonder model- of onderzoeksrapporten: ruwe ZIPs of gecontroleerde
+caches → cleaning → aggregatie → dezelfde 14 features → chronologische splits.
+Het schrijft `data/modeling_development_validation.parquet` en
+`reports/prepared_model_data.json`. Modelnotebooks en hertraining gebruiken
+`load_model_data()`. Een afwijking van aanwezige modeldata stopt vóór overschrijven.
+De testpartitions blijven afgeschermd; er worden geen testlabels geladen.
+De oorspronkelijke grote overview is na inhoudsmigratie lokaal gearchiveerd.
+
+```powershell
+.\.venv\Scripts\python.exe -X utf8 run.py prepare-model-data
+.\.venv\Scripts\python.exe -X utf8 tools/check_preparation_independent.py
+.\.venv\Scripts\python.exe -X utf8 tools/retrain_pipeline.py
+```
+
+`check_preparation_independent.py` voert het echte notebook 02 uit in een lege,
+tijdelijke projectkopie met synthetische ZIPs, zonder model- of onderzoeksrapporten.
+De echte bronrun controleert daarnaast exacte gelijkheid met de bestaande dataset.
+De notebookrunner start expliciet de projectinterpreter en bewaart nieuwe outputs.
+
 
 ## Datakwaliteit en gebiedsscheiding
 
@@ -330,7 +373,7 @@ de onderstaande commando's; `run.py train` start volledige modelselectie en word
 terecht geblokkeerd zodra de oorspronkelijke eindtest is geopend.
 
 ```powershell
-Set-Location 'C:\Deeplearning\DeepLearningTeam10\SolutionRaoul\Citybike'
+Set-Location 'C:\Deeplearning\CloudAI\Citybike_full'
 # Alleen dezelfde vaste Random Forest opnieuw fitten en lokaal opslaan:
 .\.venv\Scripts\python.exe -X utf8 tools/local_training.py retrain
 # Drie nieuwe LightGBM-instellingen onderzoeken, zonder nieuwe eindtest:
@@ -400,6 +443,19 @@ dezelfde trainingsrijen, zonder tuning of testlabels, en vergelijkt de voorspell
 Daarna bedient Streamlit AppTest het echte formulier en controleert de 24 uitvoerwaarden
 tegen de gedeelde offline voorspelfunctie. Dezelfde geëvalueerde modelversie wordt in de app gebruikt.
 
-AWS-training blijft een afzonderlijke latere taak. De team-API en online
-frontend gebruiken inmiddels het gekozen model; de lokale Streamlit-app blijft
-ook beschikbaar. Automatische hertraining op nieuwe tellingen is een aparte taak.
+De bestaande eigen API en frontend staan in de groepsrepo `DeepLearningTeam10`,
+in `backend/` en `frontend/`. Automatische modelupdates moeten afzonderlijk
+worden aangetoond; een automatische code-deploy is geen hertraining.
+**OPENSTAAND: AWS / SageMaker model — cloudprovenance bevestigen.**
+De groepsrepo bevat `SolutionJorre/MushroomDataset/03_aws_mushrooms.ipynb`,
+`aws_results.json` en `aws_tuning_results.csv`, met vier RandomizedSearchCV-kandidaten.
+Het notebook heeft een `conda_python3`-kernel en uitgevoerde training/tuningcellen.
+Dat toont lokale exports, maar is zonder aanvullend cloudbewijs geen zelfstandige
+verificatie van de AWS-uitvoering. De generieke AWS-slots zijn placeholders.
+Er wordt geen nieuw lokaal Citi Bike-model als AWS-resultaat voorgesteld.
+
+De nieuwe workflow `.github/workflows/citibike-retrain.yml` staat in de groepsrepo.
+Hij gebruikt een lokale Windows-runner en maakt een artefact van dezelfde vaste RF.
+Registratie, een geslaagde GitHub-run en live modelupdate blijven afzonderlijke stappen;
+zie [DEPLOYMENT.md](DEPLOYMENT.md). Een lokaal geslaagde run bewijst nog geen
+werkende automatische GitHub-uitvoering.

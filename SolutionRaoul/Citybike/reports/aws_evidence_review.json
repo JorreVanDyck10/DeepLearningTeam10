@@ -1,0 +1,30 @@
+{
+  "local_evidence": [
+    {
+      "path": "SolutionJorre/MushroomDataset/03_aws_mushrooms.ipynb",
+      "sha256": "8e63ff3944bd2b172c959683c248421af4638f732d15cd2ab8ea67f86adf56b2"
+    },
+    {
+      "path": "SolutionJorre/MushroomDataset/aws_results.json",
+      "sha256": "4f7e79618d2450ccd32249ab1eadc10d46e3358165b3cde7bbce53bc77193ae9"
+    },
+    {
+      "path": "SolutionJorre/MushroomDataset/aws_tuning_results.csv",
+      "sha256": "b1b17ccd40df588a3d1bbeb22b2d686ceee9318ac05ae3bbbfb75a116f8cf734"
+    }
+  ],
+  "kernel": {
+    "display_name": "conda_python3",
+    "language": "python",
+    "name": "conda_python3"
+  },
+  "executed_code_cells": 9,
+  "code_cells": 10,
+  "ec2_path_markers": [
+    "/home/ec2-user/anaconda3/envs/python3/lib/python3.10/site-packages"
+  ],
+  "training_and_tuning_exports_present": true,
+  "cloud_execution_independently_verified": false,
+  "status": "OPENSTAAND: AWS / SageMaker model — cloudprovenance bevestigen",
+  "notes": "conda_python3 and local exported scores alone do not independently establish AWS execution; no new AWS training performed."
+}

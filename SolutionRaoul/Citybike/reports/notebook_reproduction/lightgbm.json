@@ -1,0 +1,16 @@
+{
+  "name": "lightgbm",
+  "RMSE": 1952.2447622846191,
+  "MAE": 1152.4173595903153,
+  "R2": 0.8416155155919965,
+  "train_RMSE": 778.0428119870477,
+  "train_MAE": 432.04320722970317,
+  "train_R2": 0.9287488408840281,
+  "fit_seconds": 0.7168024999991758,
+  "reproduced_at": "2026-10-14T15:13:28.563298+00:00",
+  "prepared_sha256": "2be4c1fa94f1ee4657020c8912af03e6aadd7735d8ba0d44b45ada956991c51f",
+  "fold_fingerprint": "59238f467d526664e56943f96d102928ede96e4e371fecff4fa382847c7601ad",
+  "test_used": false,
+  "model_selection_changed": false,
+  "original_metrics_equal": true
+}

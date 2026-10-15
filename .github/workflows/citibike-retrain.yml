@@ -1,0 +1,51 @@
+name: Citi Bike fixed model retraining
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: citibike-local-retraining
+  cancel-in-progress: false
+
+jobs:
+  retrain:
+    runs-on: [self-hosted, Windows, X64, citibike]
+    timeout-minutes: 45
+    env:
+      TRAINING_ROOT: ${{ vars.CITIBIKE_TRAINING_ROOT }}
+      TRAINING_PYTHON: ${{ vars.CITIBIKE_TRAINING_PYTHON }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check local Python and prepared training resources
+        shell: pwsh
+        run: |
+          if (-not $env:TRAINING_ROOT -or -not $env:TRAINING_PYTHON) {
+            throw 'Configure CITIBIKE_TRAINING_ROOT and CITIBIKE_TRAINING_PYTHON repository variables.'
+          }
+          if (-not (Test-Path -LiteralPath $env:TRAINING_PYTHON)) { throw 'Training interpreter missing.' }
+          & $env:TRAINING_PYTHON -c "import sys; assert sys.version_info[:2] == (3, 11), 'Python 3.11 required'"
+          if ($LASTEXITCODE -ne 0) { throw 'Wrong Python version.' }
+          & $env:TRAINING_PYTHON -m pip check
+          if ($LASTEXITCODE -ne 0) { throw 'Dependency check failed.' }
+      - name: Test ML code from this checkout
+        shell: pwsh
+        run: |
+          & $env:TRAINING_PYTHON -X utf8 -m unittest discover -s SolutionRaoul/Citybike/tests -v
+          if ($LASTEXITCODE -ne 0) { throw 'ML tests failed.' }
+      - name: Fit and verify the fixed evaluated RF configuration
+        shell: pwsh
+        run: |
+          & $env:TRAINING_PYTHON -X utf8 SolutionRaoul/Citybike/tools/retrain_pipeline.py --training-root $env:TRAINING_ROOT --output "${{ runner.temp }}/citibike-${{ github.run_id }}-${{ github.run_attempt }}"
+          if ($LASTEXITCODE -ne 0) { throw 'Retraining or prediction verification failed.' }
+      - name: Store verified model and run receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: citibike-fixed-rf-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/citibike-${{ github.run_id }}-${{ github.run_attempt }}/
+          if-no-files-found: error
+          retention-days: 7

@@ -188,12 +188,13 @@ display(pd.read_csv(folder/'pycaret_test_metrics.csv'))'''),
         apply_review_additions(nb, target)
         nb.cells.insert(0, md('Final-leesversie; oorspronkelijke bestanden en hun uitvoer blijven behouden. Stap 5 (definitieve menselijke bijdragen en opleidingspolicy) rondt Jorre later af. Bron: `'+source+'`.'))
         save(Path(target), nb.cells, source, 'Curated copy; provenance and stale wording clarified')
-    # City Bike remains the protected original study. Read reports rather than reopening its final test.
+    # Preserve the exact historical sources used by Final, separately from updated research notebooks.
+    # Read reports rather than reopening the protected original final test.
     copies=[('01_EDA_en_hypothesen','01_EDA_en_hypothesen'),('02_voorbereiding','02_definitieve_voorbereiding'),
             ('05_AutoML','04_PyCaret_vergelijking'),('06_Random_Forest','05_Random_Forest'),
             ('07_LightGBM','06_LightGBM'),('09_vergelijking','07_eindvergelijking')]
     for target, stem in copies:
-        source=f'SolutionRaoul/Citybike/notebooks/{stem}.ipynb'; nb=read(source)
+        source=f'SolutionRaoul/Citybike/archive/final_sources/{stem}.ipynb'; nb=read(source)
         for c in nb.cells:
             if c.cell_type=='code' and 'locations = [' in c.source:
                 start=c.source.index('locations = [');stop=c.source.index('sys.path.insert',start)
@@ -226,7 +227,7 @@ display(pd.Series(record['parameters'], dtype=object))
 assert len(record['cv']) == 5
 '''),
             md('De weekbaseline gebruikt uitsluitend hetzelfde uur van de vorige week. Ridge gebruikt kalender- en lagkenmerken met regularisatie. Raouls vergelijking en de keuze voor RF320 staan apart in `09_vergelijking.ipynb`. Deze rapportcontrole is geen opnieuw uitgevoerde training.')],
-            'SolutionRaoul/Citybike/notebooks/03_baseline_en_Ridge.ipynb', 'Split model families into independent report notebooks; original offline fit preserved')
+            'SolutionRaoul/Citybike/archive/final_sources/03_baseline_en_Ridge.ipynb', 'Split model families into independent report notebooks; original offline fit preserved')
     save(Path('CitiBike/10_deployment.ipynb'),[
         md('''# Citi Bike — API, website en modelcontract
 

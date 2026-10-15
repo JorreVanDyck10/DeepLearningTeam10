@@ -1,0 +1,16 @@
+{
+  "name": "ridge",
+  "RMSE": 1982.4400359497886,
+  "MAE": 1248.0581142257563,
+  "R2": 0.8366781757636048,
+  "train_RMSE": 1021.6913467633481,
+  "train_MAE": 578.3903649557035,
+  "train_R2": 0.877136078006862,
+  "fit_seconds": 0.04570879999664612,
+  "reproduced_at": "2026-10-14T15:08:36.321771+00:00",
+  "prepared_sha256": "2be4c1fa94f1ee4657020c8912af03e6aadd7735d8ba0d44b45ada956991c51f",
+  "fold_fingerprint": "59238f467d526664e56943f96d102928ede96e4e371fecff4fa382847c7601ad",
+  "test_used": false,
+  "model_selection_changed": false,
+  "original_metrics_equal": true
+}

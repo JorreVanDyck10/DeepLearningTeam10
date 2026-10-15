@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-10-09T12:42:22.318172+00:00",
+  "exported_at": "2026-10-14T15:24:14.728973+00:00",
   "source": "C:\\Deeplearning\\CloudAI\\Citybike_full",
   "destination": "C:\\Deeplearning\\DeepLearningTeam10\\SolutionRaoul\\Citybike",
   "author": "Raoul Buffels",
@@ -16,11 +16,12 @@
   "files": [
     {
       "path": ".gitignore",
-      "source_sha256": "4ac0081281fe5d71730da4ce84e317af1b00543497aa1553450d1b79cda48fb2",
-      "source_bytes": 135,
-      "export_sha256": "4ac0081281fe5d71730da4ce84e317af1b00543497aa1553450d1b79cda48fb2",
-      "export_bytes": 135,
-      "documentation_changed": false
+      "source_sha256": "876153d99a0732f26bfd9e97a4b3d57dfe8d9f24f7eeb23ad2841b2166820ff4",
+      "export_sha256": "876153d99a0732f26bfd9e97a4b3d57dfe8d9f24f7eeb23ad2841b2166820ff4",
+      "source_bytes": 151,
+      "export_bytes": 151,
+      "documentation_changed": false,
+      "updated": false
     },
     {
       "path": ".streamlit/config.toml",
@@ -96,19 +97,21 @@
     },
     {
       "path": "citibike/modeling.py",
-      "source_sha256": "28aafe6ae754b5fbc0b82e0711da4feee91ce6b141c96844cfa34334d7612cf4",
-      "source_bytes": 24868,
-      "export_sha256": "28aafe6ae754b5fbc0b82e0711da4feee91ce6b141c96844cfa34334d7612cf4",
-      "export_bytes": 24868,
-      "documentation_changed": false
+      "source_sha256": "1d77b171cd1d1503309ba0de30fc02a80702c1a0387d9b27c9b95f19d3b58946",
+      "export_sha256": "1d77b171cd1d1503309ba0de30fc02a80702c1a0387d9b27c9b95f19d3b58946",
+      "source_bytes": 24909,
+      "export_bytes": 24909,
+      "documentation_changed": false,
+      "updated": false
     },
     {
       "path": "citibike/notebooks.py",
-      "source_sha256": "f0370d405ebe3ed8f28ee6bcce15e8f1e626e06b4876d42a18a5a1fe48a606cb",
-      "source_bytes": 26108,
-      "export_sha256": "f0370d405ebe3ed8f28ee6bcce15e8f1e626e06b4876d42a18a5a1fe48a606cb",
-      "export_bytes": 26108,
-      "documentation_changed": false
+      "source_sha256": "377f4c6e7c44023d92e7c2c6894a3b07aac841d398e4c5ae092c55a4b7b1ef6e",
+      "export_sha256": "377f4c6e7c44023d92e7c2c6894a3b07aac841d398e4c5ae092c55a4b7b1ef6e",
+      "source_bytes": 140,
+      "export_bytes": 140,
+      "documentation_changed": false,
+      "updated": false
     },
     {
       "path": "citibike/plots.py",
@@ -135,76 +138,67 @@
       "documentation_changed": false
     },
     {
-      "path": "notebooks/01_EDA_en_hypothesen.ipynb",
-      "source_sha256": "1d3d532e91c2c608179b74aee20669e45447e9cdc085af2bf2520abea468cfbc",
-      "source_bytes": 706689,
-      "export_sha256": "c3105933169f6e064c63cc3fbba36449b16939c72c54212b116e6fec23e36bed",
-      "export_bytes": 707639,
-      "documentation_changed": true
-    },
-    {
       "path": "notebooks/02_definitieve_voorbereiding.ipynb",
-      "source_sha256": "31e04020df7fedd6ee15d74c8f5582bcb6ad30ad319c4c51d847e133d8da0d40",
-      "source_bytes": 39823,
-      "export_sha256": "43ef24a9c4676fb2b2192cebb0288858d54ac55b2c92564cb367e76b926c905c",
-      "export_bytes": 40773,
-      "documentation_changed": true
+      "source_sha256": "edc559578e5b2b435208fd339f671e29d0c8a9a1a2d3e206c35aafb3b9d8c5b1",
+      "export_sha256": "edc559578e5b2b435208fd339f671e29d0c8a9a1a2d3e206c35aafb3b9d8c5b1",
+      "source_bytes": 107255,
+      "export_bytes": 107255,
+      "documentation_changed": false,
+      "updated": false
     },
     {
       "path": "notebooks/03_baseline_en_Ridge.ipynb",
-      "source_sha256": "e20bfc08dc7b0c5cfed9a96368a73c87f7e3c995d60d5d148318dd41bdf380f6",
-      "source_bytes": 27479,
-      "export_sha256": "f8016bdddb82d544f73925932b574e349e3fded747dbc38e004bbb0eb2906171",
-      "export_bytes": 28429,
-      "documentation_changed": true
+      "source_sha256": "1c86b692ab7b2b6c0259eb914a74e59739629e991432ab8e8ab65d2fe3e38551",
+      "export_sha256": "1c86b692ab7b2b6c0259eb914a74e59739629e991432ab8e8ab65d2fe3e38551",
+      "source_bytes": 131053,
+      "export_bytes": 131053,
+      "documentation_changed": false,
+      "updated": false
     },
     {
       "path": "notebooks/04_PyCaret_vergelijking.ipynb",
-      "source_sha256": "173db286b02f7ec55bedda381c5bcb2a4646cedc33fb6d33afb9157e9f6ee3f3",
-      "source_bytes": 18635,
-      "export_sha256": "a2481979ffdea39afff56f0ae05afebcf8946a478258b97ced8237c51cd128f2",
-      "export_bytes": 19585,
-      "documentation_changed": true
+      "source_sha256": "50672d42c8fe4433028aee1bc442aa94b044f5244c8410091c7d3decba0293ba",
+      "export_sha256": "50672d42c8fe4433028aee1bc442aa94b044f5244c8410091c7d3decba0293ba",
+      "source_bytes": 28927,
+      "export_bytes": 28927,
+      "documentation_changed": false,
+      "updated": false
     },
     {
       "path": "notebooks/05_Random_Forest.ipynb",
-      "source_sha256": "5e4ef6cd2b8b20a74554657f8189dd5a9566ec8b067daae9a0578ed290bf084c",
-      "source_bytes": 20848,
-      "export_sha256": "005d35ee6c6288964c0ca51a9b6731ed67d1d9e8a9afaf97b49a0ca615004c87",
-      "export_bytes": 21798,
-      "documentation_changed": true
+      "source_sha256": "857668696c62e4178845418324d04b0a7443c92f0d0e07ea1282341ff35cac59",
+      "export_sha256": "857668696c62e4178845418324d04b0a7443c92f0d0e07ea1282341ff35cac59",
+      "source_bytes": 82223,
+      "export_bytes": 82223,
+      "documentation_changed": false,
+      "updated": false
     },
     {
       "path": "notebooks/06_LightGBM.ipynb",
-      "source_sha256": "18bb2b7e7d21d954ad8a0106bcf8e711f050291723edb6f35a9ff7bba979e17f",
-      "source_bytes": 25994,
-      "export_sha256": "11fb6da47ad73cc354a48f5fd747fc4e0078719202e333eafa309e059f48cf3e",
-      "export_bytes": 26944,
-      "documentation_changed": true
+      "source_sha256": "a5db935516d663e7ce509dd2675ca169df31f8e070ad56df2eab532b2d7af8a6",
+      "export_sha256": "a5db935516d663e7ce509dd2675ca169df31f8e070ad56df2eab532b2d7af8a6",
+      "source_bytes": 88912,
+      "export_bytes": 88912,
+      "documentation_changed": false,
+      "updated": false
     },
     {
       "path": "notebooks/07_eindvergelijking.ipynb",
-      "source_sha256": "2ae4cc26cb45056353a2dee97c1195f4d03a75c9ea22d89bb586d51821c4a027",
-      "source_bytes": 345154,
-      "export_sha256": "eb082242db8f5c23aa84c73e1155eb8395f35ef0ec3c60341bcc902a41bce2a2",
-      "export_bytes": 346104,
-      "documentation_changed": true
-    },
-    {
-      "path": "notebooks/citybike_analysis.ipynb",
-      "source_sha256": "a3520b89271f311792bfd249bb3d74f1117fde9f1a2857f8a0cb8894cedd0805",
-      "source_bytes": 1449096,
-      "export_sha256": "76d4e101237501d4f1b32ba38b3c1d123ea33f351f17404963a57772909dc835",
-      "export_bytes": 1450046,
-      "documentation_changed": true
+      "source_sha256": "fa7be65ad811d3f9fa45c892a9423bba007c403dd2778c1181ea3ab878abb178",
+      "export_sha256": "fa7be65ad811d3f9fa45c892a9423bba007c403dd2778c1181ea3ab878abb178",
+      "source_bytes": 585197,
+      "export_bytes": 585197,
+      "documentation_changed": false,
+      "updated": false
     },
     {
       "path": "README.md",
-      "source_sha256": "498a75769c26e1b9905fe9c61010c02d76cc1e49e98a34c3b8a230ba3939dd5b",
-      "source_bytes": 21804,
-      "export_sha256": "be126fe7fbe1d6e4980d1b4091f16fcafadde0113cc7606ed9598075b9ae81b5",
-      "export_bytes": 24697,
-      "documentation_changed": true
+      "source_sha256": "5588862d09c00b8bdb846c728dde949c61dcdcc977a33427e5b3111c7ee09b1f",
+      "export_sha256": "5588862d09c00b8bdb846c728dde949c61dcdcc977a33427e5b3111c7ee09b1f",
+      "source_bytes": 26834,
+      "export_bytes": 26834,
+      "documentation_changed": false,
+      "updated": false
     },
     {
       "path": "reports/boundary_field_conflicts.json",
@@ -232,19 +226,21 @@
     },
     {
       "path": "reports/data_manifest.json",
-      "source_sha256": "7a9a4023031bef77884ed289f47c5ea27ddbfa7937366beaefa1465a693fe6c0",
-      "source_bytes": 2385516,
-      "export_sha256": "7a9a4023031bef77884ed289f47c5ea27ddbfa7937366beaefa1465a693fe6c0",
-      "export_bytes": 2385516,
-      "documentation_changed": false
+      "source_sha256": "d347aef96d115f2c051ca33ce14801167387f5820ea0b02d9ea44ac5801929b6",
+      "export_sha256": "d347aef96d115f2c051ca33ce14801167387f5820ea0b02d9ea44ac5801929b6",
+      "source_bytes": 2385527,
+      "export_bytes": 2385527,
+      "documentation_changed": false,
+      "updated": false
     },
     {
       "path": "reports/delivery_check.json",
-      "source_sha256": "74a4c2e7c5730906caecb4c6772f6969004b09f4c78369584706368e2b08c630",
-      "source_bytes": 2100,
-      "export_sha256": "91030a93075dff56671e2e87d337e7ed646de7df5a0e7fd7ae6e943919cf355c",
-      "export_bytes": 2100,
-      "documentation_changed": true
+      "source_sha256": "c83626536c10d5b005b3bf53ded15b88dcaf66b530e26b48b6944a7d044e6323",
+      "export_sha256": "c83626536c10d5b005b3bf53ded15b88dcaf66b530e26b48b6944a7d044e6323",
+      "source_bytes": 8076,
+      "export_bytes": 8076,
+      "documentation_changed": false,
+      "updated": true
     },
     {
       "path": "reports/discovery_fix_cache_audit.json",
@@ -920,11 +916,12 @@
     },
     {
       "path": "reports/test_results.json",
-      "source_sha256": "90f38ba148eae2f852586324b79d63fc6f80bad9f5980fd72a8f22f6da0c695d",
-      "source_bytes": 5063,
-      "export_sha256": "90f38ba148eae2f852586324b79d63fc6f80bad9f5980fd72a8f22f6da0c695d",
-      "export_bytes": 5063,
-      "documentation_changed": false
+      "source_sha256": "99eaaa53e7c27e3dbf7579c3390d602a9d37dfcdb80647ef601d74231a2e2b78",
+      "export_sha256": "99eaaa53e7c27e3dbf7579c3390d602a9d37dfcdb80647ef601d74231a2e2b78",
+      "source_bytes": 6028,
+      "export_bytes": 6028,
+      "documentation_changed": false,
+      "updated": false
     },
     {
       "path": "reports/time_diagnostics.json",
@@ -1016,11 +1013,12 @@
     },
     {
       "path": "run.py",
-      "source_sha256": "9c34935c1e6c0fe70674965517baefe2cb6f16459fe9902fc6e856c55fa4d769",
-      "source_bytes": 1080,
-      "export_sha256": "9c34935c1e6c0fe70674965517baefe2cb6f16459fe9902fc6e856c55fa4d769",
-      "export_bytes": 1080,
-      "documentation_changed": false
+      "source_sha256": "562a7968fe3f6e4cd4ce15603f4d08f124227cda263bb86a75a39867cd5baef4",
+      "export_sha256": "562a7968fe3f6e4cd4ce15603f4d08f124227cda263bb86a75a39867cd5baef4",
+      "source_bytes": 1283,
+      "export_bytes": 1283,
+      "documentation_changed": false,
+      "updated": false
     },
     {
       "path": "tests/test_project.py",
@@ -1032,27 +1030,30 @@
     },
     {
       "path": "tools/check_delivery.py",
-      "source_sha256": "51e7b3ef1b5cdf6c34bb18151ce75a31802177c18afe1aa0b6402d7986a60acc",
-      "source_bytes": 2018,
-      "export_sha256": "51e7b3ef1b5cdf6c34bb18151ce75a31802177c18afe1aa0b6402d7986a60acc",
-      "export_bytes": 2018,
-      "documentation_changed": false
+      "source_sha256": "179a4e317015dda5359854e3aa95d4ca2631fdc65fb55102295b2e029a08bf3a",
+      "export_sha256": "179a4e317015dda5359854e3aa95d4ca2631fdc65fb55102295b2e029a08bf3a",
+      "source_bytes": 3705,
+      "export_bytes": 3705,
+      "documentation_changed": false,
+      "updated": false
     },
     {
       "path": "tools/export_contribution.py",
-      "source_sha256": "e665ee5e379746404619fc3dabe67facd90ba87fc95447742a16a87f29bdfd10",
-      "source_bytes": 6774,
-      "export_sha256": "999a01633781188249ed52eb929d6216966c1941cf754ab31e8d6ca722535062",
-      "export_bytes": 6794,
-      "documentation_changed": true
+      "source_sha256": "b9d80fe025c6d68f7611107bf657564b089db71acae8edb3c434f47f062428b1",
+      "export_sha256": "b9d80fe025c6d68f7611107bf657564b089db71acae8edb3c434f47f062428b1",
+      "source_bytes": 7048,
+      "export_bytes": 7048,
+      "documentation_changed": false,
+      "updated": false
     },
     {
       "path": "tools/local_training.py",
-      "source_sha256": "82f47e4d1934cb9d82960eee2f425d4668c03368a40ca408e4137c62d717bae4",
-      "source_bytes": 13622,
-      "export_sha256": "82f47e4d1934cb9d82960eee2f425d4668c03368a40ca408e4137c62d717bae4",
-      "export_bytes": 13622,
-      "documentation_changed": false
+      "source_sha256": "c6571dc7d6e95e2c4c793e092238572ab46cc749509c7aa869d4fd77a3c99864",
+      "export_sha256": "c6571dc7d6e95e2c4c793e092238572ab46cc749509c7aa869d4fd77a3c99864",
+      "source_bytes": 13709,
+      "export_bytes": 13709,
+      "documentation_changed": false,
+      "updated": false
     },
     {
       "path": "tools/migrate_unchanged_nyc_cache.py",
@@ -1080,11 +1081,12 @@
     },
     {
       "path": "tools/run_workflow.py",
-      "source_sha256": "f5624f7ff3764df5761d7127baae631f6742b210e7c8dfd217e0986bee820735",
-      "source_bytes": 1440,
-      "export_sha256": "f5624f7ff3764df5761d7127baae631f6742b210e7c8dfd217e0986bee820735",
-      "export_bytes": 1440,
-      "documentation_changed": false
+      "source_sha256": "dc8ad87b0fd206f97552bf07129b7c9338bae38bfd540c474bc708685ba361f3",
+      "export_sha256": "dc8ad87b0fd206f97552bf07129b7c9338bae38bfd540c474bc708685ba361f3",
+      "source_bytes": 1490,
+      "export_bytes": 1490,
+      "documentation_changed": false,
+      "updated": true
     },
     {
       "path": ".gitattributes",
@@ -1103,6 +1105,321 @@
       "generated": true,
       "export_sha256": "c3f63184b92fe38f5e21c114e8755256556f717535032b65448e76ed31313f15",
       "export_bytes": 1831
+    },
+    {
+      "path": "DEPLOYMENT.md",
+      "source_sha256": "da6cee7b5381b459faf25df9b1f9cdc5a91e91d508837abee3f7b33c7fa83db7",
+      "export_sha256": "da6cee7b5381b459faf25df9b1f9cdc5a91e91d508837abee3f7b33c7fa83db7",
+      "source_bytes": 5926,
+      "export_bytes": 5926,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "AUDIT.md",
+      "source_sha256": "805ade432fa43c1a6e4d71e3093bdb308b339a7f7a963ca1c1bb87969b713e1e",
+      "export_sha256": "805ade432fa43c1a6e4d71e3093bdb308b339a7f7a963ca1c1bb87969b713e1e",
+      "source_bytes": 14700,
+      "export_bytes": 14700,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "OPDRACHTCONTROLE.md",
+      "source_sha256": "2dccff16cc271258b42db34604e4031703cb0dfcf5f5fa1f9967279d621a1e73",
+      "export_sha256": "2dccff16cc271258b42db34604e4031703cb0dfcf5f5fa1f9967279d621a1e73",
+      "source_bytes": 4249,
+      "export_bytes": 4249,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "citibike/notebook_builder.py",
+      "source_sha256": "d1974550b0488af1293eb34ad02c078989851909b8d7b6876bf0c466d99001da",
+      "export_sha256": "d1974550b0488af1293eb34ad02c078989851909b8d7b6876bf0c466d99001da",
+      "source_bytes": 28159,
+      "export_bytes": 28159,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "citibike/notebook_sections.json",
+      "source_sha256": "8b372057ecece82d2452eb973a96f394907770a39a7ccc2eb88e792d9a08fa18",
+      "export_sha256": "8b372057ecece82d2452eb973a96f394907770a39a7ccc2eb88e792d9a08fa18",
+      "source_bytes": 11991,
+      "export_bytes": 11991,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "citibike/model_data.py",
+      "source_sha256": "b9bb6e0bcf9afc1739532845c9f10a419d56db3c86124698d80321bb2d764f6b",
+      "export_sha256": "b9bb6e0bcf9afc1739532845c9f10a419d56db3c86124698d80321bb2d764f6b",
+      "source_bytes": 4932,
+      "export_bytes": 4932,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "citibike/reproduction.py",
+      "source_sha256": "2c6e5c206b0c0dc1d567f4cf36140e867ce63a28158079ff550517cd045fd722",
+      "export_sha256": "2c6e5c206b0c0dc1d567f4cf36140e867ce63a28158079ff550517cd045fd722",
+      "source_bytes": 3208,
+      "export_bytes": 3208,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "tools/check_preparation_independent.py",
+      "source_sha256": "6dfc480bcaffef54c762c9c4e684432a48c5718ca04e2d6428137b5cbcd97d50",
+      "export_sha256": "6dfc480bcaffef54c762c9c4e684432a48c5718ca04e2d6428137b5cbcd97d50",
+      "source_bytes": 3795,
+      "export_bytes": 3795,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "tools/retrain_pipeline.py",
+      "source_sha256": "c758d53ed77b9243f459c9fcc4bcac52dbc9a2fcd21e4b426a0a14e59e657808",
+      "export_sha256": "c758d53ed77b9243f459c9fcc4bcac52dbc9a2fcd21e4b426a0a14e59e657808",
+      "source_bytes": 5347,
+      "export_bytes": 5347,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "tools/check_inference_parity.py",
+      "source_sha256": "e6ff10ada0799c265b4a9bb3aebb8117756ced66baf10285304532848395274a",
+      "export_sha256": "e6ff10ada0799c265b4a9bb3aebb8117756ced66baf10285304532848395274a",
+      "source_bytes": 2724,
+      "export_bytes": 2724,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "tools/sync_group_copy.py",
+      "source_sha256": "25265a1ea5dadd8810c89320b62f91e02d7e1ab8657efe05b94808e7c7045400",
+      "export_sha256": "25265a1ea5dadd8810c89320b62f91e02d7e1ab8657efe05b94808e7c7045400",
+      "source_bytes": 4498,
+      "export_bytes": 4498,
+      "documentation_changed": false,
+      "updated": true
+    },
+    {
+      "path": "tests/test_model_data.py",
+      "source_sha256": "d2213f71706a32000267c9489244ae327eb37c3143a1106ffe9052dd1acd6a66",
+      "export_sha256": "d2213f71706a32000267c9489244ae327eb37c3143a1106ffe9052dd1acd6a66",
+      "source_bytes": 2563,
+      "export_bytes": 2563,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "tests/test_retrain_pipeline.py",
+      "source_sha256": "eb1aa102dc4837451b2cafcc0b51a88d118325602195a909270c2858afe832bd",
+      "export_sha256": "eb1aa102dc4837451b2cafcc0b51a88d118325602195a909270c2858afe832bd",
+      "source_bytes": 2123,
+      "export_bytes": 2123,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "notebooks/00_projectoverzicht.ipynb",
+      "source_sha256": "ce31999ac3b3c4dba251938561f3677899f69d1456650bc2161dcf3a91dc5f8d",
+      "export_sha256": "ce31999ac3b3c4dba251938561f3677899f69d1456650bc2161dcf3a91dc5f8d",
+      "source_bytes": 7529,
+      "export_bytes": 7529,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "notebooks/01a_dataonderzoek_en_cleaning.ipynb",
+      "source_sha256": "fa40920a007327c366bfcc67a895d295c7a1507fddf069578937d190b0114e1b",
+      "export_sha256": "fa40920a007327c366bfcc67a895d295c7a1507fddf069578937d190b0114e1b",
+      "source_bytes": 85828,
+      "export_bytes": 85828,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "notebooks/01b_EDA_en_hypothesen.ipynb",
+      "source_sha256": "de9e23b31fc7d323018e81848abc1ca2e8aa73f76dd85c1976f95f651680d677",
+      "export_sha256": "de9e23b31fc7d323018e81848abc1ca2e8aa73f76dd85c1976f95f651680d677",
+      "source_bytes": 739392,
+      "export_bytes": 739392,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/prepared_model_data.json",
+      "source_sha256": "9597f446d4d671263888b8825f62a8f5725fb1cfae5e13ddc6214f6213fdf37b",
+      "export_sha256": "9597f446d4d671263888b8825f62a8f5725fb1cfae5e13ddc6214f6213fdf37b",
+      "source_bytes": 2997,
+      "export_bytes": 2997,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/preparation_independence.json",
+      "source_sha256": "8689ae051ed4a98cc02a0559990025179f6a9aa82fa4f5203a9c61738d251cd3",
+      "export_sha256": "8689ae051ed4a98cc02a0559990025179f6a9aa82fa4f5203a9c61738d251cd3",
+      "source_bytes": 614,
+      "export_bytes": 614,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/improvement_protection.json",
+      "source_sha256": "5024ef26aca2d9d303eb6bb5a008a5faa4fde1cc41d35eeb3fcef9210ea8ee5f",
+      "export_sha256": "5024ef26aca2d9d303eb6bb5a008a5faa4fde1cc41d35eeb3fcef9210ea8ee5f",
+      "source_bytes": 2162,
+      "export_bytes": 2162,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/inference_parity.json",
+      "source_sha256": "bba86155c7d26bd3618955571bdb193efe3fc8850f0cd5e8682d3bb58b1e499f",
+      "export_sha256": "bba86155c7d26bd3618955571bdb193efe3fc8850f0cd5e8682d3bb58b1e499f",
+      "source_bytes": 734,
+      "export_bytes": 734,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/retraining_pipeline_latest.json",
+      "source_sha256": "78634afbee9884268c5d165f268080870e9ec295ddae8b9c7b187d2239642e91",
+      "export_sha256": "78634afbee9884268c5d165f268080870e9ec295ddae8b9c7b187d2239642e91",
+      "source_bytes": 4468,
+      "export_bytes": 4468,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/aws_evidence_review.json",
+      "source_sha256": "a5c6d04ebd05a9e5dd5a445625fc21f9898812adec188fcc35a1c198c5ce1239",
+      "export_sha256": "a5c6d04ebd05a9e5dd5a445625fc21f9898812adec188fcc35a1c198c5ce1239",
+      "source_bytes": 1124,
+      "export_bytes": 1124,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/implementation_checks.json",
+      "source_sha256": "4555fd3eca8fd2f7c3f9a6766ccf951ac34d86c368629f7b6e85d26cbc408396",
+      "export_sha256": "4555fd3eca8fd2f7c3f9a6766ccf951ac34d86c368629f7b6e85d26cbc408396",
+      "source_bytes": 6738,
+      "export_bytes": 6738,
+      "documentation_changed": false,
+      "updated": true
+    },
+    {
+      "path": "reports/notebook_content_migration.json",
+      "source_sha256": "1dcfc0c74ff00466e1291990ceee79bfce41ec99cc89a61dc9dc133f3eafa3b9",
+      "export_sha256": "1dcfc0c74ff00466e1291990ceee79bfce41ec99cc89a61dc9dc133f3eafa3b9",
+      "source_bytes": 1026,
+      "export_bytes": 1026,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/notebook_reproduction/lightgbm.json",
+      "source_sha256": "4798fb7ad513bc846861b060feb1b73c69a2ffd903ef89ca23ba2d78ef51b290",
+      "export_sha256": "4798fb7ad513bc846861b060feb1b73c69a2ffd903ef89ca23ba2d78ef51b290",
+      "source_bytes": 593,
+      "export_bytes": 593,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/notebook_reproduction/pycaret_audit.json",
+      "source_sha256": "523bf2de8be99cbfb763282a41cc06939b32e39f46778b2b0f58925d5eac94a5",
+      "export_sha256": "523bf2de8be99cbfb763282a41cc06939b32e39f46778b2b0f58925d5eac94a5",
+      "source_bytes": 1667,
+      "export_bytes": 1667,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/notebook_reproduction/pycaret_comparison.csv",
+      "source_sha256": "d43bc074a371666457e712e5cbe72a35bd5f1717aa738c239a824141eced2fea",
+      "export_sha256": "d43bc074a371666457e712e5cbe72a35bd5f1717aa738c239a824141eced2fea",
+      "source_bytes": 424,
+      "export_bytes": 424,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/notebook_reproduction/pycaret_validation.json",
+      "source_sha256": "e9adcd6d8f11a361cf3c07e03aab789c5ae651bd25b0b9e14a56c99f52da3872",
+      "export_sha256": "e9adcd6d8f11a361cf3c07e03aab789c5ae651bd25b0b9e14a56c99f52da3872",
+      "source_bytes": 984,
+      "export_bytes": 984,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/notebook_reproduction/random_forest.json",
+      "source_sha256": "e9c1ab6a9afeb4d3f69b32c262d9564920d2ad0dc503e9ce4a1e05a97632886c",
+      "export_sha256": "e9c1ab6a9afeb4d3f69b32c262d9564920d2ad0dc503e9ce4a1e05a97632886c",
+      "source_bytes": 597,
+      "export_bytes": 597,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/notebook_reproduction/ridge.json",
+      "source_sha256": "cf411186d1f005fe677d681f7d47950f7db3498aa03c5baf96f3bdcb6334e7a7",
+      "export_sha256": "cf411186d1f005fe677d681f7d47950f7db3498aa03c5baf96f3bdcb6334e7a7",
+      "source_bytes": 590,
+      "export_bytes": 590,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/notebook_reproduction/ridge_calendar.json",
+      "source_sha256": "b9cde58a6b93cb193e91efb9c9f4707f0ee8bd426585f1456cab5c9ac7e83a96",
+      "export_sha256": "b9cde58a6b93cb193e91efb9c9f4707f0ee8bd426585f1456cab5c9ac7e83a96",
+      "source_bytes": 601,
+      "export_bytes": 601,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/notebook_reproduction/ridge_no_14d.json",
+      "source_sha256": "0e51139ea16c47987fcaab185e7e6d2a05105105579413be63477c428c3c7978",
+      "export_sha256": "0e51139ea16c47987fcaab185e7e6d2a05105105579413be63477c428c3c7978",
+      "source_bytes": 597,
+      "export_bytes": 597,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/notebook_reproduction/seasonal_naive.json",
+      "source_sha256": "10482d181b6795ccaafa19c9ab7e9f88ae2e771b092d6202bea602bf50097314",
+      "export_sha256": "10482d181b6795ccaafa19c9ab7e9f88ae2e771b092d6202bea602bf50097314",
+      "source_bytes": 601,
+      "export_bytes": 601,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/notebook_reproduction/tuned_lightgbm.json",
+      "source_sha256": "2b4753b10e26ebbf68ce248d08bc24c0ea18465f016ead26c0ca9a3e6f0b30f8",
+      "export_sha256": "2b4753b10e26ebbf68ce248d08bc24c0ea18465f016ead26c0ca9a3e6f0b30f8",
+      "source_bytes": 598,
+      "export_bytes": 598,
+      "documentation_changed": false,
+      "updated": false
+    },
+    {
+      "path": "reports/notebook_reproduction/tuned_random_forest.json",
+      "source_sha256": "7870f792990d47e2870309ef1bb2950981c297dec3875fd9871d07280a91ea7f",
+      "export_sha256": "7870f792990d47e2870309ef1bb2950981c297dec3875fd9871d07280a91ea7f",
+      "source_bytes": 602,
+      "export_bytes": 602,
+      "documentation_changed": false,
+      "updated": false
     }
   ],
   "verification": {
@@ -1117,5 +1434,20 @@
     "renamed_model_load_verified": true
   },
   "original_export_destination": "C:\\Deeplearning\\DeepLearningTeam10\\RaoulBuffels",
-  "folder_renamed_from": "RaoulBuffels"
+  "folder_renamed_from": "RaoulBuffels",
+  "contributions": {
+    "Raoul Buffels": "Volledige Citi Bike-uitwerking, frontend en backend.",
+    "Jorre Van Dyck": "Hulp bij deployment op Render."
+  },
+  "source_of_truth": "Citybike_full",
+  "controlled_update": true,
+  "junctions_untouched": [
+    "data",
+    "models",
+    ".venv"
+  ],
+  "removed_obsolete_notebooks": [
+    "01_EDA_en_hypothesen.ipynb",
+    "citybike_analysis.ipynb"
+  ]
 }

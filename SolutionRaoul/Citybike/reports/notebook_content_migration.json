@@ -1,0 +1,33 @@
+{
+  "migrated_at": "2026-10-14T15:15:38.006166+00:00",
+  "original_overview_sections": {
+    "0": "00",
+    "1": "initialisatie alle notebooks",
+    "2": "01a",
+    "3": "01a",
+    "4": "01a",
+    "5": "01a",
+    "6": "01b",
+    "7": "01b",
+    "8": "01b aanvullende sectie",
+    "9": "01b herberekende hoofdvraag en aanvullende toetsen",
+    "10": "01b doelkeuze",
+    "11": "02 uitvoerbare voorbereiding",
+    "12": "02 splits",
+    "13": "03 echte fits",
+    "14": "04 echte AutoML",
+    "15": "07 centrale tabel",
+    "16": "07 historische experimenten",
+    "17": "07 validatiefouten",
+    "18": "07 bestaande eindtest",
+    "19": "07 importance",
+    "20": "07 gedeelde predict_day",
+    "21": "00/07 beperkingen en documentatie"
+  },
+  "unique_quality_and_error_results_preserved": true,
+  "original_outputs_archived_locally": ".local_archive/before_numbered_notebooks_20261014/notebooks",
+  "superseded_notebooks": [
+    "citybike_analysis.ipynb",
+    "01_EDA_en_hypothesen.ipynb"
+  ]
+}

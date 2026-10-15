@@ -1,0 +1,16 @@
+{
+  "name": "tuned_random_forest",
+  "RMSE": 1940.4928799155437,
+  "MAE": 1114.4796009120078,
+  "R2": 0.8435166230821073,
+  "train_RMSE": 536.1344893371884,
+  "train_MAE": 268.1167160442966,
+  "train_R2": 0.9661676288484169,
+  "fit_seconds": 71.24465429999691,
+  "reproduced_at": "2026-10-14T15:13:24.457145+00:00",
+  "prepared_sha256": "2be4c1fa94f1ee4657020c8912af03e6aadd7735d8ba0d44b45ada956991c51f",
+  "fold_fingerprint": "59238f467d526664e56943f96d102928ede96e4e371fecff4fa382847c7601ad",
+  "test_used": false,
+  "model_selection_changed": false,
+  "original_metrics_equal": true
+}
