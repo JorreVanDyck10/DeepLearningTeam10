@@ -143,7 +143,7 @@ ter illustratie geformuleerd en zijn geen letterlijke citaten uit de chat.
 
    > Kan je in eenvoudige woorden uitleggen wat RMSE, MAE en R² betekenen en hoe ik die moet interpreteren bij het vergelijken van mijn Citi Bike-modellen?
 
-### Raoul — drie voorbeeldprompts voor uitleg
+### Andrew Noeyens — drie voorbeeldprompts voor uitleg
 
 De drie volgende voorbeelden zijn gebaseerd op Andrews werkelijke berichten
 met een AI tool.
