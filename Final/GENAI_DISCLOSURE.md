@@ -164,23 +164,23 @@ hulp van Codex staat hierboven en blijft afzonderlijk verantwoord.
 
 1. De frontend en CSS verbeteren:
 
-   > Ik herbouw de frontend van ons project. Kun je suggesties geven voor andere CSS en een duidelijkere opmaak van de formulieren? Leg uit welke stukken ik kan aanpassen en waarom, zodat ik gericht kan kiezen wat bij onze website past.
+   > ik ben de frontend aan het herwerken kun je eens kijken hoe ik die beter kan maken met andere css en een duidelijkere indeling? zeg er ook bij wa ik kan aanpassen en waarom zodat ik zelf kan kiezen wat ik gebruik
 
 2. Een alternatief in mijn eigen solutions-map vergelijken:
 
-   > Ik wil onze huidige oplossing vergelijken met een alternatief in solutions/milan. Kun je daar een aparte variant uitwerken met technieken uit de lessen en de verschillen uitleggen? Houd de bestaande Final voorlopig apart, zodat ik de resultaten eerst kan vergelijken en beoordelen.
+   > kun je in solutions/milan een alternatief maken om te vergelijken met wat we nu hebben? doe het zoals we het in de lessen hebben geleerd ma laat de final voorlopig staan zodat ik eerst kan zien wat er beter is en wat ik eventueel wil overnemen
 
 3. Meedenken over data cleaning en EDA:
 
-   > Ik werk mee aan de data cleaning en EDA van de Mushroom-data. Kun je meekijken naar ontbrekende waarden, datatypes en uitschieters en uitleggen welke controles nuttig zijn? Geef de voor- en nadelen van mogelijke cleaningstappen, zodat ik de keuzes kan onderbouwen.
+   > ik werk mee aan de data cleaning en eda van de mushroom data kun je eens meekijken naar de ontbrekende waarden en uitschieters? leg uit wat ik best controleer en wat de voor en nadelen zijn zodat ik snap waarom we da zo doen
 
 4. De resultaten van de vergelijking begrijpen:
 
-   > Kun je uitleggen wat de verschillen in macro F1, recall en foutaantallen betekenen voor onze modellen? Ik wil begrijpen waar een alternatief beter scoort en welke nadelen eraan zitten, zodat ik de vergelijking zelf kan toelichten.
+   > kun je efkes uitleggen wat die verschillen in macro f1 en recall juist betekenen en welke fouten de modellen maken? ik wil zelf kunnen uitleggen waar het alternatief beter is en waar we nog op moeten letten
 
 5. Gerichte aanpassingen beoordelen en controleren:
 
-   > Kun je aangeven welke kleine verbeteringen we in Final kunnen overnemen en wat daarvoor moet veranderen? Laat de concrete wijzigingen en de controles zien, zodat ik kan beoordelen of de bestaande notebook-, model- en frontendwerking behouden blijft.
+   > welke kleine dingen zou ik makkelijk in de final kunnen verbeteren zonder dat de rest ineens niet meer werkt? toon welke stukken ik moet aanpassen en hoe ik dat kan controleren dan kan ik eerst bekijken wa ik wil veranderen
 
 ### Controle van mijn recente wijzigingen
 
