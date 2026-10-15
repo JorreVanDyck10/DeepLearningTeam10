@@ -1,0 +1,16 @@
+{
+  "name": "tuned_lightgbm",
+  "RMSE": 1972.5120940556953,
+  "MAE": 1204.596738607455,
+  "R2": 0.8383098917198532,
+  "train_RMSE": 744.4978116757666,
+  "train_MAE": 413.17479427400156,
+  "train_R2": 0.9347603240263533,
+  "fit_seconds": 0.5583060999924783,
+  "reproduced_at": "2026-10-14T15:13:29.528195+00:00",
+  "prepared_sha256": "2be4c1fa94f1ee4657020c8912af03e6aadd7735d8ba0d44b45ada956991c51f",
+  "fold_fingerprint": "59238f467d526664e56943f96d102928ede96e4e371fecff4fa382847c7601ad",
+  "test_used": false,
+  "model_selection_changed": false,
+  "original_metrics_equal": true
+}

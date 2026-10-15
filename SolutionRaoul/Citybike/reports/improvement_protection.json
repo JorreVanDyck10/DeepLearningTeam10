@@ -1,0 +1,25 @@
+{
+  "created_at": "2026-10-14T14:56:24.216304+00:00",
+  "protected": {
+    "models/citibike_model.joblib": "aea5c81d306facc1fadd8dd1888a08219d3afabda16a11b63db7271a694f509f",
+    "reports/model_selection.json": "a47fa459cdfb36a46fbff1e10b9c261e5a24954243f3403d4762cbe1288f42bc",
+    "reports/final_evaluation.json": "565d46697d0abbeae0cc9e153827c344bf403aff7e8413de229677519e87b3bb",
+    "reports/evaluation_lock.json": "06ca261594091d676c84c0e8a9226536f43d63a794310b277207e6a3ce6b6191",
+    "reports/model_artifact.json": "b75a2e45e3082e6546432e9f2a539ebfaf5d7204b97c47a036badfcf9c5202fd",
+    "reports/target_decision.json": "7500a386da9dc8734ac631cb2401f0e9f7d6e782e546d8311b3994af227d2a3a",
+    "reports/chronological_splits.json": "cc5093320a240120cd2f7950f19ded03dd558ada00bbbbae75b169f7cca0fbaf",
+    "reports/model_comparison.json": "73aeee64fb1bae63d2bd822bb1d262927d2277d5d78fa8100fbc00c038e2f7a7",
+    "reports/model_comparison.csv": "51b65ec7091906698693d89e3a17a0bd45469bf5bbeafe6f54a3e0ae836c4867",
+    "reports/pycaret_comparison.csv": "fd405db0392226a7f7b9e2954a0229a92f95344d93470bc404794fe6605e34d9",
+    "reports/pycaret_split_audit.json": "b7075ce2a1ed90e96eb7d57e707d40a00679fd257f721a023d42b208afd41cec",
+    "reports/random_forest_tuning.json": "d0cf942202268680b9116dea90b95121be9dd926e0f6197a751a4053c494a954",
+    "reports/lightgbm_tuning.json": "137601697d816feaed157bb93db4dc0ed3d673ef563fceaf4ba4fcdc66e8d000",
+    "citibike/features.py": "89ecb9eca9cf86d3e53ac364dd809455e71f3fe0ee5e0cdcee769f9de3b3c6ea",
+    "citibike/inference.py": "17cbd537195f922cff43d6d7ecb3ef0ebea36d134ec3d960d7a3c3399fbf4d0f",
+    "citibike/datasets.py": "d1c2526e12d11b02909a215d8fab285a707a7b45c690d069d578b0a3e508e33e",
+    "citibike/config.py": "aece80e72fee4559cc8f8abbcb36c48d5b859c418990510c82263464d5972a1f",
+    "citibike/prepare.py": "d312ec3dc4f78a9bdba7a2c0be9da58e5defad36b6e1e5b151a0b599b607f2d9",
+    "citibike/assembly.py": "f75971f7f9e60d0ba4a934cae1cab789ff1e681d401325eaa34ec07878f2e9a2",
+    "data/modeling_development_validation.parquet": "2be4c1fa94f1ee4657020c8912af03e6aadd7735d8ba0d44b45ada956991c51f"
+  }
+}

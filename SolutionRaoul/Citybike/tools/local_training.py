@@ -72,7 +72,9 @@ def read_json(path):
 
 
 def load_frame(split):
-    frame = pd.read_parquet(DATA / 'modeling_development_validation.parquet')
+    from citibike.model_data import load_model_data
+    training, validation, _ = load_model_data()
+    frame = pd.concat([training, validation], ignore_index=True)
     if not frame.area.eq('NYC').all() or not (frame.day < pd.Timestamp(split['test_start'])).all():
         raise ValueError('Alleen NYC-ontwikkeling en validatie toegestaan')
     if frame.timestamp.duplicated().any() or not frame.timestamp.is_monotonic_increasing:

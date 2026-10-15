@@ -18,7 +18,7 @@ def export(source, destination):
         raise FileExistsError(f'Doel bestaat al: {destination}')
     destination.mkdir(parents=True)
     files = [source / name for name in ['README.md', '.gitignore', 'app.py', 'run.py',
-                                      'requirements.txt', 'requirements-lock.txt']]
+                                      'requirements.txt', 'requirements-lock.txt', 'DEPLOYMENT.md', 'AUDIT.md', 'OPDRACHTCONTROLE.md']]
     for directory in ['citibike', 'notebooks', 'reports', 'tests', 'tools', '.streamlit']:
         files.extend(path for path in (source/directory).rglob('*')
                      if path.is_file() and '__pycache__' not in path.parts
@@ -36,21 +36,22 @@ def export(source, destination):
         '## Bijdrage Raoul Buffels — DeepLearningTeam10\n\n'
         'Deze Citi Bike-uitwerking is aangeleverd als de bijdrage van **Raoul Buffels**. '
         'Teamleden: Jorre Van Dyck, Milan Wouters, Raoul Buffels en Andrew Noeyens. '
-        'De concrete menselijke taakverdeling moet het team zelf aanvullen. '
+        'Raoul maakte de volledige Citi Bike-uitwerking, inclusief frontend en backend. '
+        'Jorre Van Dyck hielp met de deployment op Render. '
         '**AI-gebruik:** Codex hielp met implementatie, uitleg, tests, uitvoering en verpakking.\n\n'
         'De codecellen zijn uitgevoerd in de oorspronkelijke lokale `Citybike_full`-omgeving '
-        'op 9 oktober 2026. Deze export behoudt die echte uitvoer; alleen deze Markdown-cel '
+        'op 14 oktober 2026. Deze export behoudt die echte uitvoer; alleen deze Markdown-cel '
         'is toegevoegd. Lokale paden, timings en fingerprints in de rapporten beschrijven '
-        'de oorspronkelijke uitvoering. Start voor heruitvoering vanuit `SolutionRaoul/Citybike` '
+        'de oorspronkelijke uitvoering. Start voor heruitvoering vanuit `RaoulBuffels` '
         'of de map `notebooks` met de bijbehorende Python 3.11-omgeving. '
-        'AWS is een afzonderlijke latere taak.'
+        'AWS-cloudprovenance wordt afzonderlijk gecontroleerd.'
     )
     for path in (destination/'notebooks').glob('*.ipynb'):
         notebook = nbformat.read(path, as_version=4)
         notebook.cells.insert(0, nbformat.v4.new_markdown_cell(disclosure))
         nbformat.write(notebook, path)
     readme = (destination/'README.md').read_text(encoding='utf-8')
-    readme = readme.replace(str(source), str(destination)).replace('Citybike_full/', 'SolutionRaoul/Citybike/')
+    readme = readme.replace(str(source), str(destination)).replace('Citybike_full/', 'RaoulBuffels/')
     readme = readme.replace('Teamnaam, teamleden en echte bijdragen: **zelf invullen**, ook in de notebooks.',
                             'Team: **DeepLearningTeam10** — Jorre Van Dyck, Milan Wouters, Raoul Buffels en Andrew Noeyens.\n'
                             'Deze map bevat de Citi Bike-bijdrage van **Raoul Buffels**. De concrete menselijke\n'
@@ -58,8 +59,8 @@ def export(source, destination):
     notice = (
         '# Raoul Buffels — Citi Bike\n\n'
         'Dit is de deelbare export van de volledig uitgevoerde Citi Bike-uitwerking. '
-        'Begin bij [`notebooks/citybike_analysis.ipynb`](notebooks/citybike_analysis.ipynb). '
-        'De code, acht uitgevoerde notebooks, figuren, tests, requirements, manifesten, '
+        'Begin bij [`notebooks/00_projectoverzicht.ipynb`](notebooks/00_projectoverzicht.ipynb). '
+        'De code, negen uitgevoerde notebooks, figuren, tests, requirements, manifesten, '
         'modelkaart en lokale trainingsmetingen staan in deze map.\n\n'
         f'Oorspronkelijke uitvoering: `{source}`. Rapporten behouden de oorspronkelijke '
         'paden en fingerprints als provenance; ze zijn geen bewijs van een nieuwe run in '
@@ -71,7 +72,7 @@ def export(source, destination):
         'je de bronnen volgens de commando\'s hieronder. Het modelbestand van circa 647 MiB '
         'blijft lokaal; training is reproduceerbaar met de vastgelegde code en configuratie.\n\n'
         'De bestaande teamwebsite, Citi Bike-baseline, API en bijdragen van teamgenoten '
-        'worden door deze export niet vervangen. AWS-training blijft een latere taak.\n\n'
+        'worden door deze export niet vervangen. AWS-cloudprovenance blijft afzonderlijk te bevestigen.\n\n'
         '## Lokale koppelingen opnieuw maken op Raouls computer\n\n'
         'Alleen uitvoeren als de oorspronkelijke mappen aanwezig zijn en de doelmappen '
         'nog niet bestaan:\n\n```powershell\n'

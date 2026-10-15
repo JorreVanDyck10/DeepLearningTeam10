@@ -16568,7 +16568,7 @@
       ]
     }
   },
-  "discovery_seconds": 39.402222299948335,
+  "discovery_seconds": 35.28682779999508,
   "source_fingerprint": "88eff922bacb2736a2a17aef13a28300dc077a27f2b41e940fb895cbc57f2ca2",
   "schema_version": "1.0",
   "code_version": {
@@ -16579,7 +16579,7 @@
       "citibike\\assembly.py": "f75971f7f9e60d0ba4a934cae1cab789ff1e681d401325eaa34ec07878f2e9a2"
     },
     "git_commit": "e13811ef5d6c806262db7265ebca7e155d282eb8",
-    "git_status": "M \"Discussion topics/chapter 4.md\"\n M \"Exercises/1 working env and streamlit/1 - Working with a venv.ipynb\"\n M \"Exercises/1 working env and streamlit/2 - Streamlit 101.ipynb\"\n M \"Exercises/1 working env and streamlit/3 - First streamlit.py\"\n M \"Exercises/2 first model/3 - MPG app.py\"\n M \"Exercises/2 first model/5 - titanic app (solved).py\"\n M \"Exercises/3 model quality/3 - Metrics.ipynb\"\n M \"Exercises/3 model quality/5.1 - Install PyCaret.ipynb\"\n M \"Exercises/3 model quality/5.2 - PyCaret.ipynb\"\n M Exercises/files/requirements.txt\n M \"Exercises_solved/1 working env and streamlit/3 - First streamlit.py\"\n M \"Exercises_solved/2 first model/3 - MPG app.py\"\n M \"Exercises_solved/2 first model/5 - titanic app (solved).py\"\n?? Citybike/\n?? Citybike_full/\n?? Mushroom/",
+    "git_status": "M \"Discussion topics/chapter 4.md\"\n M \"Exercises/1 working env and streamlit/1 - Working with a venv.ipynb\"\n M \"Exercises/1 working env and streamlit/2 - Streamlit 101.ipynb\"\n M \"Exercises/1 working env and streamlit/3 - First streamlit.py\"\n M \"Exercises/2 first model/3 - MPG app.py\"\n M \"Exercises/2 first model/5 - titanic app (solved).py\"\n M \"Exercises/3 model quality/3 - Metrics.ipynb\"\n M \"Exercises/3 model quality/5.1 - Install PyCaret.ipynb\"\n M \"Exercises/3 model quality/5.2 - PyCaret.ipynb\"\n M Exercises/files/requirements.txt\n M \"Exercises_solved/1 working env and streamlit/3 - First streamlit.py\"\n M \"Exercises_solved/2 first model/3 - MPG app.py\"\n M \"Exercises_solved/2 first model/5 - titanic app (solved).py\"\n M README.md\n?? Citybike/\n?? Citybike_full/\n?? Mushroom/",
     "packages": {
       "numpy": "1.26.4",
       "pandas": "2.1.4",
@@ -16622,9 +16622,9 @@
     "train_end": "2026-05-01",
     "test_start": "2026-07-01"
   },
-  "started_at": "2026-10-09T10:01:23.399228+00:00",
-  "finished_at": "2026-10-09T10:06:28.469320+00:00",
-  "processing_seconds": 305.06995709997136,
+  "started_at": "2026-10-14T15:07:17.018018+00:00",
+  "finished_at": "2026-10-14T15:08:26.716871+00:00",
+  "processing_seconds": 69.6979449000064,
   "raw_rows": 355199439,
   "retained_rows": 330714664,
   "removed_rows": 24484775,

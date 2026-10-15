@@ -52,8 +52,8 @@ de opgeslagen notebookuitvoer en slides zijn de presentatiefallback.
 
 ## Nog menselijke eindacties
 
-Jorres bijdrage is bevestigd en de GenAI-verantwoording is uitgewerkt tegen de
-aangeleverde policy. De overige teamleden moeten hun eigen bijdrage/AI-inzet en
+Jorres en Raouls bijdragen en AI-gebruik zijn bevestigd en de GenAI-verantwoording is uitgewerkt tegen de
+aangeleverde policy. Andrew en Milan moeten hun eigen bijdrage/AI-inzet en
 zelfstandige beheersing nog bevestigen; zie [bijdragen](BIJDRAGEN.md) en
 [GenAI Disclosure](GENAI_DISCLOSURE.md). Sprekers verdelen en oefenen,
 de uiteindelijke Canvas-indiening en de mondelinge presentatie zijn niet door

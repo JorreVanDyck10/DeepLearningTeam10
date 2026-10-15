@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-10-14T15:09:23.598492+00:00",
+  "notebook_sha256": "edc559578e5b2b435208fd339f671e29d0c8a9a1a2d3e206c35aafb3b9d8c5b1",
+  "actual_notebook_executed": true,
+  "initial_reports_empty": true,
+  "models_absent": true,
+  "model_or_research_reports_required": false,
+  "figures": 0,
+  "test_labels_read": false,
+  "source": "16 synthetic ZIPs, NYC and JC, November 2025 through June 2026",
+  "train_rows": 4008,
+  "validation_rows": 1464,
+  "limitation": "Synthetic fixture proves dependencies; full real-data notebook execution separately verifies exact existing dataset equality."
+}

@@ -4,13 +4,16 @@ from pathlib import Path
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('command', choices=['prepare','discover','download','research','train','evaluate','notebooks','verify'])
+    parser.add_argument('command', choices=['prepare','prepare-model-data','discover','download','research','train','evaluate','notebooks','verify'])
     parser.add_argument('--source',type=Path)
     args=parser.parse_args()
     if args.command in ('prepare','discover','download'):
         from citibike import prepare
         function=getattr(prepare,args.command)
         function(**({'source':args.source} if args.source else {}))
+    elif args.command=='prepare-model-data':
+        from citibike.model_data import prepare_model_data
+        prepare_model_data(**({'source':args.source} if args.source else {}))
     elif args.command=='research':
         from citibike.analysis import research
         research()

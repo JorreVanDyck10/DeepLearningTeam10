@@ -21,7 +21,7 @@ rapporten te gebruiken.
 
 ---
 
-**Vóór indienen:** Jorres bijdragen en de GenAI-verantwoording zijn ingevuld.
-Laat de andere teamleden hun eigen bijdrage en AI-inzet bevestigen en controleer
+**Vóór indienen:** Jorres en Raouls bijdragen en AI-gebruik en de GenAI-verantwoording zijn ingevuld.
+Laat Andrew en Milan hun eigen bijdrage en AI-inzet bevestigen en controleer
 de laatste workflows en publieke voorspellingen. Dit bestand is geen
 Canvas-uploadbevestiging.
