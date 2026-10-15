@@ -1,12 +1,16 @@
-# Spreekplan bij de actuele groepspresentatie
+# Spreekplan bij de definitieve groepspresentatie
 
-Oefen circa twintig minuten inclusief korte demo; het volledige slot is 25 minuten inclusief vragen. Raouls bronvolgorde en spreektekst staan op dia 14–22. Alleen de oude status is bijgewerkt. Dia 27–28 zijn verborgen reserves. Jorres bijdrage staat op dia 3; de GenAI Disclosure sluit de zichtbare presentatie af op dia 26.
+Dit spreekplan hoort bij [Team10_presentatie.pptx](Team10_presentatie.pptx), de op 15 oktober 2026 door Raoul aangeleverde definitieve PowerPoint. De presentatie bevat 27 dia’s. Dia 26 en 27 zijn verborgen reservedia’s. De dianummers hieronder zijn de posities in de volledige PowerPoint. De kleine nummers 2–9 op de Citi Bike-dia’s horen bij Raouls oorspronkelijke deelpresentatie.
 
-## Dia 1
+Oefen ongeveer twintig minuten inclusief demo en houd ongeveer vijf minuten vrij voor vragen binnen het slot van 25 minuten. Raouls hoofddeel staat op dia 14–22 en duurt volgens de richttijden ongeveer 7 minuten en 15 seconden. Spreek onderling af wie de gezamenlijke introductie, deployment en demo presenteert.
+
+Raouls [afzonderlijke spreektekst](SPREEKPLAN.md) bevat ook zijn bijdrageoverzicht en voorbereiding op vragen. De [GenAI-verantwoording](../GENAI_DISCLOSURE.md) hoort bij de oplevering. Deze PowerPoint heeft geen aparte GenAI-dia. Benoem de AI-hulp mondeling zoals in de tekst en gebruik de volledige verantwoording als naslag.
+
+## Dia 1 — Machine Learning / Cloud AI Challenge
 
 Richttijd: 20 seconden. Twee problemen: Mushroom-classificatie en Citi Bike-uurvraag. Deze presentatie is met Codex bijgewerkt vanuit Andrews bronpresentatie en gecontroleerde projectresultaten. Het team controleert de GenAI-policy en kan de keuzes zelf toelichten.
 
-## Dia 2
+## Dia 2 — Table of contents
 
 Richttijd: 15 seconden.
 
@@ -14,15 +18,11 @@ Overzicht. Ongeveer 19,5 minuten inclusief demo; houd 5,5 minuten vrij voor vrag
 
 Bronnen:
 
-## Dia 3
+## Dia 3 — Team 10
 
-Richttijd: 35 seconden.
+Richttijd: 25 seconden. Stel het team voor en licht de echte taakverdeling mondeling toe. De definitieve bijdragen en GenAI-vermelding moeten door het team worden bevestigd; deze dia verzint geen rollen.
 
-Jorre Van Dyck bevestigde op 15 oktober zijn bijdragen: de pipeline opgesteld, de gezamenlijke backend ontwikkeld, de UI gebouwd en een model op AWS SageMaker getraind. Deze onderdelen zijn met substantiële hulp van Codex uitgewerkt. De bronbijdragen van Andrew, Raoul en Milan blijven behouden. De precieze eigen taken en AI-inzet van de andere leden worden door henzelf gecontroleerd.
-
-Bronnen: Final/BIJDRAGEN.md en Final/GENAI_DISCLOSURE.md; foto door Jorre aangeleverd.
-
-## Dia 4
+## Dia 4 — Mushroom Challenge
 
 Richttijd: 40 seconden.
 
@@ -34,7 +34,7 @@ https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/REA
 
 https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/mushroom_project_dataset.csv
 
-## Dia 5
+## Dia 5 — Mushroom: Distribution
 
 Richttijd: 45 seconden.
 
@@ -46,7 +46,7 @@ https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/mus
 
 https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/comparison_correct/model_comparison.csv
 
-## Dia 6
+## Dia 6 — Mushroom: Missing values
 
 Richttijd: 60 seconden.
 
@@ -58,7 +58,7 @@ https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/mus
 
 https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/final_model_support.py
 
-## Dia 7
+## Dia 7 — Mushroom: Outliers
 
 Richttijd: 40 seconden.
 
@@ -68,7 +68,7 @@ Bronnen:
 
 https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/mushroom_project.ipynb
 
-## Dia 8
+## Dia 8 — Mushroom: Validation
 
 Richttijd: 60 seconden.
 
@@ -80,7 +80,7 @@ https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/fin
 
 https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/comparison_correct/protocol.json
 
-## Dia 9
+## Dia 9 — Mushroom: Random Forest
 
 Richttijd: 65 seconden.
 
@@ -94,7 +94,7 @@ https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/com
 
 https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/backend/artifacts/mushroom_rf300.json
 
-## Dia 10
+## Dia 10 — Mushroom: Other models
 
 Richttijd: 55 seconden.
 
@@ -106,7 +106,7 @@ https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/fin
 
 https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/comparison_correct/model_comparison.csv
 
-## Dia 11
+## Dia 11 — Mushroom: AutoML
 
 Richttijd: 45 seconden.
 
@@ -120,7 +120,7 @@ https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/com
 
 https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/comparison_correct/pycaret_all.csv
 
-## Dia 12
+## Dia 12 — Mushroom: Final comparison
 
 Richttijd: 70 seconden.
 
@@ -134,7 +134,7 @@ https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/com
 
 https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/comparison_correct/cv_selection.json
 
-## Dia 13
+## Dia 13 — AWS SageMaker: Training and tuning
 
 Richttijd: 50 seconden.
 
@@ -148,15 +148,15 @@ https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/SolutionJorre/Mus
 
 https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/comparison_correct/aws_artifact_audit.json
 
-## Dia 14
+## Dia 14 — Citi Bike: mijn deel
 
 Richttijd: 25 seconden.
 
-Ik ben Raoul Buffels. Ons team heet Messi10. In dit deel bespreek ik mijn Citi Bike-uitwerking. Ik werkte aan de bronverwerking, cleaning, EDA, hypothesen, modellen en vergelijking. Ik maakte ook de Citi Bike-frontend en backend. Jorre hielp met deployment op Render. De andere teamleden presenteren hun eigen werk. Ik volg de opdrachtvolgorde: EDA, modellen en conclusie. Codex hielp bij implementatie en uitleg, zoals vermeld in de repository. Ik moet de keuzes zelf kunnen verdedigen.
+Ik ben Raoul Buffels. Mijn deel gaat over Citi Bike. Ik werkte de bronverwerking, cleaning, EDA, hypothesen en modelvergelijking uit. Daarnaast maakte ik de oorspronkelijke Citi Bike-inference en applicatieonderdelen. Jorre hielp met deployment op Render en verzorgde de gezamenlijke backend, UI en centrale pipeline. Ik bespreek eerst de data, daarna de modellen en ten slotte het resultaat. Codex hielp bij implementatie, uitleg en controles.
 
 Bronnen: README.md en SolutionRaoul/Citybike/notebooks/00_projectoverzicht.ipynb; opdracht: CloudAI/Discussion topics/project assignment.md (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
-## Dia 15
+## Dia 15 — Wat ik in de brondata tegenkwam
 
 Richttijd: 45 seconden.
 
@@ -164,15 +164,15 @@ Ik had grote bestanden verwacht. De lastigste stap was bepalen welke records ech
 
 Bronnen: reports/data_manifest.json; 01a_dataonderzoek_en_cleaning.ipynb; reports/NYC_duration_sample_audit.json (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
-## Dia 16
+## Dia 16 — Gebruik volgt het uur en de weekdag
 
 Richttijd: 45 seconden.
 
-Deze figuur gebruikt echte gemiddelde uurtellingen vanaf 2023 tot eind april 2026. Ik vergelijk werkdagen met weekends. Werkdagen hebben een ander dagprofiel en vooral een duidelijke avondpiek. Het hoogste gemiddelde uur ligt hier om 17 uur op werkdagen en om 15 uur in het weekend. Een verschil tussen dagtypes past bij woon-werkgebruik, maar de data bewijzen het reisdoel niet. Ik verwachte herhaling in tijd. De grafiek toont dat de patronen veranderen met dagtype en dat één algemeen gemiddelde onvoldoende is. Dat motiveert kalenderkenmerken en historische tellingen in het model.
+Deze figuur gebruikt echte gemiddelde uurtellingen vanaf 2023 tot eind april 2026. Ik vergelijk werkdagen met weekends. Werkdagen hebben een ander dagprofiel en vooral een duidelijke avondpiek. Het hoogste gemiddelde uur ligt hier om 17 uur op werkdagen en om 15 uur in het weekend. Een verschil tussen dagtypes past bij woon-werkgebruik, maar de data bewijzen het reisdoel niet. Ik verwachtte herhaling in tijd. De grafiek toont dat de patronen veranderen met dagtype en dat één algemeen gemiddelde onvoldoende is. Dat motiveert kalenderkenmerken en historische tellingen in het model.
 
 Bronnen: data/NYC_hourly_development.parquet, dezelfde aggregatie als citibike/plots.py hour_weekday (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
-## Dia 17
+## Dia 17 — Weekherhaling ondersteunt het uurdoel
 
 Richttijd: 55 seconden.
 
@@ -180,7 +180,7 @@ Mijn hoofdhypothese is dat een uurtelling samenhangt met hetzelfde uur vorige we
 
 Bronnen: reports/hypotheses.json; reports/hypothesis_protocol.json; reports/target_decision.json (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
-## Dia 18
+## Dia 18 — Alle modellen krijgen dezelfde modeldata
 
 Richttijd: 45 seconden.
 
@@ -188,7 +188,7 @@ Notebook 02 maakt zelfstandig de definitieve modeldata vanaf de bronnen of gecon
 
 Bronnen: 02_definitieve_voorbereiding.ipynb; reports/prepared_model_data.json; citibike/features.py (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
-## Dia 19
+## Dia 19 — Random Forest valideert het beste
 
 Richttijd: 65 seconden.
 
@@ -196,7 +196,7 @@ De weekbaseline voorspelt hetzelfde uur van vorige week. Ridge is een eenvoudige
 
 Bronnen: reports/model_comparison.csv; reports/model_selection.json; reports/pycaret_comparison.csv; tuningrapporten (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
-## Dia 20
+## Dia 20 — Snelle training en generalisatie verschillen
 
 Richttijd: 55 seconden.
 
@@ -204,7 +204,7 @@ Ridge is het eenvoudigst uit te leggen en fit in deze reproductie in ongeveer 0,
 
 Bronnen: reports/notebook_reproduction/*.json, fit_seconds; reports/model_comparison.csv; reports/model_artifact.json (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
-## Dia 21
+## Dia 21 — De bestaande eindtest bevestigt winst
 
 Richttijd: 45 seconden.
 
@@ -212,17 +212,19 @@ Ik bespreek de bestaande eindtest juli en augustus 2026. Alleen de vooraf gesele
 
 Bronnen: reports/final_evaluation.json; reports/MODEL_CARD.md (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
-## Dia 22
+## Dia 22 — Mijn resultaat en de volgende stap
 
 Richttijd: 55 seconden.
 
-Mijn uitwerking eindigt in een eigen webpagina en API. Een gebruiker kiest een datum en levert veertien volledige voorgaande dagen aan. De API gebruikt dezelfde preprocessing en predict_day als offline. De screenshot toont een ontwikkelingsdemonstratie en is geen onafhankelijk testresultaat. Ik heb voorspellingsovereenkomst gecontroleerd, ook bij beide DST-overgangen. Mijn lokale pipeline traint dezelfde RF opnieuw, controleert herladen en bewaart een apart artefact. De groepsintegratie is inmiddels bijgewerkt: er zijn geslaagde GitHub Actions-runs voor Mushroom-training en modelpublicatie. Render en Netlify volgen de gevalideerde publicatie. Het gedownloade Mushroom-SageMaker-model is afzonderlijk gecontroleerd. Deze centrale workflow traint Citi Bike niet automatisch opnieuw: die API gebruikt de gepinde modelrelease. De lokale Citi Bike-hertraining blijft een afzonderlijk traject. Mijn conclusie is dat historische tellingen bruikbaar zijn voor geregistreerd uurgebruik, onder een duidelijk invoercontract.
+Mijn Citi Bike-uitwerking eindigt in een voorspelfunctie die ook via de teamwebsite en API wordt gebruikt. Om een dag te voorspellen zijn de veertien volledige voorgaande dagen nodig. De API gebruikt dezelfde featureberekening en predict_day als offline. Ik controleerde de overeenkomst van de voorspellingen, ook bij de overgang naar zomer- en wintertijd. De screenshot toont een ontwikkelingsdemonstratie en is geen onafhankelijke test.
+
+Daarnaast werkte ik een lokale hertrainingspipeline uit. Die fit dezelfde vaste Random Forest opnieuw, controleert de voorspellingen na herladen en bewaart een apart modelartefact. Jorres centrale GitHub-workflow traint en publiceert Mushroom. Citi Bike gebruikt een gepinde RF320-release. Automatische nieuwe Citi Bike-training en omschakeling van het live model zijn daarmee nog geen onderdeel van die centrale workflow. Mijn conclusie is dat historische tellingen helpen om geregistreerde vertrekken per uur te voorspellen, zolang de benodigde historie op tijd beschikbaar is.
 
 Bronnen: docs/citibike_raoul_frontend.jpg; DEPLOYMENT.md; reports/inference_parity.json; reports/retraining_pipeline_latest.json; OPDRACHTCONTROLE.md (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
 Statusupdate: Final/AUTOMATISERING.md en Final/VALIDATIE.md.
 
-## Dia 23
+## Dia 23 — Deployment: API and website
 
 Richttijd: 30 seconden.
 
@@ -238,7 +240,7 @@ https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/backend/raoul_cit
 
 https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/frontend/README.md
 
-## Dia 24
+## Dia 24 — GitHub: Automated publication
 
 Richttijd: 40 seconden.
 
@@ -250,7 +252,7 @@ https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/.github/workflows
 
 https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/Final/AUTOMATISERING.md
 
-## Dia 25
+## Dia 25 — Conclusion and live demo
 
 Richttijd: 75 seconden.
 
@@ -264,191 +266,7 @@ https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/SolutionRaoul/Cit
 
 https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/Final/INLEVERCHECK.md
 
-## Dia 26
-
-Richttijd: 25 seconden.
-
-Codex is een hulpmiddel, geen teamlid. Jorres bevestigde bijdragen zijn pipeline, backend, UI en het AWS-model. De AI-hulp omvat ook substantiële code en proza. De uitvoer en referentievoorspellingen zijn gecontroleerd; menselijke review en zelfstandige beheersing moeten door ieder teamlid worden bevestigd. De vijf echte prompts, concrete bijsturing en bronverwijzingen staan hieronder.
-
-# GenAI Disclosure
-
-Deze verantwoording hoort bij de volledige eindoplevering van DeepLearningTeam10.
-
-Zij is op 15 oktober 2026 uitgewerkt tegen de door Jorre aangeleverde
-
-`GenAI_Policy.pdf` (twee pagina's). De eerdere korte disclaimers blijven als
-
-historische bronvermeldingen bestaan; dit document geeft de actuele, bredere scope.
-
-## 1. Functionele scope: AI-code en menselijke bijdragen
-
-De gebruikte assistent in deze chat is **OpenAI Codex**. Codex is een hulpmiddel,
-
-geen teamlid. Jorre bevestigde dat hij de pipeline heeft opgesteld, de backend
-
-heeft ontwikkeld, de UI heeft gebouwd en een model op AWS heeft getraind.
-
-Dit beschrijft zijn projectbijdrage en verantwoordelijkheid; het is geen claim
-
-dat alle bijbehorende code zonder AI of volledig vanaf nul is geschreven.
-
-| Onderdeel | Aantoonbare hulp van Codex in deze chat | Menselijke inbreng / afbakening |
-
-| --- | --- | --- |
-
-| Structuur en notebooks | Structuur, templates, downloadcode, aparte Final-leesversies en toelichtingen gegenereerd of aangepast. | Jorre bepaalde de opdrachtcontext en vroeg om een aparte Final-map met behoud van eerder werk. Oorspronkelijke onderzoeken behouden hun bestaande auteursvermelding. |
-
-| Mushroom-evaluatie | Vergelijkingscode, gedeelde splits/folds, fold-lokale preprocessing, PyCaret-reparatie en -uitvoering, AWS-artifactaudit en foutenanalyse uitgewerkt en uitgevoerd. | Jorre wees de 100%-score af als verdacht en corrigeerde de voorgeschreven bron naar het cursusbestand van 5.000 rijen. Andrew leverde de oorspronkelijke Mushroom-uitwerking. |
-
-| AWS | Notebookcode voorbereid, foutmeldingen toegelicht en de gedownloade pipeline en resultaten geaudit. | Jorre voerde de training op SageMaker uit en leverde het uitgevoerde notebook, model en tuningresultaten aan. |
-
-| Pipeline | Trainings-, validatie-, export-, test- en publicatiecode en GitHub Actions-configuratie gegenereerd en aangepast. | Jorre stelde de pipeline op met deze hulp en vroeg expliciet om automatische updates na een GitHub-push. Nieuwe training geldt hier voor Mushroom; Citi Bike gebruikt een vaste release. |
-
-| Backend en UI | FastAPI-routes, modelkoppelingen, lossless exports, invoercontrole, JavaScript/HTML/CSS, tests en versiecontroles gegenereerd of aangepast. | Jorre ontwikkelde en stuurde de gezamenlijke backend en UI met deze hulp. Raouls oorspronkelijke Citi Bike-inference en applicatieonderdelen blijven als bronbijdrage vermeld. |
-
-| Beslismelding Mushroom | Drempelaudit en de voorzichtige API/UI-melding uitgewerkt. | Jorre gaf aan dat onterecht eetbaar melden ernstiger is en vroeg om een strengere beslisregel. Een onbewezen grens van 95% werd na controle niet als veilige oplossing gebruikt. |
-
-| Presentatie | Tekst, structuur, tabellen, grafieken, opmaak en spreeknotities samengesteld of bijgewerkt. | Andrew leverde de bronpresentatie. Op Jorres aanwijzing zijn Raouls bestaande volgorde en spreektekst behouden; Jorre leverde zijn foto aan. De eerdere twaalfdia-versie heeft een AI-coverillustratie; de huidige groepsversie gebruikt de aangeleverde foto's en bestaande bronbeelden. |
-
-De AI-hulp was dus substantieel en omvat ook inhoudelijke implementatie,
-
-evaluatiehelpers en rapportage. Er wordt geen lijst van 'volledig zelfgeschreven'
-
-codeblokken verzonnen: dat onderscheid is voor de oudere teamonderdelen niet
-
-volledig uit deze chat vast te stellen. Ieder teamlid moet de eigen bijdrage en
-
-eventueel aanvullend AI-gebruik zelf preciseren. Codex heeft de oorspronkelijke
-
-datasetonderzoeken niet onafhankelijk van de bronbijdragen geclaimd.
-
-## 2. Proza en structuur
-
-Codex hielp met het schrijven en herschikken van README-bestanden, Markdown in
-
-notebooks, modelvergelijkingen, conclusies, deploymentdocumentatie, inlevercheck,
-
-presentaties en spreeknotities. Ook deze verantwoording is door Codex opgesteld
-
-op basis van de echte chat, bestanden en policy. Het is geen automatisch bewijs
-
-dat alle teamleden alle teksten al hebben gelezen of begrepen.
-
-## 3. Vijf echte prompts uit de ontwikkelworkflow
-
-Onderstaande prompts zijn letterlijk overgenomen uit Jorres berichten in deze
-
-chat, inclusief oorspronkelijke spelling. Het zijn geen achteraf verzonnen
-
-voorbeeldprompts. Zij tonen ook bijsturing en controle, naast verzoeken om code.
-
-1. Automatisering:
-
-   > Maak het nu dat als er op github gepushed word dat de backend automatisch geupdate word en dat de frontend automatisch de backend ophaald
-
-2. Vergelijking aan de opdracht toetsen:
-
-   > Maak nu volgens de taak wat we moeten doen de vergelijking tussen de modellen
-
-3. Een verdachte uitkomst kritisch bevragen:
-
-   > Het kan toch niet dat dat aws model het beste is. 100% juist is wel heel verdacht
-
-4. De databron corrigeren:
-
-   > En dit er nog bij: Zorg er ook voor dat je het excel bestand gebruikt dat ik heb geupload naar github. De vorige die we gebruikten met 61k rijen was de foute.
-
-5. De foutkosten en beslisregel sturen:
-
-   > Iegenlijk zou het pas eetbaar mogen tonen als het 95% eetbaar is ofzo niet? Of iets anders wat jij denkt. want we willen niet dat het eetbaar toont als het giftig is. giftig tonen als het eetbaar is is minder erg
-
-## 4. Verificatie en reproduceerbaarheid
-
-De gerapporteerde projectmetrics komen uit bewaarde uitvoer en uitgevoerde code,
-
-niet uit door AI bedachte scores. De technische bewijsstukken zijn:
-
-- De [uitvoeringsregistratie](../execution_checks.json): twaalf opnieuw uitgevoerde
-
-  Final-notebooks. Andere Citi Bike-resultaten zijn expliciet bewaarde bronuitvoer,
-
-  geen fictieve nieuwe training en geen opnieuw geopende eindtest.
-
-- Het [bronmanifest](../source_manifest.json) en de vaste bronhash/splits: dezelfde
-
-  5.000 cursusrijen en gedeelde trainingfolds voor de Mushroom-vergelijking.
-
-- De [Mushroom-vergelijking](../../MushroomFinal/comparison_correct/model_comparison.csv),
-
-  [AWS-artifactaudit](../../MushroomFinal/comparison_correct/aws_artifact_audit.json) en
-
-  [drempelaudit](../../MushroomFinal/comparison_correct/decision_threshold_audit.json).
-
-- De [Citi Bike-eindbeoordeling](../../SolutionRaoul/Citybike/reports/final_evaluation.json)
-
-  en het [evaluatieslot](../../SolutionRaoul/Citybike/reports/evaluation_lock.json).
-
-- Tests op backend, frontend, modelpublicatie en referentievoorspellingen, plus
-
-  uitgevoerde Actions-runs en live controles. De aantallen en runlinks staan in
-
-  [VALIDATIE.md](../VALIDATIE.md). Een nieuwe documentatiewijziging is geen nieuwe
-
-  training of extra prestatiemeting.
-
-Dit zijn technische controles, deels uitgevoerd met Codex. Zij vervangen de
-
-persoonlijke inhoudelijke review en mondelinge verdediging niet.
-
-## 5. Concrete correcties en grenzen
-
-| Aanleiding | Bijsturing en controle |
-
-| --- | --- |
-
-| Verdachte 100%-score en verkeerde bron | Jorre bevroeg de uitkomst en gaf aan dat het 61k-bestand fout was. De vergelijking is vervangen door dezelfde gecontroleerde 5.000 cursusrijen. Historische scores worden niet als finale resultaten verkocht. |
-
-| Leakage-risico bij vooraf geleerde preprocessing | De complete preprocessing wordt per trainingsfold geleerd. De gecorrigeerde fits hebben eigen referentievoorspellingen; oude screenshots worden niet met nieuwe scores gemengd. |
-
-| Eetbaar tonen ondanks een giftigheidsscore | De 95%-regel is onderzocht. In trainings-OOF bleken zeven van 55 toegelaten gevallen giftig. De UI bevestigt daarom geen eetbaarheid; dit wordt niet als hogere classifieraccuracy of 100% recall gepresenteerd. |
-
-| Tegenstrijdige presentatiecijfers | In Andrews presentatie paste de GB-confusion matrix niet bij het classificatierapport. Die combinatie is vervangen door de cijfers van één gecontroleerde fit; RF200 is niet verward met de gehoste RF300. |
-
-| Geleerde verhaallijn van Raoul | Jorre vroeg om diens eigen dia's te gebruiken. De volgorde en spreektekst zijn behouden; alleen de verouderde projectstatus is bijgewerkt. |
-
-Scopekeuzes: originele bestanden en lokale bijdragen behouden; de eerder bekeken
-
-Mushroom-test als ontwikkeltest benoemen; geen nieuwe modelkeuze op de vergrendelde
-
-Citi Bike-eindtest; en geen automatische Citi Bike-hertraining claimen die de
-
-centrale workflow niet uitvoert. De publicatie weigert een kandidaat die de
-
-kwaliteitscontroles niet haalt of op een verouderde broncommit gebaseerd is.
-
-## 6. Intellectueel eigenaarschap en nog te bevestigen review
-
-Het team draagt de eindverantwoordelijkheid voor code, cijfers, beveiliging,
-
-interpretatie en conclusies. Ieder lid moet zelfstandig kunnen uitleggen waarom
-
-de split en preprocessing zo gekozen zijn, wat macro F1/recall/RMSE meten, waarom
-
-het geselecteerde model gekozen werd en hoe model, API en website samenwerken.
-
-Een antwoord als 'de AI stelde dit voor' is geen technische onderbouwing.
-
-Jorres vier genoemde bijdragen zijn bevestigd. De precieze bijdragen en AI-inzet
-
-van de overige leden en hun zelfstandige beheersing zijn hiermee niet automatisch
-
-bevestigd. Die menselijke eindcontrole blijft open in de
-
-[inlevercheck](../INLEVERCHECK.md). De aanwezigheid van deze tekst is evenmin bewijs
-
-van een Canvas-indiening.
-
-## Dia 27 — reserve
+## Dia 26 — Grootste fouten blijven rond drukke uren (verborgen reserve)
 
 Reservedia voor vragen.
 
@@ -456,10 +274,18 @@ Reservedia. Residual is actual minus prediction. Positief betekent onderschattin
 
 Bronnen: reports/validation_errors_by_hour.csv; reports/validation_residuals.csv; 07_eindvergelijking.ipynb (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
-## Dia 28 — reserve
+## Dia 27 — Keuzes die ik mondeling kan uitleggen (verborgen reserve)
 
 Reservedia voor vragen.
 
 Reservedia. De vaste selectieregel vergelijkt modeltypen: weekbaseline, Ridge, RF en LightGBM. Modellen die strikt minder dan één procent boven de minimale validatiefout zitten mogen winnen als ze eenvoudiger zijn volgens die rang. Binnen dezelfde RF-familie geldt de lagere validatiefout. Daarom behoud ik de getunede RF, ook al is de praktische extra winst klein. Daglags passen bij voorspellen om 00:00 en kennen geen uur van de voorspeldag. De scaler van Ridge wordt per trainfold gefit. Ik gebruik blokken omdat ritten en naburige uren samenhangen. Geen enkele normale residualverdeling garandeert goede toekomstvoorspellingen. Voor nieuwe keuzes na deze studie is een nieuwe onafhankelijke testperiode nodig.
 
 Bronnen: citibike/modeling.py choose_model; citibike/features.py; hypotheseprotocol; model_selection.json (bestaande gecontroleerde uitwerking, 14 oktober 2026).
+
+## Demo voorbereiden
+
+1. Open de website vooraf zodat de Render-backend kan opstarten.
+2. Toon kort het Mushroom-voorbeeld met de modelmelding.
+3. Toon de historische Citi Bike-demo, bijvoorbeeld 30 april 2026 om 8 uur, en de 24 uurvoorspellingen.
+4. Leg bij Citi Bike uit dat de demonstratie ontwikkeling gebruikt en geen nieuwe onafhankelijke test is.
+5. Gebruik bij netwerkproblemen de opgeslagen notebookuitvoer en de screenshot in de presentatie.

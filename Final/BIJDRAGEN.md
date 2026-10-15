@@ -22,6 +22,33 @@ Citi Bike-inference en applicatieonderdelen. Milan heeft een oorspronkelijke
 Mushroom-voorbereiding aangeleverd. Hun precieze taakverdeling en eigen
 AI-gebruik zijn hiermee niet opnieuw of exclusief door Jorre vastgesteld.
 
+## Raoul Buffels — bevestigd op 15 oktober 2026
+
+Raoul bevestigde de volgende eigen bijdragen aan Citi Bike:
+
+- De bronverwerking, cleaning en aggregatie van de ritgegevens uitgewerkt, met afzonderlijke verwerking van NYC en Jersey City.
+- De EDA, grafieken, onderzoeksvragen en statistische hypothesen uitgewerkt en geïnterpreteerd.
+- De definitieve datavoorbereiding en feature-engineering opgesteld, met chronologische splits en controles op datalekken.
+- De weekbaseline, Ridge, PyCaret-vergelijking, Random Forest en LightGBM uitgewerkt, inclusief tuning, modelvergelijking en foutenanalyse.
+- De modelkeuze onderbouwd op validatieresultaten en de oorspronkelijke eindtest behouden zonder die voor nieuwe keuzes te gebruiken.
+- De oorspronkelijke Citi Bike-inference en applicatieonderdelen voor frontend en backend uitgewerkt. Jorre hielp met deployment op Render en ontwikkelde de gezamenlijke backend en UI verder.
+- De Citi Bike-notebooks, documentatie en het eigen presentatieonderdeel met spreektekst voorbereid.
+
+Raoul gebruikte **OpenAI Codex** voor hulp bij code, debugging, uitleg,
+notebookstructuur, grafieken, controles en documentatie. Die hulp was substantieel;
+dit werk wordt niet voorgesteld als volledig zonder AI geschreven. Hij nam de
+voorstellen niet zomaar over: hij beoordeelde de aanpak en interpretaties kritisch,
+controleerde ze aan de hand van de opdracht, brondata en opgeslagen uitvoer en
+stuurde bij waar nodig. De uitgevoerde technische controles omvatten onder meer
+datakwaliteit, chronologische splits, reproduceerbare modeluitvoer en gelijke
+voorspellingen tussen offline inference en de API.
+
+Raoul bevestigt hiermee zijn eigen bijdrage en AI-gebruik en blijft
+verantwoordelijk voor de keuzes, interpretatie en conclusies van zijn onderdeel.
+De [GenAI Disclosure](GENAI_DISCLOSURE.md) licht deze AI-hulp en controle verder toe.
+
+Raouls hoofddeel staat in de definitieve PowerPoint op dia 14–22, met verborgen reserves op dia 26–27. De [persoonlijke spreektekst](Presentatie/SPREEKPLAN.md) bevat zijn bijdrage, tekst per dia en voorbereiding op vragen. Zijn lokale hertrainingspipeline fit dezelfde vaste RF320 opnieuw en controleert voorspellingen na herladen. Dit staat los van de centrale Mushroom-workflow en bewijst geen automatische live Citi Bike-modelupdate.
+
 ## Afbakening van de pipeline
 
 De centrale GitHub Actions-workflow traint en controleert Mushroom en publiceert
@@ -30,7 +57,7 @@ deze workflow claimt geen automatische nieuwe Citi Bike-training.
 
 ## Nog door het team te bevestigen
 
-- Ieder ander teamlid controleert en preciseert de eigen bijdrage en AI-inzet.
+- Andrew en Milan controleren en preciseren nog de eigen bijdrage en AI-inzet.
 - Iedereen kan de code, ontwerpkeuzes en conclusies zelfstandig uitleggen.
 - Sprekers en de uiteindelijke mondelinge taakverdeling worden samen afgesproken.
 

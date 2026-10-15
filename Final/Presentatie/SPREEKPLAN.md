@@ -1,98 +1,134 @@
-# Spreekplan — 25 minuten inclusief vragen
+# Raoul Buffels — spreektekst Citi Bike
 
-> Historisch spreekplan voor de eerdere twaalfdia-versie. Gebruik voor de actuele
-> groepspresentatie [SPREEKPLAN_GROEP.md](SPREEKPLAN_GROEP.md). Jorres bijdragen en
-> de GenAI-verantwoording zijn inmiddels centraal ingevuld; oude statuszinnen
-> hieronder beschrijven de voorbereiding van de vorige versie.
+Bij [de definitieve PowerPoint](Team10_presentatie.pptx). Mijn hoofddeel staat op dia 14–22: ongeveer 7 minuten en 15 seconden volgens de richttijden. Dia 26 en 27 zijn verborgen reserves voor vragen. De nummers hieronder verwijzen naar de volledige groepspresentatie.
 
-Plan ongeveer 16,5 minuut uitleg, 1,5 minuut demonstratie en 7 minuten vragen.
-Sprekers spreken jullie zelf af; de definitieve bijdragen blijven stap 5.
-De cover is een AI-illustratie, geen foto uit de dataset. Tabellen en grafieken
-in de PowerPoint zijn bewerkbaar; bronverwijzingen staan in de spreeknotities.
+## Mijn bijdrage
 
-## Dia 1 — Paddenstoelen en fietsverkeer
+Mijn Citi Bike-deel omvat de verwerking van de bronarchieven, cleaning en kwaliteitscontroles, EDA en hypothesetoetsen, de voorbereiding van de modeldata, chronologische modelvergelijking en tuning, en de interpretatie van de vastgelegde eindtest. Ik werkte ook de oorspronkelijke Citi Bike-inference en applicatieonderdelen uit, controleerde de overeenkomst tussen offline voorspellingen en de API en maakte een lokale hertrainingspipeline voor dezelfde vaste Random Forest.
 
-0:30 â€” Stel het team voor zonder een niet-bevestigde taakverdeling te verzinnen. De daadwerkelijke menselijke bijdragen worden door Jorre nog gecontroleerd (stap 5). Onderwerp: een classificatieprobleem met Mushroom en een tijdreeksprobleem met Citi Bike. Coverillustratie is AI-gegenereerd, decoratief en geen datasetfoto.
+De gezamenlijke backend, UI, centrale GitHub-pipeline en Mushroom-training op AWS horen bij Jorres bijdrage. Mijn Citi Bike-onderdelen sluiten daarop aan. Codex hielp substantieel met implementatie, uitleg, tests en teksten. De code en de spreektekst worden niet als volledig zonder AI gemaakt voorgesteld. Het centrale [bijdragenoverzicht](../BIJDRAGEN.md) en de [GenAI-verantwoording](../GENAI_DISCLOSURE.md) beschrijven die afbakening.
 
-Bronnen: `README.md`
+## Korte versie als ik mijn bijdrage moet toelichten
 
-## Dia 2 — Data en voorspeltaken
+“Ik heb het Citi Bike-gedeelte uitgewerkt, vanaf de grote bronbestanden en datakwaliteitscontrole tot de EDA, hypothesen en modelvergelijking. Ik koos en evalueerde een Random Forest voor de 24 uurvakken van een volgende dag. Daarnaast werkte ik de oorspronkelijke Citi Bike-voorspelfunctie en applicatieonderdelen uit en controleerde ik dat de API dezelfde voorspellingen geeft als offline. Ik maakte ook een lokale hertrainingspipeline voor dezelfde vaste configuratie. Jorre verzorgde de gezamenlijke integratie en hosting. Codex hielp bij de uitwerking en controles.”
 
-1:15 â€” Mushroom gebruikt de afgesproken 5.000 cursusrijen. Het oorspronkelijke UCI-bestand is niet de definitieve vergelijkingsbron. Citi Bike start van ritregistraties, maar het model voorspelt geaggregeerde NYC-uurvraag. Houd NYC en Jersey City gescheiden. Citeer bronmanifesten voor omvang, niet alleen een bestandsnaam.
+## Dia 14 — Citi Bike: mijn deel
 
-Bronnen: `Final/tools/data.py`, `SolutionRaoul/Citybike/reports/data_manifest.json`
+Richttijd: 25 seconden.
 
-## Dia 3 — Ontbrekende Mushroom-kenmerken
+Ik ben Raoul Buffels. Mijn deel gaat over Citi Bike. Ik werkte de bronverwerking, cleaning, EDA, hypothesen en modelvergelijking uit. Daarnaast maakte ik de oorspronkelijke Citi Bike-inference en applicatieonderdelen. Jorre hielp met deployment op Render en verzorgde de gezamenlijke backend, UI en centrale pipeline. Ik bespreek eerst de data, daarna de modellen en ten slotte het resultaat. Codex hielp bij implementatie, uitleg en controles.
 
-1:30 â€” Benoem de dominante ontbrekende kenmerken. We gaan ze niet willekeurig invullen op basis van alle data. De uiteindelijke pipeline leert medianen en modi binnen elke trainingsfold. Nulmetingen blijven bij RF300 echte nulmetingen. Het ruisveld jumbled_noise_0 is verwijderd, jumbled_noise_1 blijft.
+Bronnen: README.md en SolutionRaoul/Citybike/notebooks/00_projectoverzicht.ipynb; opdracht: CloudAI/Discussion topics/project assignment.md (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
-Bronnen: `Final/Mushroom/01_EDA.ipynb`, `Final/Mushroom/02_voorbereiding.ipynb`
+## Dia 15 — Wat ik in de brondata tegenkwam
 
-## Dia 4 — Validatie en preprocessing
+Richttijd: 45 seconden.
 
-1:30 â€” Laat zien waarom preprocessing vÃ³Ã³r cross-validatie leakage kan geven. De oorspronkelijke proximity-imputatie was vÃ³Ã³r CV geleerd; de gecorrigeerde vergelijking fit de volledige pipeline binnen elke fold. De 900 testrecords zijn eerder bekeken en mogen dus niet als onaangeraakte eindtest worden verkocht.
+Ik had grote bestanden verwacht. De lastigste stap was bepalen welke records echte bronkopieën waren. De 175 ZIPs bevatten NYC en Jersey City en verschillende oude en nieuwe schema’s. Na verwerking blijven circa 323,8 miljoen NYC-records over. Dat is technische dekking tot augustus 2026, geen EDA op de eindtest. Mijn EDA gebruikt alleen ontwikkeling vóór mei. Een ontbrekend eindstation hoeft een geldige start niet onbruikbaar te maken. Extreem lange duur kan een registratieprobleem of een laat afgesloten rit zijn. Voor uurvolume tel ik de start en behoud ik kwaliteitsflags. Alleen bewezen bronkopieën verwijder ik. Identieke historische ritten kunnen echte afzonderlijke ritten zijn.
 
-Bronnen: `MushroomFinal/final_model_support.py`, `MushroomFinal/comparison_correct/protocol.json`
+Bronnen: reports/data_manifest.json; 01a_dataonderzoek_en_cleaning.ipynb; reports/NYC_duration_sample_audit.json (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
-## Dia 5 — Mushroom-modelvergelijking
+## Dia 16 — Gebruik volgt het uur en de weekdag
 
-2:00 â€” De primaire rangschikking is gemiddelde CV macro F1. RF300 is de voorlopige keuze, met een kleine voorsprong op AWS en RF500. Dit is geen bewijs dat ieder verschil statistisch significant is. De AWS-rij komt uit de afzonderlijk gecontroleerde echte SageMaker-run.
+Richttijd: 45 seconden.
 
-Bronnen: `MushroomFinal/comparison_correct/model_comparison.csv`, `MushroomFinal/comparison_correct/aws_artifact_audit.json`
+Deze figuur gebruikt echte gemiddelde uurtellingen vanaf 2023 tot eind april 2026. Ik vergelijk werkdagen met weekends. Werkdagen hebben een ander dagprofiel en vooral een duidelijke avondpiek. Het hoogste gemiddelde uur ligt hier om 17 uur op werkdagen en om 15 uur in het weekend. Een verschil tussen dagtypes past bij woon-werkgebruik, maar de data bewijzen het reisdoel niet. Ik verwachtte herhaling in tijd. De grafiek toont dat de patronen veranderen met dagtype en dat één algemeen gemiddelde onvoldoende is. Dat motiveert kalenderkenmerken en historische tellingen in het model.
 
-## Dia 6 — Mushroom-fouten en de website
+Bronnen: data/NYC_hourly_development.parquet, dezelfde aggregatie als citibike/plots.py hour_weekday (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
-1:30 â€” Accuracy verbergt dat er 121 giftige voorbeelden worden gemist. De positief-klasse-recall is 220/341 = 64,52%. Ook >=95% eetbare scores zijn niet veilig geÃ¯nterpreteerd: 7 van 55 trainingsvalidatiegevallen zijn giftig. Daarom bevestigt de UI geen eetbaarheid; onder 50% giftigheidsscore onthoudt zij zich met onzeker/mogelijk giftig. Dat maakt de classifier niet nauwkeuriger.
+## Dia 17 — Weekherhaling ondersteunt het uurdoel
 
-Bronnen: `MushroomFinal/comparison_correct/model_comparison.csv`, `docs/mushroom_decisions.md`
+Richttijd: 55 seconden.
 
-## Dia 7 — Training en tuning op SageMaker
+Mijn hoofdhypothese is dat een uurtelling samenhangt met hetzelfde uur vorige week. H0 zegt dat de gemiddelde correlatie over tijdsblokken nul is. H1 zegt dat die verschilt van nul. Ik behandel miljoenen ritten niet als onafhankelijke observaties. Ik bereken effecten per week en toets met 43 vierweekblokken. De bestaande sign-fliptoets veronderstelt voldoende onafhankelijke blokken en symmetrie onder H0. De correlatie is ongeveer 0,856 met een interval van 0,837 tot 0,876. De Holm-p is ongeveer 0,00015. Het patroon is dus sterk in ontwikkeling. De vraag kwam uit EDA en blijft exploratief. Correlatie bewijst geen oorzaak of modelprestatie. Pas daarna kies ik het bestaande doel: geregistreerd uurvolume één dag vooruit.
 
-1:00 â€” Jorre voerde training en vier kandidaatinstellingen uit op het juiste cursusbestand. Het gedownloade notebook en de pipeline staan in Git. De artifactaudit herberekent de voorspellingen en vergelijkt ze met de lokale baseline. Het AWS-model hoeft niet automatisch het beste model te zijn.
+Bronnen: reports/hypotheses.json; reports/hypothesis_protocol.json; reports/target_decision.json (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
-Bronnen: `SolutionJorre/MushroomDataset/correct_dataset/04_aws_correct_dataset.ipynb`, `MushroomFinal/comparison_correct/aws_artifact_audit.json`
+## Dia 18 — Alle modellen krijgen dezelfde modeldata
 
-## Dia 8 — Citi Bike: een toetsbaar patroon
+Richttijd: 45 seconden.
 
-1:30 â€” De hypothese is vÃ³Ã³r de berekening vastgelegd. Ochtendrit-aandeel ligt op werkdagen gemiddeld 9,55 procentpunt hoger dan in het weekend. Holm-gecorrigeerde p is ongeveer 0,00015; vierweekblokken houden rekening met tijdsafhankelijkheid. Dit is associatie, geen causaliteit. Lagkenmerken vereisen tijdig beschikbare voorafgaande tellingen.
+Notebook 02 maakt zelfstandig de definitieve modeldata vanaf de bronnen of gecontroleerde caches. Het target is geregistreerde vertrekken per lokaal uurvak. Ik gebruik veertien features: kalenderkenmerken en historische tellingen. Voorbeelden zijn het uur en de weekdag, hetzelfde uur gisteren en vorige week, en een gemiddelde van zeven afgesloten dagen. Rolling wordt eerst verschoven. Niets van de voorspeldag komt als historische input binnen. De eerste veertien dagen vallen weg omdat historie ontbreekt. Ik split chronologisch: training vóór mei, validatie mei en juni, test juli en augustus. Binnen training gebruik ik vijf chronologische folds van 28 dagen. Ridge leert zijn scaler alleen op de trainingsrijen van iedere fold.
 
-Bronnen: `SolutionRaoul/Citybike/reports/hypotheses.json`, `SolutionRaoul/Citybike/reports/hypothesis_protocol.json`
+Bronnen: 02_definitieve_voorbereiding.ipynb; reports/prepared_model_data.json; citibike/features.py (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
-## Dia 9 — Citi Bike-modelvergelijking
+## Dia 19 — Random Forest valideert het beste
 
-1:30 â€” Dit zijn validatiescores van meiâ€“juni, geen eindtestscore. Lagere RMSE is beter. RF320 is de vastgelegde keuze. De RF-tuning leverde slechts een kleine extra verbetering; modelcomplexiteit en looptijd worden mee afgewogen. De eindtest bleef beschermd tot na de selectie.
+Richttijd: 65 seconden.
 
-Bronnen: `SolutionRaoul/Citybike/reports/model_comparison.csv`, `SolutionRaoul/Citybike/reports/model_selection.json`
+De weekbaseline voorspelt hetzelfde uur van vorige week. Ridge is een eenvoudige lineaire referentie. Random Forest en LightGBM leren niet-lineaire verbanden. PyCaret vergelijkt dezelfde vier basismodellen met dezelfde chronologische folds. Daarna behoud ik de beperkte bestaande RF- en LightGBM-tuning. De finale getunede RF heeft een validatie-RMSE van ongeveer 1940,49 ritten per uurvak tegenover 2826,16 voor de baseline. Dat is circa 31,34 procent lager. LightGBM-tuning verbeterde trainings-CV, maar niet de mei-juni-validatie. De verschillen tussen de sterke modellen zijn klein. De keuze lag vóór de test vast en gebruikte de bestaande 1%-regel met een eenvoudigheidsrang per modeltype.
 
-## Dia 10 — Citi Bike: de vastgelegde eindtest
+Bronnen: reports/model_comparison.csv; reports/model_selection.json; reports/pycaret_comparison.csv; tuningrapporten (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
-1:30 â€” Eindtest juliâ€“augustus: RF RMSE 1.979,51 tegenover weekbaseline 2.608,78; relatieve reductie 24,12%. MAE 1.076,23 en RÂ² 0,8280 over 1.488 uurvakken. Geen verdere tuning op deze eindtest. Onzekerheidsinterval is indicatief door ongeveer negen weekblokken.
+## Dia 20 — Snelle training en generalisatie verschillen
 
-Bronnen: `SolutionRaoul/Citybike/reports/final_evaluation.json`, `SolutionRaoul/Citybike/reports/evaluation_lock.json`
+Richttijd: 55 seconden.
 
-## Dia 11 — API, website en automatische publicatie
+Ridge is het eenvoudigst uit te leggen en fit in deze reproductie in ongeveer 0,05 seconde. LightGBM fit in minder dan een seconde, terwijl RF tientallen seconden nodig heeft. Die tijden zijn echte afzonderlijke fits op deze computer en niet de volledige tuningduur. De getunede RF heeft een trainings-RMSE van ongeveer 536 tegenover 1940 op validatie. Dat is een grote kloof. Overfit kan meespelen, maar de vroege trainingsjaren hebben ook minder intensiteit dan 2026. Ik kan die kloof dus niet uitsluitend aan overfit toeschrijven. RF-tuning bracht maar circa 0,27 procent extra validatiewinst en een groot modelbestand. Dat bespreek ik naast de score. Ik wijzig de keuze niet nadat de test al bekeken is.
 
-1:45 â€” Leg de datastroom uit. Een codepush triggert echte Mushroom-training op Python 3.11. Een afzonderlijke Python 3.13-job verifieert de lossless export en beide API-modellen. Publicatie gebeurt pas na kwaliteitsgates en tests; een stale broncommit wordt geweigerd. Render en Netlify volgen de gevalideerde commit. Citi Bike wordt uit een gepinde release geladen; deze workflow claimt geen nieuwe Citi Bike-training.
+Bronnen: reports/notebook_reproduction/*.json, fit_seconds; reports/model_comparison.csv; reports/model_artifact.json (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
-Bronnen: `Final/AUTOMATISERING.md`, `.github/workflows/model-training.yml`, `backend/main.py`
+## Dia 21 — De bestaande eindtest bevestigt winst
 
-## Dia 12 — Resultaat en beperkingen
+Richttijd: 45 seconden.
 
-1:00 + live demo indien tijd. Toon eerst Voorbeeld invullen/Voorspellen voor Mushroom, daarna de historische Citi Bike-demo. De gitnotebooks zijn de fallback. Rond af met: reproduceerbare vergelijking, bewezen koppeling naar echte inference, maar geen eetadvies en geen gegarandeerde toekomstige City Bike-kwaliteit. Laat circa 7 minuten voor vragen. De definitieve bijdragen en GenAI-policy worden door Jorre in stap 5 gecontroleerd; dit spreekplan verzint geen taakverdeling.
+Ik bespreek de bestaande eindtest juli en augustus 2026. Alleen de vooraf geselecteerde RF en de baseline zijn daarop vergeleken. De model-RMSE is ongeveer 1979,51 tegenover 2608,78 voor de baseline. Dat is 24,12 procent lager. De MAE is ongeveer 1076 ritten per uurvak en R² is 0,828. Deze scores horen bij de finale refit tot eind juni, niet bij de ontwikkelingsfit op de vorige dia. De test was al bekeken. Ik gebruik hem nu niet om features of instellingen te veranderen. Twee zomermaanden garanderen geen prestaties voor een heel toekomstig jaar. Weer en evenementen ontbreken, en recente historische tellingen moeten op tijd beschikbaar zijn.
 
-Bronnen: `Final/README.md`, `Final/INLEVERCHECK.md`
+Bronnen: reports/final_evaluation.json; reports/MODEL_CARD.md (bestaande gecontroleerde uitwerking, 14 oktober 2026).
 
-## Demo voorbereiden
+## Dia 22 — Mijn resultaat en de volgende stap
 
-1. Open de website voor de presentatie zodat de backend kan opstarten.
-2. Mushroom: Voorbeeld invullen, Voorspellen; leg modelscore en onthouding uit.
-3. Citi Bike: historische demo van 30 april 2026, uur 8; toon de 24 uurvoorspellingen.
-4. Gebruik bij netwerkproblemen de bewaarde notebookuitvoer en het websitebeeld in de slides.
+Richttijd: 55 seconden.
 
-## Samen oefenen
+Mijn Citi Bike-uitwerking eindigt in een voorspelfunctie die ook via de teamwebsite en API wordt gebruikt. Om een dag te voorspellen zijn de veertien volledige voorgaande dagen nodig. De API gebruikt dezelfde featureberekening en predict_day als offline. Ik controleerde de overeenkomst van de voorspellingen, ook bij de overgang naar zomer- en wintertijd. De screenshot toont een ontwikkelingsdemonstratie en is geen onafhankelijke test.
 
-Bespreek waarom preprocessing per fold wordt geleerd, waarom accuracy alleen
-onvoldoende is voor Mushroom, waarom een modelscore geen gekalibreerde kans is,
-waarom Citi Bike chronologisch wordt gesplitst, welke tellingen een voorspelling
-nodig heeft en hoe een gevalideerd model van GitHub naar de backend gaat.
-Ieder teamlid moet de hoofdlijn van beide datasets kunnen uitleggen.
+Daarnaast werkte ik een lokale hertrainingspipeline uit. Die fit dezelfde vaste Random Forest opnieuw, controleert de voorspellingen na herladen en bewaart een apart modelartefact. Jorres centrale GitHub-workflow traint en publiceert Mushroom. Citi Bike gebruikt een gepinde RF320-release. Automatische nieuwe Citi Bike-training en omschakeling van het live model zijn daarmee nog geen onderdeel van die centrale workflow. Mijn conclusie is dat historische tellingen helpen om geregistreerde vertrekken per uur te voorspellen, zolang de benodigde historie op tijd beschikbaar is.
+
+Bronnen: docs/citibike_raoul_frontend.jpg; DEPLOYMENT.md; reports/inference_parity.json; reports/retraining_pipeline_latest.json; OPDRACHTCONTROLE.md (bestaande gecontroleerde uitwerking, 14 oktober 2026).
+
+Statusupdate: Final/AUTOMATISERING.md en Final/VALIDATIE.md.
+
+## Dia 26 — Grootste fouten blijven rond drukke uren (verborgen reserve)
+
+Reservedia voor vragen.
+
+Reservedia. Residual is actual minus prediction. Positief betekent onderschatting. Ik onderzocht de verdeling, fouten tegenover voorspellingen, fouten over tijd en de grootste missers. Deze figuur toont gemiddelde absolute validatiefout per uur. Een normale verdeling betekent niet dat het model perfect is. Systematische fouten kunnen wijzen op ontbrekende informatie, veranderde omstandigheden of beperkingen van het model. Weer en evenementen zijn mogelijke factoren, zonder dat ik daarmee één fout causaal verklaar. De analyse gebruikt mei-juni-validatie. Ze rechtvaardigt geen nieuwe keuze op basis van de reeds bekeken test.
+
+Bronnen: reports/validation_errors_by_hour.csv; reports/validation_residuals.csv; 07_eindvergelijking.ipynb (bestaande gecontroleerde uitwerking, 14 oktober 2026).
+
+## Dia 27 — Keuzes die ik mondeling kan uitleggen (verborgen reserve)
+
+Reservedia voor vragen.
+
+Reservedia. De vaste selectieregel vergelijkt modeltypen: weekbaseline, Ridge, RF en LightGBM. Modellen die strikt minder dan één procent boven de minimale validatiefout zitten mogen winnen als ze eenvoudiger zijn volgens die rang. Binnen dezelfde RF-familie geldt de lagere validatiefout. Daarom behoud ik de getunede RF, ook al is de praktische extra winst klein. Daglags passen bij voorspellen om 00:00 en kennen geen uur van de voorspeldag. De scaler van Ridge wordt per trainfold gefit. Ik gebruik blokken omdat ritten en naburige uren samenhangen. Geen enkele normale residualverdeling garandeert goede toekomstvoorspellingen. Voor nieuwe keuzes na deze studie is een nieuwe onafhankelijke testperiode nodig.
+
+Bronnen: citibike/modeling.py choose_model; citibike/features.py; hypotheseprotocol; model_selection.json (bestaande gecontroleerde uitwerking, 14 oktober 2026).
+
+## Begrippen voor de vragenronde
+
+- **RMSE:** de wortel van de gemiddelde gekwadrateerde fout. Grote missers wegen zwaarder mee. Hier is de eenheid ritten per lokaal uurvak.
+- **MAE:** de gemiddelde absolute fout, in dezelfde eenheid.
+- **R²:** de fout van het model vergeleken met steeds het gemiddelde voorspellen op dezelfde evaluatierijen. Een score van 0,828 betekent geen 82,8% juiste voorspellingen.
+- **Weekbaseline:** voor elk uur de telling van hetzelfde uur vorige week voorspellen.
+- **Leakage:** informatie gebruiken die tijdens de echte voorspelling nog niet beschikbaar zou zijn. Daarom gebruik ik afgesloten historie, een chronologische split en preprocessing per trainingsfold.
+- **Validatie en eindtest:** mei–juni 2026 diende voor modelkeuze. De vastgelegde eindtest van juli–augustus 2026 beoordeelde daarna de gekozen RF en baseline. Een nieuwe modelkeuze vraagt een nieuwe onafhankelijke testperiode.
+- **Lokale hertraining:** dezelfde configuratie opnieuw fitten en herladen controleren. Dat is geen nieuwe modelselectie en bewijst geen automatische live modelupdate.
+
+## Resultaten om te onthouden
+
+| Onderdeel | Resultaat |
+| --- | --- |
+| Model | Getunede Random Forest, 320 bomen |
+| Voorspeldoel | Geregistreerde NYC-vertrekken per lokaal uurvak |
+| Moment | Om 00:00 New York-tijd de 24 uurvakken van die dag |
+| Invoerhistorie | Veertien volledige voorafgaande dagen, 336 uurvakken |
+| Features | 14 kalender- en historievariabelen |
+| Validatie-RMSE RF / weekbaseline | 1.940,49 / 2.826,16 |
+| Eindtest-RMSE RF / weekbaseline | 1.979,51 / 2.608,78 |
+| Lagere eindtest-RMSE | 24,12% |
+| Eindtest-MAE / R² | 1.076,23 / 0,8280 |
+| Eindtestomvang | 1.488 lokale uurvakken, juli–augustus 2026 |
+
+De voorspelling gaat over geregistreerde vertrekken. Stationbeschikbaarheid en onvervulde vraag zijn geen gemeten modeldoelen. Twee zomermaanden geven geen garantie voor een volledig toekomstig jaar. Een tijdige tellingenfeed blijft nodig voor operationele voorspellingen.
+
+Bronnen: [modelkaart](../../SolutionRaoul/Citybike/reports/MODEL_CARD.md), [eindtest](../../SolutionRaoul/Citybike/reports/final_evaluation.json), [hypothesen](../../SolutionRaoul/Citybike/reports/hypotheses.json), [modelvergelijking](../../SolutionRaoul/Citybike/reports/model_comparison.csv), [Citi Bike-inference en API](../../docs/citibike_raoul.md) en [centrale automatisering](../AUTOMATISERING.md).
