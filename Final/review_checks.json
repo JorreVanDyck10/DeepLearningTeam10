@@ -1,0 +1,153 @@
+{
+  "scope": "Report-only Final update; no training, model swap, cloud call or deployment.",
+  "baseline_commit": "d8fe8dc5516372316e7d6d09e5e2ecdab457ce1b",
+  "notebooks_checked": 19,
+  "code_and_saved_outputs_unchanged": true,
+  "notebooks": [
+    {
+      "file": "Final/CitiBike/01_EDA_en_hypothesen.ipynb",
+      "code_cells_preserved": 12
+    },
+    {
+      "file": "Final/CitiBike/02_voorbereiding.ipynb",
+      "code_cells_preserved": 5
+    },
+    {
+      "file": "Final/CitiBike/03_baseline.ipynb",
+      "code_cells_preserved": 1
+    },
+    {
+      "file": "Final/CitiBike/04_Ridge.ipynb",
+      "code_cells_preserved": 1
+    },
+    {
+      "file": "Final/CitiBike/05_AutoML.ipynb",
+      "code_cells_preserved": 4
+    },
+    {
+      "file": "Final/CitiBike/06_Random_Forest.ipynb",
+      "code_cells_preserved": 5
+    },
+    {
+      "file": "Final/CitiBike/07_LightGBM.ipynb",
+      "code_cells_preserved": 5
+    },
+    {
+      "file": "Final/CitiBike/09_vergelijking.ipynb",
+      "code_cells_preserved": 4
+    },
+    {
+      "file": "Final/CitiBike/10_deployment.ipynb",
+      "code_cells_preserved": 1
+    },
+    {
+      "file": "Final/Mushroom/01_EDA.ipynb",
+      "code_cells_preserved": 10
+    },
+    {
+      "file": "Final/Mushroom/02_voorbereiding.ipynb",
+      "code_cells_preserved": 3
+    },
+    {
+      "file": "Final/Mushroom/03_baseline.ipynb",
+      "code_cells_preserved": 2
+    },
+    {
+      "file": "Final/Mushroom/04_AutoML.ipynb",
+      "code_cells_preserved": 2
+    },
+    {
+      "file": "Final/Mushroom/05_Random_Forest.ipynb",
+      "code_cells_preserved": 2
+    },
+    {
+      "file": "Final/Mushroom/06_Gradient_Boosting.ipynb",
+      "code_cells_preserved": 2
+    },
+    {
+      "file": "Final/Mushroom/07_Logistic_Regression.ipynb",
+      "code_cells_preserved": 2
+    },
+    {
+      "file": "Final/Mushroom/08_AWS.ipynb",
+      "code_cells_preserved": 6
+    },
+    {
+      "file": "Final/Mushroom/09_vergelijking.ipynb",
+      "code_cells_preserved": 5
+    },
+    {
+      "file": "Final/Mushroom/10_deployment.ipynb",
+      "code_cells_preserved": 3
+    }
+  ],
+  "protected_runtime_files_checked": 42,
+  "protected_runtime_unchanged": true,
+  "protected_runtime_files": [
+    ".github/workflows/deployment-checks.yml",
+    ".github/workflows/model-training.yml",
+    "Final/Mushroom/artifacts/current_pipeline.joblib",
+    "Final/Mushroom/artifacts/training_run.json",
+    "Final/config/mushroom.json",
+    "Final/requirements-notebooks.txt",
+    "Final/requirements-training.txt",
+    "Final/tools/data.py",
+    "Final/tools/execute_notebooks.py",
+    "Final/tools/model_workflow.py",
+    "Final/tools/promote_candidate.py",
+    "MushroomFinal/compare_correct_dataset.py",
+    "MushroomFinal/final_model_support.py",
+    "backend/README.md",
+    "backend/__init__.py",
+    "backend/artifacts/mushroom_export_audit.json",
+    "backend/artifacts/mushroom_reference_predictions.csv",
+    "backend/artifacts/mushroom_rf300.json",
+    "backend/artifacts/mushroom_rf300.npz",
+    "backend/citibike_artifact.json",
+    "backend/export_raoul_citibike.py",
+    "backend/fixtures/citibike_parity.json",
+    "backend/main.py",
+    "backend/mushroom_model.py",
+    "backend/mushroom_policy.py",
+    "backend/publish_raoul_artifact.py",
+    "backend/raoul_citibike.py",
+    "backend/requirements-dev.txt",
+    "backend/requirements.txt",
+    "frontend/Manrope-OFL.txt",
+    "frontend/README.md",
+    "frontend/api.js",
+    "frontend/app.js",
+    "frontend/citibike.js",
+    "frontend/citibike_metrics.json",
+    "frontend/config.js",
+    "frontend/export_metadata.py",
+    "frontend/index.html",
+    "frontend/manrope-latin-variable.woff2",
+    "frontend/metadata.json",
+    "frontend/mushroom.js",
+    "frontend/styles.css"
+  ],
+  "builder_dry_run_passed": true,
+  "report_update_idempotent": true,
+  "all_final_local_links_valid": true,
+  "notebook_schema_validation_passed": true,
+  "python": "3.13.9",
+  "nbformat": "5.10.4",
+  "new_notebook_code_executions": 0,
+  "execution_note": "Existing code/output cells preserved; new comparison is a Markdown report generated from frozen saved CV results.",
+  "frozen_summary_source": "Final/Mushroom/reports/milan_development_summary_v3.csv",
+  "frozen_summary_sha256_lf": "6e6e3f089a24554029fcd2b804e5527bba094a3951788365e68e5ebc50a8d5b4",
+  "original_study_commit": "d8fe8dc5516372316e7d6d09e5e2ecdab457ce1b",
+  "local_milan_environment_required_for_reports": false,
+  "changed_evidence_rejected": true,
+  "broken_notebook_link_rejected": true,
+  "reviewed_files_sha256_lf": {
+    "Final/tools/review_additions.py": "b070304df257b3fd0564718154dd1ff335fc3644972e91af0f7cb967c497fa2e",
+    "Final/tools/build_notebooks.py": "09d179792ee54d40e543ef02e728b1803aa7a96674ac7e2b12eb12db726bb9fb",
+    "Final/tools/verify_final.py": "b481ba2e13f87b05e290710b5fd7beead10097206b6195cb87a7f177e487ab24",
+    "Final/README.md": "14fcf687d0398bcc618a0e3237fd9e489573d9011ac8d9616c4eed2d924a13d1",
+    "Final/Mushroom/09_vergelijking.ipynb": "ff232b24815f6d1d4e15fc16caba3ed2b224ce53f6944f1145ae012db276fab4",
+    "Final/Mushroom/10_deployment.ipynb": "822a5312f824c14708c368600d41064f8a5a499db1ec88fd4bcebb63b8fcccc1",
+    "Final/Mushroom/reports/milan_development_summary_v3.csv": "6e6e3f089a24554029fcd2b804e5527bba094a3951788365e68e5ebc50a8d5b4"
+  }
+}

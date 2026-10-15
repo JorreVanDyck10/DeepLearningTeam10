@@ -1,0 +1,274 @@
+{
+  "source_sha256_lf": "1f1a25f2f330458ed95ce9f6ffe3241582312a42cb21797a2b7bd5e5ad281114",
+  "source_rows": 4100,
+  "excluded_development_test_rows": 900,
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "inner_seeds": "9410 + outer fold",
+  "families": [
+    "rf_selection",
+    "lightgbm",
+    "catboost"
+  ],
+  "grids": {
+    "rf_selection": [
+      {
+        "classifier__min_samples_leaf": 1,
+        "inputs__drop_noise": false,
+        "inputs__drop_spore": false
+      },
+      {
+        "classifier__min_samples_leaf": 1,
+        "inputs__drop_noise": false,
+        "inputs__drop_spore": true
+      },
+      {
+        "classifier__min_samples_leaf": 1,
+        "inputs__drop_noise": true,
+        "inputs__drop_spore": false
+      },
+      {
+        "classifier__min_samples_leaf": 1,
+        "inputs__drop_noise": true,
+        "inputs__drop_spore": true
+      },
+      {
+        "classifier__min_samples_leaf": 3,
+        "inputs__drop_noise": false,
+        "inputs__drop_spore": false
+      },
+      {
+        "classifier__min_samples_leaf": 3,
+        "inputs__drop_noise": false,
+        "inputs__drop_spore": true
+      },
+      {
+        "classifier__min_samples_leaf": 3,
+        "inputs__drop_noise": true,
+        "inputs__drop_spore": false
+      },
+      {
+        "classifier__min_samples_leaf": 3,
+        "inputs__drop_noise": true,
+        "inputs__drop_spore": true
+      }
+    ],
+    "lightgbm": [
+      {
+        "classifier__min_child_samples": 20,
+        "classifier__num_leaves": 15,
+        "inputs__drop_noise": false
+      },
+      {
+        "classifier__min_child_samples": 20,
+        "classifier__num_leaves": 15,
+        "inputs__drop_noise": true
+      },
+      {
+        "classifier__min_child_samples": 20,
+        "classifier__num_leaves": 31,
+        "inputs__drop_noise": false
+      },
+      {
+        "classifier__min_child_samples": 20,
+        "classifier__num_leaves": 31,
+        "inputs__drop_noise": true
+      },
+      {
+        "classifier__min_child_samples": 60,
+        "classifier__num_leaves": 15,
+        "inputs__drop_noise": false
+      },
+      {
+        "classifier__min_child_samples": 60,
+        "classifier__num_leaves": 15,
+        "inputs__drop_noise": true
+      },
+      {
+        "classifier__min_child_samples": 60,
+        "classifier__num_leaves": 31,
+        "inputs__drop_noise": false
+      },
+      {
+        "classifier__min_child_samples": 60,
+        "classifier__num_leaves": 31,
+        "inputs__drop_noise": true
+      }
+    ],
+    "catboost": [
+      {
+        "classifier__cat_features": [
+          "spore_print_color",
+          "gill_color",
+          "habitat",
+          "season",
+          "ring_type",
+          "cap_shape",
+          "stem_surface",
+          "jumbled_noise_1"
+        ],
+        "classifier__depth": 4,
+        "classifier__l2_leaf_reg": 3,
+        "inputs__drop_noise": false
+      },
+      {
+        "classifier__cat_features": [
+          "spore_print_color",
+          "gill_color",
+          "habitat",
+          "season",
+          "ring_type",
+          "cap_shape",
+          "stem_surface",
+          "jumbled_noise_1"
+        ],
+        "classifier__depth": 4,
+        "classifier__l2_leaf_reg": 10,
+        "inputs__drop_noise": false
+      },
+      {
+        "classifier__cat_features": [
+          "spore_print_color",
+          "gill_color",
+          "habitat",
+          "season",
+          "ring_type",
+          "cap_shape",
+          "stem_surface",
+          "jumbled_noise_1"
+        ],
+        "classifier__depth": 6,
+        "classifier__l2_leaf_reg": 3,
+        "inputs__drop_noise": false
+      },
+      {
+        "classifier__cat_features": [
+          "spore_print_color",
+          "gill_color",
+          "habitat",
+          "season",
+          "ring_type",
+          "cap_shape",
+          "stem_surface",
+          "jumbled_noise_1"
+        ],
+        "classifier__depth": 6,
+        "classifier__l2_leaf_reg": 10,
+        "inputs__drop_noise": false
+      },
+      {
+        "classifier__cat_features": [
+          "spore_print_color",
+          "gill_color",
+          "habitat",
+          "season",
+          "ring_type",
+          "cap_shape",
+          "stem_surface"
+        ],
+        "classifier__depth": 4,
+        "classifier__l2_leaf_reg": 3,
+        "inputs__drop_noise": true
+      },
+      {
+        "classifier__cat_features": [
+          "spore_print_color",
+          "gill_color",
+          "habitat",
+          "season",
+          "ring_type",
+          "cap_shape",
+          "stem_surface"
+        ],
+        "classifier__depth": 4,
+        "classifier__l2_leaf_reg": 10,
+        "inputs__drop_noise": true
+      },
+      {
+        "classifier__cat_features": [
+          "spore_print_color",
+          "gill_color",
+          "habitat",
+          "season",
+          "ring_type",
+          "cap_shape",
+          "stem_surface"
+        ],
+        "classifier__depth": 6,
+        "classifier__l2_leaf_reg": 3,
+        "inputs__drop_noise": true
+      },
+      {
+        "classifier__cat_features": [
+          "spore_print_color",
+          "gill_color",
+          "habitat",
+          "season",
+          "ring_type",
+          "cap_shape",
+          "stem_surface"
+        ],
+        "classifier__depth": 6,
+        "classifier__l2_leaf_reg": 10,
+        "inputs__drop_noise": true
+      }
+    ]
+  },
+  "search_metric": "inner CV macro F1",
+  "fpr_budget": 0.14,
+  "voting_weights": [
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ],
+    [
+      0.5,
+      0.5,
+      0.0
+    ],
+    [
+      0.5,
+      0.0,
+      0.5
+    ],
+    [
+      0.0,
+      0.5,
+      0.5
+    ],
+    [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ]
+  ],
+  "threshold_grid_macro_f1": ".20-.70 step .01, inner OOF only",
+  "reference": "v2 RF300 + tuned policy, macro F1 .769125 / FN515 / FP356",
+  "desired_improvement": "Higher macro F1 and fewer FN, without exceeding the previous FP count; report all failures honestly.",
+  "course": "4 - Models, slides 36, 38, 42, 49; model-quality ROC and data-augmentation preparation",
+  "limitation": "Third exploratory study on previously used development data; no independent final-test claim.",
+  "code_sha256_lf": "7043df0bcbd39055fd7dbca07b9fa963baa2e04ae16bda67dc70dfc228852c81",
+  "dependencies_sha256_lf": {
+    "improve.py": "22e4850a0c858e07e18c9e9170917af455e6caf89d8d504121f7491421a9ab1b",
+    "mushroom_alternative.py": "fd32124839f31be0c9b406e37f076ef7f2b291defdc14dc7d78f879093c8ec52"
+  },
+  "environment": {
+    "python": "3.13.9",
+    "sklearn": "1.6.1",
+    "numpy": "2.2.5",
+    "pandas": "2.2.3",
+    "catboost": "1.2.8",
+    "lightgbm": "4.6.0"
+  }
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "file": "04_RF_verbeterd.ipynb",
+    "code_cells": 4,
+    "executed_in_kernel": false,
+    "execution_engine": "in-process IPython, fresh namespace",
+    "sha256_lf": "7fccab3e33dfbdf40b524bbbbd91edfc0a5ee5f0410591fa4729ae84e334a0fe"
+  },
+  {
+    "file": "05_Gradient_Boosting.ipynb",
+    "code_cells": 4,
+    "executed_in_kernel": false,
+    "execution_engine": "in-process IPython, fresh namespace",
+    "sha256_lf": "7bb103a6d2e70378cf2dfc298f3574173061b98b068318bdd63c52f5546a3b05"
+  },
+  {
+    "file": "06_SVM.ipynb",
+    "code_cells": 4,
+    "executed_in_kernel": false,
+    "execution_engine": "in-process IPython, fresh namespace",
+    "sha256_lf": "760bedb633e9f4b18c912b57621787d2549a9ce262e01ac4aad12a8c12986d43"
+  },
+  {
+    "file": "07_foutanalyse_en_integratie.ipynb",
+    "code_cells": 3,
+    "executed_in_kernel": false,
+    "execution_engine": "in-process IPython, fresh namespace",
+    "sha256_lf": "d6d37273dce8ccfcef39a5952fc0658ab5ddd4469ea2110189f74141f12c4f89"
+  }
+]

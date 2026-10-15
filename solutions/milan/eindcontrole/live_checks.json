@@ -1,0 +1,164 @@
+{
+  "passed": true,
+  "checked_at_utc": "2026-10-15T16:51:20.537480+00:00",
+  "website": "https://10messi10.netlify.app",
+  "api": "https://deeplearningteam10-api.onrender.com",
+  "health": {
+    "status": "ok",
+    "mushroom_model_loaded": true,
+    "citibike_model_loaded": true,
+    "mushroom_model_id": "mushroom_final_rf300",
+    "mushroom_model_revision": "6410b277e49c3706fa4d70db548e2545066a78bcaa6406aa83fef418c489c626",
+    "citibike_model_id": "raoul_tuned_random_forest_320"
+  },
+  "mushroom_prediction": {
+    "model_id": "mushroom_final_rf300",
+    "model_revision": "6410b277e49c3706fa4d70db548e2545066a78bcaa6406aa83fef418c489c626",
+    "label": "e",
+    "prediction": "Onzeker / mogelijk giftig",
+    "probability_poisonous": 0.03465518938833522,
+    "disclaimer": "Educatieve voorspelling op hypothetische data; niet gebruiken om echte paddenstoelen te eten.",
+    "decision": "uncertain",
+    "decision_policy_id": "mushroom_no_edibility_confirmation_v1"
+  },
+  "city_prediction": {
+    "date": "2026-04-30",
+    "hour": 8,
+    "timezone": "America/New_York",
+    "model_id": "raoul_tuned_random_forest_320",
+    "mode": "demo",
+    "predicted_ride_starts": 11860.514053352299,
+    "daily_predictions": [
+      {
+        "hour": 0,
+        "clock_hours": 1,
+        "predicted_ride_starts": 1094.3834201865845
+      },
+      {
+        "hour": 1,
+        "clock_hours": 1,
+        "predicted_ride_starts": 561.6655485124558
+      },
+      {
+        "hour": 2,
+        "clock_hours": 1,
+        "predicted_ride_starts": 341.73358969155845
+      },
+      {
+        "hour": 3,
+        "clock_hours": 1,
+        "predicted_ride_starts": 253.7839532852769
+      },
+      {
+        "hour": 4,
+        "clock_hours": 1,
+        "predicted_ride_starts": 334.21951049818244
+      },
+      {
+        "hour": 5,
+        "clock_hours": 1,
+        "predicted_ride_starts": 1055.889292226871
+      },
+      {
+        "hour": 6,
+        "clock_hours": 1,
+        "predicted_ride_starts": 3158.9595187177583
+      },
+      {
+        "hour": 7,
+        "clock_hours": 1,
+        "predicted_ride_starts": 7574.195047362509
+      },
+      {
+        "hour": 8,
+        "clock_hours": 1,
+        "predicted_ride_starts": 11860.514053352299
+      },
+      {
+        "hour": 9,
+        "clock_hours": 1,
+        "predicted_ride_starts": 8874.899801194519
+      },
+      {
+        "hour": 10,
+        "clock_hours": 1,
+        "predicted_ride_starts": 5905.0943728450375
+      },
+      {
+        "hour": 11,
+        "clock_hours": 1,
+        "predicted_ride_starts": 5728.825838275542
+      },
+      {
+        "hour": 12,
+        "clock_hours": 1,
+        "predicted_ride_starts": 6495.761470950923
+      },
+      {
+        "hour": 13,
+        "clock_hours": 1,
+        "predicted_ride_starts": 7051.360157030469
+      },
+      {
+        "hour": 14,
+        "clock_hours": 1,
+        "predicted_ride_starts": 7931.448870373142
+      },
+      {
+        "hour": 15,
+        "clock_hours": 1,
+        "predicted_ride_starts": 9214.315689935058
+      },
+      {
+        "hour": 16,
+        "clock_hours": 1,
+        "predicted_ride_starts": 10719.699511764284
+      },
+      {
+        "hour": 17,
+        "clock_hours": 1,
+        "predicted_ride_starts": 14338.014458150614
+      },
+      {
+        "hour": 18,
+        "clock_hours": 1,
+        "predicted_ride_starts": 13850.44947994281
+      },
+      {
+        "hour": 19,
+        "clock_hours": 1,
+        "predicted_ride_starts": 10834.393060515871
+      },
+      {
+        "hour": 20,
+        "clock_hours": 1,
+        "predicted_ride_starts": 6944.749112432709
+      },
+      {
+        "hour": 21,
+        "clock_hours": 1,
+        "predicted_ride_starts": 5276.258406982621
+      },
+      {
+        "hour": 22,
+        "clock_hours": 1,
+        "predicted_ride_starts": 4516.088850004164
+      },
+      {
+        "hour": 23,
+        "clock_hours": 1,
+        "predicted_ride_starts": 2976.531636245697
+      }
+    ],
+    "daily_total": 146893.23465047695,
+    "training_period": [
+      "2013-06-15 00:00:00",
+      "2026-06-30"
+    ],
+    "test_mae": 1076.225847238327,
+    "warning": "Historische demonstratie; deze datum kan in de training zitten en is geen onafhankelijke test. Geregistreerde vertrekken, geen beschikbare fietsen. Weer en evenementen kunnen afwijken.",
+    "prediction_origin": "2026-04-30T00:00:00 America/New_York"
+  },
+  "cors_status": 200,
+  "same_local_and_live_revision": true
+}

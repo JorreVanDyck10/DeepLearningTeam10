@@ -8,6 +8,10 @@ import sys
 import nbformat
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+from Final.tools.review_additions import apply_review_additions
+from Final.tools.contributions import apply_milan_contribution
+
 DEST = ROOT/'Final'
 PROVENANCE = []
 BOOT = '''from pathlib import Path
@@ -27,6 +31,7 @@ def save(path, cells, source=None, note=None):
     target = DEST/path; target.parent.mkdir(parents=True, exist_ok=True)
     nb = nbformat.v4.new_notebook(cells=cells)
     nb.metadata.kernelspec = {'name':'python3', 'display_name':'Python 3.11 — Final', 'language':'python'}
+    apply_milan_contribution(nb,path)
     nbformat.validate(nb); nbformat.write(nb, target)
     if source:
         PROVENANCE.append({'final': str(target.relative_to(ROOT)).replace('\\','/'), 'source': source,
@@ -180,6 +185,7 @@ display(pd.read_csv(folder/'pycaret_test_metrics.csv'))'''),
                     "assert model.metadata['source_pipeline_sha256'] == audit['source_pipeline_sha256'] == hashlib.sha256((ROOT/model.metadata['source_pipeline']).read_bytes()).hexdigest()")
                 cell.source = cell.source.replace('assert live_metadata == metadata',
                     "for key in ['model_id','source_pipeline_sha256','example','fields','dataset_rows']:\n    assert live_metadata[key] == metadata[key], key\nfor key in ['accuracy','recall_poisonous','poisonous_predicted_edible']:\n    assert abs(live_metadata['metrics'][key]-metadata['metrics'][key]) < 1e-12, key")
+        apply_review_additions(nb, target)
         nb.cells.insert(0, md('Final-leesversie; oorspronkelijke bestanden en hun uitvoer blijven behouden. Stap 5 (definitieve menselijke bijdragen en opleidingspolicy) rondt Jorre later af. Bron: `'+source+'`.'))
         save(Path(target), nb.cells, source, 'Curated copy; provenance and stale wording clarified')
     # Preserve the exact historical sources used by Final, separately from updated research notebooks.

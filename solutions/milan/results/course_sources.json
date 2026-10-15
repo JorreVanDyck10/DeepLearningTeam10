@@ -1,0 +1,79 @@
+[
+  {
+    "file": "0 - Intro.pptx",
+    "sha256": "a720b891efbbdd97adf64fb98061be5ed94c362c7030ff7bf3e1cd5280415dc6",
+    "slides": 21,
+    "notes_parts": 7,
+    "text_characters_inspected": 5398
+  },
+  {
+    "file": "1.1 - Data Science recap.pptx",
+    "sha256": "4d653cd22080676841dddf2ba9ccd1ddf922b8204b4cde3814351dd07da14212",
+    "slides": 10,
+    "notes_parts": 2,
+    "text_characters_inspected": 2032
+  },
+  {
+    "file": "1.2 - Working environment overview.pptx",
+    "sha256": "b39a5682d7706ba492d1400337ae37f74afe6e7d4f5062cdcd4a3c1c6b5ed064",
+    "slides": 28,
+    "notes_parts": 1,
+    "text_characters_inspected": 10285
+  },
+  {
+    "file": "1.3 - Weapons of math destruction.pptx",
+    "sha256": "fc9fb400c343298abc11188490d0bed0df49f34f162adb01c81dd06ee77b6345",
+    "slides": 46,
+    "notes_parts": 13,
+    "text_characters_inspected": 16809
+  },
+  {
+    "file": "1.4 - Setting up your working environment.pptx",
+    "sha256": "d56eddf0e7441e47d7c1bafb29f220f4b1ae202a148ef093667f913fa2cae778",
+    "slides": 37,
+    "notes_parts": 8,
+    "text_characters_inspected": 11640
+  },
+  {
+    "file": "2 - Our first model.pptx",
+    "sha256": "c850a75969afd38fc87dc97894c39926ba969eb9e439c38cbd54489bb43d8be2",
+    "slides": 16,
+    "notes_parts": 5,
+    "text_characters_inspected": 4698
+  },
+  {
+    "file": "3 - Model quality.pptx",
+    "sha256": "430abf03c762b2a51b566e6793c759355cb352a58ce67669e62294589f719ec3",
+    "slides": 35,
+    "notes_parts": 2,
+    "text_characters_inspected": 13204
+  },
+  {
+    "file": "4 - Models.pptx",
+    "sha256": "c7861b108aae72bfecb38dfb4a413e0ca203e01f97767c76d98f2a75f8e157a3",
+    "slides": 65,
+    "notes_parts": 13,
+    "text_characters_inspected": 23926
+  },
+  {
+    "file": "5 - Data augmentation.pptx",
+    "sha256": "3b89dcdeae3d30d8514bfd6cf5fa0713bf28e670064be7036e753a540c681e58",
+    "slides": 48,
+    "notes_parts": 12,
+    "text_characters_inspected": 27792
+  },
+  {
+    "file": "6 - Time series.pptx",
+    "sha256": "20694e60239d5da66f9f04b94c9b0b7a9294d6796bfac5c44422a666bbe5ea11",
+    "slides": 29,
+    "notes_parts": 8,
+    "text_characters_inspected": 12043
+  },
+  {
+    "file": "7 - Unsupervised learning.pptx",
+    "sha256": "1dad9368e4545d441f52a9ad247c2e557cace506ff0d9cf7321534bc0ad4899f",
+    "slides": 13,
+    "notes_parts": 2,
+    "text_characters_inspected": 3821
+  }
+]

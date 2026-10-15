@@ -1,0 +1,39 @@
+{
+  "finished_at_utc": "2026-10-15T16:51:20.580911+00:00",
+  "all_passed": true,
+  "checks": [
+    {
+      "controle": "Exacte trainingsomgeving",
+      "geslaagd": true
+    },
+    {
+      "controle": "Final-structuur en alle lokale links",
+      "geslaagd": true
+    },
+    {
+      "controle": "Volledige Python API-/modeltests",
+      "geslaagd": true
+    },
+    {
+      "controle": "Frontendtests en syntaxis",
+      "geslaagd": true
+    },
+    {
+      "controle": "Twaalf verse notebookuitvoeringen",
+      "geslaagd": true
+    },
+    {
+      "controle": "Pipeline en serving-export identiek",
+      "geslaagd": true
+    },
+    {
+      "controle": "Live website en beide API-modellen",
+      "geslaagd": true
+    },
+    {
+      "controle": "Final en actieve modelketen behouden",
+      "geslaagd": true
+    }
+  ],
+  "training_repeated": "Four fixed Mushroom model reproductions through the twelve Final notebooks; no automatic publication."
+}

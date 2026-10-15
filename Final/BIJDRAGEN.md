@@ -49,6 +49,31 @@ De [GenAI Disclosure](GENAI_DISCLOSURE.md) licht deze AI-hulp en controle verder
 
 Raouls hoofddeel staat in de definitieve PowerPoint op dia 14–22, met verborgen reserves op dia 26–27. De [persoonlijke spreektekst](Presentatie/SPREEKPLAN.md) bevat zijn bijdrage, tekst per dia en voorbereiding op vragen. Zijn lokale hertrainingspipeline fit dezelfde vaste RF320 opnieuw en controleert voorspellingen na herladen. Dit staat los van de centrale Mushroom-workflow en bewijst geen automatische live Citi Bike-modelupdate.
 
+## Milan Wouters — bevestigd op 15 oktober 2026
+
+Milan bevestigde de volgende eigen bijdragen:
+
+- Meegewerkt aan de data cleaning en EDA van de Mushroom-data. Zijn oorspronkelijke uitwerking staat in [clean en explore](../SolutionMilan/MushroomDataset/01_clean_en_explore.ipynb) en [data preparation](../SolutionMilan/MushroomDataset/02_data_preparation.ipynb). Deze oorspronkelijke notebooks horen bij de historische databron; de definitieve vergelijking gebruikt het cursusbestand met 5.000 rijen.
+- De frontend herbouwd voor het gezamenlijke project. Dit bouwt voort op de eerdere gezamenlijke UI van Jorre en de oorspronkelijke Citi Bike-applicatieonderdelen van Raoul; hun bronbijdragen blijven behouden.
+- Final kritisch laten controleren aan de hand van de aangeleverde lesmaterialen en verbeteringen laten uitwerken in `solutions/milan`. Milan bepaalde daarbij dat de aanpak bij de geleerde methoden moest blijven passen en dat de werkende keten behouden moest blijven.
+- De gerichte Final-verbeteringen met Codex aangebracht: twee notebooklinks hersteld, de aanvullende ontwikkelvergelijking met bevroren resultaten toegevoegd en de notebookvereisten compatibel vastgezet. De actieve modellen zijn hiermee niet vervangen.
+- De uitgebreide technische eindcontrole met Codex laten uitvoeren en als [uitgevoerd bewijsnotebook](../solutions/milan/11_Final_eindcontrole.ipynb) laten bewaren: twaalf notebookuitvoeringen, 28 Python-tests, 19 frontendtests, vergelijking van pipeline en export op 5.000 rijen en echte controles van beide publieke voorspelformulieren. De [bewijsmap](../solutions/milan/eindcontrole/README.md) vermeldt de precieze grenzen.
+
+Voor de recente review, alternatieven, Final-aanpassingen, testcode en rapportage
+gebruikte Milan **OpenAI Codex**. De implementatie en uitvoering met deze hulp
+waren substantieel. Zijn oorspronkelijke voorbereidingsnotebooks vermelden
+eveneens hulp van Codex bij code, structuur en uitleg. Dit wordt niet voorgesteld
+als volledig zelfstandig geschreven code of als handmatig door Milan uitgevoerde
+tests. Milan gaf de opdrachten, bepaalde de gewenste scope en vroeg om concrete
+verbeteringen en controleerbaar bewijs. Ook deze bijdragenvermelding is met
+Codex opgesteld op basis van zijn eigen bevestiging.
+
+Dit bevestigt Milans aandeel en de beschreven AI-inzet. Het betekent niet dat
+de technische tests zijn persoonlijke beheersing of de eindgoedkeuring van het
+hele team bewijzen. Hij blijft verantwoordelijk voor het kunnen toelichten van
+zijn onderdeel. De [GenAI Disclosure](GENAI_DISCLOSURE.md#milan-wouters--eigen-genai-inzet)
+beschrijft de hulp, echte opdrachten en controles voor zijn bijdrage.
+
 ## Andrew Noeyens - bevestigd op 15 oktober 2026
 
 Andrew bevestigde de volgende bijdragen aan de Mushroom Challenge:
@@ -74,7 +99,6 @@ deze workflow claimt geen automatische nieuwe Citi Bike-training.
 
 ## Nog door het team te bevestigen
 
-- Milan controleren en preciseren nog de eigen bijdrage en AI-inzet.
 - Iedereen kan de code, ontwerpkeuzes en conclusies zelfstandig uitleggen.
 - Sprekers en de uiteindelijke mondelinge taakverdeling worden samen afgesproken.
 

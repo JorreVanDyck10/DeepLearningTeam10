@@ -1,0 +1,302 @@
+[
+  {
+    "family": "rf_selection",
+    "fold": 1,
+    "parameters": {
+      "classifier__min_samples_leaf": 1,
+      "inputs__drop_noise": true,
+      "inputs__drop_spore": false
+    },
+    "inner_cv_macro_f1": 0.7615950847017966,
+    "f1_threshold": 0.49,
+    "fpr_threshold": 0.46218100587495875,
+    "seconds": 67.3286308000097
+  },
+  {
+    "family": "lightgbm",
+    "fold": 1,
+    "parameters": {
+      "classifier__min_child_samples": 20,
+      "classifier__num_leaves": 31,
+      "inputs__drop_noise": true
+    },
+    "inner_cv_macro_f1": 0.7439238580152366,
+    "f1_threshold": 0.49,
+    "fpr_threshold": 0.5619550794861706,
+    "seconds": 10.803082500002347
+  },
+  {
+    "family": "catboost",
+    "fold": 1,
+    "parameters": {
+      "classifier__cat_features": [
+        "spore_print_color",
+        "gill_color",
+        "habitat",
+        "season",
+        "ring_type",
+        "cap_shape",
+        "stem_surface"
+      ],
+      "classifier__depth": 6,
+      "classifier__l2_leaf_reg": 3,
+      "inputs__drop_noise": true
+    },
+    "inner_cv_macro_f1": 0.7297709316965424,
+    "f1_threshold": 0.51,
+    "fpr_threshold": 0.5399727809581831,
+    "seconds": 202.90348480001558
+  },
+  {
+    "family": "voting",
+    "fold": 1,
+    "weights": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "inner_oof_macro_f1": 0.7637265319485791,
+    "f1_threshold": 0.49,
+    "fpr_threshold": 0.46218100587495875
+  },
+  {
+    "family": "rf_selection",
+    "fold": 2,
+    "parameters": {
+      "classifier__min_samples_leaf": 1,
+      "inputs__drop_noise": true,
+      "inputs__drop_spore": true
+    },
+    "inner_cv_macro_f1": 0.7595168074062896,
+    "f1_threshold": 0.48,
+    "fpr_threshold": 0.4644862255061768,
+    "seconds": 253.83094700000947
+  },
+  {
+    "family": "lightgbm",
+    "fold": 2,
+    "parameters": {
+      "classifier__min_child_samples": 20,
+      "classifier__num_leaves": 31,
+      "inputs__drop_noise": true
+    },
+    "inner_cv_macro_f1": 0.7470260459217029,
+    "f1_threshold": 0.53,
+    "fpr_threshold": 0.5514338759886404,
+    "seconds": 11.370665800001007
+  },
+  {
+    "family": "catboost",
+    "fold": 2,
+    "parameters": {
+      "classifier__cat_features": [
+        "spore_print_color",
+        "gill_color",
+        "habitat",
+        "season",
+        "ring_type",
+        "cap_shape",
+        "stem_surface"
+      ],
+      "classifier__depth": 6,
+      "classifier__l2_leaf_reg": 3,
+      "inputs__drop_noise": true
+    },
+    "inner_cv_macro_f1": 0.7400812670832234,
+    "f1_threshold": 0.49999999999999994,
+    "fpr_threshold": 0.5232028042005166,
+    "seconds": 195.45990170002915
+  },
+  {
+    "family": "voting",
+    "fold": 2,
+    "weights": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "inner_oof_macro_f1": 0.7687516249824125,
+    "f1_threshold": 0.49,
+    "fpr_threshold": 0.4841536263336327
+  },
+  {
+    "family": "rf_selection",
+    "fold": 3,
+    "parameters": {
+      "classifier__min_samples_leaf": 1,
+      "inputs__drop_noise": false,
+      "inputs__drop_spore": false
+    },
+    "inner_cv_macro_f1": 0.759108420976088,
+    "f1_threshold": 0.49999999999999994,
+    "fpr_threshold": 0.46226113334400726,
+    "seconds": 72.14081749995239
+  },
+  {
+    "family": "lightgbm",
+    "fold": 3,
+    "parameters": {
+      "classifier__min_child_samples": 60,
+      "classifier__num_leaves": 31,
+      "inputs__drop_noise": true
+    },
+    "inner_cv_macro_f1": 0.7500962080417365,
+    "f1_threshold": 0.52,
+    "fpr_threshold": 0.5553874881160874,
+    "seconds": 11.839869900024496
+  },
+  {
+    "family": "catboost",
+    "fold": 3,
+    "parameters": {
+      "classifier__cat_features": [
+        "spore_print_color",
+        "gill_color",
+        "habitat",
+        "season",
+        "ring_type",
+        "cap_shape",
+        "stem_surface"
+      ],
+      "classifier__depth": 6,
+      "classifier__l2_leaf_reg": 3,
+      "inputs__drop_noise": true
+    },
+    "inner_cv_macro_f1": 0.7488574616133152,
+    "f1_threshold": 0.49,
+    "fpr_threshold": 0.5142274954552842,
+    "seconds": 179.07535909995204
+  },
+  {
+    "family": "voting",
+    "fold": 3,
+    "weights": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "inner_oof_macro_f1": 0.7667139644937488,
+    "f1_threshold": 0.49,
+    "fpr_threshold": 0.4885112379140152
+  },
+  {
+    "family": "rf_selection",
+    "fold": 4,
+    "parameters": {
+      "classifier__min_samples_leaf": 1,
+      "inputs__drop_noise": true,
+      "inputs__drop_spore": true
+    },
+    "inner_cv_macro_f1": 0.7458502816985817,
+    "f1_threshold": 0.43999999999999995,
+    "fpr_threshold": 0.4733254831634722,
+    "seconds": 69.23625789996004
+  },
+  {
+    "family": "lightgbm",
+    "fold": 4,
+    "parameters": {
+      "classifier__min_child_samples": 20,
+      "classifier__num_leaves": 15,
+      "inputs__drop_noise": true
+    },
+    "inner_cv_macro_f1": 0.7381448357563425,
+    "f1_threshold": 0.52,
+    "fpr_threshold": 0.5724740990925881,
+    "seconds": 9.218543800001498
+  },
+  {
+    "family": "catboost",
+    "fold": 4,
+    "parameters": {
+      "classifier__cat_features": [
+        "spore_print_color",
+        "gill_color",
+        "habitat",
+        "season",
+        "ring_type",
+        "cap_shape",
+        "stem_surface"
+      ],
+      "classifier__depth": 6,
+      "classifier__l2_leaf_reg": 10,
+      "inputs__drop_noise": true
+    },
+    "inner_cv_macro_f1": 0.7259757155642687,
+    "f1_threshold": 0.51,
+    "fpr_threshold": 0.5659561413635443,
+    "seconds": 187.06839929998387
+  },
+  {
+    "family": "voting",
+    "fold": 4,
+    "weights": [
+      0.5,
+      0.5,
+      0.0
+    ],
+    "inner_oof_macro_f1": 0.7539415400779386,
+    "f1_threshold": 0.51,
+    "fpr_threshold": 0.5000912930568786
+  },
+  {
+    "family": "rf_selection",
+    "fold": 5,
+    "parameters": {
+      "classifier__min_samples_leaf": 1,
+      "inputs__drop_noise": true,
+      "inputs__drop_spore": true
+    },
+    "inner_cv_macro_f1": 0.7595450420157737,
+    "f1_threshold": 0.42999999999999994,
+    "fpr_threshold": 0.45773935636132196,
+    "seconds": 67.58126459998311
+  },
+  {
+    "family": "lightgbm",
+    "fold": 5,
+    "parameters": {
+      "classifier__min_child_samples": 20,
+      "classifier__num_leaves": 31,
+      "inputs__drop_noise": true
+    },
+    "inner_cv_macro_f1": 0.7451192633135514,
+    "f1_threshold": 0.5499999999999999,
+    "fpr_threshold": 0.5352260307549302,
+    "seconds": 10.28462109999964
+  },
+  {
+    "family": "catboost",
+    "fold": 5,
+    "parameters": {
+      "classifier__cat_features": [
+        "spore_print_color",
+        "gill_color",
+        "habitat",
+        "season",
+        "ring_type",
+        "cap_shape",
+        "stem_surface"
+      ],
+      "classifier__depth": 6,
+      "classifier__l2_leaf_reg": 3,
+      "inputs__drop_noise": true
+    },
+    "inner_cv_macro_f1": 0.7217946333509485,
+    "f1_threshold": 0.5599999999999999,
+    "fpr_threshold": 0.5469220358968253,
+    "seconds": 195.56334200000856
+  },
+  {
+    "family": "voting",
+    "fold": 5,
+    "weights": [
+      0.3333333333333333,
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "inner_oof_macro_f1": 0.7690871570203126,
+    "f1_threshold": 0.47,
+    "fpr_threshold": 0.4839981755073422
+  }
+]

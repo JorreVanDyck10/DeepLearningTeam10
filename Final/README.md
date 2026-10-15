@@ -42,6 +42,14 @@ bewezen detector voor echte paddenstoelen. De website bevestigt daarom geen
 eetbaarheid: zij toont giftig of onzeker / mogelijk giftig. Zie het
 [beslisrapport](../docs/mushroom_decisions.md).
 
+Het [vergelijkingsnotebook](Mushroom/09_vergelijking.ipynb) bevat daarnaast een
+duidelijk gemarkeerde aanvulling met featureselectie en voting uit
+[Milans ontwikkelstudie](https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/d8fe8dc5516372316e7d6d09e5e2ecdab457ce1b/solutions/milan/RESULTATEN_V3.md). Die cijfers komen
+uit vijf buitenfolds op 4.100 trainingsrijen, niet uit de 900 ontwikkeltestrecords.
+Het huidige model wordt door deze rapportaanvulling niet vervangen.
+De [bevroren resultatensamenvatting](Mushroom/reports/milan_development_summary_v3.csv)
+is bij Final opgenomen; deze aanvulling vereist geen lokale Milan-omgeving.
+
 De huidige herlaadbare pipeline staat in
 [`Mushroom/artifacts/current_pipeline.joblib`](Mushroom/artifacts/current_pipeline.joblib).
 De oorspronkelijke wetenschappelijke vergelijking en pipeline blijven onveranderd
@@ -103,9 +111,10 @@ blijven voor herkomstcontrole bewaard en tellen niet als definitieve Mushroom-
 evaluatie. Oudere individuele notebooks blijven onderzoeksarchief; hun cijfers
 mogen niet worden gecombineerd met de nieuwe gedeelde split.
 
-**Stap 5 is gedeeltelijk afgerond:** Jorres, Raouls en Andrews bijdragen en AI-gebruik zijn bevestigd en de
-GenAI-verantwoording is uitgewerkt tegen de aangeleverde policy. Milan
-controleert nog zijn eigen bijdrage/AI-inzet; iedereen moet de inhoud
+**Stap 5 is gedeeltelijk afgerond:** Jorre, Raoul, Andrew en Milan hebben hun eigen
+bijdragen en beschreven AI-inzet bevestigd. Milan vermeldt cleaning/EDA, de
+herbouwde frontend en de recente Final-verbeteringen en eindcontrole met Codex.
+De GenAI-verantwoording is uitgewerkt tegen de aangeleverde policy; iedereen moet de inhoud
 zelfstandig kunnen verdedigen. De [inlevercheck](INLEVERCHECK.md) houdt die
 persoonlijke controles afzonderlijk open.
 
@@ -113,7 +122,7 @@ persoonlijke controles afzonderlijk open.
 
 De eindoplevering sluit af met de [volledige GenAI Disclosure](GENAI_DISCLOSURE.md).
 Deze beschrijft AI-code versus menselijke bijdragen, proza en structuur, vijf workflowvoorbeelden
-van Jorre, twee illustratieve uitlegprompts van Raoul, reproduceerbare controles en concrete bijsturing. De [bijdragen](BIJDRAGEN.md)
-vermelden Jorres pipeline, backend, UI en AWS-training en Raouls Citi Bike-onderzoek,
-modellen, oorspronkelijke applicatieonderdelen en kritische controle van AI-hulp. De individuele review en
+van Jorre, twee illustratieve uitlegprompts van Raoul, vijf illustratieve voorbeeldprompts
+van Milan, reproduceerbare controles en concrete bijsturing. De [bijdragen](BIJDRAGEN.md)
+vermelden de bevestigde onderdelen van Jorre, Raoul, Andrew en Milan. De individuele review en
 zelfstandige beheersing door alle teamleden blijven menselijke eindcontroles.

@@ -1,0 +1,17 @@
+{
+  "finished_at_utc": "2026-10-15T13:08:59.751713+00:00",
+  "tests_run": 3,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "success": true,
+  "scope": "Milan ML checks and local Mushroom controller/form metadata. No full production/Citi Bike integration claim.",
+  "artifacts": {
+    "current_pipeline.joblib": "214f74bddab775da69069f87272e788ece18d8f5fef80b76f9162346685e2fb2",
+    "mushroom_rf300.json": "2d9e582ed347d23719aa4ec9946c1099c66fc9b292cfec15847fd780749cdec5",
+    "mushroom_rf300.npz": "ab6fe0722b5d3d4a8c0adaf904c306d9e1b19682d57cabbf61e4991a3ab0312d",
+    "training_input_export_references.csv": "e3c30e17f8528137d0e8675ba55b7410e7272c2f6319f8d2bedb127938540171"
+  },
+  "output": "test_geometry_units_zero_division_and_input_preservation (test_improvements.LearningChecks.test_geometry_units_zero_division_and_input_preservation) ... ok\ntest_imputation_learns_only_training_and_unknown_categories_work (test_improvements.LearningChecks.test_imputation_learns_only_training_and_unknown_categories_work) ... ok\ntest_saved_outer_predictions_are_excluded_from_their_training (test_improvements.LearningChecks.test_saved_outer_predictions_are_excluded_from_their_training) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.252s\n\nOK\n",
+  "artifact_hash_mode": "LF-normalized SHA256 for JSON/CSV; raw SHA256 for binary models"
+}

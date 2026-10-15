@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "model_id": "mushroom_final_rf300",
+  "model_name": "RF300 — Milan ontwikkelkandidaat",
+  "features": [
+    "cap_diameter",
+    "stem_height",
+    "stem_width",
+    "spore_print_color",
+    "gill_color",
+    "habitat",
+    "season",
+    "ring_type",
+    "cap_shape",
+    "stem_surface",
+    "jumbled_noise_1"
+  ],
+  "classes": [
+    "e",
+    "p"
+  ],
+  "n_estimators": 300,
+  "source_pipeline": "solutions/milan/artifacts/current_pipeline.joblib",
+  "source_pipeline_sha256": "214f74bddab775da69069f87272e788ece18d8f5fef80b76f9162346685e2fb2",
+  "forest_file": "mushroom_rf300.npz",
+  "forest_sha256": "ab6fe0722b5d3d4a8c0adaf904c306d9e1b19682d57cabbf61e4991a3ab0312d",
+  "numeric_features": [
+    "cap_diameter",
+    "stem_height",
+    "stem_width"
+  ],
+  "numeric_medians": [
+    6.13,
+    6.0,
+    11.34
+  ],
+  "categorical": [
+    {
+      "name": "spore_print_color",
+      "imputation": "missing",
+      "categories": [
+        "g",
+        "k",
+        "missing",
+        "n",
+        "p",
+        "r",
+        "u",
+        "w"
+      ]
+    },
+    {
+      "name": "gill_color",
+      "imputation": "missing",
+      "categories": [
+        "b",
+        "e",
+        "f",
+        "g",
+        "k",
+        "missing",
+        "n",
+        "o",
+        "p",
+        "r",
+        "u",
+        "w",
+        "y"
+      ]
+    },
+    {
+      "name": "habitat",
+      "imputation": "missing",
+      "categories": [
+        "d",
+        "g",
+        "h",
+        "l",
+        "m",
+        "missing",
+        "p",
+        "u",
+        "w"
+      ]
+    },
+    {
+      "name": "season",
+      "imputation": "missing",
+      "categories": [
+        "a",
+        "missing",
+        "s",
+        "u",
+        "w"
+      ]
+    },
+    {
+      "name": "ring_type",
+      "imputation": "missing",
+      "categories": [
+        "e",
+        "f",
+        "g",
+        "l",
+        "m",
+        "missing",
+        "p",
+        "r",
+        "z"
+      ]
+    },
+    {
+      "name": "cap_shape",
+      "imputation": "missing",
+      "categories": [
+        "b",
+        "c",
+        "f",
+        "missing",
+        "o",
+        "p",
+        "s",
+        "x"
+      ]
+    },
+    {
+      "name": "stem_surface",
+      "imputation": "missing",
+      "categories": [
+        "f",
+        "g",
+        "h",
+        "i",
+        "k",
+        "missing",
+        "s",
+        "t",
+        "y"
+      ]
+    },
+    {
+      "name": "jumbled_noise_1",
+      "imputation": "missing",
+      "categories": [
+        "b",
+        "c",
+        "f",
+        "missing",
+        "o",
+        "p",
+        "s",
+        "x"
+      ]
+    }
+  ],
+  "dataset_rows": 5000,
+  "train_rows": 4100,
+  "test_rows": 0,
+  "dataset_sha256_lf": "1f1a25f2f330458ed95ce9f6ffe3241582312a42cb21797a2b7bd5e5ad281114",
+  "metrics": {
+    "accuracy": 0.7890243902439025,
+    "macro_f1": 0.7646227009565549,
+    "cv_macro_f1_mean": 0.7646227009565549,
+    "cv_macro_f1_std": 0.0236004307537462,
+    "cv_recall_p_mean": 0.6172907374753656,
+    "recall_poisonous": 0.6172907374753656,
+    "poisonous_predicted_edible": 594,
+    "fn": 594,
+    "fp": 271,
+    "metrics_scope": "outer CV on 4100 development rows"
+  },
+  "validation_note": "Ontwikkelings-CV: vijf buitenfolds op 4.100 rijen; geen nieuwe onafhankelijke eindtest.",
+  "example": {
+    "cap_diameter": 7.0,
+    "stem_height": 5.73,
+    "stem_width": 10.49,
+    "spore_print_color": null,
+    "gill_color": "y",
+    "habitat": "d",
+    "season": "u",
+    "ring_type": "f",
+    "cap_shape": "f",
+    "stem_surface": null,
+    "jumbled_noise_1": "x"
+  },
+  "validation_rows": 4100,
+  "concept_only": true,
+  "promotion_recommended": true,
+  "proposed_decision_threshold": 0.44999999999999996,
+  "raw_classifier_threshold": 0.5,
+  "reported_metrics_policy": "default",
+  "proposed_policy": "f1_threshold",
+  "proposed_policy_metrics": {
+    "folds": 5.0,
+    "accuracy_mean": 0.787560975609756,
+    "accuracy_sd": 0.0213397211832409,
+    "macro_f1_mean": 0.7691250944057324,
+    "macro_f1_sd": 0.0234624859941204,
+    "recall_p_mean": 0.6681713515195519,
+    "recall_p_sd": 0.039663812267109,
+    "precision_p_mean": 0.7449356105004249,
+    "precision_p_sd": 0.0316973369049599,
+    "specificity_e_mean": 0.8602696559959938,
+    "specificity_e_sd": 0.0225890946388639,
+    "balanced_accuracy_mean": 0.7642205037577728,
+    "balanced_accuracy_sd": 0.0235349571133736,
+    "roc_auc_mean": 0.8259553950216606,
+    "roc_auc_sd": 0.02036183833761,
+    "average_precision_mean": 0.7659333260946702,
+    "average_precision_sd": 0.0283944093750149,
+    "tn_total": 2192.0,
+    "fp_total": 356.0,
+    "fn_total": 515.0,
+    "tp_total": 1037.0
+  },
+  "policy_note": "New threshold is metadata only; the original runtime still uses its original raw classifier and website policy. Preview applies the proposal explicitly."
+}

@@ -1,0 +1,28 @@
+{
+  "notebooks": [
+    {
+      "file": "08_featureselectie_en_boosting.ipynb",
+      "code_cells": 5,
+      "executed_in_kernel": false,
+      "execution_engine": "in-process IPython, fresh namespace",
+      "sha256_lf": "a6f4b4b51302c3b5d40bfb9e063a76b9c05e0997dd8c4c6d526a6f27e3df5b48"
+    },
+    {
+      "file": "09_voting_en_vergelijking.ipynb",
+      "code_cells": 5,
+      "executed_in_kernel": false,
+      "execution_engine": "in-process IPython, fresh namespace",
+      "sha256_lf": "0bfc7662ba5939c0d7469433e376397cfe8eff44c85552a2378f400c8da45b51"
+    },
+    {
+      "file": "10_foutanalyse_v3.ipynb",
+      "code_cells": 4,
+      "executed_in_kernel": false,
+      "execution_engine": "in-process IPython, fresh namespace",
+      "sha256_lf": "d1dd42b48d3a59aea2fa98419e0f779cc01ffef472978d90af6379f54d96f14d"
+    }
+  ],
+  "execution_engine": "in-process IPython, fresh namespaces",
+  "all_executed": true,
+  "validated_with": "nbformat.validate"
+}
