@@ -21,5 +21,7 @@ rapporten te gebruiken.
 
 ---
 
-**Vóór indienen:** rond stap 5 van de eindcontrole af en controleer de laatste
-workflows en publieke voorspellingen. Dit bestand is geen Canvas-uploadbevestiging.
+**Vóór indienen:** Jorres bijdragen en de GenAI-verantwoording zijn ingevuld.
+Laat de andere teamleden hun eigen bijdrage en AI-inzet bevestigen en controleer
+de laatste workflows en publieke voorspellingen. Dit bestand is geen
+Canvas-uploadbevestiging.

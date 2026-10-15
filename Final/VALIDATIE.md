@@ -52,8 +52,10 @@ de opgeslagen notebookuitvoer en slides zijn de presentatiefallback.
 
 ## Nog menselijke eindacties
 
-Stap 5 blijft door Jorre te doen: werkelijke bijdragen invullen en de GenAI-
-vermelding tegen de opleidingspolicy controleren. Sprekers verdelen en oefenen,
+Jorres bijdrage is bevestigd en de GenAI-verantwoording is uitgewerkt tegen de
+aangeleverde policy. De overige teamleden moeten hun eigen bijdrage/AI-inzet en
+zelfstandige beheersing nog bevestigen; zie [bijdragen](BIJDRAGEN.md) en
+[GenAI Disclosure](GENAI_DISCLOSURE.md). Sprekers verdelen en oefenen,
 de uiteindelijke Canvas-indiening en de mondelinge presentatie zijn niet door
 deze technische controles afgevinkt. De uploadtekst staat gereed; er is geen
 Canvas-indieningsbevestiging gemaakt of verondersteld.

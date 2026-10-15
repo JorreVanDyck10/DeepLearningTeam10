@@ -28,3 +28,10 @@ Ze blijven behouden voor herkomstcontrole. Gebruik voortaan de nieuwe correct_da
 
 `04_aws_correct_dataset.ipynb` in deze bovenliggende map is de herbruikbare template;
 de daadwerkelijk uitgevoerde versie staat in correct_dataset.
+
+## Bijdrage en GenAI
+
+Jorre Van Dyck voerde de AWS-training en tuning op SageMaker uit en leverde de
+exports aan. Hij stelde ook de gezamenlijke pipeline op en ontwikkelde backend
+en UI met substantiële hulp van Codex. Zie [bijdragen](../../Final/BIJDRAGEN.md) en
+[GenAI Disclosure](../../Final/GENAI_DISCLOSURE.md).

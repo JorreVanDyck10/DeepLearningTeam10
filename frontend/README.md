@@ -91,6 +91,9 @@ Categoriebetekenissen en meeteenheden komen uit de [UCI-metadata](https://archiv
 De UI toont alleen categorieÃ«n die de opgeslagen encoder kent. Onbekende waarden worden als null verstuurd.
 Voor een toekomstig automatisch bijgewerkt model moet metadata samen met de modelversie worden bijgewerkt.
 
-Codex maakte deze frontend, labels en koppeling. Controleer deze bijdrage volgens de GenAI-policy.
+Jorre Van Dyck bouwde de gezamenlijke UI en backendkoppeling met substantiële hulp
+van Codex voor HTML/CSS/JavaScript, labels en tests. De aangeleverde Citi Bike-
+componenten van Raoul blijven als bronbijdrage vermeld. Zie de
+[bijdragen](../Final/BIJDRAGEN.md) en [GenAI Disclosure](../Final/GENAI_DISCLOSURE.md).
 
 De Citi Bike-pagina verwacht `/predict/citibike`. Het trainingsscript vernieuwt `citibike_metrics.json`; commit de bijgewerkte metrics samen met het kleine model. De eerste versie gebruikt januari 2025 en vermeldt die beperking op de pagina.

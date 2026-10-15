@@ -16,20 +16,24 @@ vragen. Controleer eventuele actuele Canvas-mededelingen zelf.
 - [x] Werkelijke Mushroom-train/valideer/publiceer-workflow toegevoegd.
 - [x] Train/valideer/publiceer-workflow werkelijk geslaagd; beide publieke formulieren en exacte modelversie gecontroleerd. Zie [validatie](VALIDATIE.md).
 
-## Stap 5 — door Jorre later af te ronden
+## Stap 5 — bijdragen en GenAI
 
-- [ ] Per notebook controleren wie daadwerkelijk wat heeft gedaan.
-- [ ] De echte menselijke bijdragen invullen waar dat nog openstaat.
-- [ ] De GenAI-vermelding vergelijken met de officiële opleidingspolicy.
-- [ ] Ieder teamlid kan de eigen code en de hoofdlijn van beide datasets uitleggen.
+- [x] Jorres bijdrage bevestigd: pipeline, gezamenlijke backend, UI en AWS-training.
+- [x] De aangeleverde GenAI-policy gelezen en de gevraagde verantwoording uitgewerkt.
+- [x] Functionele AI-scope, schrijfhulp, vijf echte prompts en concrete controles vastgelegd in [GenAI Disclosure](GENAI_DISCLOSURE.md).
+- [ ] De andere teamleden controleren en preciseren de eigen bijdragen en AI-inzet.
+- [ ] Het team leest en bevestigt de uiteindelijke verantwoording.
+- [ ] Ieder teamlid kan code, keuzes en conclusies zelfstandig uitleggen.
 
-Deze vier punten zijn bewust niet door Codex als afgerond gemarkeerd.
-Jorre vroeg om de herinnering **bij de eindcontrole in deze chat**.
+De [bijdragen](BIJDRAGEN.md) leggen Jorres bevestiging van 15 oktober vast.
+Technische controles of een AI-gegenereerde tekst bewijzen geen persoonlijke
+review of mondelinge beheersing. De herinnering bij de eindcontrole in deze chat
+is gegeven; alleen de bovenstaande bevestigde onderdelen zijn afgevinkt.
 
 ## Presentatie en indiening
 
 - [ ] Sprekers en volgorde afspreken; geen fictieve taakverdeling gebruiken.
-- [ ] Met de PowerPoint ongeveer 18 minuten presenteren en circa 7 minuten voor vragen vrijhouden.
+- [ ] Met de actuele groepspresentatie ongeveer 20 minuten inclusief demo oefenen en circa 5 minuten voor vragen vrijhouden.
 - [ ] Beide websitevoorbeelden demonstreren; fallback zijn de opgeslagen uitvoer en spreeknotities.
 - [ ] De bijbehorende Canvas-opdracht openen en de repositorylink indienen.
 - [ ] Bevestiging van Canvas controleren; pas daarna is de opdracht ingeleverd.

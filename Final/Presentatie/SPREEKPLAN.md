@@ -1,5 +1,10 @@
 # Spreekplan — 25 minuten inclusief vragen
 
+> Historisch spreekplan voor de eerdere twaalfdia-versie. Gebruik voor de actuele
+> groepspresentatie [SPREEKPLAN_GROEP.md](SPREEKPLAN_GROEP.md). Jorres bijdragen en
+> de GenAI-verantwoording zijn inmiddels centraal ingevuld; oude statuszinnen
+> hieronder beschrijven de voorbereiding van de vorige versie.
+
 Plan ongeveer 16,5 minuut uitleg, 1,5 minuut demonstratie en 7 minuten vragen.
 Sprekers spreken jullie zelf af; de definitieve bijdragen blijven stap 5.
 De cover is een AI-illustratie, geen foto uit de dataset. Tabellen en grafieken

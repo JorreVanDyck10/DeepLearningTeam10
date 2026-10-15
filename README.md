@@ -4,8 +4,10 @@
 Die leesmap bevat de definitieve notebookvolgorde, aparte modelnotebooks,
 automatische training en publicatie, presentatie en Canvas-inlevertekst.
 De oorspronkelijke bijdragen en oudere experimenten hieronder blijven behouden.
-Stap 5 (menselijke bijdragen en controle van de GenAI-policy) rondt Jorre nog af;
-de aanwezigheid van deze map betekent niet dat Canvas al is ingediend.
+Jorres bijdragen zijn bevestigd in [Final/BIJDRAGEN.md](Final/BIJDRAGEN.md).
+De [GenAI Disclosure](Final/GENAI_DISCLOSURE.md) is uitgewerkt tegen de aangeleverde
+policy; overige bijdragen en de persoonlijke inhoudelijke review blijven bij het team.
+De aanwezigheid van deze map betekent niet dat Canvas al is ingediend.
 
 Jorre Van Dyck
 Milan Wouters
@@ -64,9 +66,9 @@ Start every notebook with the contributors and what each person did. Explain eac
 
 Citi Bike downloads, extraction, and assembly must be performed with code. Establish a statistically supported hypothesis before modelling. Keep large data files and model artifacts out of Git.
 
-## GenAI disclosure
+## GenAI-verantwoording
 
-Codex generated the initial folder structure, notebook templates, structure documentation, and dataset download code. The course GenAI policy was not provided with the assignment text; review it and complete any required disclosure as the project develops.
+De aangeleverde opleidingspolicy is gelezen. De volledige [GenAI Disclosure](Final/GENAI_DISCLOSURE.md) vermeldt de substantiële code- en schrijfhulp, vijf echte prompts, correcties en controles. Jorres bevestigde bijdragen staan in [het bijdragenoverzicht](Final/BIJDRAGEN.md).
 
 ## Download the datasets
 
@@ -192,3 +194,11 @@ served through a lossless, memory-mapped export downloaded from a checksum-pinne
 GitHub Release; model artifacts remain outside Git. The project page shows the
 existing July–August 2026 test metrics. See
 [deployment and input contract](docs/citibike_raoul.md).
+
+## GenAI Disclosure
+
+De eindoplevering sluit af met de [volledige GenAI Disclosure](Final/GENAI_DISCLOSURE.md).
+Deze beschrijft AI-code versus menselijke bijdragen, proza en structuur, vijf echte
+prompts, reproduceerbare controles en concrete bijsturing. De [bijdragen](Final/BIJDRAGEN.md)
+vermelden Jorres pipeline, backend, UI en AWS-training. De individuele review en
+zelfstandige beheersing door alle teamleden blijven menselijke eindcontroles.

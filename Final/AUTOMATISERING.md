@@ -70,3 +70,9 @@ vergrendeld. Voor een nieuwe studie moeten de brondata en een nieuw evaluatie-
 protocol volgens Raouls instructies worden opgebouwd. Bestaande lokale refit-
 commando's staan in zijn README. Dit onderscheid voorkomt dat een gewone deploy
 ten onrechte als nieuwe modeltraining wordt voorgesteld.
+
+## Bijdrage en GenAI
+
+Jorre Van Dyck stelde de centrale pipeline op, met substantiële hulp van Codex
+voor trainingscode, GitHub Actions, controles en publicatie. Zie [bijdragen](BIJDRAGEN.md)
+en [GenAI Disclosure](GENAI_DISCLOSURE.md).

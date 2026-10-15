@@ -99,5 +99,8 @@ Zie [de nieuwe deploymentdocumentatie](../docs/citibike_raoul.md).
 
 ## Bijdrage
 
-Codex koppelde de gekozen RF300 via een verliesvrije export aan API en formulier
-en voegde metadata- en voorspelcontroles toe. Vul de GenAI-disclosure aan volgens het opleidingsbeleid.
+Jorre Van Dyck ontwikkelde de gezamenlijke backend en modelkoppeling, met
+substantiële hulp van Codex voor FastAPI-code, lossless exports, invoercontrole,
+metadata en tests. Raouls oorspronkelijke Citi Bike-inference blijft als bronbijdrage
+vermeld. Zie [bijdragen](../Final/BIJDRAGEN.md) en de
+[GenAI Disclosure](../Final/GENAI_DISCLOSURE.md).
