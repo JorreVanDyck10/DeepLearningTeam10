@@ -53,10 +53,10 @@ Raouls hoofddeel staat in de definitieve PowerPoint op dia 14–22, met verborge
 
 Andrew bevestigde de volgende bijdragen aan de Mushroom Challenge:
 
--Voorbewerking van de dataset en het uitwerken van de EDA.
--Random Forest, Gradient Boosting en Logistic Regression modellen getraind, geëvalueerd en geoptimaliseerd.
--Eerste versie PyCaret ontwikkeld om modellen te vergelijken op basis van verschillende evaluatiemetrics.
--De notebooks en documentatie rondom de Mushroom Challenge voorbereid
+- Voorbewerking van de dataset en het uitwerken van de EDA.
+- Random Forest, Gradient Boosting en Logistic Regression modellen getraind, geëvalueerd en geoptimaliseerd.
+- Eerste versie PyCaret ontwikkeld om modellen te vergelijken op basis van verschillende evaluatiemetrics.
+- De notebooks en documentatie rondom de Mushroom Challenge voorbereid
 
 Bij de uitwerking van het Mushroom Notebook werd generatieve AI gebruikt als ondersteuning bij het schrijven en verbeteren van code,
 het uitleggen van programmeerconcepten, het structureren en verwerken van de documentatie, en hulp bij het interpreteren van modelresultaten.
