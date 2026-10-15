@@ -38,19 +38,26 @@ presentaties en spreeknotities. Ook deze verantwoording is door Codex opgesteld
 op basis van de echte chat, bestanden en policy. Het is geen automatisch bewijs
 dat alle teamleden alle teksten al hebben gelezen of begrepen.
 
-## 3. Vijf echte prompts uit de ontwikkelworkflow
+## 3. Vijf voorbeelden uit de ontwikkelworkflow
 
-Onderstaande prompts zijn letterlijk overgenomen uit Jorres berichten in deze
-chat, inclusief oorspronkelijke spelling. Het zijn geen achteraf verzonnen
-voorbeeldprompts. Zij tonen ook bijsturing en controle, naast verzoeken om code.
+De vijf onderstaande voorbeelden zijn gebaseerd op Jorres werkelijke berichten
+in deze chat. Punt 2 en 5 zijn leesbaar geformuleerde samenvattingen, geen
+letterlijke citaten. De voorbeelden tonen ook bijsturing en controle, naast
+verzoeken om code.
 
-1. Automatisering:
+1. Hulp bij het opstellen en trainen van het AWS-model:
 
-   > Maak het nu dat als er op github gepushed word dat de backend automatisch geupdate word en dat de frontend automatisch de backend ophaald
+   > Zeg me stap voor stap hoe ik het doe in aws sagemaker
 
-2. Vergelijking aan de opdracht toetsen:
+   Ik vroeg begeleiding bij het opstellen en trainen van mijn Mushroom-model
+   in AWS SageMaker. AI hielp met de notebookcode, het oplossen van foutmeldingen
+   en het opslaan van het getrainde model en de resultaten.
 
-   > Maak nu volgens de taak wat we moeten doen de vergelijking tussen de modellen
+2. Een vergelijkingsdocument als basis voor beoordeling en bijsturing:
+
+   Ik vroeg om een document waarin de resultaten van de verschillende modellen
+   naast elkaar staan, zodat ik ze kan vergelijken, de keuzes kan beoordelen en
+   kan bijsturen waar dat nodig is.
 
 3. Een verdachte uitkomst kritisch bevragen:
 
@@ -60,9 +67,12 @@ voorbeeldprompts. Zij tonen ook bijsturing en controle, naast verzoeken om code.
 
    > En dit er nog bij: Zorg er ook voor dat je het excel bestand gebruikt dat ik heb geupload naar github. De vorige die we gebruikten met 61k rijen was de foute.
 
-5. De foutkosten en beslisregel sturen:
+5. Een voorzichtigere beslisregel voor de website:
 
-   > Iegenlijk zou het pas eetbaar mogen tonen als het 95% eetbaar is ofzo niet? Of iets anders wat jij denkt. want we willen niet dat het eetbaar toont als het giftig is. giftig tonen als het eetbaar is is minder erg
+   Ik vroeg om het label 'eetbaar' alleen bij een hoge modelscore te tonen, met
+   95% als mogelijke grens om te onderzoeken. Een giftige paddenstoel onterecht
+   als eetbaar aanduiden weegt voor mij zwaarder dan een eetbare paddenstoel
+   afwijzen. Daarom vroeg ik om de beslisregel daarop af te stemmen.
 
 ## 4. Verificatie en reproduceerbaarheid
 
