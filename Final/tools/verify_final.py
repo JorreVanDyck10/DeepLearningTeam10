@@ -3,9 +3,19 @@ import hashlib
 import json
 from pathlib import Path
 import re
+from urllib.parse import unquote, urlsplit
 import nbformat
 
 ROOT = Path(__file__).resolve().parents[2]
+
+
+def verify_local_links(text, path):
+    for url in re.findall(r'\]\(([^)]+)\)', text):
+        url = url.strip().strip('<>')
+        if urlsplit(url).scheme or url.startswith('#'):
+            continue
+        target = unquote(urlsplit(url).path)
+        assert (path.parent / target).resolve().exists(), (path, url)
 
 
 def verify():
@@ -20,6 +30,9 @@ def verify():
         nb = nbformat.read(path, as_version=4); nbformat.validate(nb)
         assert not any(output.output_type == 'error' for cell in nb.cells if cell.cell_type == 'code' for output in cell.outputs), path
         assert any(c.cell_type == 'code' for c in nb.cells), path
+        for cell in nb.cells:
+            if cell.cell_type == 'markdown':
+                verify_local_links(cell.source, path)
     prep = nbformat.read(ROOT/'Final/Mushroom/02_voorbereiding.ipynb', as_version=4)
     assert all(not re.search(r'plt\.|sns\.|\.plot\(', c.source) for c in prep.cells if c.cell_type == 'code')
     for name in ['README.md','INLEVERCHECK.md','UPLOADTEKST.md','AUTOMATISERING.md','Presentatie/Team10_presentatie.pptx','Presentatie/SPREEKPLAN.md']:
@@ -27,10 +40,8 @@ def verify():
     runs = json.loads((ROOT/'Final/execution_checks.json').read_text())
     assert len(runs) == 12 and all(r['executed'] == r['code_cells'] and r['errors'] == 0 for r in runs)
     for path in (ROOT/'Final').rglob('*.md'):
-        for url in re.findall(r'\]\(([^)]+)\)', path.read_text(encoding='utf-8')):
-            if '://' in url or url.startswith('#'): continue
-            assert (path.parent/url.split('#')[0]).resolve().exists(), (path,url)
-    print('Final verified: 19 notebooks, 12 fresh executions, original source hashes and entry points.')
+        verify_local_links(path.read_text(encoding='utf-8'), path)
+    print('Final verified: 19 notebooks, stored execution receipts, original source hashes and local links.')
 
 
 if __name__ == '__main__': verify()

@@ -42,6 +42,14 @@ bewezen detector voor echte paddenstoelen. De website bevestigt daarom geen
 eetbaarheid: zij toont giftig of onzeker / mogelijk giftig. Zie het
 [beslisrapport](../docs/mushroom_decisions.md).
 
+Het [vergelijkingsnotebook](Mushroom/09_vergelijking.ipynb) bevat daarnaast een
+duidelijk gemarkeerde aanvulling met featureselectie en voting uit
+[Milans ontwikkelstudie](https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/d8fe8dc5516372316e7d6d09e5e2ecdab457ce1b/solutions/milan/RESULTATEN_V3.md). Die cijfers komen
+uit vijf buitenfolds op 4.100 trainingsrijen, niet uit de 900 ontwikkeltestrecords.
+Het huidige model wordt door deze rapportaanvulling niet vervangen.
+De [bevroren resultatensamenvatting](Mushroom/reports/milan_development_summary_v3.csv)
+is bij Final opgenomen; deze aanvulling vereist geen lokale Milan-omgeving.
+
 De huidige herlaadbare pipeline staat in
 [`Mushroom/artifacts/current_pipeline.joblib`](Mushroom/artifacts/current_pipeline.joblib).
 De oorspronkelijke wetenschappelijke vergelijking en pipeline blijven onveranderd
