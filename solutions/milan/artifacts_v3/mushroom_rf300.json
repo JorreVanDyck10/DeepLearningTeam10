@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "model_id": "mushroom_final_rf300",
+  "model_name": "RF300 — Milan featureselectie v3",
+  "features": [
+    "cap_diameter",
+    "stem_height",
+    "stem_width",
+    "spore_print_color",
+    "gill_color",
+    "habitat",
+    "season",
+    "ring_type",
+    "cap_shape",
+    "stem_surface",
+    "jumbled_noise_1"
+  ],
+  "classes": [
+    "e",
+    "p"
+  ],
+  "n_estimators": 300,
+  "source_pipeline": "solutions/milan/artifacts_v3/current_pipeline.joblib",
+  "source_pipeline_sha256": "9454a3c70e4b6478f7925d866a7aeb92afdc20f8e345d548f7b87587afc478e0",
+  "forest_file": "mushroom_rf300.npz",
+  "forest_sha256": "f8ff7df68daa0550c94ef6186b4cd7f8c24bd30b9e3cef947ca867fcb938828d",
+  "numeric_features": [
+    "cap_diameter",
+    "stem_height",
+    "stem_width"
+  ],
+  "numeric_medians": [
+    6.13,
+    6.0,
+    11.34
+  ],
+  "categorical": [
+    {
+      "name": "gill_color",
+      "imputation": "missing",
+      "categories": [
+        "b",
+        "e",
+        "f",
+        "g",
+        "k",
+        "missing",
+        "n",
+        "o",
+        "p",
+        "r",
+        "u",
+        "w",
+        "y"
+      ]
+    },
+    {
+      "name": "habitat",
+      "imputation": "missing",
+      "categories": [
+        "d",
+        "g",
+        "h",
+        "l",
+        "m",
+        "missing",
+        "p",
+        "u",
+        "w"
+      ]
+    },
+    {
+      "name": "season",
+      "imputation": "missing",
+      "categories": [
+        "a",
+        "missing",
+        "s",
+        "u",
+        "w"
+      ]
+    },
+    {
+      "name": "ring_type",
+      "imputation": "missing",
+      "categories": [
+        "e",
+        "f",
+        "g",
+        "l",
+        "m",
+        "missing",
+        "p",
+        "r",
+        "z"
+      ]
+    },
+    {
+      "name": "cap_shape",
+      "imputation": "missing",
+      "categories": [
+        "b",
+        "c",
+        "f",
+        "missing",
+        "o",
+        "p",
+        "s",
+        "x"
+      ]
+    },
+    {
+      "name": "stem_surface",
+      "imputation": "missing",
+      "categories": [
+        "f",
+        "g",
+        "h",
+        "i",
+        "k",
+        "missing",
+        "s",
+        "t",
+        "y"
+      ]
+    },
+    {
+      "name": "spore_print_color",
+      "imputation": "missing",
+      "categories": [
+        "g",
+        "k",
+        "missing",
+        "n",
+        "p",
+        "r",
+        "u",
+        "w"
+      ]
+    },
+    {
+      "name": "jumbled_noise_1",
+      "imputation": "missing",
+      "categories": [
+        "b",
+        "c",
+        "f",
+        "missing",
+        "o",
+        "p",
+        "s",
+        "x"
+      ]
+    }
+  ],
+  "dataset_rows": 5000,
+  "train_rows": 4100,
+  "test_rows": 0,
+  "dataset_sha256_lf": "1f1a25f2f330458ed95ce9f6ffe3241582312a42cb21797a2b7bd5e5ad281114",
+  "metrics": {
+    "accuracy": 0.7982926829268292,
+    "macro_f1": 0.774924541873587,
+    "recall_poisonous": 0.6288745980707395,
+    "fn": 576,
+    "fp": 251,
+    "metrics_scope": "outer CV, 4100 development rows, raw classifier"
+  },
+  "validation_note": "Derde ontwikkelstudie op eerder gebruikte 4100 trainingsrijen; geen onafhankelijke eindtest.",
+  "example": {
+    "cap_diameter": 7.0,
+    "stem_height": 5.73,
+    "stem_width": 10.49,
+    "spore_print_color": null,
+    "gill_color": "y",
+    "habitat": "d",
+    "season": "u",
+    "ring_type": "f",
+    "cap_shape": "f",
+    "stem_surface": null,
+    "jumbled_noise_1": "x"
+  },
+  "validation_rows": 4100,
+  "concept_only": true,
+  "promotion_recommended": false,
+  "proposed_decision_threshold": 0.5,
+  "raw_classifier_threshold": 0.5,
+  "reported_metrics_policy": "default",
+  "proposed_policy": "default",
+  "proposed_policy_metrics": {
+    "folds": 5.0,
+    "accuracy_mean": 0.7982926829268292,
+    "accuracy_sd": 0.017537246841217,
+    "macro_f1_mean": 0.774924541873587,
+    "macro_f1_sd": 0.0196016485282143,
+    "recall_p_mean": 0.6288745980707395,
+    "recall_p_sd": 0.0238872059223368,
+    "precision_p_mean": 0.7954701109698992,
+    "precision_p_sd": 0.0294497415939945,
+    "specificity_e_mean": 0.9014900419892908,
+    "specificity_e_sd": 0.0143130721764366,
+    "balanced_accuracy_mean": 0.7651823200300152,
+    "balanced_accuracy_sd": 0.0186685922599976,
+    "roc_auc_mean": 0.8274070329497875,
+    "roc_auc_sd": 0.020174759219711,
+    "average_precision_mean": 0.7688791863421398,
+    "average_precision_sd": 0.0272401702932573,
+    "tn_total": 2297.0,
+    "fp_total": 251.0,
+    "fn_total": 576.0,
+    "tp_total": 976.0
+  },
+  "policy_note": "RF challenger. The complete improvement goal against v2 is False; see both error counts. Public input stays eleven fields; ignored fields are appended as unused encodings.",
+  "ignored_features": [
+    "spore_print_color",
+    "jumbled_noise_1"
+  ]
+}

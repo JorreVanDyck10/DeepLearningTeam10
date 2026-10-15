@@ -1,0 +1,43 @@
+{
+  "packaged": true,
+  "goal_met": false,
+  "dominates_original_error_counts": true,
+  "extra_fn_against_v2": 61,
+  "fp_change_against_v2": -105,
+  "family": "rf_selection",
+  "policy": "default",
+  "parameters": {
+    "classifier__min_samples_leaf": 1,
+    "inputs__drop_noise": true,
+    "inputs__drop_spore": true
+  },
+  "ignored_features": [
+    "spore_print_color",
+    "jumbled_noise_1"
+  ],
+  "input_features": [
+    "cap_diameter",
+    "stem_height",
+    "stem_width",
+    "spore_print_color",
+    "gill_color",
+    "habitat",
+    "season",
+    "ring_type",
+    "cap_shape",
+    "stem_surface",
+    "jumbled_noise_1"
+  ],
+  "fulltrain_threshold": 0.5,
+  "pipeline_sha256": "9454a3c70e4b6478f7925d866a7aeb92afdc20f8e345d548f7b87587afc478e0",
+  "export_rows_checked": 4100,
+  "export_max_probability_difference": 0.0,
+  "labels_disagree": 0,
+  "null_and_unknown_category_export_check": true,
+  "ignored_field_invariance_check": true,
+  "custom_pickle_classes": false,
+  "new_serving_dependencies": false,
+  "validation_scope": "The selected PROCEDURE is evaluated in outer CV, the fulltrain artifact is not independently tested.",
+  "deployment_performed": false,
+  "development_test_rows_scored": 0
+}

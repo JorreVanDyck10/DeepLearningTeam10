@@ -1,0 +1,47 @@
+{
+  "packaged": true,
+  "goal_met": true,
+  "policy": "f1",
+  "fulltrain_weights": [
+    0.3333333333333333,
+    0.3333333333333333,
+    0.3333333333333333
+  ],
+  "fulltrain_threshold": 0.49999999999999994,
+  "parameters": {
+    "rf_selection": {
+      "classifier__min_samples_leaf": 1,
+      "inputs__drop_noise": true,
+      "inputs__drop_spore": true
+    },
+    "lightgbm": {
+      "classifier__min_child_samples": 20,
+      "classifier__num_leaves": 31,
+      "inputs__drop_noise": true
+    },
+    "catboost": {
+      "classifier__cat_features": [
+        "spore_print_color",
+        "gill_color",
+        "habitat",
+        "season",
+        "ring_type",
+        "cap_shape",
+        "stem_surface"
+      ],
+      "classifier__depth": 6,
+      "classifier__l2_leaf_reg": 3,
+      "inputs__drop_noise": true
+    }
+  },
+  "revision": "eb1743a0c65ec95579f3b0b12004bfa8b6ec2c4f6e271a0663de36e30d985059",
+  "export_rows_checked": 4100,
+  "export_max_probability_difference": 0.0,
+  "null_and_unknown_category_export_check": true,
+  "custom_pickle_classes": false,
+  "new_serving_dependencies": true,
+  "artifact_bytes": 5153285,
+  "validation_scope": "Outer CV evaluates the procedure; fulltrain export equivalence is not independent validation.",
+  "deployment_performed": false,
+  "development_test_rows_scored": 0
+}

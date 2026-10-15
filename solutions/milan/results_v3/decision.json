@@ -1,0 +1,12 @@
+{
+  "performance_goal_met": true,
+  "goal_qualifying_procedures": [
+    "voting_f1",
+    "voting_fpr_budget"
+  ],
+  "highest_macro_f1": "voting_default",
+  "best_goal_qualifying_procedure": "voting_f1",
+  "selection_scope": "Exploratory comparison after completing all prespecified folds; no independent test.",
+  "production_changed": false,
+  "test_rows_scored": 0
+}

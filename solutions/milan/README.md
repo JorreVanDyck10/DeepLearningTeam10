@@ -1,15 +1,17 @@
 # Milan — kritisch reviewconcept en alternatief
 
-**Vervolgstudie afgerond:** de bruikbaarste beperkte verbetering is RF300 met
-een binnen training afgestemde beslisregel. Macro F1 stijgt van **0,7619 naar
-0,7691**, giftige recall van **60,44% naar 66,82%**. Op dezelfde 4.100
-buitenfoldvoorspellingen zijn er **99 minder gemiste giftige gevallen**, tegenover
-**100 extra valse alarmen**. Dit is ontwikkelbewijs; geen nieuwe onafhankelijke
-eindtest of bewijs van veiligheid.
+**Derde studie afgerond:** gewogen voting met een binnen training afgestemde
+F1-drempel haalt **macro F1 0,7788**, tegenover **0,7691** voor kandidaat v2.
+Op dezelfde 4.100 buitenfoldvoorspellingen zijn er **15 minder gemiste giftige
+gevallen én 22 minder valse alarmen**. Vier van vijf folds verbeteren in macro F1.
+Dit is een bescheiden verdere winst op ontwikkeldata, geen onafhankelijke eindtest.
 
-Dezelfde elf invoervelden en bestaande modellezer blijven bruikbaar. Er staat een
-gecontroleerd kandidaatpakket met lokale preview klaar. De gezamenlijke website,
-API en automatische training zijn nog niet omgeschakeld.
+Daarnaast haalt RF300 met interne featureselectie **macro F1 0,7749** bij de
+standaardgrens. Tegenover de oorspronkelijke RF300 zijn er 38 minder gemiste
+giftige gevallen en vijf minder valse alarmen. Deze eenvoudiger optie behoudt de
+bestaande modellezer en elf invoervelden, maar mist meer giftige gevallen dan v2.
+Voting heeft extra afhankelijkheden en een andere modellezer nodig. De website,
+gedeelde API, Final en automatische training zijn nog niet omgeschakeld.
 
 Deze map is op verzoek van de gebruiker door Codex gemaakt. Milan moet de inhoud,
 eigen bijdrage en AI-inzet zelf beoordelen en bevestigen. De map is een concept
@@ -19,22 +21,39 @@ naast de bestaande teamoplossing, op branch `codex/milan-final-review`.
 
 Begin bij de [actuele status](STATUS.md) voor resultaat, controles en grenzen.
 
-1. [Nieuwe resultaten en oordeel](RESULTATEN_V2.md): alle vier modelprocedures,
-   de werkelijke winst en de kosten in valse alarmen.
-2. [Later aansluiten](INTEGRATIE.md): de kleine koppelpunten die samen moeten
-   worden overgenomen; geen losse artifactwissel met oude metrics.
-3. [Onderzoeksafspraken](STUDIE_V2.md): vooraf vastgelegde searches en criteria.
-4. [Verbeterde Random Forest](04_RF_verbeterd.ipynb),
-   [Gradient Boosting](05_Gradient_Boosting.ipynb) en [SVM](06_SVM.ipynb).
-5. [Foutanalyse en integratiecontrole](07_foutanalyse_en_integratie.ipynb).
-6. [Oorspronkelijke kritische review van Final](REVIEW_FINAL.md).
+1. [Nieuwe resultaten en oordeel](RESULTATEN_V3.md): alle procedures en foutaantallen.
+2. [Later aansluiten: RF of voting](INTEGRATIE_V3.md): bestanden, instellingen en controles.
+3. [Onderzoeksafspraken v3](STUDIE_V3.md): de vaste zoekruimtes en verbeterdoelen.
+4. [Featureselectie en boosting](08_featureselectie_en_boosting.ipynb),
+   [voting en vergelijking](09_voting_en_vergelijking.ipynb) en
+   [foutanalyse](10_foutanalyse_v3.ipynb).
+5. [Oorspronkelijke kritische review van Final](REVIEW_FINAL.md).
+
+Studie v2 blijft als gecontroleerde referentie beschikbaar:
+[resultaten](RESULTATEN_V2.md), [integratie](INTEGRATIE.md),
+[RF](04_RF_verbeterd.ipynb), [Gradient Boosting](05_Gradient_Boosting.ipynb),
+[SVM](06_SVM.ipynb) en [foutanalyse](07_foutanalyse_en_integratie.ipynb).
 
 De eerste proef blijft als onderzoeksarchief staan: [resultaten v1](RESULTATEN.md),
 [voorbereiding](01_voorbereiding.ipynb), [RF150-proef](02_random_forest.ipynb) en
 [eerste vergelijking](03_vergelijking.ipynb). De conclusie van v1 betreft die
 specifieke proef, niet de inmiddels uitgevoerde tweede studie.
 
-## De nieuwe studie opnieuw uitvoeren
+## Studie v3 opnieuw uitvoeren
+
+Installeer de bestaande requirements plus `requirements-boosting.txt` in de aparte
+Milan-venv. `reproduce_v3.py` herhaalt de volledige vaste studie naar een nieuwe
+map onder `.generated`, ook in een verse clone zonder lokale checkpoints.
+Gebruik deze route om het bewaarde onderzoeksbewijs niet te overschrijven.
+De complete opdrachten voor training, pakketten, tests en notebooks staan in
+[INTEGRATIE_V3.md](INTEGRATIE_V3.md#controles-en-opnieuw-uitvoeren).
+
+De nieuwe vergelijking omvat 360 gridfits, featureselectie, LightGBM, CatBoost
+en vooraf vastgelegde votinggewichten. Voorbereiding, instellingen, gewichten en
+drempels worden binnen training geleerd. Alle nieuwe procedures gebruiken alleen
+de oorspronkelijke 4.100 trainingsrijen. De bekende 900 records zijn niet gescoord.
+
+## Studie v2 opnieuw uitvoeren
 
 Gebruik de volledige repository en de aparte Milan-omgeving. Vanaf de repositoryroot:
 
@@ -120,7 +139,7 @@ De echte opdracht van de gebruiker was om Final kritisch met de PowerPoints te
 vergelijken, verbeteringen te melden en eventueel een alternatief in
 `solutions/milan` te maken. Codex las de lokale cursus en projectcode, schreef de
 review, trainingscode, audits en rapportnotebooks en voerde die controles uit.
-Ook de tweede studie, het kandidaatpakket, de preview en tests zijn met substantiële
+Ook de tweede en derde studie, kandidaatpakketten, previews en tests zijn met substantiële
 hulp van Codex gemaakt. Een persoonlijke goedkeuring door Milan is niet verondersteld.
 De uitkomsten komen uit de bewaarde berekeningen; een hogere score is niet
 verzonnen. De beperkte winst wordt expliciet vermeld. Er is geen persoonlijke

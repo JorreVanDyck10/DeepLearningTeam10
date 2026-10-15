@@ -1,66 +1,83 @@
-# Status van de verbeterde versie
+# Actuele status: derde studie afgerond
 
-Uitgevoerd op 15 oktober 2026, uitsluitend binnen `solutions/milan`.
+15 oktober 2026. Uitsluitend `solutions/milan` gewijzigd.
 
-## Gekozen richting
+## De beste gemeten afweging
 
-**RF300 met eenvoudige missingcategorie en een afgestemde beslispolicy.** De
-pipeline accepteert dezelfde elf velden. De uiteindelijke full-trainingselectie
-koos balanced class weights, minimale bladgrootte 1 en categorische constante
-imputatie. De beslisgrens uit training-OOF is circa **0,45**; dit is geen veiligheidsnorm.
+Gewogen voting met een binnen training gekozen F1-drempel verbetert tegenover
+kandidaat v2 zowel het aantal gemiste giftige gevallen als het aantal valse alarmen.
 
-Op dezelfde buitenfolds als de oude RF300:
+| Procedure | Macro F1 | Recall giftig | FN | FP | Accuracy |
+|---|---:|---:|---:|---:|---:|
+| Oorspronkelijke RF300 | 0,7619 | 60,44% | 614 | 256 | 78,78% |
+| Kandidaat v2 met beslispolicy | 0,7691 | 66,82% | 515 | 356 | 78,76% |
+| Voting v3 met F1-policy | **0,7788** | **67,79%** | **500** | **334** | **79,66%** |
 
-| Metriek | Oude RF300 | Nieuwe RF + beslispolicy |
-|---|---:|---:|
-| Macro F1 | 0,7619 | 0,7691 |
-| Recall giftige klasse | 60,44% | 66,82% |
-| Giftig gemist | 614 | 515 |
-| Vals alarm | 256 | 356 |
-| Accuracy | 78,78% | 78,76% |
+Dit zijn vijf gelijke buitenfolds op de oorspronkelijke 4.100 trainingsrijen.
+FN/FP zijn opgetelde aantallen; de andere cijfers zijn foldgemiddelden. De winst
+tegenover v2 is **15 minder gemiste giftige gevallen en 22 minder valse alarmen**.
+Macro F1 verbetert in vier van vijf folds. De verbetering is bescheiden; er worden
+nog veel giftige gevallen gemist. De bekende 900 ontwikkeltestrecords zijn niet
+opnieuw gescoord. Dit is verdere ontwikkeling, geen onafhankelijke eindtest.
 
-Dit verbetert de gekozen afweging tussen fouttypen. Het verlaagt het totale
-aantal fouten niet. Vier van de vijf gepaarde folds verbeteren in macro F1.
-De classifier zonder nieuwe policy heeft macro F1 0,7646; de grotere verbetering
-hoort dus bij de **complete procedure inclusief beslisdrempel**.
+Voting met het vooraf gekozen FPR-budget haalt 494 FN en 351 FP bij macro F1
+0,7767. Die optie mist iets minder giftige gevallen dan de gekozen F1-policy,
+maar geeft meer valse alarmen. Alle procedures staan in [RESULTATEN_V3.md](RESULTATEN_V3.md).
 
-## Wat is werkelijk afgerond?
+## Praktisch eenvoudiger alternatief
 
-- Vier modelprocedures, 34 vaste configuraties en 20 volledige buitenfoldruns;
-  510 grid-CV-fits, naast refits en drempelberekeningen.
-- Alle nieuwe selectie/scoring gebruikt uitsluitend de oorspronkelijke 4.100
-  trainingsrijen. De bekende 900 ontwikkeltestrecords zijn niet opnieuw gescoord.
-- Kandidaatpipeline plus array-export. De bestaande modellezer geeft op alle
-  4.100 gecontroleerde invoerrijen exact dezelfde scores en ruwe labels.
-- Zeven Python-tests geslaagd: geometrie, fold-lokale voorbereiding, buiten-OOF
-  rijlidmaatschap, echt API-invoerschema/controller, versiecontract, foutafhandeling
-  en gescheiden raw-/policymetrics.
-- Vier frontendtests geslaagd, waaronder grensgevallen, versie- en drempelcontrole
-  en het behoud van de elf velden.
-- Vier nieuwe rapportnotebooks uitgevoerd en schema-gevalideerd. Hier gebeurde
-  dat van boven naar beneden via IPython met verse naamruimtes; geen afzonderlijke
-  Jupyter-kernelrun geclaimd. De uitvoeringsmethode staat in de receipt. De bouwer
-  ondersteunt daarnaast gewone Jupyter-kernels voor een normale lokale omgeving.
-- [Integratie-instructies](INTEGRATIE.md) en een Mushroom-preview voorbereid.
+RF300 met interne featureselectie en standaardgrens haalt macro F1 **0,7749**,
+accuracy **79,83%**, 576 FN en 251 FP. Tegenover de oorspronkelijke RF300 zijn dat
+38 minder gemiste giftige gevallen en vijf minder valse alarmen. Tegenover v2
+zijn er juist 61 extra gemiste giftige gevallen en 105 minder valse alarmen.
+Dit is dus een andere afweging en haalt het volledige v2-verbeterdoel niet.
 
-## Praktische grenzen
+Het RF-pakket behoudt de bestaande modellezer en alle elf invoervelden. De finale
+trainingsselectie negeert intern sporenkleur en het extra ruisveld. Het gebruikt
+300 bomen, diepte 20, balanced class weights en een vaste grens van 0,5. Nieuwe
+servingbibliotheken zijn hiervoor niet nodig. De publicatie-/trainingsworkflow
+moet later wel hetzelfde kolomselectie- en exportrecept gaan gebruiken.
 
-Er is geen onaangeraakte eindtest teruggewonnen en geen sterke algemene veiligheid
-aangetoond. De foutanalyse toont bovendien 55,1% giftige recall bij vijf of meer
-ontbrekende velden, tegenover 75,6% bij nul tot twee ontbrekende velden. Dit zijn
-beschrijvende subgroepen, geen bewezen oorzakelijk effect. Vul bekende kenmerken
-zorgvuldig in; de uitkomst bevestigt nooit eetbaarheid.
+## Wat is werkelijk uitgevoerd?
 
-De lokale API is via de testclient gecontroleerd. Een aparte webserver op
-`127.0.0.1:8011` is niet gestart: de automatische goedkeuringscontrole kon die
-actie op dat moment niet beoordelen wegens een gebruikslimiet. Dat was een
-reviewfout, geen oordeel dat de server onveilig is. Er is geen browserdemo als
-uitgevoerd voorgesteld. De voorbereide startinstructies blijven beschikbaar.
+- 24 vaste configuraties, vijf buitenfolds en drie binnenfolds: **360 gridfits**,
+  naast refits en binnen-OOF-berekeningen. Alle modelkeuzes en drempels gebruiken
+  alleen training binnen elke buitenfold; ook votinggewichten worden daar gekozen.
+- Featureselectie, LightGBM, CatBoost en zeven vaste votingcombinaties. Dit sluit
+  aan op de lessen over voorbereiding, regularisatie, boosting, ensembles en
+  modelkwaliteit. Het [protocol](STUDIE_V3.md) noemt de gebruikte dia's.
+- Twee afzonderlijke fulltrain-kandidaatpakketten. De votingfit kiest gelijke
+  gewichten voor RF, LightGBM en CatBoost en een drempel van ongeveer 0,50.
+  Buitenfolds kiezen hun eigen drempel; de CV-cijfers beoordelen de hele
+  selectieprocedure en zijn geen onafhankelijke test van dit fulltrain-artifact.
+- RF-array-export én native voting-export geven op alle 4.100 gecontroleerde
+  invoerrijen exact dezelfde kansen als de getrainde pipelines. Ook nullen en
+  onbekende categorieën zijn gecontroleerd. Dit zijn exportchecks, geen accuracytests.
+- **20 Python-tests geslaagd:** acht onderzoekscontroles en twaalf pakket-/API-
+  en regressiecontroles, zonder skips. Dat omvat de bestaande v2-controles.
+- **Negen frontendtests geslaagd** op de echte gegenereerde beslisfuncties van
+  alle drie previews: grensgevallen, versie, verkeerde grens en elf invoervelden.
+- Drie nieuwe rapportnotebooks uitgevoerd en met `nbformat` gevalideerd. De
+  uitvoering gebeurde via IPython met verse naamruimtes; er wordt geen aparte
+  Jupyter-kernelrun geclaimd. De bouwer ondersteunt daarnaast gewone kernels.
 
-De bestaande automatische trainings-/publicatieketen en volledige Citi Bike-
-integratie zijn niet omgeschakeld. Daarvoor moeten de vijf kleine koppelpunten
-uit het integratiedocument samen worden overgenomen en met de groepssuite worden
-gecontroleerd. Dit concept schrijft of installeert niets buiten de Milan-map.
+Receipts: [onderzoek](results_v3/test_results.json),
+[pakketten/API](results_v3/package_test_results.json),
+[frontend](results_v3/frontend_test_results.json) en
+[notebooks](results_v3/notebook_execution.json).
 
-Lees [RESULTATEN_V2.md](RESULTATEN_V2.md) voor alle modellen en
-[de testreceipt](results_v2/test_results.json) voor de werkelijke testuitvoer.
+## Wat moet later nog gekoppeld worden?
+
+Voting gebruikt een eigen native modellezer en extra boostingbibliotheken. Het
+is geen losse artifactwissel bij de bestaande RF-lezer. Het RF-alternatief houdt
+die bestaande lezer wel. Zie [INTEGRATIE_V3.md](INTEGRATIE_V3.md) voor beide routes,
+de bestanden en voorbereide lokale startopdrachten.
+
+De echte Mushroom-controller en het invoerschema zijn via de lokale testclient
+gecontroleerd. Een aparte webserver/browserdemo is hier niet uitgevoerd. De
+gezamenlijke website, gedeelde backend, Final, Citi Bike en automatische
+publicatie zijn niet omgeschakeld. De volledige groepssuite moet na een latere
+gezamenlijke integratie opnieuw worden uitgevoerd.
+
+De eerdere kandidaten en resultaten blijven bewaard:
+[v2](RESULTATEN_V2.md), [v1](RESULTATEN.md) en [kritische Final-review](REVIEW_FINAL.md).

@@ -2,3 +2,4 @@
 __pycache__/
 .venv/
 !artifacts/current_pipeline.joblib
+!artifacts_v3/current_pipeline.joblib

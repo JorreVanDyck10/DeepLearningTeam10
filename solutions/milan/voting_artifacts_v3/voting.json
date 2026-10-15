@@ -1,0 +1,461 @@
+{
+  "schema_version": 1,
+  "model_id": "mushroom_final_rf300",
+  "model_name": "Milan — gewogen voting v3",
+  "features": [
+    "cap_diameter",
+    "stem_height",
+    "stem_width",
+    "spore_print_color",
+    "gill_color",
+    "habitat",
+    "season",
+    "ring_type",
+    "cap_shape",
+    "stem_surface",
+    "jumbled_noise_1"
+  ],
+  "classes": [
+    "e",
+    "p"
+  ],
+  "source_pipeline_sha256": "eb1743a0c65ec95579f3b0b12004bfa8b6ec2c4f6e271a0663de36e30d985059",
+  "numeric_features": [
+    "cap_diameter",
+    "stem_height",
+    "stem_width"
+  ],
+  "categorical": [
+    {
+      "name": "spore_print_color",
+      "imputation": "missing",
+      "categories": [
+        "g",
+        "k",
+        "missing",
+        "n",
+        "p",
+        "r",
+        "u",
+        "w"
+      ]
+    },
+    {
+      "name": "gill_color",
+      "imputation": "missing",
+      "categories": [
+        "b",
+        "e",
+        "f",
+        "g",
+        "k",
+        "missing",
+        "n",
+        "o",
+        "p",
+        "r",
+        "u",
+        "w",
+        "y"
+      ]
+    },
+    {
+      "name": "habitat",
+      "imputation": "missing",
+      "categories": [
+        "d",
+        "g",
+        "h",
+        "l",
+        "m",
+        "missing",
+        "p",
+        "u",
+        "w"
+      ]
+    },
+    {
+      "name": "season",
+      "imputation": "missing",
+      "categories": [
+        "a",
+        "missing",
+        "s",
+        "u",
+        "w"
+      ]
+    },
+    {
+      "name": "ring_type",
+      "imputation": "missing",
+      "categories": [
+        "e",
+        "f",
+        "g",
+        "l",
+        "m",
+        "missing",
+        "p",
+        "r",
+        "z"
+      ]
+    },
+    {
+      "name": "cap_shape",
+      "imputation": "missing",
+      "categories": [
+        "b",
+        "c",
+        "f",
+        "missing",
+        "o",
+        "p",
+        "s",
+        "x"
+      ]
+    },
+    {
+      "name": "stem_surface",
+      "imputation": "missing",
+      "categories": [
+        "f",
+        "g",
+        "h",
+        "i",
+        "k",
+        "missing",
+        "s",
+        "t",
+        "y"
+      ]
+    },
+    {
+      "name": "jumbled_noise_1",
+      "imputation": "missing",
+      "categories": [
+        "b",
+        "c",
+        "f",
+        "missing",
+        "o",
+        "p",
+        "s",
+        "x"
+      ]
+    }
+  ],
+  "dataset_rows": 5000,
+  "train_rows": 4100,
+  "test_rows": 0,
+  "dataset_sha256_lf": "1f1a25f2f330458ed95ce9f6ffe3241582312a42cb21797a2b7bd5e5ad281114",
+  "metrics": {
+    "accuracy": 0.7978048780487805,
+    "macro_f1": 0.7788741190997698,
+    "recall_poisonous": 0.6675531583860596,
+    "fn": 516,
+    "fp": 313,
+    "metrics_scope": "outer CV, 4100 development rows, raw voting"
+  },
+  "validation_note": "Derde ontwikkelstudie op eerder gebruikte 4100 trainingsrijen; geen onafhankelijke eindtest.",
+  "example": {
+    "cap_diameter": 7.0,
+    "stem_height": 5.73,
+    "stem_width": 10.49,
+    "spore_print_color": null,
+    "gill_color": "y",
+    "habitat": "d",
+    "season": "u",
+    "ring_type": "f",
+    "cap_shape": "f",
+    "stem_surface": null,
+    "jumbled_noise_1": "x"
+  },
+  "validation_rows": 4100,
+  "concept_only": true,
+  "promotion_recommended": false,
+  "proposed_decision_threshold": 0.49999999999999994,
+  "raw_classifier_threshold": 0.5,
+  "reported_metrics_policy": "default",
+  "proposed_policy": "f1",
+  "proposed_policy_metrics": {
+    "folds": 5.0,
+    "accuracy_mean": 0.7965853658536586,
+    "accuracy_sd": 0.0168186604956675,
+    "macro_f1_mean": 0.7788106616802862,
+    "macro_f1_sd": 0.0166191382214193,
+    "recall_p_mean": 0.6778674411368115,
+    "recall_p_sd": 0.0252369992090918,
+    "precision_p_mean": 0.7609294710315361,
+    "precision_p_sd": 0.0395500543130529,
+    "specificity_e_mean": 0.8689209907931739,
+    "specificity_e_sd": 0.0293471166586547,
+    "balanced_accuracy_mean": 0.7733942159649928,
+    "balanced_accuracy_sd": 0.0149242392902612,
+    "roc_auc_mean": 0.8341151335646261,
+    "roc_auc_sd": 0.0163481136697617,
+    "average_precision_mean": 0.7796698044419873,
+    "average_precision_sd": 0.0238417780194838,
+    "tn_total": 2214.0,
+    "fp_total": 334.0,
+    "fn_total": 500.0,
+    "tp_total": 1052.0
+  },
+  "policy_note": "Stronger exploratory voting challenger; new model reader and boosting dependencies required. RF v2 remains the minimal-integration alternative.",
+  "components": [
+    {
+      "family": "rf_selection",
+      "weight": 0.3333333333333333,
+      "file": "rf/mushroom_rf300.json",
+      "sha256": "cf126f7bc4a21cf6a26bae18c8769442533f1167bd7b3f3429ac9806cc8fc451",
+      "columns": [
+        "cap_diameter",
+        "stem_height",
+        "stem_width",
+        "gill_color",
+        "habitat",
+        "season",
+        "ring_type",
+        "cap_shape",
+        "stem_surface"
+      ],
+      "categories": {
+        "gill_color": [
+          "b",
+          "e",
+          "f",
+          "g",
+          "k",
+          "n",
+          "o",
+          "p",
+          "r",
+          "u",
+          "w",
+          "y"
+        ],
+        "habitat": [
+          "d",
+          "g",
+          "h",
+          "l",
+          "m",
+          "p",
+          "u",
+          "w"
+        ],
+        "season": [
+          "a",
+          "s",
+          "u",
+          "w"
+        ],
+        "ring_type": [
+          "e",
+          "f",
+          "g",
+          "l",
+          "m",
+          "p",
+          "r",
+          "z"
+        ],
+        "cap_shape": [
+          "b",
+          "c",
+          "f",
+          "o",
+          "p",
+          "s",
+          "x"
+        ],
+        "stem_surface": [
+          "f",
+          "g",
+          "h",
+          "i",
+          "k",
+          "s",
+          "t",
+          "y"
+        ]
+      }
+    },
+    {
+      "family": "lightgbm",
+      "weight": 0.3333333333333333,
+      "file": "lightgbm.txt",
+      "sha256": "e8244cd5a3ee5194f7d9a4d4c27786428447ea5fdc1c1b203103d96b80f31eb7",
+      "columns": [
+        "cap_diameter",
+        "stem_height",
+        "stem_width",
+        "spore_print_color",
+        "gill_color",
+        "habitat",
+        "season",
+        "ring_type",
+        "cap_shape",
+        "stem_surface"
+      ],
+      "categories": {
+        "spore_print_color": [
+          "g",
+          "k",
+          "n",
+          "p",
+          "r",
+          "u",
+          "w"
+        ],
+        "gill_color": [
+          "b",
+          "e",
+          "f",
+          "g",
+          "k",
+          "n",
+          "o",
+          "p",
+          "r",
+          "u",
+          "w",
+          "y"
+        ],
+        "habitat": [
+          "d",
+          "g",
+          "h",
+          "l",
+          "m",
+          "p",
+          "u",
+          "w"
+        ],
+        "season": [
+          "a",
+          "s",
+          "u",
+          "w"
+        ],
+        "ring_type": [
+          "e",
+          "f",
+          "g",
+          "l",
+          "m",
+          "p",
+          "r",
+          "z"
+        ],
+        "cap_shape": [
+          "b",
+          "c",
+          "f",
+          "o",
+          "p",
+          "s",
+          "x"
+        ],
+        "stem_surface": [
+          "f",
+          "g",
+          "h",
+          "i",
+          "k",
+          "s",
+          "t",
+          "y"
+        ]
+      }
+    },
+    {
+      "family": "catboost",
+      "weight": 0.3333333333333333,
+      "file": "catboost.cbm",
+      "sha256": "d191a69d58cb6ff520075c036fa382e220b8d0a835d6ec924ec56a2fe84aeb7d",
+      "columns": [
+        "cap_diameter",
+        "stem_height",
+        "stem_width",
+        "spore_print_color",
+        "gill_color",
+        "habitat",
+        "season",
+        "ring_type",
+        "cap_shape",
+        "stem_surface"
+      ],
+      "categories": {
+        "spore_print_color": [
+          "g",
+          "k",
+          "n",
+          "p",
+          "r",
+          "u",
+          "w"
+        ],
+        "gill_color": [
+          "b",
+          "e",
+          "f",
+          "g",
+          "k",
+          "n",
+          "o",
+          "p",
+          "r",
+          "u",
+          "w",
+          "y"
+        ],
+        "habitat": [
+          "d",
+          "g",
+          "h",
+          "l",
+          "m",
+          "p",
+          "u",
+          "w"
+        ],
+        "season": [
+          "a",
+          "s",
+          "u",
+          "w"
+        ],
+        "ring_type": [
+          "e",
+          "f",
+          "g",
+          "l",
+          "m",
+          "p",
+          "r",
+          "z"
+        ],
+        "cap_shape": [
+          "b",
+          "c",
+          "f",
+          "o",
+          "p",
+          "s",
+          "x"
+        ],
+        "stem_surface": [
+          "f",
+          "g",
+          "h",
+          "i",
+          "k",
+          "s",
+          "t",
+          "y"
+        ]
+      }
+    }
+  ],
+  "serving_format": "milan_native_voting_v1"
+}
