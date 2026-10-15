@@ -57,52 +57,60 @@
     },
     {
       "final": "Final/CitiBike/01_EDA_en_hypothesen.ipynb",
-      "source": "SolutionRaoul/Citybike/notebooks/01_EDA_en_hypothesen.ipynb",
+      "source": "SolutionRaoul/Citybike/archive/final_sources/01_EDA_en_hypothesen.ipynb",
       "note": "Source outputs retained; repository discovery adapted, no new final-test evaluation",
-      "source_sha256_lf": "2b0bc2fcba82c7b833c8056948d4ea796c31a7899f1f3a22edc7d0b06185249a"
+      "source_sha256_lf": "2b0bc2fcba82c7b833c8056948d4ea796c31a7899f1f3a22edc7d0b06185249a",
+      "source_at_creation": "SolutionRaoul/Citybike/notebooks/01_EDA_en_hypothesen.ipynb"
     },
     {
       "final": "Final/CitiBike/02_voorbereiding.ipynb",
-      "source": "SolutionRaoul/Citybike/notebooks/02_definitieve_voorbereiding.ipynb",
+      "source": "SolutionRaoul/Citybike/archive/final_sources/02_definitieve_voorbereiding.ipynb",
       "note": "Source outputs retained; repository discovery adapted, no new final-test evaluation",
-      "source_sha256_lf": "eadc03799c063ffbc3b973e1b987fa1383016521016ea945cf98d50822a105fa"
+      "source_sha256_lf": "eadc03799c063ffbc3b973e1b987fa1383016521016ea945cf98d50822a105fa",
+      "source_at_creation": "SolutionRaoul/Citybike/notebooks/02_definitieve_voorbereiding.ipynb"
     },
     {
       "final": "Final/CitiBike/05_AutoML.ipynb",
-      "source": "SolutionRaoul/Citybike/notebooks/04_PyCaret_vergelijking.ipynb",
+      "source": "SolutionRaoul/Citybike/archive/final_sources/04_PyCaret_vergelijking.ipynb",
       "note": "Source outputs retained; repository discovery adapted, no new final-test evaluation",
-      "source_sha256_lf": "9bc03f630f61b263d84c773479880d76b33c4c034a18515ee7a5669e4cb20a2c"
+      "source_sha256_lf": "9bc03f630f61b263d84c773479880d76b33c4c034a18515ee7a5669e4cb20a2c",
+      "source_at_creation": "SolutionRaoul/Citybike/notebooks/04_PyCaret_vergelijking.ipynb"
     },
     {
       "final": "Final/CitiBike/06_Random_Forest.ipynb",
-      "source": "SolutionRaoul/Citybike/notebooks/05_Random_Forest.ipynb",
+      "source": "SolutionRaoul/Citybike/archive/final_sources/05_Random_Forest.ipynb",
       "note": "Source outputs retained; repository discovery adapted, no new final-test evaluation",
-      "source_sha256_lf": "f0b1f071514c4ba02058797dd0a7ca4393452cb8bb12cb28170cbb15c48dbded"
+      "source_sha256_lf": "f0b1f071514c4ba02058797dd0a7ca4393452cb8bb12cb28170cbb15c48dbded",
+      "source_at_creation": "SolutionRaoul/Citybike/notebooks/05_Random_Forest.ipynb"
     },
     {
       "final": "Final/CitiBike/07_LightGBM.ipynb",
-      "source": "SolutionRaoul/Citybike/notebooks/06_LightGBM.ipynb",
+      "source": "SolutionRaoul/Citybike/archive/final_sources/06_LightGBM.ipynb",
       "note": "Source outputs retained; repository discovery adapted, no new final-test evaluation",
-      "source_sha256_lf": "ce5ba8dcb55c1de210cd8a3ed1c323b3619ca0f646de395facec72089682e595"
+      "source_sha256_lf": "ce5ba8dcb55c1de210cd8a3ed1c323b3619ca0f646de395facec72089682e595",
+      "source_at_creation": "SolutionRaoul/Citybike/notebooks/06_LightGBM.ipynb"
     },
     {
       "final": "Final/CitiBike/09_vergelijking.ipynb",
-      "source": "SolutionRaoul/Citybike/notebooks/07_eindvergelijking.ipynb",
+      "source": "SolutionRaoul/Citybike/archive/final_sources/07_eindvergelijking.ipynb",
       "note": "Source outputs retained; repository discovery adapted, no new final-test evaluation",
-      "source_sha256_lf": "2b6752eda5345de28ce6ae305bc7f98046cf84eab245a614f417a8ce33fcc10b"
+      "source_sha256_lf": "2b6752eda5345de28ce6ae305bc7f98046cf84eab245a614f417a8ce33fcc10b",
+      "source_at_creation": "SolutionRaoul/Citybike/notebooks/07_eindvergelijking.ipynb"
     },
     {
       "final": "Final/CitiBike/03_baseline.ipynb",
-      "source": "SolutionRaoul/Citybike/notebooks/03_baseline_en_Ridge.ipynb",
+      "source": "SolutionRaoul/Citybike/archive/final_sources/03_baseline_en_Ridge.ipynb",
       "note": "Split model families into independent report notebooks; original offline fit preserved",
-      "source_sha256_lf": "d146aefd347afe7b960ba1f81aa4d4998048282ce7d229c9b231f984158aaaa3"
+      "source_sha256_lf": "d146aefd347afe7b960ba1f81aa4d4998048282ce7d229c9b231f984158aaaa3",
+      "source_at_creation": "SolutionRaoul/Citybike/notebooks/03_baseline_en_Ridge.ipynb"
     },
     {
       "final": "Final/CitiBike/04_Ridge.ipynb",
-      "source": "SolutionRaoul/Citybike/notebooks/03_baseline_en_Ridge.ipynb",
+      "source": "SolutionRaoul/Citybike/archive/final_sources/03_baseline_en_Ridge.ipynb",
       "note": "Split model families into independent report notebooks; original offline fit preserved",
-      "source_sha256_lf": "d146aefd347afe7b960ba1f81aa4d4998048282ce7d229c9b231f984158aaaa3"
+      "source_sha256_lf": "d146aefd347afe7b960ba1f81aa4d4998048282ce7d229c9b231f984158aaaa3",
+      "source_at_creation": "SolutionRaoul/Citybike/notebooks/03_baseline_en_Ridge.ipynb"
     }
   ],
-  "preservation": "Original source files were not moved or replaced. Generated notebook outputs do not claim a new original study."
+  "preservation": "Original Citi Bike source bytes used for the Final reading copies are preserved under SolutionRaoul/Citybike/archive/final_sources from base_commit. The current research notebooks remain under notebooks. Generated notebook outputs do not claim a new original study."
 }

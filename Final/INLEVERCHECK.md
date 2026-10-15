@@ -21,12 +21,13 @@ vragen. Controleer eventuele actuele Canvas-mededelingen zelf.
 - [x] Jorres bijdrage bevestigd: pipeline, gezamenlijke backend, UI en AWS-training.
 - [x] Raouls bijdrage en AI-gebruik bevestigd: Citi Bike-onderzoek, datavoorbereiding, modellen, vergelijking, oorspronkelijke inference en applicatieonderdelen, documentatie en presentatie; AI-voorstellen kritisch beoordeeld en gecontroleerd.
 - [x] De aangeleverde GenAI-policy gelezen en de gevraagde verantwoording uitgewerkt.
-- [x] Functionele AI-scope, schrijfhulp, vijf echte prompts en concrete controles vastgelegd in [GenAI Disclosure](GENAI_DISCLOSURE.md).
-- [ ] Andrew en Milan controleren en preciseren de eigen bijdragen en AI-inzet.
+- [x] Functionele AI-scope, schrijfhulp, vijf workflowvoorbeelden van Jorre, twee illustratieve uitlegprompts van Raoul en concrete controles vastgelegd in [GenAI Disclosure](GENAI_DISCLOSURE.md).
+- [x] Andrews bijdrage en AI-gebruik bevestigd in het bijdragenoverzicht.
+- [ ] Milan controleert en preciseert de eigen bijdrage en AI-inzet.
 - [ ] Het team leest en bevestigt de uiteindelijke verantwoording.
 - [ ] Ieder teamlid kan code, keuzes en conclusies zelfstandig uitleggen.
 
-De [bijdragen](BIJDRAGEN.md) leggen Jorres en Raouls bevestiging van 15 oktober vast.
+De [bijdragen](BIJDRAGEN.md) leggen Jorres, Raouls en Andrews bevestiging van 15 oktober vast.
 Technische controles of een AI-gegenereerde tekst bewijzen geen persoonlijke
 review of mondelinge beheersing. De herinnering bij de eindcontrole in deze chat
 is gegeven; alleen de bovenstaande bevestigde onderdelen zijn afgevinkt.

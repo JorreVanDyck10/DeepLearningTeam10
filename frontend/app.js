@@ -98,7 +98,10 @@ $("#mushroom-form").addEventListener("submit", async (event) => {
 async function init() {
   try {
     metadata = await window.Team10API.requestJson("metadata.json");
-    metadata.fields.forEach((field, i) => $(i < 6 ? "#basic-fields" : "#advanced-fields").append(fieldElement(field)));
+    metadata.fields.forEach((field, i) => {
+      const target = i >= 6 ? "#advanced-fields" : field.options ? "#category-fields" : "#measurement-fields";
+      $(target).append(fieldElement(field));
+    });
     for (const [label, value] of [["Accuracy", percent(metadata.metrics.accuracy)], ["Recall giftige klasse", percent(metadata.metrics.recall_poisonous)], ["Giftig als eetbaar voorspeld", String(metadata.metrics.poisonous_predicted_edible)]]) {
       const tile = document.createElement("div"); tile.className = "metric";
       const strong = document.createElement("strong"); strong.textContent = value;

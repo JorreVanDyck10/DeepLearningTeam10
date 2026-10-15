@@ -12,37 +12,49 @@
   <script src="app.js" defer></script>
 </head>
 <body>
-  <header><strong>Team 10 · Machine Learning</strong><span id="connection" class="connection">Verbinding controleren…</span></header>
-  <nav aria-label="Hoofdnavigatie">
-    <a href="#mushroom" class="nav-link active">Paddenstoelen</a>
-    <a href="#citibike" class="nav-link">City Bike</a>
-    <a href="#project" class="nav-link">Project</a>
-  </nav>
-  <main>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#mushroom" aria-label="Team 10 — naar Paddenstoelen"><span><strong>DeepLearning</strong><span class="brand-caption">Team 10</span></span></a>
+      <nav aria-label="Hoofdnavigatie">
+        <a href="#mushroom" class="nav-link active">Paddenstoelen</a>
+        <a href="#citibike" class="nav-link">City Bike</a>
+        <a href="#project" class="nav-link">Het project</a>
+      </nav>
+      <span id="connection" class="connection" role="status">Verbinding controleren…</span>
+    </div>
+  </header>
+  <main id="main-content" tabindex="-1">
     <section id="mushroom" class="page">
-      <h1>Paddenstoelen voorspellen</h1>
-      <p>Vul de kenmerken in of gebruik het voorbeeld.</p>
-      <p>De uitkomst is “Model voorspelt: giftig” of “Onzeker / mogelijk giftig”. Ook een hoge modelscore voor de eetbare klasse bevestigt geen eetbaarheid.</p>
+      <div class="page-intro"><p class="section-label">Paddenstoelen · Classificatie</p><h1>Paddenstoelen classificeren</h1><p class="intro-copy">Vul de kenmerken in om een modelvoorspelling te berekenen. Onbekende kenmerken mogen leeg blijven.</p></div>
+      <p class="notice"><strong>Een modelscore bevestigt geen eetbaarheid.</strong> De uitkomst is “Model voorspelt: giftig” of “Onzeker / mogelijk giftig”. Gebruik deze educatieve demo niet om echte paddenstoelen te eten.</p>
       <div class="workspace">
         <section class="panel">
-          <div class="form-heading"><h2>Kenmerken</h2><button id="example" type="button">Voorbeeld invullen</button></div>
-          <p class="muted">Laat onbekende kenmerken leeg.</p>
+          <div class="form-heading"><div><h2>Kenmerken van de paddenstoel</h2></div><button id="example" type="button">Voorbeeld invullen</button></div>
+          <p class="muted">Gebruik het voorbeeld om het formulier te testen, of voer eigen waarden in.</p>
           <form id="mushroom-form">
-            <div id="basic-fields" class="fields"></div>
+            <div id="basic-fields" class="field-groups">
+              <fieldset class="field-group">
+                <legend>Afmetingen</legend>
+                <div id="measurement-fields" class="fields"></div>
+              </fieldset>
+              <fieldset class="field-group">
+                <legend>Uiterlijke kenmerken en seizoen</legend>
+                <div id="category-fields" class="fields"></div>
+              </fieldset>
+            </div>
             <details class="advanced"><summary>Meer kenmerken</summary><p class="muted">Het extra ruiskenmerk hoort bij de cursusdataset en is geen biologische eigenschap. Laat het leeg als je het niet kent.</p><div id="advanced-fields" class="fields"></div></details>
             <div class="form-actions"><button id="predict-button" class="primary" type="submit">Voorspellen</button><button id="reset-button" type="button">Wissen</button></div>
           </form>
         </section>
-        <section class="panel result-panel" aria-live="polite" aria-atomic="true"><h2>Resultaat</h2><div id="result"><p class="muted">Nog geen voorspelling.</p></div></section>
+        <section class="panel result-panel" aria-live="polite" aria-atomic="true"><h2>Resultaat</h2><div id="result"><p class="muted">Nog geen voorspelling.</p></div><p class="result-footnote">De voorspelling is gebaseerd op de cursusdataset en bevestigt geen eetbaarheid.</p></section>
       </div>
     </section>
     <section id="citibike" class="page" hidden>
-      <h1>City Bike voorspellen</h1>
-      <p>Voorspel het aantal vertrekkende ritten per uur in het NYC-netwerk.</p>
+      <div class="page-intro"><p class="section-label">City Bike · Regressie</p><h1>Ritstarts in New York voorspellen</h1><p class="intro-copy">Bereken het verwachte aantal vertrekkende ritten per uur, met een overzicht van de volledige dag.</p></div>
       <p class="notice">Raouls getunede Random Forest voorspelt om 00:00 New York-tijd de hele dag. Voor een eigen voorspelling zijn de 14 volledige voorafgaande dagen met NYC-uurtellingen nodig.</p>
       <div class="workspace">
         <section class="panel">
-          <h2>Datum en uur</h2>
+          <h2>Datum en historie</h2>
           <form id="city-form">
             <label for="city-mode">Historie</label>
             <select id="city-mode"><option value="demo">Historische demonstratie</option><option value="history">Eigen recente historie</option></select>
@@ -59,7 +71,7 @@
           </form>
           <p class="muted">Het model gebruikt kalenderkenmerken en eerdere tellingen. Er is geen live tellingenfeed. Voor toekomstige datums lever je zelf recente historie aan. Het model voorspelt geen individuele ritduur of vrije fietsen.</p>
         </section>
-        <section class="panel" aria-live="polite" aria-atomic="true"><h2>Resultaat</h2><div id="city-result"><p class="muted">Nog geen voorspelling.</p></div></section>
+        <section class="panel result-panel city-result-panel" aria-live="polite" aria-atomic="true"><h2>Resultaat</h2><div id="city-result"><p class="muted">Nog geen voorspelling.</p></div><p class="result-footnote">Verwachte ritstarts op basis van eerdere tellingen. Er is geen live tellingenfeed.</p></section>
       </div>
       <section id="city-day" class="panel day-panel" hidden>
         <h2>Voorspellingen voor de hele dag</h2>
@@ -69,20 +81,22 @@
       </section>
     </section>
     <section id="project" class="page" hidden>
-      <h1>Project</h1>
-      <p>Jorre Van Dyck, Milan Wouters, Raoul Buffels en Andrew Noeyens.</p>
+      <div class="page-intro"><p class="section-label">Team 10</p><h1>Project en modelresultaten</h1><p class="intro-copy">De gebruikte modellen, datasets en resultaten van de evaluatie.</p></div>
+      <p class="team-line">Jorre Van Dyck <span>·</span> Milan Wouters <span>·</span> Raoul Buffels <span>·</span> Andrew Noeyens</p>
+      <div class="project-card">
       <h2>Paddenstoelenmodel</h2>
       <p>De geselecteerde Random Forest heeft 300 bomen, maximale diepte 20 en gebalanceerde klassegewichten. Het formulier gebruikt de elf kenmerken van de gekozen pipeline. Het eerste ruisveld is verwijderd; het tweede is optioneel.</p>
       <div id="metrics" class="metrics"></div>
       <p class="muted">Resultaten op 900 testrecords uit het cursusbestand van 5.000 records; 4.100 records zijn gebruikt voor training. Deze testset is tijdens het onderzoek al bekeken. Het model herkent nog niet alle giftige paddenstoelen correct.</p>
       <p class="muted">Deze metrics beschrijven de oorspronkelijke modelclassificatie met de 50%-grens. Het formulier gebruikt een voorzichtiger beslisregel en geeft geen bevestiging van eetbaarheid.</p>
       <p>De analyses en modelvergelijkingen staan in de notebooks.</p>
-      <h2>City Bike-model</h2>
+      </div><div class="project-card city-project-card"><h2>City Bike-model</h2>
       <p>Raouls geselecteerde Random Forest met 320 bomen. Getraind op NYC-uurtellingen tot en met juni 2026; onafhankelijk getest op juli–augustus 2026.</p>
       <div id="city-metrics" class="metrics"></div>
       <p class="muted">RMSE weegt grote fouten zwaarder; MAE is de gemiddelde absolute fout in ritstarts per lokaal uurvak. De eindtest-RMSE is 24,12% lager dan de weekbaseline. Deze prestaties veronderstellen tijdig beschikbare voorafgaande tellingen en garanderen geen gelijke kwaliteit in toekomstige maanden.</p>
-      <p><a href="https://github.com/JorreVanDyck10/DeepLearningTeam10" target="_blank" rel="noopener">GitHub-repository</a> · <a href="https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/mushroom_project_dataset.csv" target="_blank" rel="noopener">Gebruikte paddenstoelendataset</a></p>
+      </div><p class="source-links"><a href="https://github.com/JorreVanDyck10/DeepLearningTeam10" target="_blank" rel="noopener">GitHub-repository</a><a href="https://github.com/JorreVanDyck10/DeepLearningTeam10/blob/main/MushroomFinal/mushroom_project_dataset.csv" target="_blank" rel="noopener">Paddenstoelendataset</a></p>
     </section>
   </main>
+  <footer><span>DeepLearning · Team 10</span><span>Onderwijsproject · Mushroom &amp; Citi Bike</span></footer>
 </body>
 </html>

@@ -49,6 +49,23 @@ De [GenAI Disclosure](GENAI_DISCLOSURE.md) licht deze AI-hulp en controle verder
 
 Raouls hoofddeel staat in de definitieve PowerPoint op dia 14–22, met verborgen reserves op dia 26–27. De [persoonlijke spreektekst](Presentatie/SPREEKPLAN.md) bevat zijn bijdrage, tekst per dia en voorbereiding op vragen. Zijn lokale hertrainingspipeline fit dezelfde vaste RF320 opnieuw en controleert voorspellingen na herladen. Dit staat los van de centrale Mushroom-workflow en bewijst geen automatische live Citi Bike-modelupdate.
 
+## Andrew Noeyens - bevestigd op 15 oktober 2026
+
+Andrew bevestigde de volgende bijdragen aan de Mushroom Challenge:
+
+- Voorbewerking van de dataset en het uitwerken van de EDA.
+- Random Forest, Gradient Boosting en Logistic Regression modellen getraind, geëvalueerd en geoptimaliseerd.
+- Eerste versie PyCaret ontwikkeld om modellen te vergelijken op basis van verschillende evaluatiemetrics.
+- De notebooks en documentatie rondom de Mushroom Challenge voorbereid
+
+Bij de uitwerking van het Mushroom Notebook werd generatieve AI gebruikt als ondersteuning bij het schrijven en verbeteren van code,
+het uitleggen van programmeerconcepten, het structureren en verwerken van de documentatie, en hulp bij het interpreteren van modelresultaten.
+De AI-ondersteuning wordt niet voorgesteld als volledig zelfstandig geschreven werk.
+
+Andrew bevestigt hiermee zijn eigen bijdrage en AI-gebruik en blijft
+verantwoordelijk voor de keuzes, interpretatie en conclusies van zijn onderdeel.
+De [GenAI Disclosure](GENAI_DISCLOSURE.md) licht deze AI-hulp en controle verder toe.
+
 ## Afbakening van de pipeline
 
 De centrale GitHub Actions-workflow traint en controleert Mushroom en publiceert
@@ -57,7 +74,7 @@ deze workflow claimt geen automatische nieuwe Citi Bike-training.
 
 ## Nog door het team te bevestigen
 
-- Andrew en Milan controleren en preciseren nog de eigen bijdrage en AI-inzet.
+- Milan controleren en preciseren nog de eigen bijdrage en AI-inzet.
 - Iedereen kan de code, ontwerpkeuzes en conclusies zelfstandig uitleggen.
 - Sprekers en de uiteindelijke mondelinge taakverdeling worden samen afgesproken.
 

@@ -1,6 +1,6 @@
 {
-  "trained_at_utc": "2026-10-14T17:11:38.039285+00:00",
-  "source_commit": "6dce40697de0ef7502fb76ab9acda49f26082e9e",
+  "trained_at_utc": "2026-10-15T11:37:23.149499+00:00",
+  "source_commit": "3867b9c69178141c5cdb307648ca671380d36be4",
   "model": "rf_final",
   "parameters": {
     "n_estimators": 300,
@@ -116,7 +116,7 @@
   },
   "train_rows": 4100,
   "test_rows": 900,
-  "fit_and_cv_seconds": 20.779855987000005,
+  "fit_and_cv_seconds": 35.773985055000004,
   "source_pipeline_sha256": "6410b277e49c3706fa4d70db548e2545066a78bcaa6406aa83fef418c489c626",
   "python": "3.11.17",
   "sklearn": "1.4.2",
