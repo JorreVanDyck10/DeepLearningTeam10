@@ -23,7 +23,7 @@ en presentatieonderdeel. Ook die bijdrage is met substantiële AI-hulp uitgewerk
 | --- | --- | --- |
 | Structuur en notebooks | Structuur, templates, downloadcode, aparte Final-leesversies en toelichtingen gegenereerd of aangepast. | Jorre bepaalde de opdrachtcontext en vroeg om een aparte Final-map met behoud van eerder werk. Oorspronkelijke onderzoeken behouden hun bestaande auteursvermelding. |
 | Citi Bike | Hulp bij bronverwerking, cleaning, aggregaties, EDA, hypothesen, features, chronologische splits, baseline/Ridge, PyCaret, Random Forest, LightGBM, tuning, foutenanalyse, inference, tests en notebookuitleg. | Raoul werkte het Citi Bike-onderdeel uit, beoordeelde voorstellen en resultaten kritisch en stuurde bij aan de hand van de opdracht, brondata en uitvoer. Hij onderbouwde de modelkeuze op validatie; de oorspronkelijke eindtest bleef beschermd. Jorre hielp met deployment op Render. |
-| Mushroom-evaluatie | EDA visualiseringen, finale notebookcode- en tekstbewerking, vergelijkingscode, gedeelde splits/folds, fold-lokale preprocessing, PyCaret-reparatie en -uitvoering, AWS-artifactaudit en foutenanalyse uitgewerkt en uitgevoerd. | Andrew bracht de originele EDA analyse aan en leverde de originele uitwerking van het Mushroom programma, Jorre wees de 100%-score af als verdacht en corrigeerde de voorgeschreven bron naar het cursusbestand van 5.000 rijen. |
+| Mushroom-evaluatie | EDA visualiseringen, finale notebookcode- en tekstbewerking, de proximity matrix uitwerking, hulp bij preprocessing pipelines, vergelijkingscode, gedeelde splits/folds, fold-lokale preprocessing, PyCaret-reparatie en -uitvoering, AWS-artifactaudit en foutenanalyse uitgewerkt en uitgevoerd. | Andrew bracht de originele EDA analyse aan en leverde de originele uitwerking van het Mushroom programma, Jorre wees de 100%-score af als verdacht en corrigeerde de voorgeschreven bron naar het cursusbestand van 5.000 rijen. |
 | AWS | Notebookcode voorbereid, foutmeldingen toegelicht en de gedownloade pipeline en resultaten geaudit. | Jorre voerde de training op SageMaker uit en leverde het uitgevoerde notebook, model en tuningresultaten aan. |
 | Pipeline | Trainings-, validatie-, export-, test- en publicatiecode en GitHub Actions-configuratie gegenereerd en aangepast. | Jorre stelde de pipeline op met deze hulp en vroeg expliciet om automatische updates na een GitHub-push. Nieuwe training geldt hier voor Mushroom; Citi Bike gebruikt een vaste release. |
 | Backend en UI | FastAPI-routes, modelkoppelingen, lossless exports, invoercontrole, JavaScript/HTML/CSS, tests en versiecontroles gegenereerd of aangepast. | Jorre ontwikkelde en stuurde de gezamenlijke backend en UI met deze hulp. Raouls oorspronkelijke Citi Bike-inference en applicatieonderdelen blijven als bronbijdrage vermeld. |
@@ -142,6 +142,29 @@ ter illustratie geformuleerd en zijn geen letterlijke citaten uit de chat.
 2. Uitleg over de evaluatie van mijn modellen:
 
    > Kan je in eenvoudige woorden uitleggen wat RMSE, MAE en R² betekenen en hoe ik die moet interpreteren bij het vergelijken van mijn Citi Bike-modellen?
+
+### Raoul — drie voorbeeldprompts voor uitleg
+
+De drie volgende voorbeelden zijn gebaseerd op Andrews werkelijke berichten
+met een AI tool.
+
+1. Visualisatie van de originele bronlabels van de Mushroom Dataset
+
+   > By researching the original dataset, I found this explanation for each feature, I want to show this in my EDA [bronlabels]
+
+   Ik vroeg om een concrete visualisatie van de originele bronlabels. AI leverde een structuur voor een duidelijke Pandas tabel.
+
+2. Invullen van missing data
+
+   > I want to fill in this data using a proximitymatrix. Please tell me how to do this.
+
+   Ik vroeg om hulp bij het ontwikkelen van een proximity matrix. AI hielp mij met het opzetten van dit onderdeel.
+   
+3. Evalueren accuraatheid modellen
+
+   > Give me an evaluation on this RF accuracy result [accuracy results]
+
+   Ik vroeg om een evaluatie van de verschillende scores. AI leverde een textuele reactie voor het notebook.
 
 ## 4. Verificatie en reproduceerbaarheid
 
